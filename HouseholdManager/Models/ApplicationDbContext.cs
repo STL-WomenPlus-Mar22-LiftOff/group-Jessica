@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using HouseholdManager.Models;
 
 namespace HouseholdManager.Models
 {
@@ -11,6 +12,7 @@ namespace HouseholdManager.Models
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<HouseholdManager.Models.User> User { get; set; }
 
 
     }

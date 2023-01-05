@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CwhjElaeWAREM3ahlRlcnDfAql24Bu1whhhpsC2qpf4AezVfZox8PhjxcuE9HW/gttj05vNj9emV+OczgK4ppw==",
+  "dgSpecHash": "DmcHeyBAJszXmsECePxdtG73TR81x2Yrd4TpZHvp/rmAgQiYlzGb1MTFPWH4OheT7kHWggiNYBok4JXIFHcR9w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mmric\\Source\\Repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
+  "projectFilePath": "C:\\Users\\mmric\\source\\repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mmric\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\mmric\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
