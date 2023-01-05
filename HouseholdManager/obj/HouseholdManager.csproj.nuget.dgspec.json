@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaAgain\\HouseholdManager\\HouseholdManager.csproj": {}
+    "C:\\Users\\mmric\\source\\repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj": {}
   },
   "projects": {
-    "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaAgain\\HouseholdManager\\HouseholdManager.csproj": {
+    "C:\\Users\\mmric\\source\\repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaAgain\\HouseholdManager\\HouseholdManager.csproj",
+        "projectUniqueName": "C:\\Users\\mmric\\source\\repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
         "projectName": "HouseholdManager",
-        "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaAgain\\HouseholdManager\\HouseholdManager.csproj",
+        "projectPath": "C:\\Users\\mmric\\source\\repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
         "packagesPath": "C:\\Users\\mmric\\.nuget\\packages\\",
-        "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaAgain\\HouseholdManager\\obj\\",
+        "outputPath": "C:\\Users\\mmric\\source\\repos\\group-Jessica\\HouseholdManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mmric\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,6 +53,14 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.12, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "Syncfusion.EJ2.AspNet.Core": {
+              "target": "Package",
+              "version": "[20.4.0.42, )"
             }
           },
           "imports": [

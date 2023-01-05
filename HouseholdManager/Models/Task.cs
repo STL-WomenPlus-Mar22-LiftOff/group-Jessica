@@ -9,6 +9,10 @@ namespace HouseholdManager.Models
         [Key]
         public int TaskId { get; set; }
 
+        [Column(TypeName = "nvarchar(50)")]
+        [Required(ErrorMessage = "Name of task is required.")]
+        public string TaskName { get; set; }
+
         //RoomId-Foreign Key
         [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
         public int RoomId { get; set; }
