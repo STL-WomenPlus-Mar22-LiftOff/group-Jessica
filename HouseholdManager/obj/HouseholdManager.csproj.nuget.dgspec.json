@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\HouseholdManager.csproj": {}
+    "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaAgain\\HouseholdManager\\HouseholdManager.csproj": {}
   },
   "projects": {
-    "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\HouseholdManager.csproj": {
+    "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaAgain\\HouseholdManager\\HouseholdManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\HouseholdManager.csproj",
+        "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaAgain\\HouseholdManager\\HouseholdManager.csproj",
         "projectName": "HouseholdManager",
-        "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\HouseholdManager.csproj",
+        "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaAgain\\HouseholdManager\\HouseholdManager.csproj",
         "packagesPath": "C:\\Users\\mmric\\.nuget\\packages\\",
-        "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\obj\\",
+        "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaAgain\\HouseholdManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mmric\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,22 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.12, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
