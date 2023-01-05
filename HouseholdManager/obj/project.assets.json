@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\Household Manager\\HouseholdManagerRep\\HouseholdManager\\HouseholdManager.csproj",
+      "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\HouseholdManager.csproj",
       "projectName": "HouseholdManager",
-      "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\Household Manager\\HouseholdManagerRep\\HouseholdManager\\HouseholdManager.csproj",
+      "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\HouseholdManager.csproj",
       "packagesPath": "C:\\Users\\mmric\\.nuget\\packages\\",
-      "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\Household Manager\\HouseholdManagerRep\\HouseholdManager\\obj\\",
+      "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\mmric\\AppData\\Roaming\\NuGet\\NuGet.Config",
