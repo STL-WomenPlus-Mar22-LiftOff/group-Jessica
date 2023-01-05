@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - HouseholdManager</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Syncfusion ASP.NET Core controls styles -->
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.4.38/material.css" />
+    @*<link href="https://cdn.syncfusion.com/ej2/20.4.38/bootstrap5-dark.css" rel="stylesheet" />*@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/HouseholdManager.styles.css" asp-append-version="true" />
+    <!-- Syncfusion ASP.NET Core controls scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2.min.js"></script>
 </head>
 <body>
     <header>
@@ -45,5 +50,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <!-- Syncfusion Script Manager -->
+    <ejs-scripts></ejs-scripts>
+
 </body>
 </html>
