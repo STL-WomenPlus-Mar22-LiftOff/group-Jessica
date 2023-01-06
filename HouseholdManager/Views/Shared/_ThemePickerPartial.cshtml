@@ -2,10 +2,11 @@
 @using Syncfusion.EJ2.DropDowns;
 @using HouseholdManager.Models.ViewModels;
 
-    @{
-        var themePicker = new ThemePickerViewModel();
-    }
-    @Html.EJS().DropDownList("theme").Placeholder("Select a theme").PopupHeight("250px").Width("20%").DataSource((IEnumerable<ThemePickerViewModel>)themePicker.GetThemes()).Change("onThemeChange").Fields(new DropDownListFieldSettings { Text = "Text", Value = "ID" }).Render()
+@{
+    var themePicker = new ThemePickerViewModel();
+}
+    @Html.EJS().DropDownList("theme").Placeholder("Select a theme").PopupHeight("250px").Width("20%").DataSource((IEnumerable<ThemePickerViewModel>)themePicker.GetThemes()).Change("onThemeChange").Created("setDefaultTheme").Fields(new DropDownListFieldSettings { Text = "Text", Value = "ID" }).Render()
+
     <script id="themePickerScript" type="text/javascript">
         function onThemeChange(choice) {
             document.getElementsByTagName('body')[0].style.display = 'none';

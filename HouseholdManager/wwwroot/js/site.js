@@ -14,10 +14,19 @@ function getPreferredTheme() {
     }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    if (getPreferredTheme() == 'dark') {
+function setTheme(theme) {
+    if (theme === 'dark') {
         html.setAttribute('data-bs-theme', 'dark');
     } else {
         html.removeAttribute('data-bs-theme');
     }
+}
+
+function setDefaultTheme() {
+    setTheme(getPreferredTheme);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    setDefaultTheme();
+    console.log(`Theme loaded (${getPreferredTheme()})`);
 });
