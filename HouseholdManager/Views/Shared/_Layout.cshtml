@@ -11,10 +11,10 @@
             opacity: 0;
         }
     </style>
-    <script id="stop-fouc-script" type="text/javascript">
+    <script id="stopWhiteFlashScript" type="text/javascript">
         const userTheme = localStorage.getItem('user-theme');
         if (userTheme === 'dark') {
-            let topElement = document.documentElement;
+            const topElement = document.documentElement;
             topElement.setAttribute('data-bs-theme', 'dark');
         }
     </script>

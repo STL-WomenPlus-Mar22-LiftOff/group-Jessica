@@ -49,7 +49,7 @@ function onThemeChange(choice) {
     }
     setTimeout(() => {
         document.getElementsByTagName('body')[0].style.display = 'block';
-    }, 350);
+    }, 150);
 }
 
 window.addEventListener('DOMContentLoaded', () => {

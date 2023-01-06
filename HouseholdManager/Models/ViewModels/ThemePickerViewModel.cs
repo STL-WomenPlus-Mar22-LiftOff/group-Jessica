@@ -3,8 +3,8 @@
     public class ThemePickerViewModel
     {
         //These properrties must have these exact names for Syncfusion
-        public string ID { get; set; }
-        public string Text { get; set; }
+        public string? ID { get; set; }
+        public string? Text { get; set; }
 
         public List<ThemePickerViewModel> GetThemes()
         {
