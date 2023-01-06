@@ -1,0 +1,24 @@
+﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.DropDowns;
+@using HouseholdManager.Models.ViewModels;
+
+    @{
+        var themePicker = new ThemePickerViewModel();
+    }
+    @Html.EJS().DropDownList("theme").Placeholder("Select a theme").PopupHeight("250px").Width("20%").DataSource((IEnumerable<ThemePickerViewModel>)themePicker.GetThemes()).Change("onThemeChange").Fields(new DropDownListFieldSettings { Text = "Text", Value = "ID" }).Render()
+    <script id="themePickerScript" type="text/javascript">
+        function onThemeChange(choice) {
+            document.getElementsByTagName('body')[0].style.display = 'none';
+            let theme = choice.value;
+            let cdnLink = document.getElementById("cssfile");
+            cdnLink.href = 'https://cdn.syncfusion.com/ej2/20.4.38/' + theme + '.css';
+            if (theme === 'bootstrap5-dark') {
+                html.setAttribute('data-bs-theme', 'dark');
+            } else {
+                html.removeAttribute('data-bs-theme');
+            }
+            setTimeout(() => {
+                document.getElementsByTagName('body')[0].style.display = 'block';
+            }, 250);
+        }
+    </script>
