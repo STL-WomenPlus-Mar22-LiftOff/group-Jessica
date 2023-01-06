@@ -11,7 +11,7 @@
             opacity: 0;
         }
     </style>
-    <script id="stop-fouc" type="text/javascript">
+    <script id="stop-fouc-script" type="text/javascript">
         const userTheme = localStorage.getItem('user-theme');
         if (userTheme === 'dark') {
             let topElement = document.documentElement;
@@ -51,10 +51,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
