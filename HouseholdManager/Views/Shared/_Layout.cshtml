@@ -12,11 +12,13 @@
         }
     </style>
     <script id="stopWhiteFlashScript" type="text/javascript">
-        const userTheme = localStorage.getItem('user-theme');
-        if (userTheme === 'dark') {
-            const topElement = document.documentElement;
-            topElement.setAttribute('data-bs-theme', 'dark');
-        }
+        function () {
+            const userTheme = localStorage.getItem('user-theme');
+            if (userTheme === 'dark') {
+                const topElement = document.documentElement;
+                topElement.setAttribute('data-bs-theme', 'dark');
+            }();
+    }
     </script>
     <script id="themePickerScript" src="~/js/themePicker.js"></script>
     <title>@ViewData["Title"] - HouseholdManager</title>
