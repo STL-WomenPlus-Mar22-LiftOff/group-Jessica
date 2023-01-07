@@ -1,12 +1,12 @@
 ﻿<div class="icon-picker">
     <button type="button" class="btn btn-secondary" id="iconSelectButton"></button>
-    <div class="container-md" id="iconMenu">
-        <input type="search" id="iconSearch" />
-        <ul class="icon-select-panel">
+    <div class="container-md box-shadow" id="iconMenu" hidden>
+        <input type="search" id="iconSearch" placeholder="Search..."/>
+        <ul class="icon-button-list">
             @foreach (Icon icon in (IEnumerable<Icon>)ViewBag.Icons)
             {
-                <li emoji=@icon.Slug>
-                    <button class="btn btn-secondary" type="button" name=@icon.Slug onclick="selectIcon(this.name)">@icon.Character</button>
+                <li class="icon-button-item" emoji=@icon.Slug>
+                    <button class="btn btn-secondary icon-button" type="button" name=@icon.Slug onclick="selectIcon(this.name)">@icon.Character</button>
                 </li>
             }
         </ul>
@@ -39,8 +39,13 @@
         }
     });
 
-    window.onload(() => {
-        iconMenu.setAttribute("hidden", true);
-    });
-
 </script>
+
+    <noscript>
+        <style>
+            #icon-menu {
+                display: block;
+                opacity: 1;
+            }
+        </style>
+    </noscript>

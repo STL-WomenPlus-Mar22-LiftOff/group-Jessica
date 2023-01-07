@@ -17,12 +17,16 @@ body {
   margin-bottom: 60px;
 }
 
-.icon-picker-menu {
+.icon-picker-menu, .icon-button-list {
+    display: block;
     width: 600px;
     height: 800px;
+}
+
+.icon-button-item {
     display: flex;
     flex-flow: row wrap;
-    align-content: flex-start;
     gap: 5px;
     overflow: auto;
+    align-content: flex-start;
 }
