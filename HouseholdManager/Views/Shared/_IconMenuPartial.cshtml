@@ -1,14 +1,17 @@
 ﻿
 
 <div class="icon-picker">
-    <button type="button" class="btn btn-secondary" id="iconSelectButton">Select Icon</button>
+    <span>
+        <button type="button" class="btn btn-secondary" id="iconSelectButton">Select Icon</button>
+        <label id="iconDisplay" for="iconSelectButton"></label>
+    </span>
     <noscript>Icon selector requires JavaScript.</noscript>
     <div class="container-md box-shadow icon-picker-menu" id="iconMenu" hidden>
         <input type="search" id="iconSearch" placeholder="Search..." />
         <ul class="icon-button-list">
             @foreach (Icon icon in (IEnumerable<Icon>)ViewBag.Icons)
             {
-                <li class="icon-button-item" emoji=@icon.Slug>@icon.Character</li>
+                <li class="icon-button-item" title=@(icon.Slug.ToString()) onclick="selectIcon(this.title, this.innerText)">@icon.Character</li>
             }
         </ul>
     </div>
@@ -20,9 +23,13 @@
     const iconMenu = document.getElementById("iconMenu");
     const iconSearchBar = document.getElementById("iconSearch");
     const iconFormField = document.getElementById("iconInput");
+    const iconDisplay = document.getElementById("iconDisplay");
 
-    function selectIcon(name) {
-        iconFormField.setAttribute("value", name);
+    function selectIcon(selection, character) {
+        iconFormField.setAttribute("value", selection);
+        iconFormField.toggleAttribute("hidden"); //debug
+        iconMenu.toggleAttribute("hidden");
+        iconDisplay.innerText = character;
     }
 
     iconToggle.addEventListener("click", () => {
