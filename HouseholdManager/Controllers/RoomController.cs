@@ -6,12 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
+using System.Text.Json;
 
 namespace HouseholdManager.Controllers
 {
     public class RoomController : Controller
     {
         private readonly ApplicationDbContext _context;
+
+        private const string OpenEmojiApiKey = "2f3055e94632aca65cac6bbe8c8488c414cc9a27";
 
         public RoomController(ApplicationDbContext context)
         {
@@ -156,5 +159,57 @@ namespace HouseholdManager.Controllers
         {
           return _context.Rooms.Any(e => e.RoomId == id);
         }
+
+        /// <summary>
+        /// Helper method for GetIconsFromApi().
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns>A list of icons, if successful</returns>
+        /// <exception cref="JsonException"></exception>
+        private async Task<List<Icon>> DeserializeIconData(string path)
+        {
+            using (var client = new HttpClient())
+            {
+                using (var response = await client.GetAsync(path))
+                {
+                    string rawData = await response.Content.ReadAsStringAsync();
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    };
+                    return JsonSerializer.Deserialize<List<Icon>>(rawData, options) 
+                           ?? throw new BadHttpRequestException($"Unable to load icons - null or bad JSON data retrieved from OpenEmoji API.  Request path: {path}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets a list of all available icons matching the search term from OpenEmoji's API
+        /// </summary>
+        /// <param name="searchTerm"></param>
+        public async Task<List<Icon>> GetIconsFromApi(string searchTerm = "")
+        {
+            string path;
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                path = $"https://emoji-api.com/emojis?access_key={OpenEmojiApiKey}";
+            }
+            else
+            {
+                path = $"https://emoji-api.com/emojis?search={searchTerm}&access_key={OpenEmojiApiKey}";
+            }
+
+            try
+            {
+                var iconList = await DeserializeIconData(path);
+                return iconList;
+            }
+            catch (BadHttpRequestException e)
+            {
+                Console.WriteLine(e.Message);
+                return new List<Icon>();
+            }
+        }
+        
     }
 }
