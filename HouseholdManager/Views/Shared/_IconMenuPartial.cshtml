@@ -1,13 +1,14 @@
-﻿<div class="icon-picker">
-    <button type="button" class="btn btn-secondary" id="iconSelectButton"></button>
-    <div class="container-md box-shadow" id="iconMenu" hidden>
-        <input type="search" id="iconSearch" placeholder="Search..."/>
+﻿
+
+<div class="icon-picker">
+    <button type="button" class="btn btn-secondary" id="iconSelectButton">Select Icon</button>
+    <noscript>Icon selector requires JavaScript.</noscript>
+    <div class="container-md box-shadow icon-picker-menu" id="iconMenu" hidden>
+        <input type="search" id="iconSearch" placeholder="Search..." />
         <ul class="icon-button-list">
             @foreach (Icon icon in (IEnumerable<Icon>)ViewBag.Icons)
             {
-                <li class="icon-button-item" emoji=@icon.Slug>
-                    <button class="btn btn-secondary icon-button" type="button" name=@icon.Slug onclick="selectIcon(this.name)">@icon.Character</button>
-                </li>
+                <li class="icon-button-item" emoji=@icon.Slug>@icon.Character</li>
             }
         </ul>
     </div>
@@ -40,12 +41,3 @@
     });
 
 </script>
-
-    <noscript>
-        <style>
-            #icon-menu {
-                display: block;
-                opacity: 1;
-            }
-        </style>
-    </noscript>

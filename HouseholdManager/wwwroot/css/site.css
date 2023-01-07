@@ -17,16 +17,34 @@ body {
   margin-bottom: 60px;
 }
 
-.icon-picker-menu, .icon-button-list {
+.icon-picker-menu {
     display: block;
-    width: 600px;
-    height: 800px;
+    justify-content: center;
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--bs-secondary);
+    width: 300px;
+    height: 250px;
+    overflow: auto;
+    /* background: var(--bs-secondary); */
+}
+
+.icon-button-list {
+    position: relative;
+    transform: translateX(-10%);
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 1fr;
+    column-gap: 10px;
+    row-gap: 5px;
 }
 
 .icon-button-item {
-    display: flex;
-    flex-flow: row wrap;
-    gap: 5px;
-    overflow: auto;
-    align-content: flex-start;
+    font-size: large;
+    min-height: 18px;
+    max-height: 24px;
+    min-width: 18px;
+    max-width: 24px;
+    justify-self: center;
 }
