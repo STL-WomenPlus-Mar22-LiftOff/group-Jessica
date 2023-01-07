@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
 
 namespace HouseholdManager.Models
 {
@@ -12,7 +13,7 @@ namespace HouseholdManager.Models
         [Column(TypeName = "nvarchar(50)")]
         [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
-
+        
         [Column(TypeName = "nvarchar(5)")]
         public string Icon { get; set; } = "";
     }

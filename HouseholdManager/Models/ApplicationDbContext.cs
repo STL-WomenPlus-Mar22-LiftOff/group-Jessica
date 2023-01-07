@@ -14,6 +14,15 @@ namespace HouseholdManager.Models
         public DbSet<Task> Tasks { get; set; }
         public DbSet<HouseholdManager.Models.User> User { get; set; }
 
+        
+        protected override void OnModelCreating(ModelBuilder mb)
+        {
+            base.OnModelCreating(mb);
+            mb.Entity("HouseholdManager.Models.Room", b => {
+                b.Property<string>("Icon").IsUnicode(true);
+            });
+        }
+        
 
     }
 }

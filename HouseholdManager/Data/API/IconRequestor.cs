@@ -26,6 +26,13 @@ namespace HouseholdManager.Data.API
             try
             {
                 var iconList = await DeserializeIconData(path);
+                /*
+                var query = from icon in iconList
+                            select icon.Slug.Length into slugLengths
+                            orderby slugLengths descending
+                            select slugLengths;
+                Console.WriteLine("Longest slug from OpenEmoji API = " + query.FirstOrDefault() + " characters");
+                */
                 return iconList;
             }
             catch (BadHttpRequestException e)
