@@ -7,6 +7,10 @@
 <h1>Edit</h1>
 
 <h4>Room</h4>
+<div id="existingRoomDetails" class="row">
+    <label class="alert-info">Current @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</label>
+    <label class="alert-info">Current @Html.DisplayNameFor(model => model.Icon): @Html.DisplayFor(model => model.Icon)</label>
+</div>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -20,7 +24,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Icon" class="control-label"></label>
-                <input asp-for="Icon" class="form-control" />
+                <input asp-for="Icon" id="iconInput" class="form-control" hidden />
+                @await Html.PartialAsync("_IconMenuPartial")
                 <span asp-validation-for="Icon" class="text-danger"></span>
             </div>
             <div class="form-group">

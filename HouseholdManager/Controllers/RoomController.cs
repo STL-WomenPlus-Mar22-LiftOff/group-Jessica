@@ -49,10 +49,7 @@ namespace HouseholdManager.Controllers
         {
             IconRequestor req = new IconRequestor();
             List<Icon> icons = await req.GetIconsFromApi();
-            var names = from i in icons
-                        select i.Slug;
             ViewBag.Icons = icons;
-            ViewBag.IconNames = names.ToArray();
             return View();
         }
 
@@ -75,6 +72,10 @@ namespace HouseholdManager.Controllers
         // GET: Room/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            IconRequestor req = new IconRequestor();
+            List<Icon> icons = await req.GetIconsFromApi();
+            ViewBag.Icons = icons;
+
             if (id == null || _context.Rooms == null)
             {
                 return NotFound();

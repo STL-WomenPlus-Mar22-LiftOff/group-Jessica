@@ -64,5 +64,26 @@ namespace HouseholdManager.Data.API
                 }
             }
         }
+
+        /// <summary>
+        /// <para>Fetches corresponding Unicode slug from Open Emoji API when passed an icon</para>
+        /// <para>This method is not particularly fast, as it has to query the entire list of emojis from the API.
+        /// Don't call it if you don't actually need it.</para>
+        /// </summary>
+        /// <param name="iconLiteral"></param>
+        /// <returns>Unicode slug for provided emoji, if found, otherwise "404"</returns>
+        public async Task<string> GetMouseoverTextForIcon(string iconLiteral)
+        {
+            if (string.IsNullOrEmpty(iconLiteral))
+            {
+                return "";
+            }
+            List<Icon> allIcons = await GetIconsFromApi();
+            var query = from icon in allIcons
+                        where icon.Character == iconLiteral
+                        select icon.Slug;
+            return query.FirstOrDefault() ?? "404";
+
+        }
     }
 }

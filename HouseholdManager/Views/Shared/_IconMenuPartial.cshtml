@@ -1,9 +1,7 @@
-﻿
-
-<div class="icon-picker">
+﻿<div class="icon-picker">
     <span>
         <button type="button" class="btn btn-secondary" id="iconSelectButton">Select Icon</button>
-        <label id="iconDisplay" for="iconSelectButton"></label>
+            <label id="iconDisplay" for="iconSelectButton"></label>
     </span>
     <noscript>Icon selector requires JavaScript.</noscript>
     <div class="container-md box-shadow icon-picker-menu" id="iconMenu" hidden>
@@ -18,17 +16,17 @@
 </div>
 
 <script id="iconMenuScript">
-    const iconNames = '@ViewBag.IconNames';
     const iconToggle = document.getElementById("iconSelectButton");
     const iconMenu = document.getElementById("iconMenu");
     const iconSearchBar = document.getElementById("iconSearch");
     const iconFormField = document.getElementById("iconInput");
     const iconDisplay = document.getElementById("iconDisplay");
 
-    function selectIcon(selection, character) {
-        iconFormField.setAttribute("value", selection);
+    function selectIcon(mouseoverText, character) {
+        iconFormField.setAttribute("value", character);
         iconMenu.toggleAttribute("hidden");
         iconDisplay.innerText = character;
+        iconDisplay.title = mouseoverText;
     }
 
     iconToggle.addEventListener("click", () => {
@@ -37,8 +35,8 @@
 
     iconSearchBar.addEventListener("keyup", e => {
         const term = e.target.value;
-        for (const listItem of document.querySelectorAll("li[emoji]")) {
-            if (listItem.getAttribute("emoji").includes(term.toLowerCase())) {
+        for (const listItem of document.querySelectorAll("li[title]")) {
+            if (listItem.getAttribute("title").includes(term.toLowerCase())) {
                 listItem.style.display = "flex";
             } else {
                 listItem.style.display = "none";

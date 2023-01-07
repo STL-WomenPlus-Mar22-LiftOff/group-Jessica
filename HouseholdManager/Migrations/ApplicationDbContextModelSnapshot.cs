@@ -39,7 +39,7 @@ namespace HouseholdManager.Migrations
 
                     b.HasKey("RoomId");
 
-                    b.ToTable("Rooms");
+                    b.ToTable("Rooms", (string)null);
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Task", b =>
@@ -64,7 +64,7 @@ namespace HouseholdManager.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Tasks");
+                    b.ToTable("Tasks", (string)null);
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.User", b =>
@@ -89,7 +89,7 @@ namespace HouseholdManager.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Task", b =>
