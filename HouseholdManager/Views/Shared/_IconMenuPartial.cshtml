@@ -1,0 +1,46 @@
+﻿<div class="icon-picker">
+    <button type="button" class="btn btn-secondary" id="iconSelectButton"></button>
+    <div class="container-md" id="iconMenu">
+        <input type="search" id="iconSearch" />
+        <ul class="icon-select-panel">
+            @foreach (Icon icon in (IEnumerable<Icon>)ViewBag.Icons)
+            {
+                <li emoji=@icon.Slug>
+                    <button class="btn btn-secondary" type="button" name=@icon.Slug onclick="selectIcon(this.name)">@icon.Character</button>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<script id="iconMenuScript">
+    const iconNames = '@ViewBag.IconNames';
+    const iconToggle = document.getElementById("iconSelectButton");
+    const iconMenu = document.getElementById("iconMenu");
+    const iconSearchBar = document.getElementById("iconSearch");
+    const iconFormField = document.getElementById("iconInput");
+
+    function selectIcon(name) {
+        iconFormField.setAttribute("value", name);
+    }
+
+    iconToggle.addEventListener("click", () => {
+        iconMenu.toggleAttribute("hidden");
+    });
+
+    iconSearchBar.addEventListener("keyup", e => {
+        const term = e.target.value;
+        for (const listItem of document.querySelectorAll("li[emoji]")) {
+            if (listItem.getAttribute("emoji").includes(term.toLowerCase())) {
+                listItem.style.display = "flex";
+            } else {
+                listItem.style.display = "none";
+            }
+        }
+    });
+
+    window.onload(() => {
+        iconMenu.setAttribute("hidden", true);
+    });
+
+</script>

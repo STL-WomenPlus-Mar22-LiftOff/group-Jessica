@@ -16,3 +16,13 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.icon-picker-menu {
+    width: 600px;
+    height: 800px;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    gap: 5px;
+    overflow: auto;
+}
