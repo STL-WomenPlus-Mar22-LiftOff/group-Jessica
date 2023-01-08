@@ -3,6 +3,10 @@ using System.Text.Json;
 
 namespace HouseholdManager.Data.API
 {
+    /// <summary>
+    /// <para>Class for interfacing with the Open Emoji API</para>
+    /// <seealso href="https://emoji-api.com/#documentation">Open Emoji API Documentation</seealso>
+    /// </summary>
     public class IconRequestor
     {
         private const string OpenEmojiApiKey = "2f3055e94632aca65cac6bbe8c8488c414cc9a27";
@@ -26,18 +30,11 @@ namespace HouseholdManager.Data.API
             try
             {
                 var iconList = await DeserializeIconData(path);
-                /*
-                var query = from icon in iconList
-                            select icon.Slug.Length into slugLengths
-                            orderby slugLengths descending
-                            select slugLengths;
-                Console.WriteLine("Longest slug from OpenEmoji API = " + query.FirstOrDefault() + " characters");
-                */
                 return iconList;
             }
             catch (BadHttpRequestException e)
             {
-                Console.WriteLine(e.Message);
+                Console.Error.WriteLine(e.Message);
                 return new List<Icon>();
             }
         }
@@ -67,11 +64,12 @@ namespace HouseholdManager.Data.API
 
         /// <summary>
         /// <para>Fetches corresponding Unicode slug from Open Emoji API when passed an icon</para>
-        /// <para>This method is not particularly fast, as it has to query the entire list of emojis from the API.
-        /// Don't call it if you don't actually need it.</para>
+        /// <para>This method is not particularly fast, as the API does not natively support this 
+        /// type of search.  It has to get and then query the entire list of thousands of emojis.</para>
+        /// <para>Call this sparingly.</para>
         /// </summary>
         /// <param name="iconLiteral"></param>
-        /// <returns>Unicode slug for provided emoji, if found, otherwise "404"</returns>
+        /// <returns>Unicode slug for provided emoji, if found, otherwise an empty string</returns>
         public async Task<string> GetMouseoverTextForIcon(string iconLiteral)
         {
             if (string.IsNullOrEmpty(iconLiteral))
@@ -82,7 +80,7 @@ namespace HouseholdManager.Data.API
             var query = from icon in allIcons
                         where icon.Character == iconLiteral
                         select icon.Slug;
-            return query.FirstOrDefault() ?? "404";
+            return query.FirstOrDefault() ?? "";
 
         }
     }
