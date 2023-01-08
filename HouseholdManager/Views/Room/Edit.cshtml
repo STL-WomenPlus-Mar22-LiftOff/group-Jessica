@@ -1,15 +1,21 @@
 ﻿@model HouseholdManager.Models.Room
+@using HouseholdManager.Data.API
 
 @{
     ViewData["Title"] = "Edit";
+    var req = new IconRequestor();
+    string iconMouseOverText = await req.GetMouseoverTextForIcon(ViewData.Model.Icon);
 }
 
 <h1>Edit</h1>
 
 <h4>Room</h4>
-<div id="existingRoomDetails" class="row">
-    <label class="alert-info">Current @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</label>
-    <label class="alert-info">Current @Html.DisplayNameFor(model => model.Icon): @Html.DisplayFor(model => model.Icon)</label>
+<div class="row alert-info">
+    <label title=@Html.DisplayFor(model => model.Name)>Current @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</label>
+    <span title=@iconMouseOverText>
+        <label>Current @Html.DisplayNameFor(model => model.Icon): @Html.DisplayFor(model => model.Icon)</label>
+        <label class="icon-slug-display-small">@iconMouseOverText</label>
+    </span>
 </div>
 <hr />
 <div class="row">

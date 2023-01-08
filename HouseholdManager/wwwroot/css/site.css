@@ -48,3 +48,8 @@ body {
     max-width: 24px;
     justify-self: center;
 }
+
+.icon-slug-display-small {
+    font-size: smaller;
+    color: var(--bs-secondary);
+}
