@@ -65,7 +65,9 @@ namespace HouseholdManager.Data.API
         /// <summary>
         /// <para>Fetches corresponding Unicode slug from Open Emoji API when passed an icon</para>
         /// <para>This method is not particularly fast, as the API does not natively support this 
-        /// type of search.  It has to get and then query the entire list of thousands of emojis.</para>
+        /// type of search.  It has to get and then query the entire list of thousands of emojis.
+        /// The alternative is to save the slug to the database instead of the icon, which probably 
+        /// isn't better. </para>
         /// <para>Call this sparingly.</para>
         /// </summary>
         /// <param name="iconLiteral"></param>
