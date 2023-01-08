@@ -3,13 +3,13 @@
         <button type="button" class="btn btn-secondary" id="iconSelectButton">Select Icon</button>
             <label id="iconDisplay" for="iconSelectButton"></label>
     </span>
-    <noscript>Icon selector requires JavaScript.</noscript>
+    <noscript class="alert-danger">Icon selector requires JavaScript.</noscript>
     <div class="container-md box-shadow icon-picker-menu" id="iconMenu" hidden>
         <input type="search" id="iconSearch" placeholder="Search..." />
         <ul class="icon-button-list">
             @foreach (Icon icon in (IEnumerable<Icon>)ViewBag.Icons)
             {
-                <li class="icon-button-item" title=@(icon.Slug.ToString()) onclick="selectIcon(this.title, this.innerText)">@icon.Character</li>
+                <li class="icon-button-item" title=@(icon.Slug?.ToString()) onclick="selectIcon(this.title, this.innerText)">@icon.Character</li>
             }
         </ul>
     </div>
