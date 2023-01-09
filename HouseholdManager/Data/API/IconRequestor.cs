@@ -12,10 +12,10 @@ namespace HouseholdManager.Data.API
         private const string OpenEmojiApiKey = "2f3055e94632aca65cac6bbe8c8488c414cc9a27";
 
         /// <summary>
-        /// Gets a list of all available icons matching the search term from Open Emoji API
+        /// Gets a list of all available iconsToSearch matching the search term from Open Emoji API
         /// </summary>
         /// <param name="searchTerm"></param>
-        public async Task<List<Icon>> GetIconsFromApi(string searchTerm = "")
+        public async Task<List<Icon>> GetIconsFromApi(string? searchTerm = "")
         {
             string path;
             if (string.IsNullOrEmpty(searchTerm))
@@ -43,7 +43,7 @@ namespace HouseholdManager.Data.API
         /// Helper method for GetIconsFromApi(), handles response.
         /// </summary>
         /// <param name="path"></param>
-        /// <returns>A list of icons, if successful</returns>
+        /// <returns>A list of iconsToSearch, if successful</returns>
         /// <exception cref="BadHttpRequestException"></exception>
         private async Task<List<Icon>> DeserializeIconData(string path)
         {
@@ -68,18 +68,23 @@ namespace HouseholdManager.Data.API
         /// type of search.  It has to get and then query the entire list of thousands of emojis.
         /// The alternative is to save the slug to the database instead of the icon, which probably 
         /// isn't better. </para>
-        /// <para>Call this sparingly.</para>
+        /// <para>If there is already an existing collection of icons from the API, this can be 
+        /// passed in as an optional parameter to speed things up a bit.</para>
         /// </summary>
         /// <param name="iconLiteral"></param>
+        /// <param name="iconsToSearch"></param>
         /// <returns>Unicode slug for provided emoji, if found, otherwise an empty string</returns>
-        public async Task<string> GetMouseoverTextForIcon(string iconLiteral)
+        public async Task<string> GetMouseoverTextForIcon(string iconLiteral, IEnumerable<Icon>? iconsToSearch = null)
         {
             if (string.IsNullOrEmpty(iconLiteral))
             {
                 return "";
             }
-            List<Icon> allIcons = await GetIconsFromApi();
-            var query = from icon in allIcons
+            else if (iconsToSearch == null)
+            {
+                iconsToSearch = await GetIconsFromApi();
+            }
+            var query = from icon in iconsToSearch
                         where icon.Character == iconLiteral
                         select icon.Slug;
             return query.FirstOrDefault() ?? "";

@@ -22,7 +22,8 @@
         </dt>
         @{
             var req = new IconRequestor();
-            string iconMouseOverText = await req.GetMouseoverTextForIcon(ViewData.Model.Icon);
+            string iconMouseOverText = await req.GetMouseoverTextForIcon(ViewData.Model.Icon,
+                                                                         (IEnumerable<Icon>)ViewBag.Icons);
         }
         <dd class = "col-sm-10" title=@iconMouseOverText>
             <span>

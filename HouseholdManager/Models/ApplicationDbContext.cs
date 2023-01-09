@@ -14,6 +14,7 @@ namespace HouseholdManager.Models
         public DbSet<Task> Tasks { get; set; }
         public DbSet<HouseholdManager.Models.User> User { get; set; }
 
+        //This column needs to be set to Unicode in order to store icon emojis
         protected override void OnModelCreating(ModelBuilder mb)
         {
             base.OnModelCreating(mb);
