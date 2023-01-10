@@ -21,6 +21,31 @@ namespace HouseholdManager.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
+                {
+                    b.Property<int>("MissionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MissionId"), 1L, 1);
+
+                    b.Property<string>("MissionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Point")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MissionId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("Missions");
+                });
+
             modelBuilder.Entity("HouseholdManager.Models.Room", b =>
                 {
                     b.Property<int>("RoomId")
@@ -39,32 +64,7 @@ namespace HouseholdManager.Migrations
 
                     b.HasKey("RoomId");
 
-                    b.ToTable("Rooms", (string)null);
-                });
-
-            modelBuilder.Entity("HouseholdManager.Models.Task", b =>
-                {
-                    b.Property<int>("TaskId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"), 1L, 1);
-
-                    b.Property<int>("Point")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TaskName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("TaskId");
-
-                    b.HasIndex("RoomId");
-
-                    b.ToTable("Tasks", (string)null);
+                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.User", b =>
@@ -89,10 +89,10 @@ namespace HouseholdManager.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User", (string)null);
+                    b.ToTable("User");
                 });
 
-            modelBuilder.Entity("HouseholdManager.Models.Task", b =>
+            modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
                 {
                     b.HasOne("HouseholdManager.Models.Room", "Room")
                         .WithMany()

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HouseholdManager.Models.Task>
+﻿@model IEnumerable<HouseholdManager.Models.Mission>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TaskName)
+                @Html.DisplayNameFor(model => model.MissionName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Room)
@@ -28,7 +28,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TaskName)
+                @Html.DisplayFor(modelItem => item.MissionName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Room.Name)
@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.Point)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TaskId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TaskId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.MissionId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MissionId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MissionId">Delete</a>
             </td>
         </tr>
 }

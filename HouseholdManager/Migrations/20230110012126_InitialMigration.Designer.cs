@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230105064053_Task Name Migration")]
-    partial class TaskNameMigration
+    [Migration("20230110012126_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,6 +22,31 @@ namespace HouseholdManager.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
+                {
+                    b.Property<int>("MissionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MissionId"), 1L, 1);
+
+                    b.Property<string>("MissionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Point")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MissionId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("Missions");
+                });
 
             modelBuilder.Entity("HouseholdManager.Models.Room", b =>
                 {
@@ -44,32 +69,32 @@ namespace HouseholdManager.Migrations
                     b.ToTable("Rooms");
                 });
 
-            modelBuilder.Entity("HouseholdManager.Models.Task", b =>
+            modelBuilder.Entity("HouseholdManager.Models.User", b =>
                 {
-                    b.Property<int>("TaskId")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
-                    b.Property<int>("Point")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TaskName")
+                    b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TaskId");
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(5)");
 
-                    b.HasIndex("RoomId");
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
 
-                    b.ToTable("Tasks");
+                    b.HasKey("UserId");
+
+                    b.ToTable("User");
                 });
 
-            modelBuilder.Entity("HouseholdManager.Models.Task", b =>
+            modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
                 {
                     b.HasOne("HouseholdManager.Models.Room", "Room")
                         .WithMany()

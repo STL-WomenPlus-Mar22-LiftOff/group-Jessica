@@ -23,19 +23,35 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tasks",
+                name: "User",
                 columns: table => new
                 {
-                    TaskId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(20)", nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.UserId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Missions",
+                columns: table => new
+                {
+                    MissionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MissionName = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     Point = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tasks", x => x.TaskId);
+                    table.PrimaryKey("PK_Missions", x => x.MissionId);
                     table.ForeignKey(
-                        name: "FK_Tasks_Rooms_RoomId",
+                        name: "FK_Missions_Rooms_RoomId",
                         column: x => x.RoomId,
                         principalTable: "Rooms",
                         principalColumn: "RoomId",
@@ -43,15 +59,18 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tasks_RoomId",
-                table: "Tasks",
+                name: "IX_Missions_RoomId",
+                table: "Missions",
                 column: "RoomId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Tasks");
+                name: "Missions");
+
+            migrationBuilder.DropTable(
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "Rooms");

@@ -11,7 +11,7 @@ namespace HouseholdManager.Models
         }
 
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Mission> Missions { get; set; }
         public DbSet<HouseholdManager.Models.User> User { get; set; }
 
         //This column needs to be set to Unicode in order to store icon emojis
