@@ -14,10 +14,9 @@
     <script id="stopWhiteFlashScript" type="text/javascript">
         (function () {
             const userTheme = localStorage.getItem('user-theme');
-            if (userTheme === 'dark') {
-                const topElement = document.documentElement;
-                topElement.setAttribute('data-bs-theme', 'dark');
-            }
+            const topElement = document.documentElement;
+            if (userTheme !== 'light') {
+                topElement.setAttribute('data-bs-theme', userTheme);
         })();
     </script>
     <script id="themePickerScript" src="~/js/themePicker.js"></script>
@@ -25,6 +24,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <!-- Syncfusion ASP.NET Core controls styles -->
     <link id="cssfile" href="https://cdn.syncfusion.com/ej2/20.4.38/bootstrap5.css" rel="stylesheet" />
+    <!--Custom style sheets-->
+    <link id="deepblue-css" rel="stylesheet" href="~/css/bootstrap-deepblue-custom.css" asp-append-version="true" disabled="true"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <!-- Syncfusion ASP.NET Core controls scripts -->
     <script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2.min.js"></script>

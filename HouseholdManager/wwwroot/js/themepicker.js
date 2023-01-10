@@ -18,18 +18,30 @@ function getPreferredTheme() {
 
 function setTheme(theme, stylesheet = "bootstrap5") {
     let cdnLink = document.getElementById("cssfile");
+    const deepblue = document.getElementById("deepblue-css");
     cdnLink.href = 'https://cdn.syncfusion.com/ej2/20.4.38/' + stylesheet + '.css';
-    if (theme === 'dark') {
-        html.setAttribute('data-bs-theme', 'dark');
-    } else {
-        html.removeAttribute('data-bs-theme');
+    switch (theme) {
+        case "deepblue":
+            html.setAttribute('data-bs-theme', 'deepblue');
+            deepblue.disabled = false;
+            return;
+        case "dark":
+            html.setAttribute('data-bs-theme', 'dark');
+            break;
+        default:
+            html.removeAttribute('data-bs-theme');
+            break;
     }
+    deepblue.disabled = true;
 }
 
 function setDefaultTheme() {
     const pref = getPreferredTheme();
     switch (pref) {
         case 'dark':
+            setTheme(pref, "bootstrap5-dark");
+            break;
+        case "deepblue":
             setTheme(pref, "bootstrap5-dark");
             break;
         default:
@@ -40,12 +52,19 @@ function setDefaultTheme() {
 function onThemeChange(choice) {
     document.getElementsByTagName('body')[0].style.display = 'none';
     let theme = choice.value;
-    if (theme === 'bootstrap5-dark') {
-        setTheme('dark', theme);
-        window.localStorage.setItem('user-theme', 'dark');
-    } else {
-        setTheme('light', theme);
-        window.localStorage.setItem('user-theme', 'light');
+    switch (theme) {
+        case 'bootstrap5-dark':
+            setTheme('dark', theme);
+            window.localStorage.setItem('user-theme', 'dark');
+            break;
+        case 'bootstrap5-deepblue-custom':
+            setTheme('deepblue', 'bootstrap5-dark');
+            window.localStorage.setItem('user-theme', 'deepblue');
+            break;
+        default:
+            setTheme('light', theme);
+            window.localStorage.setItem('user-theme', 'light');
+            break;
     }
     setTimeout(() => {
         document.getElementsByTagName('body')[0].style.display = 'block';
