@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HouseholdManager.Models
 {
-    public class Task
+    public class Mission
     {
         [Key]
-        public int TaskId { get; set; }
+        public int MissionId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-        [Required(ErrorMessage = "Name of task is required.")]
-        public string TaskName { get; set; }
+        [Required(ErrorMessage = "Name of mission is required.")]
+        public string MissionName { get; set; }
 
         //RoomId-Foreign Key
         [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
