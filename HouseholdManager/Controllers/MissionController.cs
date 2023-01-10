@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,90 +8,90 @@ using HouseholdManager.Models;
 
 namespace HouseholdManager.Controllers
 {
-    public class TaskController : Controller
+    public class MissionController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public TaskController(ApplicationDbContext context)
+        public MissionController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Task
+        // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Tasks.Include(t => t.Room);
+            var applicationDbContext = _context.Missions.Include(t => t.Room);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Task/Details/5
+        // GET: Mission/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Tasks == null)
+            if (id == null || _context.Missions == null)
             {
                 return NotFound();
             }
 
-            var task = await _context.Tasks
+            var mission = await _context.Missions
                 .Include(t => t.Room)
-                .FirstOrDefaultAsync(m => m.TaskId == id);
-            if (task == null)
+                .FirstOrDefaultAsync(m => m.MissionId == id);
+            if (mission == null)
             {
                 return NotFound();
             }
 
-            return View(task);
+            return View(mission);
         }
 
-        // GET: Task/Create
+        // GET: Mission/Create
         public IActionResult Create()
         {
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
             return View();
         }
 
-        // POST: Task/Create
+        // POST: Mission/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TaskId,TaskName,RoomId,Point")] Models.Task task)
+        public async Task<IActionResult> Create([Bind("MissionId,MissionName,RoomId,Point")] Models.Mission mission)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(task);
+                _context.Add(mission);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", task.RoomId);
-            return View(task);
+            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            return View(mission);
         }
 
-        // GET: Task/Edit/5
+        // GET: Mission/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Tasks == null)
+            if (id == null || _context.Missions == null)
             {
                 return NotFound();
             }
 
-            var task = await _context.Tasks.FindAsync(id);
-            if (task == null)
+            var mission = await _context.Missions.FindAsync(id);
+            if (mission == null)
             {
                 return NotFound();
             }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", task.RoomId);
-            return View(task);
+            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            return View(mission);
         }
 
-        // POST: Task/Edit/5
+        // POST: Mission/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TaskId,TaskName,RoomId,Point")] Models.Task task)
+        public async Task<IActionResult> Edit(int id, [Bind("MissionId,MissionName,RoomId,Point")] Models.Mission mission)
         {
-            if (id != task.TaskId)
+            if (id != mission.MissionId)
             {
                 return NotFound();
             }
@@ -101,12 +100,12 @@ namespace HouseholdManager.Controllers
             {
                 try
                 {
-                    _context.Update(task);
+                    _context.Update(mission);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TaskExists(task.TaskId))
+                    if (!MissionExists(mission.MissionId))
                     {
                         return NotFound();
                     }
@@ -117,51 +116,51 @@ namespace HouseholdManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", task.RoomId);
-            return View(task);
+            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            return View(mission);
         }
 
-        // GET: Task/Delete/5
+        // GET: Mission/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Tasks == null)
+            if (id == null || _context.Missions == null)
             {
                 return NotFound();
             }
 
-            var task = await _context.Tasks
+            var mission = await _context.Missions
                 .Include(t => t.Room)
-                .FirstOrDefaultAsync(m => m.TaskId == id);
-            if (task == null)
+                .FirstOrDefaultAsync(m => m.MissionId == id);
+            if (mission == null)
             {
                 return NotFound();
             }
 
-            return View(task);
+            return View(mission);
         }
 
-        // POST: Task/Delete/5
+        // POST: Mission/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Tasks == null)
+            if (_context.Missions == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Tasks'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Missions'  is null.");
             }
-            var task = await _context.Tasks.FindAsync(id);
-            if (task != null)
+            var mission = await _context.Missions.FindAsync(id);
+            if (mission != null)
             {
-                _context.Tasks.Remove(task);
+                _context.Missions.Remove(mission);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TaskExists(int id)
+        private bool MissionExists(int id)
         {
-          return _context.Tasks.Any(e => e.TaskId == id);
+          return _context.Missions.Any(e => e.MissionId == id);
         }
     }
 }

@@ -11,8 +11,8 @@ namespace HouseholdManager.Models
         }
 
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<Task> Tasks { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<Mission> Missions { get; set; }
+        public DbSet<HouseholdManager.Models.User> User { get; set; }
 
 
     }
