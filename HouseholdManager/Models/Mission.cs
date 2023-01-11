@@ -22,5 +22,7 @@ namespace HouseholdManager.Models
         [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
         public int Point { get; set; }
 
+        public DateTime DueDate { get; set; }
+
     }
 }
