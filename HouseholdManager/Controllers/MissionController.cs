@@ -55,7 +55,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MissionId,MissionName,RoomId,Point")] Models.Mission mission)
+        public async Task<IActionResult> Create([Bind("MissionId,MissionName,RoomId,Point,DueDate")] Models.Mission mission)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MissionId,MissionName,RoomId,Point")] Models.Mission mission)
+        public async Task<IActionResult> Edit(int id, [Bind("MissionId,MissionName,RoomId,Point,DueDate")] Models.Mission mission)
         {
             if (id != mission.MissionId)
             {
