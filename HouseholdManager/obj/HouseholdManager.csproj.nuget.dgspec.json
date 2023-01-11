@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\My Drive\\LaunchCode\\LiftOff\\Group-Jessica\\HouseholdManager\\HouseholdManager.csproj": {}
+    "G:\\My Drive\\LaunchCode\\LiftOff\\Group-Jessica(1-9-23)\\HouseholdManager\\HouseholdManager.csproj": {}
   },
   "projects": {
-    "G:\\My Drive\\LaunchCode\\LiftOff\\Group-Jessica\\HouseholdManager\\HouseholdManager.csproj": {
+    "G:\\My Drive\\LaunchCode\\LiftOff\\Group-Jessica(1-9-23)\\HouseholdManager\\HouseholdManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\Group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
+        "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\Group-Jessica(1-9-23)\\HouseholdManager\\HouseholdManager.csproj",
         "projectName": "HouseholdManager",
-        "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\Group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
+        "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\Group-Jessica(1-9-23)\\HouseholdManager\\HouseholdManager.csproj",
         "packagesPath": "C:\\Users\\mmric\\.nuget\\packages\\",
-        "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\Group-Jessica\\HouseholdManager\\obj\\",
+        "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\Group-Jessica(1-9-23)\\HouseholdManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mmric\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.12, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.12, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.12, )"

@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
+using HouseholdManager.Data;
 
 namespace HouseholdManager.Models
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : HouseholdManagerContext
     {
         public ApplicationDbContext(DbContextOptions options):base(options)
         {
@@ -12,7 +13,7 @@ namespace HouseholdManager.Models
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Mission> Missions { get; set; }
-        public DbSet<HouseholdManager.Models.User> User { get; set; }
+        public DbSet<Contributor> Contributors { get; set; }
 
 
     }
