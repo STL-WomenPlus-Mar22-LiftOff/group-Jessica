@@ -19,14 +19,16 @@ body {
 
 .icon-picker-menu {
     display: block;
+    position: absolute;
     justify-content: center;
+    background-color: var(--bs-body-bg);
     border-width: 6px;
     border-style: solid;
     border-color: var(--bs-secondary);
     width: 300px;
     height: 250px;
     overflow: auto;
-    /* background: var(--bs-secondary); */
+    z-index: 1;
 }
 
 .icon-button-list {

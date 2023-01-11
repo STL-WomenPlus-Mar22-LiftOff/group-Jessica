@@ -1,10 +1,11 @@
 ﻿<div class="icon-picker">
     <span>
         <button type="button" class="btn btn-secondary" id="iconSelectButton">Select Icon</button>
+        <button type="button" class="btn btn-secondary" id="iconRandomizer">Randomize</button>
             <label id="iconDisplay" for="iconSelectButton"></label>
     </span>
     <noscript class="alert-danger">Icon selector requires JavaScript.</noscript>
-    <div class="container-md box-shadow icon-picker-menu" id="iconMenu" hidden>
+    <div class="container-md box-shadow icon-picker-menu" id="iconMenu" style="visibility: hidden;">
         <input type="search" id="iconSearch" placeholder="Search..." />
         <ul class="icon-button-list">
             @foreach (Icon icon in (IEnumerable<Icon>)ViewBag.Icons)
@@ -21,16 +22,53 @@
     const iconSearchBar = document.getElementById("iconSearch");
     const iconFormField = document.getElementById("iconInput");
     const iconDisplay = document.getElementById("iconDisplay");
+    const iconRandom = document.getElementById("iconRandomizer");
 
     function selectIcon(mouseoverText, character) {
         iconFormField.setAttribute("value", character);
-        iconMenu.toggleAttribute("hidden");
+        iconMenu.style.visibility = "hidden";
         iconDisplay.innerText = character;
         iconDisplay.title = mouseoverText;
     }
 
+    async function* getRandomIcon() {
+        const iconCollection = @Html.Raw(
+                                    Json.Serialize(
+                                        ((IEnumerable<Icon>)ViewBag.Icons).ToArray()
+                                    )
+                                );
+        let i;
+        while (true) {
+            i = Math.floor(Math.random() * iconCollection.length);
+            yield await Promise.resolve(iconCollection[i]);
+        }
+
+    }
+
+    iconRandom.addEventListener("click", () => {
+        if (window.getComputedStyle(iconMenu).visibility === "visible") {
+            iconMenu.style.visibility = "hidden";
+        }
+        try {
+            const generator = getRandomIcon();
+            generator.next()
+                .then((res) => {
+                    selectIcon(res.value["slug"], res.value["character"]);
+                });
+        } catch (error) {
+            console.error(error);
+        }
+    });
+
     iconToggle.addEventListener("click", () => {
-        iconMenu.toggleAttribute("hidden");
+        switch (window.getComputedStyle(iconMenu).visibility) {
+            case "visible":
+                iconMenu.style.visibility = "hidden";
+                break;
+            default:
+                iconMenu.style.visibility = "visible";
+                break;
+        }
     });
 
     iconSearchBar.addEventListener("keyup", e => {
