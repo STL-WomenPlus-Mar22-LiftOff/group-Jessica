@@ -56,8 +56,18 @@ namespace HouseholdManager.Data.API
                     {
                         PropertyNameCaseInsensitive = true
                     };
-                    return JsonSerializer.Deserialize<List<Icon>>(rawData, options)
-                           ?? throw new BadHttpRequestException($"Unable to load icons - null or bad JSON data retrieved from OpenEmoji API.  Request path: {path}");
+                    try
+                    {
+                        return JsonSerializer.Deserialize<List<Icon>>(rawData, options);
+                    }
+                    catch (Exception e) when (e is JsonException ||
+                                              e is ArgumentNullException ||
+                                              e is NotSupportedException)
+                    {
+                        throw new BadHttpRequestException($"Unable to load icons - null or bad JSON data retrieved from OpenEmoji API." + Environment.NewLine +
+                                                          $"Request path: {path}" + Environment.NewLine +
+                                                          $"Inner exception: {e.Message}");
+                    }
                 }
             }
         }
