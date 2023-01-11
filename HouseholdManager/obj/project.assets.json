@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\mmric\\.nuget\\packages\\": {}
+    "C:\\Users\\Erica\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\HouseholdManager.csproj",
+      "projectUniqueName": "C:\\Users\\Erica\\Source\\Repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
       "projectName": "HouseholdManager",
-      "projectPath": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\HouseholdManager.csproj",
-      "packagesPath": "C:\\Users\\mmric\\.nuget\\packages\\",
-      "outputPath": "G:\\My Drive\\LaunchCode\\LiftOff\\GroupJessicaRepo\\HouseholdManager\\obj\\",
+      "projectPath": "C:\\Users\\Erica\\Source\\Repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
+      "packagesPath": "C:\\Users\\Erica\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Erica\\Source\\Repos\\group-Jessica\\HouseholdManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mmric\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Erica\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
