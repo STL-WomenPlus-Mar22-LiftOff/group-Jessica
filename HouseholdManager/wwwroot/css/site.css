@@ -25,7 +25,7 @@ body {
     border-width: 6px;
     border-style: solid;
     border-color: var(--bs-secondary);
-    width: 300px;
+    width: 315px;
     height: 250px;
     overflow: auto;
     z-index: 1;
@@ -54,4 +54,14 @@ body {
 .icon-slug-display-small {
     font-size: smaller;
     color: var(--bs-secondary);
+}
+
+.icon-random {
+    font-size: small;
+    width: 85px;
+    height: 30px;
+}
+.icon-search {
+    min-width: 100px;
+    max-width: 140px;
 }
