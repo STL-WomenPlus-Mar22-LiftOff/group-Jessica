@@ -58,7 +58,7 @@ namespace HouseholdManager.Data.API
                     };
                     try
                     {
-                        return JsonSerializer.Deserialize<List<Icon>>(rawData, options);
+                        return JsonSerializer.Deserialize<List<Icon>>(rawData, options) ?? new List<Icon>();
                     }
                     catch (Exception e) when (e is JsonException ||
                                               e is ArgumentNullException ||
@@ -90,7 +90,7 @@ namespace HouseholdManager.Data.API
             {
                 return "";
             }
-            else if (iconsToSearch == null)
+            else if (iconsToSearch is null)
             {
                 iconsToSearch = await GetIconsFromApi();
             }
@@ -98,7 +98,6 @@ namespace HouseholdManager.Data.API
                         where icon.Character == iconLiteral
                         select icon.Slug;
             return query.FirstOrDefault() ?? "";
-
         }
     }
 }
