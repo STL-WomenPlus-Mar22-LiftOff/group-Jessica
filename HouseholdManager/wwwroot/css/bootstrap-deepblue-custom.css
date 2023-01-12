@@ -7160,3 +7160,10 @@ a.text-dark:hover, a.text-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #015091; } }
+
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th,
+[data-bs-theme="deepblue"] {
+    color: var(--dark);
+}
