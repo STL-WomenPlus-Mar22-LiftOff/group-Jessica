@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -14,8 +15,8 @@ namespace HouseholdManager.Migrations
                 {
                     RoomId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false)
+                    RoomName = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    RoomIcon = table.Column<string>(type: "nvarchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -23,18 +24,19 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     UserId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserName = table.Column<string>(type: "nvarchar(20)", nullable: false),
                     Position = table.Column<string>(type: "nvarchar(5)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserIcon = table.Column<string>(type: "nvarchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
@@ -45,7 +47,12 @@ namespace HouseholdManager.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MissionName = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
-                    Point = table.Column<int>(type: "int", nullable: false)
+                    MissionPoints = table.Column<int>(type: "int", nullable: false),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MissionIcon = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    MissionInstructions = table.Column<string>(type: "nvarchar(200)", nullable: true),
+                    MissionStatus = table.Column<string>(type: "nvarchar(50)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,12 +63,23 @@ namespace HouseholdManager.Migrations
                         principalTable: "Rooms",
                         principalColumn: "RoomId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Missions_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Missions_RoomId",
                 table: "Missions",
                 column: "RoomId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Missions_UserId",
+                table: "Missions",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -70,10 +88,10 @@ namespace HouseholdManager.Migrations
                 name: "Missions");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Rooms");
 
             migrationBuilder.DropTable(
-                name: "Rooms");
+                name: "Users");
         }
     }
 }

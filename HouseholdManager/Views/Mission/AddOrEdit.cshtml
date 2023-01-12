@@ -1,0 +1,75 @@
+﻿@model HouseholdManager.Models.Mission
+
+@{
+    ViewData["PageTitle"] = Model.MissionId == 0 ? "Create a new mission" : "Edit mission";
+}
+
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color: #1a222b">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="MissionId" value="@Model.MissionId" />
+                <div class="mb-3">
+                    <div class='e-btn-group custom-rbt-group'>
+                        <input type="radio" id="radioleft" name="MissionStatus" value="ToDo" checked="@(Model.MissionStatus=="ToDo")" />
+                        <label class="e-btn" for="radioleft">ToDo</label>
+                        <input type="radio" id="radiomiddle" name="MissionStatus" value="Done" checked="@(Model.MissionStatus=="Done")" />
+                        <label class="e-btn" for="radiomiddle">Done</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <ejs-datepicker id="duedate" ejs-for="DueDate"
+                                    placeholder="Due Date" floatLabelType="Always"
+                                    format="MMM-dd-yy"></ejs-datepicker>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="missionName" placeholder="MissionName" ejs-for="MissionName" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="MissionName" class="text-danger" fs-6></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="missionIcon" placeholder="MissionIcon" ejs-for="MissionIcon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="MissionIcon" class="text-danger" fs-6></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-rating id="missionpoints" placeholder="MissionPoints" ejs-for="MissionPoints" floatLabelType="Always"></ejs-rating>
+                    <span asp-validation-for="MissionPoints" class="text-danger" fs-6></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="missioninstructions" placeholder="MissionInstructions" ejs-for="MissionInstructions"
+                                 floatLabelType="Always" multiline="true"></ejs-textbox>
+                    <span asp-validation-for="MissionInstructions" class="text-danger" fs-6></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id="ddlRoom" ejs-for="RoomId"
+                                      dataSource="@ViewBag.Rooms" placeholder="Room"
+                                      floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                                      filterType="Contains" popupHeight="220px">
+                        <e-dropdownlist-fields value="RoomId" text="RoomNameWithIcon"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="RoomId" class="text-danger" fs-6></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-dropdownlist id="ddlUser" ejs-for="UserId"
+                                      dataSource="@ViewBag.Users" placeholder="User"
+                                      floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                                      filterType="Contains" popupHeight="220px">
+                        <e-dropdownlist-fields value="UserId" text="UserNameWithIcon"></e-dropdownlist-fields>
+                    </ejs-dropdownlist>
+                    <span asp-validation-for="UserId" class="text-danger" fs-6></span>
+                </div>
+                <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class=" fa-solid fa-person-circle-question fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

@@ -20,124 +20,44 @@ namespace HouseholdManager.Controllers
         // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Missions.Include(t => t.Room);
+            var applicationDbContext = _context.Missions.Include(t => t.Room).Include(u => u.User);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Mission/Details/5
-        public async Task<IActionResult> Details(int? id)
+
+        // GET: Mission/AddOrEdit
+        public IActionResult AddOrEdit(int id = 0)
         {
-            if (id == null || _context.Missions == null)
-            {
-                return NotFound();
-            }
-
-            var mission = await _context.Missions
-                .Include(t => t.Room)
-                .FirstOrDefaultAsync(m => m.MissionId == id);
-            if (mission == null)
-            {
-                return NotFound();
-            }
-
-            return View(mission);
+            PopulateRooms();
+            PopulateUsers();
+            if (id == 0)
+                return View(new Mission());
+            else
+                return View(_context.Missions.Find(id));
         }
 
-        // GET: Mission/Create
-        public IActionResult Create()
-        {
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
-            return View();
-        }
-
-        // POST: Mission/Create
+        // POST: Mission/AddOrEdit
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MissionId,MissionName,RoomId,Point,DueDate")] Models.Mission mission)
+        public async Task<IActionResult> AddOrEdit([Bind("MissionId,MissionName,MissionIcon,MissionInstructions,DueDate,RoomId,MissionPoints,UserId,MissionStatus")] Mission mission)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(mission);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
-            return View(mission);
-        }
-
-        // GET: Mission/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Missions == null)
-            {
-                return NotFound();
-            }
-
-            var mission = await _context.Missions.FindAsync(id);
-            if (mission == null)
-            {
-                return NotFound();
-            }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
-            return View(mission);
-        }
-
-        // POST: Mission/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MissionId,MissionName,RoomId,Point,DueDate")] Models.Mission mission)
-        {
-            if (id != mission.MissionId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
+                if (mission.MissionId == 0)
+                    _context.Add(mission);
+                else
                     _context.Update(mission);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MissionExists(mission.MissionId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            PopulateRooms();
+            PopulateUsers();
             return View(mission);
         }
 
-        // GET: Mission/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Missions == null)
-            {
-                return NotFound();
-            }
 
-            var mission = await _context.Missions
-                .Include(t => t.Room)
-                .FirstOrDefaultAsync(m => m.MissionId == id);
-            if (mission == null)
-            {
-                return NotFound();
-            }
-
-            return View(mission);
-        }
 
         // POST: Mission/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -153,14 +73,28 @@ namespace HouseholdManager.Controllers
             {
                 _context.Missions.Remove(mission);
             }
-            
+
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
-        private bool MissionExists(int id)
+        [NonAction]
+        public void PopulateRooms()
         {
-          return _context.Missions.Any(e => e.MissionId == id);
+            var RoomCollection = _context.Rooms.ToList();
+            Room DefaultRoom = new Room() { RoomId = 0, RoomName = "Choose a room" };
+            RoomCollection.Insert(0, DefaultRoom);
+            ViewBag.Rooms = RoomCollection;
+        }
+
+        [NonAction]
+        public void PopulateUsers()
+        {
+            var UserCollection = _context.Users.ToList();
+            User DefaultUser = new User() { UserId = 0, UserName = "Choose a contributor" };
+            UserCollection.Insert(0, DefaultUser);
+            ViewBag.Users = UserCollection;
         }
     }
 }
+

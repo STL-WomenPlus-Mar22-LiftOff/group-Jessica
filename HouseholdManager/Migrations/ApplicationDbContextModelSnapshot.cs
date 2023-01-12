@@ -33,19 +33,35 @@ namespace HouseholdManager.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("MissionIcon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("MissionInstructions")
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<string>("MissionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("Point")
+                    b.Property<int>("MissionPoints")
                         .HasColumnType("int");
 
+                    b.Property<string>("MissionStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("MissionId");
 
                     b.HasIndex("RoomId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Missions");
                 });
@@ -58,11 +74,11 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomId"), 1L, 1);
 
-                    b.Property<string>("Icon")
+                    b.Property<string>("RoomIcon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("RoomName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
@@ -87,13 +103,17 @@ namespace HouseholdManager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(5)");
 
+                    b.Property<string>("UserIcon")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
 
                     b.HasKey("UserId");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
@@ -104,7 +124,15 @@ namespace HouseholdManager.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("HouseholdManager.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Room");
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

@@ -20,9 +20,50 @@ namespace HouseholdManager.Models
         public Room? Room { get; set; }
 
         [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
-        public int Point { get; set; }
+        public int MissionPoints { get; set; }
 
-        public DateTime DueDate { get; set; }
+        public DateTime DueDate { get; set; } = DateTime.Now;
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string MissionIcon { get; set; } = "";
+
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
+        public int UserId { get; set; }
+
+        public User? User { get; set; }
+
+        [Column(TypeName = "nvarchar(200)")]
+        public string? MissionInstructions { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string MissionStatus { get; set; } = "ToDo";
+
+        [NotMapped]
+        public string? MissionNameWithIcon
+        {
+            get
+            {
+                return this.MissionIcon + " " + this.MissionName;
+            }
+        }
+
+        [NotMapped]
+        public string? RoomNameWithIcon
+        {
+            get
+            {
+                return Room == null ? "" : Room.RoomIcon + " " + Room.RoomName;
+            }
+        }
+
+        [NotMapped]
+        public string? UserNameWithIcon
+        {
+            get
+            {
+                return User == null ? "" : User.UserIcon + " " + User.UserName;
+            }
+        }
 
     }
 }
