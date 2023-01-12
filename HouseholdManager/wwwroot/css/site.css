@@ -20,8 +20,8 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #12161d;
-    color: #fff;
+/*    background-color: #12161d;*/
+/*    color: #fff;*/
     overflow: auto;
 }
 
@@ -56,7 +56,7 @@ body {
 }
 
     .e-grid .e-gridcontent, .e-grid .e-table {
-        background-color: #1a222b;
+/*        background-color: #1a222b;*/
     }
 
     .e-grid .e-gridheader {
@@ -64,20 +64,20 @@ body {
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         padding: 10px;
-        background-color: #222b33;
+/*        background-color: #222b33;*/
     }
 
         .e-grid .e-gridheader .e-headercell {
-            background-color: #222b33;
+/*            background-color: #222b33;*/
         }
 
     .e-grid .e-gridpager {
-        background-color: #1a222b;
+/*        background-color: #1a222b;*/
     }
 
     .e-grid .e-pagercontainer {
         border: none;
-        background-color: #1a222b;
+/*        background-color: #1a222b;*/
     }
 
     .e-grid .e-content table {
@@ -85,13 +85,13 @@ body {
     }
 
 .e-pagercontainer .e-icons {
-    background-color: #1a222b;
+/*    background-color: #1a222b;*/
     border: none !important;
 }
 
 .e-pager .e-numericitem {
     color: #adb5bd;
-    background-color: #1a222b;
+/*    background-color: #1a222b;*/
     padding: 15px !important;
 }
 
@@ -177,7 +177,7 @@ body {
         }
 /*Navbar*/
 nav.navbar {
-    background-color: rgba(18, 22, 29);
+/*    background-color: rgba(18, 22, 29);*/
 }
 
     nav.navbar i {
@@ -304,7 +304,7 @@ img.profile-pic {
 /*Widget*/
 .widget {
     border-radius: 1rem;
-    background-color: #1a222b;
+/*    background-color: #1a222b;*/
 }
 
     .widget.summary > div:first-child {

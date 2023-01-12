@@ -20,7 +20,7 @@ namespace HouseholdManager.Controllers
         // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Missions.Include(t => t.Room).Include(u => u.User);
+            var applicationDbContext = _context.Missions.Include(t => t.Room).Include(u => u.Member);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -29,7 +29,7 @@ namespace HouseholdManager.Controllers
         public IActionResult AddOrEdit(int id = 0)
         {
             PopulateRooms();
-            PopulateUsers();
+            PopulateMembers();
             if (id == 0)
                 return View(new Mission());
             else
@@ -41,7 +41,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("MissionId,MissionName,MissionIcon,MissionInstructions,DueDate,RoomId,MissionPoints,UserId,MissionStatus")] Mission mission)
+        public async Task<IActionResult> AddOrEdit([Bind("MissionId,MissionName,MissionIcon,MissionInstructions,DueDate,RoomId,MissionPoints,MemberId,MissionStatus")] Mission mission)
         {
             if (ModelState.IsValid)
             {
@@ -53,7 +53,7 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction("Index");
             }
             PopulateRooms();
-            PopulateUsers();
+            PopulateMembers();
             return View(mission);
         }
 
@@ -88,12 +88,12 @@ namespace HouseholdManager.Controllers
         }
 
         [NonAction]
-        public void PopulateUsers()
+        public void PopulateMembers()
         {
-            var UserCollection = _context.Users.ToList();
-            User DefaultUser = new User() { UserId = 0, UserName = "Choose a contributor" };
-            UserCollection.Insert(0, DefaultUser);
-            ViewBag.Users = UserCollection;
+            var MemberCollection = _context.Members.ToList();
+            Member DefaultMember = new Member() { MemberId = 0, MemberName = "Choose a member" };
+            MemberCollection.Insert(0, DefaultMember);
+            ViewBag.Members = MemberCollection;
         }
     }
 }

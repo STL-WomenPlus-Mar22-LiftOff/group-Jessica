@@ -8,85 +8,85 @@ using HouseholdManager.Models;
 
 namespace HouseholdManager.Controllers
 {
-    public class UserController : Controller
+    public class MemberController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public UserController(ApplicationDbContext context)
+        public MemberController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: User
+        // GET: Member
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Users.ToListAsync());
+              return View(await _context.Members.ToListAsync());
         }
 
-        // GET: User/Details/5
+        // GET: Member/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Users == null)
+            if (id == null || _context.Members == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (user == null)
+            var member = await _context.Members
+                .FirstOrDefaultAsync(m => m.MemberId == id);
+            if (member == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(member);
         }
 
-        // GET: User/Create
+        // GET: Member/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: User/Create
+        // POST: Member/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,UserName,Position,Email")] User user)
+        public async Task<IActionResult> Create([Bind("MemberId,MemberName,MemberIcon,Position,Email")] Member member)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                _context.Add(member);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(member);
         }
 
-        // GET: User/Edit/5
+        // GET: Member/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Users == null)
+            if (id == null || _context.Members == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            var member = await _context.Members.FindAsync(id);
+            if (member == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(member);
         }
 
-        // POST: User/Edit/5
+        // POST: Member/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,Position,Email")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("MemberId,MemberName,Position,Email")] Member member)
         {
-            if (id != user.UserId)
+            if (id != member.MemberId)
             {
                 return NotFound();
             }
@@ -95,12 +95,12 @@ namespace HouseholdManager.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(member);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.UserId))
+                    if (!MemberExists(member.MemberId))
                     {
                         return NotFound();
                     }
@@ -111,49 +111,49 @@ namespace HouseholdManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(member);
         }
 
-        // GET: User/Delete/5
+        // GET: Member/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Users == null)
+            if (id == null || _context.Members == null)
             {
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.UserId == id);
-            if (user == null)
+            var member = await _context.Members
+                .FirstOrDefaultAsync(m => m.MemberId == id);
+            if (member == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(member);
         }
 
-        // POST: User/Delete/5
+        // POST: Member/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Users == null)
+            if (_context.Members == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.User'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Member'  is null.");
             }
-            var user = await _context.Users.FindAsync(id);
-            if (user != null)
+            var member = await _context.Members.FindAsync(id);
+            if (member != null)
             {
-                _context.Users.Remove(user);
+                _context.Members.Remove(member);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool MemberExists(int id)
         {
-          return _context.Users.Any(e => e.UserId == id);
+          return _context.Members.Any(e => e.MemberId == id);
         }
     }
 }

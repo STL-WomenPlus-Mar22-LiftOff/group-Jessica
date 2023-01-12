@@ -15,5 +15,14 @@ namespace HouseholdManager.Models
 
         [Column(TypeName = "nvarchar(50)")]
         public string RoomIcon { get; set; } = "";
+
+        [NotMapped]
+        public string? RoomNameWithIcon
+        {
+            get
+            {
+                return this.RoomIcon + " " + this.RoomName;
+            }
+        }
     }
 }

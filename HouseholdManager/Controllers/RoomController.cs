@@ -52,7 +52,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RoomId,Name,Icon")] Room room)
+        public async Task<IActionResult> Create([Bind("RoomId,RoomName,RoomIcon")] Room room)
         {
             if (ModelState.IsValid)
             {

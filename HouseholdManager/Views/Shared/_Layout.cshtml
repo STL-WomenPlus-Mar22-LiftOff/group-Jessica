@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,22 +18,30 @@
             const topElement = document.documentElement;
             if (userTheme !== 'light') {
                 topElement.setAttribute('data-bs-theme', userTheme);
-        })();
+            }) ();
     </script>
     <script id="themePickerScript" src="~/js/themePicker.js"></script>
+
     <title>@ViewData["Title"] - HouseholdManager</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+
     <!-- Syncfusion ASP.NET Core controls styles -->
     <link id="cssfile" href="https://cdn.syncfusion.com/ej2/20.4.38/bootstrap5.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+
     <!--Custom style sheets-->
-    <link id="deepblue-css" rel="stylesheet" href="~/css/bootstrap-deepblue-custom.css" asp-append-version="true" disabled="true"/>
+    <link id="deepblue-css" rel="stylesheet" href="~/css/bootstrap-deepblue-custom.css" asp-append-version="true" disabled="true" />
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/HouseholdManager.styles.css" asp-append-version="true" />
+
     <!-- Syncfusion ASP.NET Core controls scripts -->
     <script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2.min.js"></script>
 </head>
+
 <body>
     <!--Safeguard in case JavaScript is disabled-->
     <noscript>
@@ -61,6 +70,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Mission" asp-action="Index">Missions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Member" asp-action="Index">Members</a>
                         </li>
                     </ul>
                 </div>

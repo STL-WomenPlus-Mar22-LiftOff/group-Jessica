@@ -51,13 +51,13 @@
                     <span asp-validation-for="RoomId" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
-                    <ejs-dropdownlist id="ddlUser" ejs-for="UserId"
-                                      dataSource="@ViewBag.Users" placeholder="User"
+                    <ejs-dropdownlist id="ddlMember" ejs-for="MemberId"
+                                      dataSource="@ViewBag.Members" placeholder="Member"
                                       floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
                                       filterType="Contains" popupHeight="220px">
-                        <e-dropdownlist-fields value="UserId" text="UserNameWithIcon"></e-dropdownlist-fields>
+                        <e-dropdownlist-fields value="MemberId" text="MemberNameWithIcon"></e-dropdownlist-fields>
                     </ejs-dropdownlist>
-                    <span asp-validation-for="UserId" class="text-danger" fs-6></span>
+                    <span asp-validation-for="MemberId" class="text-danger" fs-6></span>
                 </div>
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
             </form>

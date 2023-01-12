@@ -28,9 +28,9 @@ namespace HouseholdManager.Models
         public string MissionIcon { get; set; } = "";
 
         [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
 
-        public User? User { get; set; }
+        public Member? Member { get; set; }
 
         [Column(TypeName = "nvarchar(200)")]
         public string? MissionInstructions { get; set; }
@@ -57,11 +57,11 @@ namespace HouseholdManager.Models
         }
 
         [NotMapped]
-        public string? UserNameWithIcon
+        public string? MemberNameWithIcon
         {
             get
             {
-                return User == null ? "" : User.UserIcon + " " + User.UserName;
+                return Member == null ? "" : Member.MemberIcon + " " + Member.MemberName;
             }
         }
 
