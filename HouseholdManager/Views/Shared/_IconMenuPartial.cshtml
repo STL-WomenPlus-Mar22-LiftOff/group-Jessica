@@ -19,6 +19,19 @@
 </div>
 
 <script id="iconMenuVariableSetup" type="text/javascript">
-    const iconCollection = @Html.Raw(Json.Serialize(((IEnumerable<Icon>)ViewBag.Icons).ToArray()));
+    async function* getRandomIcon() {
+        const iconCollection = @Html.Raw(
+                                    Json.Serialize(
+                                        ((IEnumerable<Icon>)ViewBag.Icons).ToArray()
+                                    )
+                                );
+        let i;
+        while (true) {
+            i = Math.floor(Math.random() * iconCollection.length);
+            yield await Promise.resolve(iconCollection[i]);
+        }
+    }
+
+    const iconGenerator = getRandomIcon();
 </script>
 <script id="iconMenuScript" src="~/js/iconPicker.js" defer></script>

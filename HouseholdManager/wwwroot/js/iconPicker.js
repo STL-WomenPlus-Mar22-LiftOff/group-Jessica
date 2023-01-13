@@ -17,19 +17,20 @@ function selectIcon({ mouseoverText, character, options = "" }) {
     iconDisplay.title = mouseoverText;
 }
 
-//this generator relies on an iconCollection variable that has to be defined by html helper in the view
-async function* getRandomIcon() {
-    let i;
-    while (true) {
-        i = Math.floor(Math.random() * iconCollection.length);
-        yield await Promise.resolve(iconCollection[i]);
+function searchIcons(term) {
+    for (const listItem of document.querySelectorAll("li[title]")) {
+        if (term === "" || listItem.getAttribute("title").includes(term.toLowerCase())) {
+            listItem.style.display = "flex";
+        } else {
+            listItem.style.display = "none";
+        }
     }
 }
 
 iconRandom.addEventListener("click", () => {
     try {
-        const generator = getRandomIcon();
-        generator.next()
+        //iconGenerator relies on ASP.NET HTML helper and must be defined in the view
+        iconGenerator.next()
             .then((res) => {
                 selectIcon({
                     mouseoverText: res.value["slug"],
@@ -57,12 +58,5 @@ iconToggle.addEventListener("click", () => {
 
 iconSearchBar.addEventListener("keyup", e => {
     iconSearchBar.setAttribute("placeholder", phText);
-    const term = e.target.value;
-    for (const listItem of document.querySelectorAll("li[title]")) {
-        if (listItem.getAttribute("title").includes(term.toLowerCase())) {
-            listItem.style.display = "flex";
-        } else {
-            listItem.style.display = "none";
-        }
-    }
+    searchIcons(e.target.value);
 });
