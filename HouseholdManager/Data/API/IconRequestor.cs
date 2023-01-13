@@ -68,7 +68,7 @@ namespace HouseholdManager.Data.API
                         {
                             return JsonSerializer.Deserialize<List<Icon>>(rawData, options) ?? new List<Icon>();
                         }
-                        //Secondary source
+                        //Secondary source, does not currently support searching
                         else
                         {
                             Console.Error.WriteLine($"Open Emoji API could not be reached, trying secondary source...");
@@ -77,7 +77,7 @@ namespace HouseholdManager.Data.API
                             {
                                 rawData = await newResponse.Content.ReadAsStringAsync();
                                 var output = new List<Icon>();
-                                var kvpData = JsonSerializer.Deserialize<Dictionary<string, Icon>>(rawData, options);
+                                var kvpData = JsonSerializer.Deserialize<Dictionary<string, Icon>>(rawData, options) ?? new Dictionary<string, Icon>;
                                 foreach (KeyValuePair<string, Icon> kvp in kvpData)
                                 {
                                     output.Add(
