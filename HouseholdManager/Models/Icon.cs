@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.Text.Json.Serialization;
 
 namespace HouseholdManager.Models
 {
@@ -9,8 +10,9 @@ namespace HouseholdManager.Models
     /// </summary>
     public class Icon
     {
-
+        [JsonPropertyName("slug")]
         public string? Slug { get; set; }
+
         public string? Character { get; set; }
 
         //Unused properties are commented out for now.

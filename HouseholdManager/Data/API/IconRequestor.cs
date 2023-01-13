@@ -1,5 +1,6 @@
 ﻿using HouseholdManager.Models;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace HouseholdManager.Data.API
 {
@@ -9,7 +10,9 @@ namespace HouseholdManager.Data.API
     /// </summary>
     public class IconRequestor
     {
-        private const string OpenEmojiApiKey = "2f3055e94632aca65cac6bbe8c8488c414cc9a27";
+        private const string OpenEmojiApiKey = @"2f3055e94632aca65cac6bbe8c8488c414cc9a27"; 
+        //Secondary source from unicode-emoji-json npm module via unpkg.com
+        private const string SecondarySourcePath = @"https://unpkg.com/unicode-emoji-json@0.4.0/data-by-emoji.json";
 
         /// <summary>
         /// Gets a list of all available iconsToSearch matching the search term from Open Emoji API
@@ -40,7 +43,9 @@ namespace HouseholdManager.Data.API
         }
 
         /// <summary>
-        /// Helper method for GetIconsFromApi(), handles response.
+        /// Helper method for GetIconsFromApi(), handles response from Open Emoji API.
+        /// <para>If the Open Emoji API cannot be reached, requests and handles data 
+        /// from secondary source.</para>
         /// </summary>
         /// <param name="path"></param>
         /// <returns>A list of iconsToSearch, if successful</returns>
@@ -58,13 +63,41 @@ namespace HouseholdManager.Data.API
                     };
                     try
                     {
-                        return JsonSerializer.Deserialize<List<Icon>>(rawData, options) ?? new List<Icon>();
+                        //Open Emoji API
+                        if (!string.IsNullOrEmpty(rawData))
+                        {
+                            return JsonSerializer.Deserialize<List<Icon>>(rawData, options) ?? new List<Icon>();
+                        }
+                        //Secondary source
+                        else
+                        {
+                            Console.Error.WriteLine($"Open Emoji API could not be reached, trying secondary source...");
+                            path = SecondarySourcePath;
+                            using (var newResponse = await client.GetAsync(path))
+                            {
+                                rawData = await newResponse.Content.ReadAsStringAsync();
+                                var output = new List<Icon>();
+                                var kvpData = JsonSerializer.Deserialize<Dictionary<string, Icon>>(rawData, options);
+                                foreach (KeyValuePair<string, Icon> kvp in kvpData)
+                                {
+                                    output.Add(
+                                        new Icon
+                                        {
+                                            //for consistency with Open Emoji API slugs
+                                            Slug = Regex.Replace(kvp.Value.Slug ?? "", @"[_]", "-"),
+                                            Character = kvp.Key
+                                        }
+                                    );
+                                }
+                                return output;
+                            }
+                        }
                     }
                     catch (Exception e) when (e is JsonException ||
                                               e is ArgumentNullException ||
                                               e is NotSupportedException)
                     {
-                        throw new BadHttpRequestException($"Unable to load icons - null or bad JSON data retrieved from OpenEmoji API." + Environment.NewLine +
+                        throw new BadHttpRequestException($"Unable to load icons - null or bad JSON data retrieved from API." + Environment.NewLine +
                                                           $"Request path: {path}" + Environment.NewLine +
                                                           $"Inner exception: {e.Message}");
                     }

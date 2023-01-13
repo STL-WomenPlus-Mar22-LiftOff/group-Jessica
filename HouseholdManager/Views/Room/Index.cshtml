@@ -28,14 +28,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td>
+                <td class="icon-font">
                     @Html.DisplayFor(modelItem => item.Icon)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RoomId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RoomId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.RoomId">Delete</a>
-            </td>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.RoomId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.RoomId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.RoomId">Delete</a>
+                </td>
         </tr>
 }
     </tbody>

@@ -14,7 +14,7 @@
 <div class="row alert-info">
     <label title=@Html.DisplayFor(model => model.Name)>Current @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</label>
     <span title=@iconMouseOverText>
-        <label>Current @Html.DisplayNameFor(model => model.Icon): @Html.DisplayFor(model => model.Icon)</label>
+        <label>Current @Html.DisplayNameFor(model => model.Icon): <text class="icon-font">@Html.DisplayFor(model => model.Icon)</text></label>
         <label class="icon-slug-display-small">@iconMouseOverText</label>
     </span>
 </div>

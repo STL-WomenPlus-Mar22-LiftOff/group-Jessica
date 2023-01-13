@@ -1,7 +1,7 @@
 ﻿<div class="icon-picker">
     <span>
         <button type="button" class="btn btn-secondary" id="iconSelectButton">Select Icon</button>
-            <label id="iconDisplay" for="iconSelectButton"></label>
+            <label class="icon-font" id="iconDisplay" for="iconSelectButton"></label>
     </span>
     <noscript class="alert-danger">Icon selector requires JavaScript.</noscript>
     <div class="container-md box-shadow icon-picker-menu" id="iconMenu" style="visibility: hidden;">
@@ -12,7 +12,7 @@
         <ul class="icon-button-list">
             @foreach (Icon icon in (IEnumerable<Icon>)ViewBag.Icons)
             {
-                <li class="icon-button-item" title=@(icon.Slug?.ToString()) onclick="selectIcon({mouseoverText: this.title, character: this.innerText})">@icon.Character</li>
+                <li class="icon-button-item icon-font" title=@(icon.Slug?.ToString()) onclick="selectIcon({mouseoverText: this.title, character: this.innerText})">@icon.Character</li>
             }
         </ul>
     </div>

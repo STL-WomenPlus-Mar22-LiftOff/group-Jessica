@@ -31,6 +31,11 @@ body {
     z-index: 1;
 }
 
+.icon-picker-menu,
+[data-bs-theme="deepblue"] {
+    background-color: var(--light);
+}
+
 .icon-button-list {
     position: relative;
     transform: translateX(-10%);
@@ -65,4 +70,8 @@ body {
 .icon-search {
     min-width: 100px;
     max-width: 140px;
+}
+
+.icon-font {
+    font-family: "Noto Color Emoji";
 }
