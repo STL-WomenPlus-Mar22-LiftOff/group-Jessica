@@ -15,7 +15,7 @@ namespace HouseholdManager.Data.API
         private const string SecondarySourcePath = @"https://unpkg.com/unicode-emoji-json@0.4.0/data-by-emoji.json";
 
         /// <summary>
-        /// Gets a list of all available iconsToSearch matching the search term from Open Emoji API
+        /// Gets a list of all available icons matching the search term from Open Emoji API
         /// </summary>
         /// <param name="searchTerm"></param>
         public async Task<List<Icon>> GetIconsFromApi(string? searchTerm = "")
