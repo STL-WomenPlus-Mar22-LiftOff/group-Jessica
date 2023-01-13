@@ -31,8 +31,8 @@ body {
     z-index: 1;
 }
 
-.icon-picker-menu,
-[data-bs-theme="deepblue"] {
+[data-bs-theme="deepblue"] 
+.icon-picker-menu {
     background-color: var(--light);
 }
 
@@ -73,5 +73,30 @@ body {
 }
 
 .icon-font {
-    font-family: "Noto Color Emoji";
+    font-family: "Noto Color Emoji" !important;
+}
+
+.effect-wobble {
+    animation: wobble 5s linear 0s infinite backwards;
+}
+
+@media (prefers-reduced-motion) {
+    .effect-wobble {
+        animation: none;
+    }
+}
+
+@keyframes wobble {
+    10% {
+        transform: rotateZ(0.02rad);
+    }
+    25% {
+        transform: rotateZ(0.01rad);
+    }
+    50% {
+        transform: rotateZ(-0.01rad);
+    }
+    85% {
+        transform: rotateZ(-0.02rad);
+    }
 }
