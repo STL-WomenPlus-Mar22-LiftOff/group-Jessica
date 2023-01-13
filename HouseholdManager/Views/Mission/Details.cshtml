@@ -1,7 +1,7 @@
 ﻿@model HouseholdManager.Models.Mission
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Mission Details";
 }
 
 <h1>Details</h1>
@@ -27,6 +27,12 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Point)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DueDate)
         </dd>
     </dl>
 </div>
