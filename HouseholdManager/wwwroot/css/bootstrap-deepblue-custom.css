@@ -7162,8 +7162,7 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #015091; } }
 
 
-.table-striped > tbody > tr:nth-child(odd) > td,
-.table-striped > tbody > tr:nth-child(odd) > th,
-[data-bs-theme="deepblue"] {
+[data-bs-theme="deepblue"] .table-striped > tbody > tr:nth-child(odd) > td,
+[data-bs-theme="deepblue"] .table-striped > tbody > tr:nth-child(odd) > th {
     color: var(--dark);
 }
