@@ -13,7 +13,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MissionName" class="control-label"></label>
+                <label asp-for="MissionName" class="control-label">Mission Name</label>
                 <input asp-for="MissionName" class="form-control" />
                 <span asp-validation-for="MissionName" class="text-danger"></span>
             </div>
@@ -27,7 +27,7 @@
                 <span asp-validation-for="Point" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DueDate" class="control-label"></label>
+                <label asp-for="DueDate" class="control-label">Due Date</label>
                 <input asp-for="DueDate" class="form-control" />
                 <span asp-validation-for="DueDate" class="text-danger"></span>
             </div>
