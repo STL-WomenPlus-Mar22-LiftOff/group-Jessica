@@ -18,6 +18,7 @@ namespace HouseholdManager.Models
 
         //RoomId-Foreign Key
         [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
+        [ForeignKey("Room")]
         public int RoomId { get; set; }
 
         public Room? Room { get; set; }
@@ -29,7 +30,11 @@ namespace HouseholdManager.Models
         [DisplayName("Due Date")]
         public DateTime DueDate { get; set; }
 
-        public ICollection<Room> Rooms { get; set; }
+        [Required]
+        public Household Household { get; set; }
+
+        [ForeignKey("Household")]
+        public int HouseholdId { get; set; }
 
     }
 }

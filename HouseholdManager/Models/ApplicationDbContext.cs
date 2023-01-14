@@ -27,10 +27,13 @@ namespace HouseholdManager.Models
         public DbSet<Mission> Missions { get; set; }
         public DbSet<HouseholdManager.Models.User> User { get; set; }
 
-        //This column needs to be set to Unicode in order to store icon emojis
+        public DbSet<Household> Households { get; set; }
+
         protected override void OnModelCreating(ModelBuilder mb)
         {
             base.OnModelCreating(mb);
+
+            //This column needs to be set to Unicode in order to store icon emojis
             mb.Entity("HouseholdManager.Models.Room", b => {
                 b.Property<string>("Icon").IsUnicode(true);
             });

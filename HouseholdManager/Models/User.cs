@@ -20,5 +20,10 @@ namespace HouseholdManager.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        public Household? Household { get; set; }
+
+        [ForeignKey("Household")]
+        public int? HouseholdId { get; set; }
+
     }
 }
