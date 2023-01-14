@@ -23,5 +23,6 @@ namespace HouseholdManager.Models
         public ICollection<Room> Rooms { get; set; }
 
         public ICollection<Mission> Missions { get; set; }
+    }
 
 }

@@ -19,7 +19,7 @@ namespace HouseholdManager.Models
         //RoomId-Foreign Key
         [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
         [ForeignKey("Room")]
-        public int RoomId { get; set; }
+        public int? RoomId { get; set; }
 
         public Room? Room { get; set; }
 
