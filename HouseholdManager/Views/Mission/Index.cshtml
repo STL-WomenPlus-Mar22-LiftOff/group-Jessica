@@ -9,49 +9,59 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @*Removed auto-built title syntax for some column headings and replaced with more relevant names*@
-                @*@Html.DisplayNameFor(model => model.MissionName)*@
-                Mission
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Room)
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.Point)*@
-                Points
-            </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.DueDate)*@
-                Due Date
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MissionName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Room.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Point)
-            </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DueDate)
-                </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MissionId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MissionId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MissionId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="containter">
+    <div class="row">
+        <div class="col-md-15">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @*Removed auto-built title syntax for some column headings and replaced with more relevant names*@
+                                @*@Html.DisplayNameFor(model => model.MissionName)*@
+                                Mission
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Room)
+                            </th>
+                            <th>
+                                @*@Html.DisplayNameFor(model => model.Point)*@
+                                Points
+                            </th>
+                            <th>
+                                @*@Html.DisplayNameFor(model => model.DueDate)*@
+                                Due Date
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MissionName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Room.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Point)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DueDate)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.MissionId">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.MissionId">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.MissionId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
