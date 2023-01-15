@@ -6,9 +6,6 @@
 
 <h1>All Missions</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <div class="containter">
     <div class="row">
         <div class="col-md-15">
@@ -17,22 +14,21 @@
                     <thead>
                         <tr>
                             <th>
-                                @*Removed auto-built title syntax for some column headings and replaced with more relevant names*@
-                                @*@Html.DisplayNameFor(model => model.MissionName)*@
                                 Mission
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Room)
                             </th>
                             <th>
-                                @*@Html.DisplayNameFor(model => model.Point)*@
                                 Points
                             </th>
                             <th>
-                                @*@Html.DisplayNameFor(model => model.DueDate)*@
                                 Due Date
                             </th>
-                            <th></th>
+                            <th>
+                                <a asp-action="Create" class="btn btn-sm btn-success"> <i class="fa-solid fa-plus"></i> Mission</a>
+                                <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-primary"> <i class="fa-solid fa-plus"></i> Room</a>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
