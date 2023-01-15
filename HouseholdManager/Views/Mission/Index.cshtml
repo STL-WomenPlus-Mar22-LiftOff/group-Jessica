@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<HouseholdManager.Models.Mission>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Missions";
 }
 
-<h1>Index</h1>
+<h1>All Missions</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,16 +13,20 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MissionName)
+                @*Removed auto-built title syntax for some column headings and replaced with more relevant names*@
+                @*@Html.DisplayNameFor(model => model.MissionName)*@
+                Mission
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Room)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Point)
+                @*@Html.DisplayNameFor(model => model.Point)*@
+                Points
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DueDate)
+                @*@Html.DisplayNameFor(model => model.DueDate)*@
+                Due Date
             </th>
             <th></th>
         </tr>
