@@ -76,6 +76,7 @@ body {
     font-family: "Noto Color Emoji" !important;
 }
 
+/*WIP wobble back-and-forth effect
 .effect-wobble {
     animation: wobble 5s linear 0s infinite backwards;
 }
@@ -100,3 +101,4 @@ body {
         transform: rotateZ(-0.02rad);
     }
 }
+*/
