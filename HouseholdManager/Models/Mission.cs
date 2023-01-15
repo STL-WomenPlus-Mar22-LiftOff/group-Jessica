@@ -29,7 +29,5 @@ namespace HouseholdManager.Models
         [DisplayName("Due Date")]
         public DateTime DueDate { get; set; }
 
-        public ICollection<Room> Rooms { get; set; }
-
     }
 }

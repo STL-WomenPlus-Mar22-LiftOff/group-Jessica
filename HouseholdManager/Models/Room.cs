@@ -15,7 +15,5 @@ namespace HouseholdManager.Models
         
         [Column(TypeName = "nvarchar(5)")]
         public string Icon { get; set; } = "";
-
-        public ICollection<Mission> Missions { get; set; }
     }
 }
