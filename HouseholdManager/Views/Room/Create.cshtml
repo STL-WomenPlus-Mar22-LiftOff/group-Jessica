@@ -22,9 +22,20 @@
                 <input asp-for="Icon" class="form-control" />
                 <span asp-validation-for="Icon" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <a asp-action="Index" class="btn btn-secondary w-100">Cancel</a>
+                    </div>
+                </div>
             </div>
+
         </form>
     </div>
 </div>
