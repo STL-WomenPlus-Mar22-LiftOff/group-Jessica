@@ -11,16 +11,12 @@
             opacity: 0;
         }
     </style>
-    <script id="stopWhiteFlashScript" type="text/javascript">
-        (function () {
-            const userTheme = localStorage.getItem('user-theme');
-            const topElement = document.documentElement;
-            if (userTheme !== 'light') {
-                topElement.setAttribute('data-bs-theme', userTheme);
-        })();
-    </script>
+    <script id="stopWhiteFlashScript" src="~/js/stopWhiteFlash.js"></script>
     <script id="themePickerScript" src="~/js/themePicker.js"></script>
     <title>@ViewData["Title"] - HouseholdManager</title>
+    <!--Icon font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Color+Emoji">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <!-- Syncfusion ASP.NET Core controls styles -->
     <link id="cssfile" href="https://cdn.syncfusion.com/ej2/20.4.38/bootstrap5.css" rel="stylesheet" />

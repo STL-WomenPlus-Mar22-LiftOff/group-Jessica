@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
+using System.Text.Json;
+using HouseholdManager.Data.API;
 
 namespace HouseholdManager.Controllers
 {
@@ -42,8 +44,11 @@ namespace HouseholdManager.Controllers
         }
 
         // GET: Room/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            IconRequestor req = new IconRequestor();
+            List<Icon> icons = await req.GetIconsFromApi();
+            ViewBag.Icons = icons;
             return View();
         }
 
@@ -66,6 +71,10 @@ namespace HouseholdManager.Controllers
         // GET: Room/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            IconRequestor req = new IconRequestor();
+            List<Icon> icons = await req.GetIconsFromApi();
+            ViewBag.Icons = icons;
+
             if (id == null || _context.Rooms == null)
             {
                 return NotFound();
@@ -155,5 +164,7 @@ namespace HouseholdManager.Controllers
         {
           return _context.Rooms.Any(e => e.RoomId == id);
         }
+
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 
 namespace HouseholdManager.Models
@@ -11,8 +12,9 @@ namespace HouseholdManager.Models
         public int MissionId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-        [DisplayName("Name")]
+
         [Required(ErrorMessage = "Name of mission is required.")]
+        [DisplayName("Mission Name")]
         public string MissionName { get; set; }
 
         //RoomId-Foreign Key
@@ -26,6 +28,7 @@ namespace HouseholdManager.Models
         [DisplayName("Difficulty")]
         public int Point { get; set; }
 
+        [BindProperty, DataType(DataType.Date)]
         [DisplayName("Due Date")]
         public DateTime DueDate { get; set; }
 

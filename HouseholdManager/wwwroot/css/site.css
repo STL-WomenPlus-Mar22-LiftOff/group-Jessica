@@ -16,3 +16,89 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.icon-picker-menu {
+    display: block;
+    position: absolute;
+    justify-content: center;
+    background-color: var(--bs-body-bg);
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--bs-secondary);
+    width: 315px;
+    height: 250px;
+    overflow: auto;
+    z-index: 1;
+}
+
+[data-bs-theme="deepblue"] 
+.icon-picker-menu {
+    background-color: var(--light);
+}
+
+.icon-button-list {
+    position: relative;
+    transform: translateX(-10%);
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 1fr;
+    column-gap: 10px;
+    row-gap: 5px;
+}
+
+.icon-button-item {
+    font-size: large;
+    min-height: 18px;
+    max-height: 24px;
+    min-width: 18px;
+    max-width: 24px;
+    justify-self: center;
+}
+
+.icon-slug-display-small {
+    font-size: smaller;
+    color: var(--bs-secondary);
+}
+
+.icon-random {
+    font-size: small;
+    width: 85px;
+    height: 30px;
+}
+
+.icon-search {
+    min-width: 100px;
+    max-width: 140px;
+}
+
+.icon-font {
+    font-family: "Noto Color Emoji" !important;
+}
+
+/*WIP wobble back-and-forth effect
+.effect-wobble {
+    animation: wobble 5s linear 0s infinite backwards;
+}
+
+@media (prefers-reduced-motion) {
+    .effect-wobble {
+        animation: none;
+    }
+}
+
+@keyframes wobble {
+    10% {
+        transform: rotateZ(0.02rad);
+    }
+    25% {
+        transform: rotateZ(0.01rad);
+    }
+    50% {
+        transform: rotateZ(-0.01rad);
+    }
+    85% {
+        transform: rotateZ(-0.02rad);
+    }
+}
+*/
