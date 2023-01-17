@@ -74,7 +74,5 @@ function onThemeChange(choice) {
 window.addEventListener('DOMContentLoaded', () => {
     setDefaultTheme();
     console.log(`Theme loaded: ${getPreferredTheme()}`);
-    setTimeout(() => {
-        showPage();
-    }, 150);
+    showPage();
 });
