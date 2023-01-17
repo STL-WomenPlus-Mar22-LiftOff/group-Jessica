@@ -1,0 +1,59 @@
+﻿@model IEnumerable<HouseholdManager.Models.Member>
+
+@{
+    ViewData["PageTitle"] = "Members";
+    ViewData["PageActionText"] = "+ New Member";
+    ViewData["PageActionUrl"] = "/Member/AddOrEdit";
+}
+
+<h1>All Members</h1>
+
+<p>
+    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Mission</a>
+    <a asp-action="Create" class="btn btn-sm btn-primary"> <i class="fa-solid fa-plus"></i> Room</a>
+    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Household</a>
+    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Member</a>
+</p>
+
+<div class="row">
+    <div class="col-md-9">
+        <ejs-grid id="members" dataSource="@Model" gridLines="None"
+                  allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="MemberName" field="MemberUserNameWithIcon"></e-grid-column>
+                <e-grid-column headerText="MemberType" template="#typeColumnTemplate" width="150px"></e-grid-column>
+                <e-grid-column headerText="Household" field="HouseholdNameWithIcon" width="100px" textAlign="Left"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+    </div>
+    <div class="col-md-2">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-users fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+<script id="typeColumnTemplate" type="text/x-template">
+    ${if(MemberType=="Member")}
+        <span class="badge bg-success">${MemberType}</span>
+    ${else}
+        <span class="badge bg-danger">${MemberType}</span>
+        ${/if}
+</script>
+
+<script id="actionColumnTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+        <a class="btn btn-sm no-a-decoration" href="/Member/AddOrEdit/${MemberId}">
+            <i class="fa-solid fa-pen fa-lg"></i>
+        </a>
+        <form action="/Member/Delete/${MemberId}" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-link no-a-decoration"
+            onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
+                <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+            </button>
+        </form>
+    </div>
+</script>

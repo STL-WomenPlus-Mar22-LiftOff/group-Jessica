@@ -1,0 +1,35 @@
+﻿@model HouseholdManager.Models.Household
+
+@{
+    ViewData["PageTitle"] = Model.HouseholdId == 0 ? "Create a new household" : "Edit household";
+}
+
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color: #1a222b">
+            <form asp-action="AddOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" name="HouseholdId" value="@Model.HouseholdId" />
+                <div class="mb-3">
+                    <ejs-textbox id="householdname" placeholder="HouseholdName" ejs-for="HouseholdName" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="HouseholdName" class="text-danger" fs-6></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="householdicon" placeholder="HouseholdIcon" ejs-for="HouseholdIcon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="HouseholdIcon" class="text-danger" fs-6></span>
+                </div>               
+                <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-person-shelter fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

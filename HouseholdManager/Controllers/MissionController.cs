@@ -4,10 +4,12 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using HouseholdManager.Models;
+using HouseholdManager.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HouseholdManager.Controllers
 {
+    [Authorize]
     public class MissionController : Controller
     {
         private readonly ApplicationDbContext _context;
