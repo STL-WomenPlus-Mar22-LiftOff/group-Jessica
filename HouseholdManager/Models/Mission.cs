@@ -32,5 +32,11 @@ namespace HouseholdManager.Models
         [DisplayName("Due Date")]
         public DateTime DueDate { get; set; }
 
+        //MemberId-Foreign Key
+        [Range(1, int.MaxValue, ErrorMessage = "Please select a member")]
+        public int MemberId { get; set; }
+
+        public Member? Member { get; set; }
+
     }
 }
