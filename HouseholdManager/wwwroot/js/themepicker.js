@@ -25,6 +25,10 @@ function setTheme(theme = "light", stylesheet = "bootstrap5") {
     switch (theme) {
         case "deepblue":
             html.setAttribute('data-bs-theme', 'deepblue');
+            /*
+        case "blueshift":
+            html.setAttribute('data-bs-theme', 'blueshift');
+            */
             deepblue.disabled = false;
             document.body.style.removeProperty("style");
             return;
