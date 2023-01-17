@@ -16,14 +16,17 @@ function getPreferredTheme() {
     }
 }
 
-function setTheme(theme, stylesheet = "bootstrap5") {
+//stylesheet is used by Syncfusion elements
+function setTheme(theme = "light", stylesheet = "bootstrap5") {
     let cdnLink = document.getElementById("cssfile");
-    const deepblue = document.getElementById("deepblue-css");
+    const deepblue = document.getElementById("deepblue-css"); //TODO: rework this when more themes are added
+    //const bootstrap = document.getElementById("bootstrap");
     cdnLink.href = 'https://cdn.syncfusion.com/ej2/20.4.38/' + stylesheet + '.css';
     switch (theme) {
         case "deepblue":
             html.setAttribute('data-bs-theme', 'deepblue');
             deepblue.disabled = false;
+            document.body.style.removeProperty("style");
             return;
         case "dark":
             html.setAttribute('data-bs-theme', 'dark');
@@ -46,11 +49,11 @@ function setDefaultTheme() {
             break;
         default:
             setTheme(pref);
+            break;
     }
 }
 
 function onThemeChange(choice) {
-    document.getElementsByTagName('body')[0].style.display = 'none';
     let theme = choice.value;
     switch (theme) {
         case 'bootstrap5-dark':
@@ -66,9 +69,6 @@ function onThemeChange(choice) {
             window.localStorage.setItem('user-theme', 'light');
             break;
     }
-    setTimeout(() => {
-        document.getElementsByTagName('body')[0].style.display = 'block';
-    }, 150);
 }
 
 window.addEventListener('DOMContentLoaded', () => {
