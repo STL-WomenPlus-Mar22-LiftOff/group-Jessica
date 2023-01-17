@@ -4,18 +4,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HouseholdManager.Models
 {
-    public class User
+    public class Member
     {
         [Key]
-        public int UserId { get; set; }
+        public int MemberId { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
-        [Required(ErrorMessage = "User Name is required.")]
-        public string UserName { get; set; }
+        [Required(ErrorMessage = "Member Name is required.")]
+        public string MemberName { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
-        [Required(ErrorMessage = "User type (Admin or User) is required.")]
-        public string Position { get; set; } = "User";
+        [Required(ErrorMessage = "Member type (Admin or Member) is required.")]
+        public string Position { get; set; } = "Member";
 
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }

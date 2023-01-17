@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -8,6 +9,21 @@ namespace HouseholdManager.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Members",
+                columns: table => new
+                {
+                    MemberId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MemberName = table.Column<string>(type: "nvarchar(20)", nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Members", x => x.MemberId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Rooms",
                 columns: table => new
@@ -23,21 +39,6 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    Position = table.Column<string>(type: "nvarchar(5)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.UserId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Missions",
                 columns: table => new
                 {
@@ -45,7 +46,8 @@ namespace HouseholdManager.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MissionName = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: false),
-                    Point = table.Column<int>(type: "int", nullable: false)
+                    Point = table.Column<int>(type: "int", nullable: false),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,10 +69,10 @@ namespace HouseholdManager.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Missions");
+                name: "Members");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Missions");
 
             migrationBuilder.DropTable(
                 name: "Rooms");

@@ -22,6 +22,31 @@ namespace HouseholdManager.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("HouseholdManager.Models.Member", b =>
+                {
+                    b.Property<int>("MemberId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberId"), 1L, 1);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MemberName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(5)");
+
+                    b.HasKey("MemberId");
+
+                    b.ToTable("Members");
+                });
+
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
                 {
                     b.Property<int>("MissionId")
@@ -60,6 +85,7 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("Icon")
                         .IsRequired()
+                        .IsUnicode(true)
                         .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("Name")
@@ -69,31 +95,6 @@ namespace HouseholdManager.Migrations
                     b.HasKey("RoomId");
 
                     b.ToTable("Rooms");
-                });
-
-            modelBuilder.Entity("HouseholdManager.Models.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Position")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>

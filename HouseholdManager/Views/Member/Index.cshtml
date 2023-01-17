@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HouseholdManager.Models.User>
+﻿@model IEnumerable<HouseholdManager.Models.Member>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserName)
+                @Html.DisplayNameFor(model => model.MemberName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Position)
@@ -28,7 +28,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserName)
+                @Html.DisplayFor(modelItem => item.MemberName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Position)
@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.MemberId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MemberId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MemberId">Delete</a>
             </td>
         </tr>
 }
