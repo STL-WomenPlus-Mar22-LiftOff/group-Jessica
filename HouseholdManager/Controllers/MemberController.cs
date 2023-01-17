@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
+using HouseholdManager.Data;
 
 namespace HouseholdManager.Controllers
 {

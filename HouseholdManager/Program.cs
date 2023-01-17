@@ -1,4 +1,4 @@
-using HouseholdManager.Models;
+using HouseholdManager.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

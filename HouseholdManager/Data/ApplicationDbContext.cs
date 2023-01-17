@@ -2,13 +2,13 @@
 using HouseholdManager.Models;
 using NuGet.Protocol;
 
-namespace HouseholdManager.Models
+namespace HouseholdManager.Data
 {
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
-            
+
         }
 
         //protected override void ConfigureConventions(ModelConfigurationBuilder builder)
@@ -31,7 +31,8 @@ namespace HouseholdManager.Models
         protected override void OnModelCreating(ModelBuilder mb)
         {
             base.OnModelCreating(mb);
-            mb.Entity("HouseholdManager.Models.Room", b => {
+            mb.Entity("HouseholdManager.Models.Room", b =>
+            {
                 b.Property<string>("Icon").IsUnicode(true);
             });
         }
