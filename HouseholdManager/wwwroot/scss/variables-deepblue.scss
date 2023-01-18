@@ -1,4 +1,7 @@
-﻿
+﻿//
+//"Deep Blue" theme
+//
+
 $deepblue-glacier: #669bbc;
 $deepblue-blacklight: #5107c4;
 $deepblue-royal: #6f22b1;
@@ -35,7 +38,6 @@ $deepblue-danger: $deepblue-coral;
 //
 // Global colors
 //
-// scss-docs-start sass-deepblue-mode-vars
 
 
 $primary-text-deepblue: $deepblue-ice;
@@ -102,5 +104,6 @@ $form-switch-bg-image-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.w
 
 $accordion-button-icon-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-deepblue}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
 $accordion-button-active-icon-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-deepblue}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
-// scss-docs-end sass-deepblue-mode-vars
+
+
 

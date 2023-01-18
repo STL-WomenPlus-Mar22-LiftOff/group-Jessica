@@ -1,7 +1,6 @@
 ﻿
 @if $enable-theme-deepblue {
     @include color-mode(deepblue, true) {
-        // scss-docs-start root-deepblue-mode-vars
         --#{$prefix}body-color: #{$body-color-deepblue};
         --#{$prefix}body-color-rgb: #{to-rgb($body-color-deepblue)};
         --#{$prefix}body-bg: #{$body-bg-deepblue};
@@ -53,18 +52,18 @@
         --#{$prefix}navbar-hover-color: #{$navbar-deepblue-hover-color};
         --#{$prefix}navbar-disabled-color: #{$navbar-deepblue-disabled-color};
         --#{$prefix}navbar-active-color: #{$navbar-deepblue-active-color};
-        // scss-docs-end root-deepblue-mode-vars
     }
 }
 
-[data-bs-theme="deepblue"] .navbar {
+[data-bs-theme="deepblue"] 
+.navbar {
     --#{$prefix}navbar-color: #{$navbar-deepblue-color};
     --#{$prefix}navbar-hover-color: #{$navbar-deepblue-hover-color};
     --#{$prefix}navbar-disabled-color: #{$navbar-deepblue-disabled-color};
     --#{$prefix}navbar-active-color: #{$navbar-deepblue-active-color};
 }
 
-[data-bs-theme="deepblue"]
+[data-bs-theme="deepblue"] 
 .icon-picker-menu {
     background-color: #{$primary-bg-subtle-deepblue};
 }
