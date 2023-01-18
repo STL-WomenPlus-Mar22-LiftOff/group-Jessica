@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Erica\Source\Repos\group-Jessica\HouseholdManager
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Erica/Source/Repos/group-Jessica/HouseholdManager/Views/Communications/MissionReminder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbXVuaWNhdGlvbnNcTWlzc2lvblJlbWluZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Erica/Source/Repos/group-Jessica/HouseholdManager/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
