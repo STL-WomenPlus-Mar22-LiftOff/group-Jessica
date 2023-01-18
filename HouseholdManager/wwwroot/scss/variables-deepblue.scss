@@ -29,7 +29,7 @@ $deepblue-gray-200: tint-color($deepblue-fathom, 60%);
 $deepblue-gray-100: tint-color($deepblue-fathom, 80%);
 $deepblue-primary: $deepblue-glacier;
 $deepblue-secondary: $deepblue-sunlight;
-$deepblue-success: $deepblue-seafoam;
+$deepblue-success: shade-color($deepblue-seafoam, 25%);
 $deepblue-info: $deepblue-wave;
 $deepblue-warning: $deepblue-yellowfin;
 $deepblue-danger: $deepblue-coral;
@@ -77,15 +77,15 @@ $body-tertiary-bg-deepblue: shade-color($deepblue-gray-600, 50%);
 $emphasis-color-deepblue: $deepblue-whitewater;
 $border-color-deepblue: $deepblue-gray-700;
 $border-color-translucent-deepblue: rgba($deepblue-glacier, .15);
-$headings-color-deepblue: mix($deepblue-gray-100, $deepblue-sunlight);
-$link-color-deepblue: mix($deepblue-blacklight, $deepblue-gray-200);
+$headings-color-deepblue: mix($deepblue-gray-100, $deepblue-sunlight, 50%);
+$link-color-deepblue: mix($deepblue-secondary, $deepblue-gray-500);
 $link-hover-color-deepblue: tint-color($deepblue-regalia, 25%);
 $code-color-deepblue: tint-color($deepblue-coral, 25%);
 
-$navbar-deepblue-hover-color: $emphasis-color-deepblue;
-$navbar-deepblue-color: mix($navbar-deepblue-hover-color, $deepblue-blacklight, 75%);
-$navbar-deepblue-disabled-color: mix($navbar-deepblue-hover-color, $deepblue-abyss, 75%);
-$navbar-deepblue-active-color: mix($navbar-deepblue-hover-color, $deepblue-secondary, 50%);
+$navbar-deepblue-hover-color: mix($emphasis-color-deepblue, $deepblue-blacklight, 75%);
+$navbar-deepblue-color: $headings-color-deepblue;
+$navbar-deepblue-disabled-color: mix($navbar-deepblue-color, $deepblue-abyss, 50%);
+$navbar-deepblue-active-color: mix($navbar-deepblue-color, $deepblue-secondary, 50%);
 
 //
 // Forms
@@ -129,11 +129,11 @@ $deepblue-theme-colors: (
 );
 
 $deepblue-button-colors: (
-  "primary": $deepblue-primary,
-  "secondary": $deepblue-secondary,
+  "primary": $deepblue-regalia,
+  "secondary": $deepblue-yellowfin,
   "success": $deepblue-success,
   "info": $deepblue-info,
-  "warning": $deepblue-warning,
+  "warning": $deepblue-clownfish,
   "danger": $deepblue-danger,
   "light": $deepblue-sunlight,
   "dark": $deepblue-abyss,

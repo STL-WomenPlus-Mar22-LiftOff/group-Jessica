@@ -1,4 +1,6 @@
 ﻿
+@import "../scss/variables-deepblue.scss";
+
 @if $enable-theme-deepblue {
     @include color-mode(deepblue, true) {
         --#{$prefix}body-color: #{$body-color-deepblue};
@@ -71,12 +73,18 @@
     --#{$prefix}navbar-active-color: #{$navbar-deepblue-active-color};
 }
 
-@each $key, $color in $deepblue-button-colors {
+@each $key, $button-color in $deepblue-button-colors {
     [data-bs-theme="deepblue"]
     .btn-#{$key} {
         @include button-variant( 
-            $color,
-            $color
+            shade-color($button-color, 30%),
+            shade-color($button-color, 15%),
+            $headings-color-deepblue,
+            $hover-color: $deepblue-sunken,
+            $hover-border: tint-color($button-color, 10%),
+            $hover-background: $button-color,
+            $disabled-background: mix($button-color, $deepblue-abyss, 25%),
+            $disabled-border: mix($button-color, $deepblue-abyss, 25%)
         );
     }
 }
