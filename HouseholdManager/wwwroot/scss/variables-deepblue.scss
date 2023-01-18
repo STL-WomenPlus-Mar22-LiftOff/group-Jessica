@@ -1,35 +1,35 @@
 ﻿
-$deepblue-blue: #669bbc;
-$deepblue-indigo: #5107c4;
-$deepblue-purple: #6f22b1;
-$deepblue-pink: #c1121f;
-$deepblue-red: #780000;
-$deepblue-orange: #c1641c;
-$deepblue-yellow: #bb9b44;
-$deepblue-green: #19c172;
-$deepblue-teal: #25d1a6;
-$deepblue-cyan: #3aa5d4;
-$deepblue-white: #a4a2e4;
-$deepblue-gray: #1375a4;
-$deepblue-light: #f1c9ae;
-$deepblue-dark: #053142;
-$deepblue-gray-900: shade-color($deepblue-gray, 80%);
-$deepblue-gray-800: shade-color($deepblue-gray, 60%);
-$deepblue-gray-700: shade-color($deepblue-gray, 40%);
-$deepblue-gray-600: shade-color($deepblue-gray, 20%);
-$deepblue-gray-500: $deepblue-gray;
-$deepblue-gray-400: tint-color($deepblue-gray, 20%);
-$deepblue-gray-300: tint-color($deepblue-gray, 40%);
-$deepblue-gray-200: tint-color($deepblue-gray, 60%);
-$deepblue-gray-100: tint-color($deepblue-gray, 80%);
-$deepblue-black: #001526;
-$deepblue-primary: $deepblue-blue;
-$deepblue-secondary: $deepblue-light;
-$deepblue-success: $deepblue-teal;
-$deepblue-info: $deepblue-cyan;
-$deepblue-warning: $deepblue-yellow;
-$deepblue-danger: $deepblue-pink;
-$deepblue-body-color: #a3c5f4;
+$deepblue-glacier: #669bbc;
+$deepblue-blacklight: #5107c4;
+$deepblue-royal: #6f22b1;
+$deepblue-coral: #c1121f;
+$deepblue-crimson: #780000;
+$deepblue-clownfish: #c1641c;
+$deepblue-yellowfin: #bb9b44;
+$deepblue-sunlight: #f8c9be;
+$deepblue-algae: #19c172;
+$deepblue-seafoam: #25d1a6;
+$deepblue-wave: #3aa5d4;
+$deepblue-whitewater: #c4e2fd;
+$deepblue-ice: #a3c5f4;
+$deepblue-fathom: #1375a4;
+$deepblue-sunken: #053142;
+$deepblue-abyss: #001526;
+$deepblue-gray-900: shade-color($deepblue-fathom, 80%);
+$deepblue-gray-800: shade-color($deepblue-fathom, 60%);
+$deepblue-gray-700: shade-color($deepblue-fathom, 40%);
+$deepblue-gray-600: shade-color($deepblue-fathom, 20%);
+$deepblue-gray-500: $deepblue-fathom;
+$deepblue-gray-400: tint-color($deepblue-fathom, 20%);
+$deepblue-gray-300: tint-color($deepblue-fathom, 40%);
+$deepblue-gray-200: tint-color($deepblue-fathom, 60%);
+$deepblue-gray-100: tint-color($deepblue-fathom, 80%);
+$deepblue-primary: $deepblue-glacier;
+$deepblue-secondary: $deepblue-sunlight;
+$deepblue-success: $deepblue-seafoam;
+$deepblue-info: $deepblue-wave;
+$deepblue-warning: $deepblue-yellowfin;
+$deepblue-danger: $deepblue-coral;
 
 
 //
@@ -38,47 +38,52 @@ $deepblue-body-color: #a3c5f4;
 // scss-docs-start sass-deepblue-mode-vars
 
 
-$primary-text-deepblue: $deepblue-body-color;
+$primary-text-deepblue: $deepblue-ice;
 $secondary-text-deepblue: $deepblue-gray-300;
-$success-text-deepblue: $deepblue-green;
-$info-text-deepblue: $deepblue-cyan;
-$warning-text-deepblue: $deepblue-yellow;
-$danger-text-deepblue: $deepblue-pink;
+$success-text-deepblue: $deepblue-algae;
+$info-text-deepblue: $deepblue-wave;
+$warning-text-deepblue: $deepblue-clownfish;
+$danger-text-deepblue: $deepblue-coral;
 $light-text-deepblue: $deepblue-gray-100;
 $dark-text-deepblue: $deepblue-gray-300;
 
-$primary-bg-subtle-deepblue: $deepblue-gray-600;
-$secondary-bg-subtle-deepblue: $deepblue-gray-700;
-$success-bg-subtle-deepblue: mix($deepblue-green, $deepblue-black);
-$info-bg-subtle-deepblue: mix($deepblue-cyan, $deepblue-black);
-$warning-bg-subtle-deepblue: mix($deepblue-yellow, $deepblue-black);
-$danger-bg-subtle-deepblue: mix($deepblue-pink, $deepblue-black);
-$light-bg-subtle-deepblue: $deepblue-gray-800;
+$primary-bg-subtle-deepblue: $deepblue-gray-700;
+$secondary-bg-subtle-deepblue: $deepblue-gray-800;
+$success-bg-subtle-deepblue: mix($deepblue-algae, $deepblue-abyss);
+$info-bg-subtle-deepblue: mix($deepblue-wave, $deepblue-abyss);
+$warning-bg-subtle-deepblue: mix($deepblue-clownfish, $deepblue-abyss);
+$danger-bg-subtle-deepblue: mix($deepblue-coral, $deepblue-abyss);
+$light-bg-subtle-deepblue: $deepblue-gray-600;
 $dark-bg-subtle-deepblue: $deepblue-gray-900;
 
 $primary-border-subtle-deepblue: $deepblue-gray-500;
 $secondary-border-subtle-deepblue: $deepblue-gray-700;
-$success-border-subtle-deepblue: shade-color($deepblue-green, 25%);
-$info-border-subtle-deepblue: shade-color($deepblue-cyan, 25%);
-$warning-border-subtle-deepblue: shade-color($deepblue-yellow, 25%);
-$danger-border-subtle-deepblue: $deepblue-red;
+$success-border-subtle-deepblue: shade-color($deepblue-algae, 25%);
+$info-border-subtle-deepblue: shade-color($deepblue-wave, 25%);
+$warning-border-subtle-deepblue: shade-color($deepblue-clownfish, 25%);
+$danger-border-subtle-deepblue: $deepblue-crimson;
 $light-border-subtle-deepblue: $deepblue-gray-600;
 $dark-border-subtle-deepblue: $deepblue-gray-800;
 
-$body-color-deepblue: mix($deepblue-gray-200, $deepblue-light);
+$body-color-deepblue: mix($deepblue-gray-300, $deepblue-sunlight);
 $body-bg-deepblue: $deepblue-gray-900;
-$body-emphasis-color-deepblue: mix($deepblue-gray-100, $deepblue-light);
+$body-emphasis-color-deepblue: mix($deepblue-gray-200, $deepblue-sunlight);
 $body-secondary-color-deepblue: rgba($body-color-deepblue, .75);
 $body-secondary-bg-deepblue: $deepblue-gray-800;
 $body-tertiary-color-deepblue: rgba($body-color-deepblue, .5);
 $body-tertiary-bg-deepblue: shade-color($deepblue-gray-600, 50%);
-$emphasis-color-deepblue: $deepblue-white;
+$emphasis-color-deepblue: $deepblue-whitewater;
 $border-color-deepblue: $deepblue-gray-700;
-$border-color-translucent-deepblue: rgba($deepblue-white, .15);
-$headings-color-deepblue: $deepblue-gray-100;
-$link-color-deepblue: tint-color($deepblue-blue, 25%);
-$link-hover-color-deepblue: tint-color($deepblue-blue, 50%);
-$code-color-deepblue: tint-color($deepblue-pink, 25%);
+$border-color-translucent-deepblue: rgba($deepblue-glacier, .15);
+$headings-color-deepblue: mix($deepblue-gray-100, $deepblue-sunlight);
+$link-color-deepblue: mix($deepblue-blacklight, $deepblue-gray-200);
+$link-hover-color-deepblue: tint-color($deepblue-royal, 25%);
+$code-color-deepblue: tint-color($deepblue-coral, 25%);
+
+$navbar-deepblue-hover-color: $emphasis-color-deepblue;
+$navbar-deepblue-color: mix($navbar-deepblue-hover-color, $deepblue-blacklight);
+$navbar-deepblue-disabled-color: mix($navbar-deepblue-hover-color, $deepblue-abyss);
+$navbar-deepblue-active-color: mix($navbar-deepblue-hover-color, $deepblue-secondary);
 
 //
 // Forms
@@ -87,7 +92,7 @@ $code-color-deepblue: tint-color($deepblue-pink, 25%);
 $form-select-indicator-color-deepblue: $body-color-deepblue;
 $form-select-indicator-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color-deepblue}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
 
-$form-switch-color-deepblue: rgba($deepblue-white, .25);
+$form-switch-color-deepblue: rgba($deepblue-whitewater, .25);
 $form-switch-bg-image-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color-deepblue}'/></svg>");
 
 

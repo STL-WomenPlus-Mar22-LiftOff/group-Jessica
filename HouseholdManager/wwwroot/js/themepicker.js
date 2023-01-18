@@ -18,6 +18,7 @@ function getPreferredTheme() {
 
 //stylesheet is used by Syncfusion elements
 function setTheme(theme = "light", stylesheet = "bootstrap5") {
+    document.body.style.display = 'none';
     let cdnLink = document.getElementById("cssfile");
     const deepblue = document.getElementById("deepblue-css"); //TODO: rework this when more themes are added
     //const bootstrap = document.getElementById("bootstrap");
@@ -25,12 +26,6 @@ function setTheme(theme = "light", stylesheet = "bootstrap5") {
     switch (theme) {
         case "deepblue":
             html.setAttribute('data-bs-theme', 'deepblue');
-            /*
-        case "blueshift":
-            html.setAttribute('data-bs-theme', 'blueshift');
-            */
-            deepblue.disabled = false;
-            document.body.style.removeProperty("style");
             return;
         case "dark":
             html.setAttribute('data-bs-theme', 'dark');
@@ -39,7 +34,7 @@ function setTheme(theme = "light", stylesheet = "bootstrap5") {
             html.removeAttribute('data-bs-theme');
             break;
     }
-    deepblue.disabled = true;
+    document.body.style.display = 'block';
 }
 
 function setDefaultTheme() {

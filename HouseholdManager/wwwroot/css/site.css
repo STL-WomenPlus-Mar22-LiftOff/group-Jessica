@@ -31,11 +31,6 @@ body {
     z-index: 1;
 }
 
-[data-bs-theme="deepblue"] 
-.icon-picker-menu {
-    background-color: var(--light);
-}
-
 .icon-button-list {
     position: relative;
     transform: translateX(-10%);

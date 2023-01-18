@@ -49,6 +49,22 @@
         --#{$prefix}code-color: #{$code-color-deepblue};
         --#{$prefix}border-color: #{$border-color-deepblue};
         --#{$prefix}border-color-translucent: #{$border-color-translucent-deepblue};
+        --#{$prefix}navbar-color: #{$navbar-deepblue-color};
+        --#{$prefix}navbar-hover-color: #{$navbar-deepblue-hover-color};
+        --#{$prefix}navbar-disabled-color: #{$navbar-deepblue-disabled-color};
+        --#{$prefix}navbar-active-color: #{$navbar-deepblue-active-color};
         // scss-docs-end root-deepblue-mode-vars
     }
+}
+
+[data-bs-theme="deepblue"] .navbar {
+    --#{$prefix}navbar-color: #{$navbar-deepblue-color};
+    --#{$prefix}navbar-hover-color: #{$navbar-deepblue-hover-color};
+    --#{$prefix}navbar-disabled-color: #{$navbar-deepblue-disabled-color};
+    --#{$prefix}navbar-active-color: #{$navbar-deepblue-active-color};
+}
+
+[data-bs-theme="deepblue"]
+.icon-picker-menu {
+    background-color: #{$primary-bg-subtle-deepblue};
 }

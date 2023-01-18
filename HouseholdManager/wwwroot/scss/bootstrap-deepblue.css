@@ -11608,87 +11608,67 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-/*
-@import "../lib/bootstrap/scss/root";
-@import "../lib/bootstrap/scss/reboot";
-@import "../lib/bootstrap/scss/type";
-@import "../lib/bootstrap/scss/images";
-@import "../lib/bootstrap/scss/containers";
-@import "../lib/bootstrap/scss/grid";
-@import "../lib/bootstrap/scss/tables";
-@import "../lib/bootstrap/scss/forms";
-@import "../lib/bootstrap/scss/buttons";
-@import "../lib/bootstrap/scss/transitions";
-@import "../lib/bootstrap/scss/dropdown";
-@import "../lib/bootstrap/scss/button-group";
-@import "../lib/bootstrap/scss/nav";
-@import "../lib/bootstrap/scss/navbar";
-@import "../lib/bootstrap/scss/card";
-@import "../lib/bootstrap/scss/accordion";
-@import "../lib/bootstrap/scss/breadcrumb";
-@import "../lib/bootstrap/scss/pagination";
-@import "../lib/bootstrap/scss/badge";
-@import "../lib/bootstrap/scss/alert";
-@import "../lib/bootstrap/scss/progress";
-@import "../lib/bootstrap/scss/list-group";
-@import "../lib/bootstrap/scss/close";
-@import "../lib/bootstrap/scss/toasts";
-@import "../lib/bootstrap/scss/modal";
-@import "../lib/bootstrap/scss/tooltip";
-@import "../lib/bootstrap/scss/popover";
-@import "../lib/bootstrap/scss/carousel";
-@import "../lib/bootstrap/scss/spinners";
-@import "../lib/bootstrap/scss/offcanvas";
-@import "../lib/bootstrap/scss/placeholders";
-@import "../lib/bootstrap/scss/helpers";
-@import "../lib/bootstrap/scss/utilities/api";
-*/
 [data-bs-theme=deepblue] {
-  --bs-body-color: #c9c9c5;
-  --bs-body-color-rgb: 201, 201, 197;
+  --bs-body-color: #b5bbc3;
+  --bs-body-color-rgb: 181, 187, 195;
   --bs-body-bg: #041721;
   --bs-body-bg-rgb: 4, 23, 33;
-  --bs-emphasis-color: #e1d6ce;
-  --bs-emphasis-color-rgb: 225, 214, 206;
-  --bs-secondary-color: rgba(201, 201, 197, 0.75);
-  --bs-secondary-color-rgb: 201, 201, 197;
+  --bs-emphasis-color: #cdc9cd;
+  --bs-emphasis-color-rgb: 205, 201, 205;
+  --bs-secondary-color: rgba(181, 187, 195, 0.75);
+  --bs-secondary-color-rgb: 181, 187, 195;
   --bs-secondary-bg: #082f42;
   --bs-secondary-bg-rgb: 8, 47, 66;
-  --bs-tertiary-color: rgba(201, 201, 197, 0.5);
-  --bs-tertiary-color-rgb: 201, 201, 197;
+  --bs-tertiary-color: rgba(181, 187, 195, 0.5);
+  --bs-tertiary-color-rgb: 181, 187, 195;
   --bs-tertiary-bg: #082f42;
   --bs-tertiary-bg-rgb: 8, 47, 66;
-  --bs-emphasis-color: #a4a2e4;
+  --bs-emphasis-color: #c4e2fd;
   --bs-primary-text: #a3c5f4;
   --bs-secondary-text: #71acc8;
   --bs-success-text: #19c172;
   --bs-info-text: #3aa5d4;
-  --bs-warning-text: #bb9b44;
+  --bs-warning-text: #c1641c;
   --bs-danger-text: #c1121f;
   --bs-light-text: #d0e3ed;
   --bs-dark-text: #71acc8;
-  --bs-primary-bg-subtle: #0f5e83;
-  --bs-secondary-bg-subtle: #0b4662;
+  --bs-primary-bg-subtle: #0b4662;
+  --bs-secondary-bg-subtle: #082f42;
   --bs-success-bg-subtle: #0d6b4c;
   --bs-info-bg-subtle: #1d5d7d;
-  --bs-warning-bg-subtle: #5e5835;
+  --bs-warning-bg-subtle: #613d21;
   --bs-danger-bg-subtle: #611423;
-  --bs-light-bg-subtle: #082f42;
+  --bs-light-bg-subtle: #0f5e83;
   --bs-dark-bg-subtle: #041721;
   --bs-primary-border-subtle: #1375a4;
   --bs-secondary-border-subtle: #0b4662;
   --bs-success-border-subtle: #139156;
   --bs-info-border-subtle: #2c7c9f;
-  --bs-warning-border-subtle: #8c7433;
+  --bs-warning-border-subtle: #914b15;
   --bs-danger-border-subtle: #780000;
   --bs-light-border-subtle: #0f5e83;
   --bs-dark-border-subtle: #082f42;
-  --bs-heading-color: #d0e3ed;
-  --bs-link-color: #8cb4cd;
-  --bs-link-hover-color: #b3cdde;
-  --bs-link-color-rgb: 140, 180, 205;
-  --bs-link-hover-color-rgb: 179, 205, 222;
+  --bs-heading-color: #e4d6d6;
+  --bs-link-color: #7968d0;
+  --bs-link-hover-color: #9359c5;
+  --bs-link-color-rgb: 121, 104, 208;
+  --bs-link-hover-color-rgb: 147, 89, 197;
   --bs-code-color: #d14d57;
   --bs-border-color: #0b4662;
-  --bs-border-color-translucent: rgba(164, 162, 228, 0.15);
+  --bs-border-color-translucent: rgba(102, 155, 188, 0.15);
+  --bs-navbar-color: #8b75e1;
+  --bs-navbar-hover-color: #c4e2fd;
+  --bs-navbar-disabled-color: #627c92;
+  --bs-navbar-active-color: #ded6de;
+}
+
+[data-bs-theme=deepblue] .navbar {
+  --bs-navbar-color: #8b75e1;
+  --bs-navbar-hover-color: #c4e2fd;
+  --bs-navbar-disabled-color: #627c92;
+  --bs-navbar-active-color: #ded6de;
+}
+
+[data-bs-theme=deepblue] .icon-picker-menu {
+  background-color: #0b4662;
 }
