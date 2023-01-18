@@ -33,6 +33,15 @@
                 <input asp-for="DueDate" class="form-control" />
                 <span asp-validation-for="DueDate" class="text-danger"></span>
             </div>
+            <div class="mb-3">
+                <ejs-dropdownlist id="ddlUser" ejs-for="MemberId"
+                    dataSource="@ViewBag.Members" placeholder="User"
+                    floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                    filterType="Contains" popupHeight="220px">
+                    <e-dropdownlist-fields value="MemberId" text="UserName"></e-dropdownlist-fields>
+                </ejs-dropdownlist>
+                <span asp-validation-for="MemberId" class="text-danger" fs-6></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
