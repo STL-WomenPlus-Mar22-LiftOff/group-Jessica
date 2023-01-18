@@ -1,0 +1,63 @@
+﻿@model HouseholdManager.Models.Mission
+
+@{
+    ViewData["Title"] = "Create Mission";
+}
+@*Hiding main page title*@
+@*<h1>Create</h1>*@
+
+<h3>Create a Mission</h3>
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MissionName" class="control-label">Mission Name</label>
+                <input asp-for="MissionName" class="form-control" />
+                <span asp-validation-for="MissionName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomId" class="control-label"></label>
+                <select asp-for="RoomId" class ="form-control" asp-items="ViewBag.RoomId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Point" class="control-label"></label>
+                <input asp-for="Point" class="form-control" />
+                <span asp-validation-for="Point" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DueDate" class="control-label">Due Date</label>
+                <input asp-for="DueDate" class="form-control" />
+                <span asp-validation-for="DueDate" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <ejs-dropdownlist id="ddlUser" ejs-for="MemberId"
+                    dataSource="@ViewBag.Members" placeholder="User"
+                    floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                    filterType="Contains" popupHeight="220px">
+                    <e-dropdownlist-fields value="MemberId" text="UserName"></e-dropdownlist-fields>
+                </ejs-dropdownlist>
+                <span asp-validation-for="MemberId" class="text-danger" fs-6></span>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <a asp-action="Index" class="btn btn-secondary w-100">Cancel</a>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

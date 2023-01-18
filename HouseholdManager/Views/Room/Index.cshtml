@@ -1,0 +1,54 @@
+﻿@model IEnumerable<HouseholdManager.Models.Room>
+
+@{
+    ViewData["Title"] = "Rooms";
+}
+
+<h1>All Rooms</h1>
+
+<p>
+    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Mission</a>
+    <a asp-action="Create" class="btn btn-sm btn-primary"> <i class="fa-solid fa-plus"></i> Room</a>
+    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Household</a>
+    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Member</a>
+</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-15">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Room Name
+                            </th>
+                            <th class="text-center">
+                                Edit | Details | Delete
+                            </th>                                
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Icon) @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td class="text-center">
+                                    <div>
+                                        <a asp-action="Edit" asp-route-id="@item.RoomId" class="btn btn-sm btn-primary mx-1"> <i class="fa-solid fa-pencil"></i> </a>
+                                        <a asp-action="Details" asp-route-id="@item.RoomId" class="btn btn-sm btn-secondary mx-1"> <i class="fa-solid fa-list-check"></i> </a>
+                                        <a asp-action="Delete" asp-route-id="@item.RoomId" class="btn btn-sm btn-warning mx-1"> <i class="fa-solid fa-trash-can"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

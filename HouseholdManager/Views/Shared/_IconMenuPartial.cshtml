@@ -1,0 +1,37 @@
+﻿<div class="icon-picker">
+    <span>
+        <button type="button" class="btn btn-secondary" id="iconSelectButton">Select Icon</button>
+            <label class="icon-font" id="iconDisplay" for="iconSelectButton"></label>
+    </span>
+    <noscript class="alert-danger">Icon selector requires JavaScript.</noscript>
+    <div class="container-md box-shadow icon-picker-menu" id="iconMenu" style="visibility: hidden;">
+        <span>
+            <input class="icon-search" type="search" id="iconSearch" placeholder="Search..."/>
+            <button type="button" class="btn btn-sm btn-secondary icon-random" id="iconRandomizer">Randomize</button>
+        </span>
+        <ul class="icon-button-list">
+            @foreach (Icon icon in (IEnumerable<Icon>)ViewBag.Icons)
+            {
+                <li class="icon-button-item icon-font" title=@(icon.Slug?.ToString()) onclick="selectIcon({mouseoverText: this.title, character: this.innerText})">@icon.Character</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<script id="iconMenuVariableSetup" type="text/javascript">
+    async function* getRandomIcon() {
+        const iconCollection = @Html.Raw(
+                                    Json.Serialize(
+                                        ((IEnumerable<Icon>)ViewBag.Icons).ToArray()
+                                    )
+                                );
+        let i;
+        while (true) {
+            i = Math.floor(Math.random() * iconCollection.length);
+            yield await Promise.resolve(iconCollection[i]);
+        }
+    }
+
+    const iconGenerator = getRandomIcon();
+</script>
+<script id="iconMenuScript" src="~/js/iconPicker.js" defer></script>
