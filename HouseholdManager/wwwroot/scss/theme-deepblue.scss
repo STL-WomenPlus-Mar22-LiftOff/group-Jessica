@@ -53,7 +53,15 @@
         --#{$prefix}navbar-disabled-color: #{$navbar-deepblue-disabled-color};
         --#{$prefix}navbar-active-color: #{$navbar-deepblue-active-color};
     }
+
+    //Adding the color map to theme-colors allows bootstrap to 
+    //auto-generate things like buttons and css variables.
+
+    $theme-colors: map-merge($theme-colors, $deepblue-theme-colors);
 }
+
+
+
 
 [data-bs-theme="deepblue"] 
 .navbar {
@@ -62,6 +70,17 @@
     --#{$prefix}navbar-disabled-color: #{$navbar-deepblue-disabled-color};
     --#{$prefix}navbar-active-color: #{$navbar-deepblue-active-color};
 }
+
+@each $key, $color in $deepblue-button-colors {
+    [data-bs-theme="deepblue"]
+    .btn-#{$key} {
+        @include button-variant( 
+            $color,
+            $color
+        );
+    }
+}
+
 
 [data-bs-theme="deepblue"] 
 .icon-picker-menu {

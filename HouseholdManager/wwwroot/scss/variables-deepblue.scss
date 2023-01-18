@@ -4,7 +4,7 @@
 
 $deepblue-glacier: #669bbc;
 $deepblue-blacklight: #5107c4;
-$deepblue-royal: #6f22b1;
+$deepblue-regalia: #6f22b1;
 $deepblue-coral: #c1121f;
 $deepblue-crimson: #780000;
 $deepblue-clownfish: #c1641c;
@@ -79,13 +79,13 @@ $border-color-deepblue: $deepblue-gray-700;
 $border-color-translucent-deepblue: rgba($deepblue-glacier, .15);
 $headings-color-deepblue: mix($deepblue-gray-100, $deepblue-sunlight);
 $link-color-deepblue: mix($deepblue-blacklight, $deepblue-gray-200);
-$link-hover-color-deepblue: tint-color($deepblue-royal, 25%);
+$link-hover-color-deepblue: tint-color($deepblue-regalia, 25%);
 $code-color-deepblue: tint-color($deepblue-coral, 25%);
 
 $navbar-deepblue-hover-color: $emphasis-color-deepblue;
-$navbar-deepblue-color: mix($navbar-deepblue-hover-color, $deepblue-blacklight);
-$navbar-deepblue-disabled-color: mix($navbar-deepblue-hover-color, $deepblue-abyss);
-$navbar-deepblue-active-color: mix($navbar-deepblue-hover-color, $deepblue-secondary);
+$navbar-deepblue-color: mix($navbar-deepblue-hover-color, $deepblue-blacklight, 75%);
+$navbar-deepblue-disabled-color: mix($navbar-deepblue-hover-color, $deepblue-abyss, 75%);
+$navbar-deepblue-active-color: mix($navbar-deepblue-hover-color, $deepblue-secondary, 50%);
 
 //
 // Forms
@@ -106,4 +106,35 @@ $accordion-button-icon-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.
 $accordion-button-active-icon-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-deepblue}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
 
 
+//
+// Color Maps
+//
+$deepblue-theme-colors: (
+    "deepblue-abyss": $deepblue-abyss,
+    "deepblue-algae": $deepblue-algae,
+    "deepblue-blacklight": $deepblue-blacklight,
+    "deepblue-clownfish": $deepblue-clownfish,
+    "deepblue-coral": $deepblue-coral,
+    "deepblue-crimson": $deepblue-crimson,
+    "deepblue-fathom": $deepblue-fathom,
+    "deepblue-glacier": $deepblue-glacier,
+    "deepblue-ice": $deepblue-ice,
+    "deepblue-regalia": $deepblue-regalia,
+    "deepblue-seafoam": $deepblue-seafoam,
+    "deepblue-sunken": $deepblue-sunken,
+    "deepblue-sunlight": $deepblue-sunlight,
+    "deepblue-wave": $deepblue-wave,
+    "deepblue-whitewater": $deepblue-whitewater,
+    "deepblue-yellowfin": $deepblue-yellowfin
+);
 
+$deepblue-button-colors: (
+  "primary": $deepblue-primary,
+  "secondary": $deepblue-secondary,
+  "success": $deepblue-success,
+  "info": $deepblue-info,
+  "warning": $deepblue-warning,
+  "danger": $deepblue-danger,
+  "light": $deepblue-sunlight,
+  "dark": $deepblue-abyss,
+);
