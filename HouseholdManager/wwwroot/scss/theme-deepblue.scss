@@ -50,10 +50,14 @@
         --#{$prefix}code-color: #{$code-color-deepblue};
         --#{$prefix}border-color: #{$border-color-deepblue};
         --#{$prefix}border-color-translucent: #{$border-color-translucent-deepblue};
-        --#{$prefix}navbar-color: #{$navbar-deepblue-color};
-        --#{$prefix}navbar-hover-color: #{$navbar-deepblue-hover-color};
-        --#{$prefix}navbar-disabled-color: #{$navbar-deepblue-disabled-color};
-        --#{$prefix}navbar-active-color: #{$navbar-deepblue-active-color};
+
+        //These names must match the ones in the map from additional-colors.scss
+        --#{$prefix}accent-text: #{$accent-text-deepblue};
+        --#{$prefix}option-text: #{$option-text-deepblue};
+        --#{$prefix}accent-bg-subtle: #{$accent-bg-subtle-deepblue};
+        --#{$prefix}option-bg-subtle: #{$option-bg-subtle-deepblue};
+        --#{$prefix}accent-border-subtle: #{$accent-border-subtle-deepblue};
+        --#{$prefix}option-border-subtle: #{$option-border-subtle-deepblue};
     }
 
 }
@@ -61,7 +65,7 @@
 
 
 
-[data-bs-theme="deepblue"] 
+[data-bs-theme="deepblue"]
 .navbar {
     --#{$prefix}navbar-color: #{$navbar-deepblue-color};
     --#{$prefix}navbar-hover-color: #{$navbar-deepblue-hover-color};
@@ -83,6 +87,12 @@
             $disabled-border: mix($button-color, $deepblue-abyss, 25%)
         );
     }
+}
+
+[data-bs-theme="deepblue"]
+.nav-link.active {
+    --#{$prefix}nav-pills-link-active-color: #{$nav-deepblue-pills-link-active-color};
+    --#{$prefix}nav-pills-link-active-bg: #{$nav-deepblue-pills-link-active-bg};
 }
 
 

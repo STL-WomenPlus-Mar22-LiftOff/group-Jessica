@@ -6,7 +6,7 @@ $deepblue-glacier: #669bbc;
 $deepblue-blacklight: #5107c4;
 $deepblue-regalia: #6f22b1;
 $deepblue-coral: #c1121f;
-$deepblue-crimson: #780000;
+$deepblue-crimson: #7a2012;
 $deepblue-clownfish: #c1641c;
 $deepblue-yellowtail: #bb9b44;
 $deepblue-sunlight: #f8c9be;
@@ -27,12 +27,14 @@ $deepblue-gray-400: tint-color($deepblue-fathom, 20%);
 $deepblue-gray-300: tint-color($deepblue-fathom, 40%);
 $deepblue-gray-200: tint-color($deepblue-fathom, 60%);
 $deepblue-gray-100: tint-color($deepblue-fathom, 80%);
-$deepblue-primary: $deepblue-glacier;
+$deepblue-primary: tint-color($deepblue-fathom, 10%);
 $deepblue-secondary: $deepblue-sunlight;
 $deepblue-success: shade-color($deepblue-seafoam, 25%);
 $deepblue-info: $deepblue-wave;
 $deepblue-warning: $deepblue-yellowtail;
 $deepblue-danger: $deepblue-coral;
+$deepblue-option: tint-color($deepblue-crimson, 10%);
+$deepblue-accent: mix($deepblue-glacier, $deepblue-regalia);
 
 
 //
@@ -43,11 +45,11 @@ $deepblue-danger: $deepblue-coral;
 $primary-text-deepblue: $deepblue-ice;
 $secondary-text-deepblue: $deepblue-gray-300;
 $success-text-deepblue: $deepblue-algae;
-$info-text-deepblue: $deepblue-wave;
-$warning-text-deepblue: $deepblue-clownfish;
-$danger-text-deepblue: $deepblue-coral;
-$light-text-deepblue: $deepblue-gray-100;
-$dark-text-deepblue: $deepblue-gray-300;
+$info-text-deepblue: $deepblue-info;
+$warning-text-deepblue: $deepblue-warning;
+$danger-text-deepblue: $deepblue-danger;
+$light-text-deepblue: $deepblue-gray-800;
+$dark-text-deepblue: $deepblue-gray-100;
 
 $primary-bg-subtle-deepblue: $deepblue-gray-700;
 $secondary-bg-subtle-deepblue: $deepblue-gray-800;
@@ -55,7 +57,7 @@ $success-bg-subtle-deepblue: mix($deepblue-algae, $deepblue-abyss);
 $info-bg-subtle-deepblue: mix($deepblue-wave, $deepblue-abyss);
 $warning-bg-subtle-deepblue: mix($deepblue-clownfish, $deepblue-abyss);
 $danger-bg-subtle-deepblue: mix($deepblue-coral, $deepblue-abyss);
-$light-bg-subtle-deepblue: $deepblue-gray-600;
+$light-bg-subtle-deepblue: $deepblue-gray-200;
 $dark-bg-subtle-deepblue: $deepblue-gray-900;
 
 $primary-border-subtle-deepblue: $deepblue-gray-500;
@@ -63,8 +65,8 @@ $secondary-border-subtle-deepblue: $deepblue-gray-700;
 $success-border-subtle-deepblue: shade-color($deepblue-algae, 25%);
 $info-border-subtle-deepblue: shade-color($deepblue-wave, 25%);
 $warning-border-subtle-deepblue: shade-color($deepblue-clownfish, 25%);
-$danger-border-subtle-deepblue: $deepblue-crimson;
-$light-border-subtle-deepblue: $deepblue-gray-600;
+$danger-border-subtle-deepblue: shade-color($deepblue-coral, 25%);
+$light-border-subtle-deepblue: $deepblue-gray-300;
 $dark-border-subtle-deepblue: $deepblue-gray-800;
 
 $body-color-deepblue: mix($deepblue-gray-300, $deepblue-sunlight);
@@ -82,10 +84,28 @@ $link-color-deepblue: mix($deepblue-secondary, $deepblue-gray-500);
 $link-hover-color-deepblue: tint-color($deepblue-regalia, 25%);
 $code-color-deepblue: tint-color($deepblue-coral, 25%);
 
+//
+// Additional Colors (see additional-colors.scss)
+//
+
+$accent-text-deepblue: $deepblue-accent;
+$option-text-deepblue: $deepblue-option;
+$accent-bg-subtle-deepblue: mix($deepblue-crimson, $deepblue-abyss);
+$option-bg-subtle-deepblue: mix($deepblue-blacklight, $deepblue-abyss);
+$accent-border-subtle-deepblue: shade-color($deepblue-crimson, 25%);
+$option-border-subtle-deepblue: $deepblue-blacklight;
+
+
+//
+// Navbars
+//
+
 $navbar-deepblue-hover-color: mix($emphasis-color-deepblue, $deepblue-blacklight, 75%);
 $navbar-deepblue-color: $headings-color-deepblue;
 $navbar-deepblue-disabled-color: mix($navbar-deepblue-color, $deepblue-abyss, 50%);
 $navbar-deepblue-active-color: mix($navbar-deepblue-color, $deepblue-secondary, 50%);
+$nav-deepblue-pills-link-active-color: mix($emphasis-color-deepblue, $deepblue-glacier, 75%);
+$nav-deepblue-pills-link-active-bg: shade-color(mix($deepblue-primary, $deepblue-wave, 50%), 50%);
 
 //
 // Forms
@@ -129,7 +149,7 @@ $deepblue-theme-colors: (
 );
 
 $deepblue-button-colors: (
-  "primary": $deepblue-regalia,
+  "primary": $deepblue-primary,
   "secondary": $deepblue-yellowtail,
   "success": $deepblue-success,
   "info": $deepblue-info,
@@ -137,6 +157,8 @@ $deepblue-button-colors: (
   "danger": $deepblue-danger,
   "light": $deepblue-sunlight,
   "dark": $deepblue-abyss,
+  "option": $deepblue-option,
+  "accent": $deepblue-accent
 );
 
 
