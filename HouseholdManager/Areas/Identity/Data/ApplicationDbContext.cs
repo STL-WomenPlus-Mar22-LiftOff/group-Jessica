@@ -34,11 +34,22 @@ namespace HouseholdManager.Areas.Identity.Data
 
         public DbSet<IdentityUser> IdentityUsers { get; set; }
 
-        //This column needs to be set to Unicode in order to store icon emojis
+        //These columns needs to be set to Unicode in order to store icon emojis
         protected override void OnModelCreating(ModelBuilder mb)
         {
             base.OnModelCreating(mb);
+
             mb.Entity("HouseholdManager.Models.Room", b =>
+            {
+                b.Property<string>("Icon").IsUnicode(true);
+            });
+
+            mb.Entity("HouseholdManager.Models.Member", b =>
+            {
+                b.Property<string>("Icon").IsUnicode(true);
+            });
+
+            mb.Entity("HouseholdManager.Models.Household", b =>
             {
                 b.Property<string>("Icon").IsUnicode(true);
             });
