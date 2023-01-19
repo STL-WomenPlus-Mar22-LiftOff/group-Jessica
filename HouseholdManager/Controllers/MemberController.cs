@@ -26,8 +26,8 @@ namespace HouseholdManager.Controllers
         // GET: Member
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Members.Include(t => t.Household).Include(s => s.User);
-            return View(await applicationDbContext.ToListAsync());
+            var dataQuery = _context.Members.Include(t => t.Household).Include(s => s.User);
+            return View(await dataQuery.ToListAsync());
         }
 
 

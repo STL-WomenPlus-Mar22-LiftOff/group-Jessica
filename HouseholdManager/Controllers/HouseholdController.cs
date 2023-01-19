@@ -26,8 +26,8 @@ namespace HouseholdManager.Controllers
         // GET: Household
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Households;
-            return View(await applicationDbContext.ToListAsync());
+            var dataQuery = _context.Households;
+            return View(await dataQuery.ToListAsync());
         }
 
         // GET: Household/AddOrEdit

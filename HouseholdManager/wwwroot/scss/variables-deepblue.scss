@@ -8,7 +8,7 @@ $deepblue-regalia: #6f22b1;
 $deepblue-coral: #c1121f;
 $deepblue-crimson: #780000;
 $deepblue-clownfish: #c1641c;
-$deepblue-yellowfin: #bb9b44;
+$deepblue-yellowtail: #bb9b44;
 $deepblue-sunlight: #f8c9be;
 $deepblue-algae: #19c172;
 $deepblue-seafoam: #25d1a6;
@@ -31,7 +31,7 @@ $deepblue-primary: $deepblue-glacier;
 $deepblue-secondary: $deepblue-sunlight;
 $deepblue-success: shade-color($deepblue-seafoam, 25%);
 $deepblue-info: $deepblue-wave;
-$deepblue-warning: $deepblue-yellowfin;
+$deepblue-warning: $deepblue-yellowtail;
 $deepblue-danger: $deepblue-coral;
 
 
@@ -125,12 +125,12 @@ $deepblue-theme-colors: (
     "deepblue-sunlight": $deepblue-sunlight,
     "deepblue-wave": $deepblue-wave,
     "deepblue-whitewater": $deepblue-whitewater,
-    "deepblue-yellowfin": $deepblue-yellowfin
+    "deepblue-yellowtail": $deepblue-yellowtail
 );
 
 $deepblue-button-colors: (
   "primary": $deepblue-regalia,
-  "secondary": $deepblue-yellowfin,
+  "secondary": $deepblue-yellowtail,
   "success": $deepblue-success,
   "info": $deepblue-info,
   "warning": $deepblue-clownfish,
@@ -138,3 +138,9 @@ $deepblue-button-colors: (
   "light": $deepblue-sunlight,
   "dark": $deepblue-abyss,
 );
+
+
+//Adding the color map to theme-colors allows bootstrap to
+//auto-generate things like buttons and css variables.
+
+$theme-colors: map-merge($theme-colors, $deepblue-theme-colors);

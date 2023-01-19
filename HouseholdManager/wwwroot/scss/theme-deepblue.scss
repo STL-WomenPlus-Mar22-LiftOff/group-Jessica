@@ -1,5 +1,5 @@
 ﻿
-@import "../scss/variables-deepblue.scss";
+//@import "../scss/variables-deepblue.scss";
 
 @if $enable-theme-deepblue {
     @include color-mode(deepblue, true) {
@@ -56,10 +56,6 @@
         --#{$prefix}navbar-active-color: #{$navbar-deepblue-active-color};
     }
 
-    //Adding the color map to theme-colors allows bootstrap to 
-    //auto-generate things like buttons and css variables.
-
-    $theme-colors: map-merge($theme-colors, $deepblue-theme-colors);
 }
 
 
