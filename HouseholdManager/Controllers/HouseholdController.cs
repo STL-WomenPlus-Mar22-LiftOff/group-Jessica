@@ -10,6 +10,7 @@ using HouseholdManager.Models;
 using static HouseholdManager.Models.Household;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Areas.Identity.Data;
+using HouseholdManager.Data.API;
 
 namespace HouseholdManager.Controllers
 {
@@ -31,12 +32,15 @@ namespace HouseholdManager.Controllers
         }
 
         // GET: Household/AddOrEdit
-        public IActionResult AddOrEdit(int id = 0)
+        public async Task<IActionResult> AddOrEdit(int id = 0)
         {
+            IconRequestor req = new IconRequestor();
+            List<Icon> icons = await req.GetIconsFromApi();
+            ViewBag.Icons = icons;
             if (id == 0)
-                return View(new Models.Household());
+                return View(new Household());
             else
-                return View(_context.Rooms.Find(id));
+                return View(_context.Households.Find(id));
         }
 
         // POST: Household/AddOrEdit
@@ -44,7 +48,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("HouseholdId,HouseholdName,HouseholdIcon")] Household household)
+        public async Task<IActionResult> AddOrEdit([Bind("HouseholdId,HouseholdName,Icon")] Household household)
         {
             if (ModelState.IsValid)
             {
