@@ -1,5 +1,5 @@
 ﻿
-//@import "../scss/variables-deepblue.scss";
+@import "../scss/variables-deepblue.scss";
 
 @if $enable-theme-deepblue {
     @include color-mode(deepblue, true) {
@@ -99,4 +99,47 @@
 [data-bs-theme="deepblue"] 
 .icon-picker-menu {
     background-color: #{$primary-bg-subtle-deepblue};
+}
+
+//theme picker dropdown
+[data-bs-theme="deepblue"] {
+    //border
+    span.theme-picker.e-input-group:not(.e-success):not(.e-warning):not(.e-error) {
+        border-color: $border-color-deepblue;
+    }
+    //dropdown closed w/ selection made
+    input.e-control.e-dropdownlist.e-lib.e-input {
+        color: $navbar-deepblue-color;
+        background-color: shade-color($body-secondary-bg-deepblue, 50%);
+        border-color: $border-color-deepblue;
+    }
+    //dropdown icon
+    .e-input-group.e-ddl span.e-input-group-icon.e-ddl-icon.e-search-icon {
+        color: $navbar-deepblue-color !important;
+        background-color: shade-color($body-secondary-bg-deepblue, 50%) !important;
+    }
+    //disabled text
+    .e-input-group.e-control-wrapper .e-input[disabled] {
+        color: $navbar-deepblue-disabled-color;
+        -webkit-text-fill-color: $navbar-deepblue-disabled-color;
+    }
+    //placeholder
+    .e-ddl.e-input-group input.e-input::placeholder {
+        color: $navbar-deepblue-color;
+        background-color: shade-color($body-secondary-bg-deepblue, 50%);
+    }
+    //focus/hover/active.
+     e-dropdownbase .e-list-item.e-item-focus,
+    .e-dropdownbase .e-list-item.e-item-focus.e-hover,
+    .e-dropdownbase .e-list-item.e-active,
+    .e-dropdownbase .e-list-item.e-active.e-hover,
+    .e-dropdownbase .e-list-item.e-hover {
+        background-color: $deepblue-primary !important;
+        color: $nav-deepblue-pills-link-active-color !important;
+    }
+    //popup
+    .e-dropdownbase .e-list-item{
+        color: $navbar-deepblue-color;
+        background-color: shade-color($deepblue-primary, 20%);
+    }
 }
