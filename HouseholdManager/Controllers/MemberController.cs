@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Areas.Identity.Data;
+using HouseholdManager.Data.API;
 
 namespace HouseholdManager.Controllers
 {
@@ -32,8 +33,11 @@ namespace HouseholdManager.Controllers
 
 
         // GET: Member/AddOrEdit
-        public IActionResult AddOrEdit(int id = 0)
+        public async Task<IActionResult> AddOrEdit(int id = 0)
         {
+            IconRequestor req = new IconRequestor();
+            List<Icon> icons = await req.GetIconsFromApi();
+            ViewBag.Icons = icons;
             PopulateHouseholds();
             PopulateIdentityUsers();
             if (id == 0)
@@ -47,7 +51,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,MemberIcon,HouseholdId,UserName")] Member member)
+        public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,Icon,HouseholdId,UserName")] Member member)
         {
             if (ModelState.IsValid)
             {
