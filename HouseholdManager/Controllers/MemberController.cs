@@ -11,11 +11,12 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Areas.Identity.Data;
 using HouseholdManager.Data.API;
+using HouseholdManager.Data.Interfaces;
 
 namespace HouseholdManager.Controllers
 {
     [Authorize]
-    public class MemberController : Controller
+    public class MemberController : Controller, IRequestsIcons
     {
         private readonly ApplicationDbContext _context;
 
@@ -35,11 +36,9 @@ namespace HouseholdManager.Controllers
         // GET: Member/AddOrEdit
         public async Task<IActionResult> AddOrEdit(int id = 0)
         {
-            IconRequestor req = new IconRequestor();
-            List<Icon> icons = await req.GetIconsFromApi();
-            ViewBag.Icons = icons;
             PopulateHouseholds();
             PopulateIdentityUsers();
+            await PopulateIcons();
             if (id == 0)
                 return View(new Member());
             else
@@ -64,6 +63,7 @@ namespace HouseholdManager.Controllers
             }
             PopulateHouseholds();
             PopulateIdentityUsers();
+            await PopulateIcons();
             return View(member);
         }
 
@@ -103,6 +103,14 @@ namespace HouseholdManager.Controllers
             IdentityUser DefaultUser = new IdentityUser() { Id = "", UserName = "Choose an Identity User"};
             UserCollection.Insert(0, DefaultUser);
             ViewBag.IdentityUsers = UserCollection;
+        }
+
+        [NonAction]
+        public async Task PopulateIcons()
+        {
+            IconRequestor req = new IconRequestor();
+            List<Icon> icons = await req.GetIconsFromApi();
+            ViewBag.Icons = icons;
         }
 
     }

@@ -11,11 +11,12 @@ using static HouseholdManager.Models.Household;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Areas.Identity.Data;
 using HouseholdManager.Data.API;
+using HouseholdManager.Data.Interfaces;
 
 namespace HouseholdManager.Controllers
 {
     [Authorize]
-    public class HouseholdController : Controller
+    public class HouseholdController : Controller, IRequestsIcons
     {
         private readonly ApplicationDbContext _context;
 
@@ -34,9 +35,7 @@ namespace HouseholdManager.Controllers
         // GET: Household/AddOrEdit
         public async Task<IActionResult> AddOrEdit(int id = 0)
         {
-            IconRequestor req = new IconRequestor();
-            List<Icon> icons = await req.GetIconsFromApi();
-            ViewBag.Icons = icons;
+            await PopulateIcons();
             if (id == 0)
                 return View(new Household());
             else
@@ -59,6 +58,7 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            await PopulateIcons();
             return View(household);
         }
 
@@ -80,6 +80,14 @@ namespace HouseholdManager.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        [NonAction]
+        public async Task PopulateIcons()
+        {
+            IconRequestor req = new IconRequestor();
+            List<Icon> icons = await req.GetIconsFromApi();
+            ViewBag.Icons = icons;
         }
     }    
 }
