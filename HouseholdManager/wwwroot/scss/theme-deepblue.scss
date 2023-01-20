@@ -83,6 +83,9 @@
             $hover-color: $deepblue-sunken,
             $hover-border: tint-color($button-color, 10%),
             $hover-background: $button-color,
+            $active-color: $deepblue-sunken,
+            $active-background: $button-color,
+            $active-border: tint-color($button-color, 10%),
             $disabled-background: mix($button-color, $deepblue-abyss, 25%),
             $disabled-border: mix($button-color, $deepblue-abyss, 25%)
         );
