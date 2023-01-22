@@ -9,11 +9,12 @@ using System.Text.Json;
 using HouseholdManager.Data.API;
 using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
+using HouseholdManager.Data.Interfaces;
 
 namespace HouseholdManager.Controllers
 {
     [Authorize]
-    public class RoomController : Controller
+    public class RoomController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;
 
