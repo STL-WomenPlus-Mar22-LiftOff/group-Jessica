@@ -80,14 +80,15 @@
             shade-color($button-color, 30%),
             shade-color($button-color, 15%),
             $headings-color-deepblue,
-            $hover-color: $deepblue-sunken,
-            $hover-border: tint-color($button-color, 10%),
-            $hover-background: $button-color,
-            $active-color: $deepblue-sunken,
-            $active-background: $button-color,
-            $active-border: tint-color($button-color, 10%),
-            $disabled-background: mix($button-color, $deepblue-abyss, 25%),
-            $disabled-border: mix($button-color, $deepblue-abyss, 25%)
+            $hover-color: shade-color($headings-color-deepblue, 30%),
+            $hover-border: $button-color,
+            $hover-background: shade-color($button-color, 35%),
+            $active-color: shade-color($headings-color-deepblue, 60%),
+            $active-background: shade-color($button-color, 65%),
+            $active-border: shade-color($button-color, 30%),
+            $disabled-background: mix($button-color, $deepblue-abyss, 85%),
+            $disabled-border: mix($button-color, $deepblue-abyss, 85%),
+            $disabled-color: mix($headings-color-deepblue, $deepblue-abyss, 85%)
         );
     }
 }

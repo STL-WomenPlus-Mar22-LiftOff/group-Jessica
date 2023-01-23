@@ -71,6 +71,12 @@ body {
     font-family: "Noto Color Emoji" !important;
 }
 
+.button-row-container {
+    display: inline-grid;
+    grid-template-columns: [first] auto [second] auto [third] auto [fourth] auto;
+    place-self: center;
+}
+
 /*WIP wobble back-and-forth effect
 .effect-wobble {
     animation: wobble 5s linear 0s infinite backwards;
