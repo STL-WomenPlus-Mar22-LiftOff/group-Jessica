@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+
     public class RoomController : Controller
     {
         private readonly ApplicationDbContext _context;

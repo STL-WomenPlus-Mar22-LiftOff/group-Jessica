@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+
     public class HouseholdController : Controller
     {
         private readonly ApplicationDbContext _context;

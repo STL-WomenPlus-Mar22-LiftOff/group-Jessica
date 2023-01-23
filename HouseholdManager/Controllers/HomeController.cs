@@ -1,34 +1,24 @@
 ﻿using HouseholdManager.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private UserManager<AppUser> userManager;
+        public HomeController(UserManager<AppUser> userMgr)
         {
-            _logger = logger;
+            userManager = userMgr;
         }
 
-        public IActionResult Index()
+        [Authorize]
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            AppUser user = await userManager.GetUserAsync(HttpContext.User);
+            string message = "Hello " + user.UserName;
+            return View((object)message);
         }
     }
 }

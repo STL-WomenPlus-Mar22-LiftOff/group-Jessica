@@ -20,8 +20,4 @@
     <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="20.4.0.42" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Data\" />
-  </ItemGroup>
-
 </Project>
