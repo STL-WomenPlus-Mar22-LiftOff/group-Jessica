@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230119213030_iconSupportAdditional")]
-    partial class iconSupportAdditional
+    [Migration("20230123022825_linkTableInitial")]
+    partial class linkTableInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,7 +93,10 @@ namespace HouseholdManager.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MemberId")
+                    b.Property<int?>("HouseholdId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MemberId")
                         .HasColumnType("int");
 
                     b.Property<string>("MissionName")
@@ -103,10 +106,12 @@ namespace HouseholdManager.Migrations
                     b.Property<int>("Point")
                         .HasColumnType("int");
 
-                    b.Property<int>("RoomId")
+                    b.Property<int?>("RoomId")
                         .HasColumnType("int");
 
                     b.HasKey("MissionId");
+
+                    b.HasIndex("HouseholdId");
 
                     b.HasIndex("MemberId");
 
@@ -123,6 +128,9 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomId"), 1L, 1);
 
+                    b.Property<int?>("HouseholdId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Icon")
                         .IsRequired()
                         .IsUnicode(true)
@@ -133,6 +141,8 @@ namespace HouseholdManager.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("RoomId");
+
+                    b.HasIndex("HouseholdId");
 
                     b.ToTable("Rooms");
                 });
@@ -342,7 +352,7 @@ namespace HouseholdManager.Migrations
             modelBuilder.Entity("HouseholdManager.Models.Member", b =>
                 {
                     b.HasOne("HouseholdManager.Models.Household", "Household")
-                        .WithMany()
+                        .WithMany("Members")
                         .HasForeignKey("HouseholdId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -358,21 +368,32 @@ namespace HouseholdManager.Migrations
 
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
                 {
+                    b.HasOne("HouseholdManager.Models.Household", "Household")
+                        .WithMany("Missions")
+                        .HasForeignKey("HouseholdId");
+
                     b.HasOne("HouseholdManager.Models.Member", "Member")
-                        .WithMany()
-                        .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Missions")
+                        .HasForeignKey("MemberId");
 
                     b.HasOne("HouseholdManager.Models.Room", "Room")
                         .WithMany()
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoomId");
+
+                    b.Navigation("Household");
 
                     b.Navigation("Member");
 
                     b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("HouseholdManager.Models.Room", b =>
+                {
+                    b.HasOne("HouseholdManager.Models.Household", "Household")
+                        .WithMany("Rooms")
+                        .HasForeignKey("HouseholdId");
+
+                    b.Navigation("Household");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -424,6 +445,20 @@ namespace HouseholdManager.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HouseholdManager.Models.Household", b =>
+                {
+                    b.Navigation("Members");
+
+                    b.Navigation("Missions");
+
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("HouseholdManager.Models.Member", b =>
+                {
+                    b.Navigation("Missions");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-7">
-        <div class="widget p-5" style="background-color: #1a222b">
+        <div class="widget p-5 bg-body-secondary">
             <form asp-action="AddOrEdit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" name="MemberId" value="@Model.MemberId" />
@@ -55,8 +55,8 @@
     </div>
 </div>
 
-@*@section Scripts {
+@section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}*@
+}

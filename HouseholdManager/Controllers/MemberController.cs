@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
-using HouseholdManager.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Areas.Identity.Data;
 using HouseholdManager.Data.API;
 using HouseholdManager.Data.Interfaces;
+using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
@@ -28,8 +26,17 @@ namespace HouseholdManager.Controllers
         // GET: Member
         public async Task<IActionResult> Index()
         {
-            var dataQuery = _context.Members.Include(t => t.Household).Include(s => s.User);
-            return View(await dataQuery.ToListAsync());
+            var dataQuery = _context.Members.Include(s => s.User);
+            var viewModel = await (from member in dataQuery
+                                   select new MemberViewModel(member))
+                                  .ToListAsync();
+            foreach (var viewMember in viewModel)
+            {
+                viewMember.HouseholdWithIcon = _context.Households
+                                                       .Find(viewMember.HouseholdId)?
+                                                       .HouseholdNameWithIcon ?? "";
+            }
+            return View(viewModel);
         }
 
 

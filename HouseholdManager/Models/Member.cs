@@ -11,21 +11,26 @@ namespace HouseholdManager.Models
         public int MemberId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
+        [StringLength(50, ErrorMessage = "Invalid string")]
         [Required(ErrorMessage = "Member type (Administrator or Member) is required.")]
         public string MemberType { get; set; } = "Member";
 
+        [StringLength(5, ErrorMessage = "Invalid string")]
         [Column(TypeName = "nvarchar(5)")]
         public string Icon { get; set; } = "";
 
         //HouseholdId-Foreign Key
-        [Range(1, int.MaxValue, ErrorMessage = "Please select household")]
-        public int HouseholdId { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Invalid Household ID")]
+        [ForeignKey(nameof(Household))]
+        public int? HouseholdId { get; set; }
 
         public Household? Household { get; set; }
 
         public string UserName { get; set; }
 
         public IdentityUser? User { get; set; }
+
+        public ICollection<Mission>? Missions { get; set; }
 
         [NotMapped]
         public string? HouseholdNameWithIcon

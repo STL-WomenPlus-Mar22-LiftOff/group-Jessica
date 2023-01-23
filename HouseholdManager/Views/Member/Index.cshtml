@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HouseholdManager.Models.Member>
+﻿@model IEnumerable<HouseholdManager.Models.ViewModels.MemberViewModel>
 
 @{
     ViewData["PageTitle"] = "Members";
@@ -16,9 +16,9 @@
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="MemberName" field="MemberUserNameWithIcon"></e-grid-column>
-                <e-grid-column headerText="MemberType" template="#typeColumnTemplate" width="150px"></e-grid-column>
-                <e-grid-column headerText="Household" field="HouseholdNameWithIcon" width="100px" textAlign="Left"></e-grid-column>
+                <e-grid-column headerText="Member Name" field="NameWithIcon"></e-grid-column>
+                <e-grid-column headerText="Type" template="#typeColumnTemplate" width="150px"></e-grid-column>
+                <e-grid-column headerText="Household" field="HouseholdWithIcon" width="100px" textAlign="Left"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
@@ -41,7 +41,7 @@
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
         <a class="btn btn-sm no-a-decoration" href="/Member/AddOrEdit/${MemberId}">
-            <i class="fa-solid fa-pen fa-lg"></i>
+            <i class="fa-solid fa-pen fa-lg text-secondary"></i>
         </a>
         <form action="/Member/Delete/${MemberId}" method="post">
             @Html.AntiForgeryToken()
