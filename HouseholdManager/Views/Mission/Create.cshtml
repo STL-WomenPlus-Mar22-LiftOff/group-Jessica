@@ -7,6 +7,10 @@
 @*<h1>Create</h1>*@
 
 <h3>Create a Mission</h3>
+<p>
+    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a room</a>
+    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
+</p>
 <div class="row">
     <div class="col-md-6">
         <form asp-action="Create">
@@ -47,7 +51,7 @@
                 </div>
                 <div class="col-md-6">
                     <div>
-                        <a asp-action="Index" class="btn btn-secondary w-100">Cancel</a>
+                        <a asp-action="Index" class="btn btn-secondary w-100" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Cancel</a>
                     </div>
                 </div>
             </div>

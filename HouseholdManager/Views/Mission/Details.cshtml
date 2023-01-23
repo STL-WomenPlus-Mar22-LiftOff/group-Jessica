@@ -39,7 +39,12 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.MissionId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model?.MissionId" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Edit</a> |
+    <a asp-action="Index" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Back to List</a>
+</p>
+<p>
+    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
+    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
+    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
+</p>
