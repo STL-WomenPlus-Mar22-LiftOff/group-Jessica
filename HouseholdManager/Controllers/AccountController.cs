@@ -5,7 +5,7 @@ using HouseholdManager.Models;
 
 namespace HouseholdManager.Controllers
 {
-
+    [Authorize(Roles = "Administrator, User")]
     public class AccountController : Controller
     {
         private UserManager<AppUser> userManager;
@@ -38,7 +38,7 @@ namespace HouseholdManager.Controllers
                     await signInManager.SignOutAsync();
                     Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(appUser, login.Password, false, false);
                     if (result.Succeeded)
-                        return RedirectToAction("Index", "Welcome");
+                        return Redirect(login.ReturnUrl ?? "/");
                 }
                 ModelState.AddModelError(nameof(login.Email), "Login Failed: Invalid Email or password");
             }
@@ -49,6 +49,11 @@ namespace HouseholdManager.Controllers
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }

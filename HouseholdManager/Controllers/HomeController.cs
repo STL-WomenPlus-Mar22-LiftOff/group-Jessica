@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HouseholdManager.Controllers
 {
+    [Authorize(Roles = "Administrator, User")]
     public class HomeController : Controller
     {
         private UserManager<AppUser> userManager;

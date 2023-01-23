@@ -9,7 +9,7 @@ using HouseholdManager.Models;
 
 namespace HouseholdManager.Controllers
 {
-
+    [Authorize(Roles = "Administrator, User")]
     public class MissionController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HouseholdManager.Controllers
 {
-
+    [Authorize(Roles = "Administrator")]
     public class RoleController : Controller
     {
         private RoleManager<IdentityRole> roleManager;

@@ -21,14 +21,14 @@ namespace HouseholdManager.Controllers
             userValidator = userValid;
         }
 
-
+        [Authorize(Roles = "Administrator")]
         public IActionResult Index()
         {
             
             return View(userManager.Users);
         }
 
-
+        [Authorize(Roles = "Administrator")]
         public IActionResult AdminIndex()
         {
             return View("AdminWelcome");
@@ -65,7 +65,7 @@ namespace HouseholdManager.Controllers
             return View(user);
         }
 
-
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Update(string id)
         {
             AppUser user = await userManager.FindByIdAsync(id);
@@ -76,7 +76,7 @@ namespace HouseholdManager.Controllers
         }
 
         [HttpPost]
-
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Update(string id, string email, string password, int? age, string? firstName, string? lastName)
         {
             AppUser user = await userManager.FindByIdAsync(id);
