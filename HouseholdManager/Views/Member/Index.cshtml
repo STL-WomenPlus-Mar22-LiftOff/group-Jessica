@@ -41,7 +41,7 @@
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
         <a class="btn btn-sm no-a-decoration" href="/Member/AddOrEdit/${MemberId}">
-            <i class="fa-solid fa-pen fa-lg"></i>
+            <i class="fa-solid fa-pen fa-lg text-secondary"></i>
         </a>
         <form action="/Member/Delete/${MemberId}" method="post">
             @Html.AntiForgeryToken()
@@ -52,7 +52,3 @@
         </form>
     </div>
 </script>
-<p>
-    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i>Create a room</a>
-    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i>Create a mission</a>
-</p>

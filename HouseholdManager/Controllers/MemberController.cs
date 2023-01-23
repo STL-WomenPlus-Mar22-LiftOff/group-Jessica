@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
 using HouseholdManager.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Areas.Identity.Data;
 using HouseholdManager.Data.API;
