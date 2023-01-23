@@ -5,13 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HouseholdManager.Migrations
 {
-    public partial class Idenity : Migration
+    public partial class InitialMigrationSeeded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "User");
-
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -63,6 +60,20 @@ namespace HouseholdManager.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Households", x => x.HouseholdId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rooms",
+                columns: table => new
+                {
+                    RoomId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rooms", x => x.RoomId);
                 });
 
             migrationBuilder.CreateTable(
@@ -199,6 +210,105 @@ namespace HouseholdManager.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Missions",
+                columns: table => new
+                {
+                    MissionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MissionName = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    RoomId = table.Column<int>(type: "int", nullable: false),
+                    Point = table.Column<int>(type: "int", nullable: false),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MemberId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Missions", x => x.MissionId);
+                    table.ForeignKey(
+                        name: "FK_Missions_Members_MemberId",
+                        column: x => x.MemberId,
+                        principalTable: "Members",
+                        principalColumn: "MemberId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Missions_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "RoomId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "c7b013f0-5201-4317-abd8-c211f91b7330", "2", "User", "User" },
+                    { "fab4fac1-c546-41de-aebc-a14da6895711", "1", "Administrator", "Administrator" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "a1addd14-6340-4840-95c2-db12554843e5", 0, "44e430a1-ba7c-47de-863b-a39fd06bf9b2", "defaultAdmin@yahoo.com", false, true, null, "DEFAULTADMIN@YAHOO.COM", "DEFAULTADMIN@YAHOO.COM", "AQAAAAEAACcQAAAAELGYdoWrouDvWMY2Bv8oDeBIopm6JBB5C2FlldsHXQHeEuj+DmUJynaNWfAwQQu06w==", "111-222-3333", false, "be913702-cb6b-44c7-a257-53c195904465", false, "defaultAdmin@yahoo.com" },
+                    { "u1ua87c6-b718-4f48-90a2-458e0a2443e6", 0, "d250ae28-554f-4c23-932a-5148d917019b", "defaultUser@yahoo.com", false, true, null, "DEFAULTUSER@YAHOO.COM", "DEFAULTUSER@YAHOO.COM", "AQAAAAEAACcQAAAAEHOJXfSotFYKOke7pHSVpeSLGuGU6QRIGQdsZOCaq7XV3GklpEd9QnlQFEdrb/P6dg==", "111-222-3333", false, "3a976662-28a4-44f6-b1ad-982d1aedf89e", false, "defaultUser@yahoo.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Households",
+                columns: new[] { "HouseholdId", "HouseholdIcon", "HouseholdName" },
+                values: new object[] { 1, "", "DefaultHousehold" });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "RoomId", "Icon", "Name" },
+                values: new object[,]
+                {
+                    { 1, "", "Kitchen" },
+                    { 2, "", "Bathroom" },
+                    { 3, "", "Master Bedroom" },
+                    { 4, "", "Living Room" },
+                    { 5, "", "Bedroom" },
+                    { 6, "", "Guest Bedroom" },
+                    { 7, "", "Master Bathroom" },
+                    { 8, "", "Dining Room" },
+                    { 9, "", "Yard" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "c7b013f0-5201-4317-abd8-c211f91b7330", "a1addd14-6340-4840-95c2-db12554843e5" },
+                    { "fab4fac1-c546-41de-aebc-a14da6895711", "a1addd14-6340-4840-95c2-db12554843e5" },
+                    { "c7b013f0-5201-4317-abd8-c211f91b7330", "u1ua87c6-b718-4f48-90a2-458e0a2443e6" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Members",
+                columns: new[] { "MemberId", "HouseholdId", "MemberIcon", "MemberType", "UserId", "UserName" },
+                values: new object[,]
+                {
+                    { 1, 1, "", "Admin", null, "defaultAdmin@yahoo.com" },
+                    { 2, 1, "", "Member", null, "defaultUser@yahoo.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Missions",
+                columns: new[] { "MissionId", "DueDate", "MemberId", "MissionName", "Point", "RoomId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 1, 23, 9, 33, 49, 162, DateTimeKind.Local).AddTicks(3072), 2, "Wash dishes", 2, 1 },
+                    { 2, new DateTime(2023, 1, 23, 9, 33, 49, 162, DateTimeKind.Local).AddTicks(3116), 1, "Make bed", 1, 5 },
+                    { 3, new DateTime(2023, 1, 23, 9, 33, 49, 162, DateTimeKind.Local).AddTicks(3124), 2, "Make bed", 1, 3 },
+                    { 4, new DateTime(2023, 1, 23, 9, 33, 49, 162, DateTimeKind.Local).AddTicks(3131), 1, "Mow lawn", 5, 9 },
+                    { 5, new DateTime(2023, 1, 23, 9, 33, 49, 162, DateTimeKind.Local).AddTicks(3138), 1, "Make dinner", 4, 1 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -247,6 +357,16 @@ namespace HouseholdManager.Migrations
                 name: "IX_Members_UserId",
                 table: "Members",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Missions_MemberId",
+                table: "Missions",
+                column: "MemberId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Missions_RoomId",
+                table: "Missions",
+                column: "RoomId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -267,31 +387,22 @@ namespace HouseholdManager.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Members");
+                name: "Missions");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Members");
+
+            migrationBuilder.DropTable(
+                name: "Rooms");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Households");
-
-            migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Position = table.Column<string>(type: "nvarchar(5)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(20)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.UserId);
-                });
         }
     }
 }

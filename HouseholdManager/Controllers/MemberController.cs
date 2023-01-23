@@ -9,7 +9,6 @@ using HouseholdManager.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Authorization;
-using HouseholdManager.Areas.Identity.Data;
 
 namespace HouseholdManager.Controllers
 {
@@ -35,7 +34,7 @@ namespace HouseholdManager.Controllers
         public IActionResult AddOrEdit(int id = 0)
         {
             PopulateHouseholds();
-            PopulateIdentityUsers();
+            PopulateAppUsers();
             if (id == 0)
                 return View(new Member());
             else
@@ -59,7 +58,7 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction("Index");
             }
             PopulateHouseholds();
-            PopulateIdentityUsers();
+            PopulateAppUsers();
             return View(member);
         }
 
@@ -93,12 +92,12 @@ namespace HouseholdManager.Controllers
         }
 
         [NonAction]
-        public void PopulateIdentityUsers()
+        public void PopulateAppUsers()
         {
-            var UserCollection = _context.IdentityUsers.ToList();
-            IdentityUser DefaultUser = new IdentityUser() { Id = "", UserName = "Choose an Identity User"};
+            var UserCollection = _context.AppUsers.ToList();
+            AppUser DefaultUser = new AppUser() { Id = "", UserName = "Choose an Identity User"};
             UserCollection.Insert(0, DefaultUser);
-            ViewBag.IdentityUsers = UserCollection;
+            ViewBag.AppUsers = UserCollection;
         }
 
     }

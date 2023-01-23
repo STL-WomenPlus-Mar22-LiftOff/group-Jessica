@@ -25,7 +25,7 @@ namespace HouseholdManager.Models
 
         public string UserName { get; set; }
 
-        public IdentityUser? User { get; set; }
+        public AppUser? User { get; set; }
 
         [NotMapped]
         public string? HouseholdNameWithIcon
