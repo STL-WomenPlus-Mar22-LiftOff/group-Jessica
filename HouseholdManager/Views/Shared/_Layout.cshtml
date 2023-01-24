@@ -3,6 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HouseholdManager</title>
+    <!-- Syncfusion ASP.NET Core controls scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2.min.js"></script>
+
+    <!--STYLE SHEETS-->
+    <!-- Syncfusion ASP.NET Core controls styles -->
+    <link id="cssfile" href="https://cdn.syncfusion.com/ej2/20.4.38/bootstrap5.css" rel="stylesheet" />
+    <!-- Customized SASS version of Bootstrap-->
+    <link id="bootstrap" rel="stylesheet" href="~/scss/bootstrap-custom.css" asp-append-version="true">
+    <!--Other style sheets-->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!--FONTS-->
+    <!--Icon font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Color+Emoji">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
+    <!-- Reference to fontawesome.com to be able to use icons throughout the application -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
     <!--This is to prevent an undesirable white "flash of unstyled content" when the page loads in dark mode-->
     <!--It hides the body of the page, runs a fast check for dark mode, and then hands control over to the theme picker script-->
     <style>
@@ -13,24 +34,7 @@
     </style>
     <script id="stopWhiteFlashScript" src="~/js/stopWhiteFlash.js"></script>
     <script id="themePickerScript" src="~/js/themePicker.js"></script>
-    <title>@ViewData["Title"] - HouseholdManager</title>
-    <!--Icon font-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Color+Emoji">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Syncfusion ASP.NET Core controls styles -->
-    <link id="cssfile" href="https://cdn.syncfusion.com/ej2/20.4.38/bootstrap5.css" rel="stylesheet" />
-    <!--Custom style sheets-->
-    <link id="deepblue-css" rel="stylesheet" href="~/css/bootstrap-deepblue-custom.css" asp-append-version="true" disabled="true"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <!-- Syncfusion ASP.NET Core controls scripts -->
-    <script src="https://cdn.syncfusion.com/ej2/20.4.38/dist/ej2.min.js"></script>
-    
-    <!-- Reference to fontawesome.com to be able to use icons throughout the application -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-</head>
-<body>
     <!--Safeguard in case JavaScript is disabled-->
     <noscript>
         <style>
@@ -40,7 +44,7 @@
             }
         </style>
     </noscript>
-    <header>
+    <header class="bg-body-secondary">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HouseholdManager</a>
@@ -57,10 +61,10 @@
                             <a class="nav-link" asp-area="" asp-controller="Welcome" asp-action="Index">UserWelcome</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Room" asp-action="Index">Rooms</a>
+                            <a class="nav-link" asp-area="" asp-controller="Mission" asp-action="Index">Missions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Mission" asp-action="Index">Missions</a>
+                            <a class="nav-link" asp-area="" asp-controller="Room" asp-action="Index">Rooms</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Household" asp-action="Index">Households</a>
@@ -91,12 +95,15 @@
             &copy; 2022 - HouseholdManager - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    <!--jQuery, used for form validation-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Sitewide scripts-->
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <!--Bootstrap scripts-->
+    <script src="~/lib/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
     <!-- Syncfusion Script Manager -->
     <ejs-scripts></ejs-scripts>
+    @await RenderSectionAsync("Scripts", required: false)
 
 </body>
 </html>

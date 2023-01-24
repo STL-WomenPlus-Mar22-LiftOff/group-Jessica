@@ -22,8 +22,8 @@ namespace HouseholdManager.Controllers
         // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Missions.Include(t => t.Room).Include(u => u.Member);
-            return View(await applicationDbContext.ToListAsync());
+            var dataQuery = _context.Missions.Include(t => t.Room).Include(u => u.Member);
+            return View(await dataQuery.ToListAsync());
         }
 
         // GET: Mission/Details/5
