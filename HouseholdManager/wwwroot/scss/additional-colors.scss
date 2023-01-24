@@ -1,0 +1,17 @@
+﻿
+
+//Definitions for new bootstrap colors
+$custom-accent: #6e4aa4;
+$custom-option: #b5540a;
+
+//Mapping to names
+$additional-colors: (
+    "accent": $custom-accent,
+    "option": $custom-option
+);
+
+
+//Adding the color map to theme-colors allows bootstrap to
+//auto-generate things like buttons and css variables.
+
+$theme-colors: map-merge($theme-colors, $additional-colors);

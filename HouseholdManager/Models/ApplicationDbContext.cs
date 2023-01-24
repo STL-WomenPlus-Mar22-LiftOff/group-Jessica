@@ -43,6 +43,17 @@ namespace HouseholdManager.Models
             {
                 b.Property<string>("Icon").IsUnicode(true);
             });
+
+            builder.Entity("HouseholdManager.Models.Member", b =>
+            {
+                b.Property<string>("Icon").IsUnicode(true);
+            });
+
+            builder.Entity("HouseholdManager.Models.Household", b =>
+            {
+                b.Property<string>("Icon").IsUnicode(true);
+            });
+
             SeedHousehold(builder);
             SeedRoles(builder);
             SeedUsers(builder);

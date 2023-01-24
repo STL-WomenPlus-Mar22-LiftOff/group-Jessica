@@ -16,8 +16,10 @@
                     <span asp-validation-for="HouseholdName" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
-                    <ejs-textbox id="householdicon" placeholder="HouseholdIcon" ejs-for="HouseholdIcon" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="HouseholdIcon" class="text-danger" fs-6></span>
+                    <label asp-for="Icon" class="control-label"></label>
+                    <input asp-for="Icon" id="iconInput" class="form-control" hidden />
+                    @await Html.PartialAsync("_IconMenuPartial")
+                    <span asp-validation-for="Icon" class="text-danger" fs-6></span>
                 </div>               
                 <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
             </form>
@@ -35,6 +37,7 @@
     <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
 </p>
 
-@*@section Scripts {
+@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}*@
+}
+
