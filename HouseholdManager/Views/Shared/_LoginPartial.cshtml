@@ -4,7 +4,7 @@
 @inject UserManager<Member> UserManager
 
 @{
-    var user = await UserManager.GetUserAsync(User);
+    var user = await UserManager.GetUserAsync(User) ?? new Member();
     string displayName = !string.IsNullOrEmpty(user.DisplayName) ? user.DisplayName
                                                                  : UserManager.GetUserName(User);
 

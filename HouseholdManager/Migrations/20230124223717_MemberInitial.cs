@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HouseholdManager.Migrations
 {
-    public partial class Initial : Migration
+    public partial class MemberInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,38 +24,13 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Households",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,6 +54,61 @@ namespace HouseholdManager.Migrations
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MemberType = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    HouseholdId = table.Column<int>(type: "int", nullable: true),
+                    DisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_Households_HouseholdId",
+                        column: x => x.HouseholdId,
+                        principalTable: "Households",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rooms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    HouseholdId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Rooms_Households_HouseholdId",
+                        column: x => x.HouseholdId,
+                        principalTable: "Households",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -169,54 +199,6 @@ namespace HouseholdManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Members",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MemberType = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
-                    HouseholdId = table.Column<int>(type: "int", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Members", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Members_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Members_Households_HouseholdId",
-                        column: x => x.HouseholdId,
-                        principalTable: "Households",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Rooms",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
-                    HouseholdId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Rooms", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Rooms_Households_HouseholdId",
-                        column: x => x.HouseholdId,
-                        principalTable: "Households",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Missions",
                 columns: table => new
                 {
@@ -226,23 +208,23 @@ namespace HouseholdManager.Migrations
                     RoomId = table.Column<int>(type: "int", nullable: true),
                     Point = table.Column<int>(type: "int", nullable: false),
                     DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MemberId = table.Column<int>(type: "int", nullable: true),
+                    MemberId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     HouseholdId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Missions", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Missions_AspNetUsers_MemberId",
+                        column: x => x.MemberId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_Missions_Households_HouseholdId",
                         column: x => x.HouseholdId,
                         principalTable: "Households",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Missions_Members_MemberId",
-                        column: x => x.MemberId,
-                        principalTable: "Members",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Missions_Rooms_RoomId",
                         column: x => x.RoomId,
@@ -283,21 +265,16 @@ namespace HouseholdManager.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_HouseholdId",
+                table: "AspNetUsers",
+                column: "HouseholdId");
+
+            migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Members_HouseholdId",
-                table: "Members",
-                column: "HouseholdId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Members_UserId",
-                table: "Members",
-                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Missions_HouseholdId",
@@ -344,13 +321,10 @@ namespace HouseholdManager.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Members");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Rooms");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Households");

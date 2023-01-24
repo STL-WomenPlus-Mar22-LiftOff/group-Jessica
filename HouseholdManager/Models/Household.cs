@@ -10,12 +10,9 @@ namespace HouseholdManager.Models
         public int Id { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-        [StringLength(50, ErrorMessage = "Household name is limited to 50 characters.")]
-        [Required(ErrorMessage = "Household name is required.")]
         public string Name { get; set; }
 
         [Column(TypeName = "nvarchar(5)")]
-        [StringLength(5, ErrorMessage = "Invalid icon.")]
         public string Icon { get; set; } = "";
 
         public ICollection<Member> Members { get; set; }

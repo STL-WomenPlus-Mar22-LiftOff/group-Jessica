@@ -29,7 +29,7 @@ namespace HouseholdManager.Controllers
             if (user.HouseholdId is null || user.HouseholdId < 1)
             {
                 //instead of a redirect, this should be a welcome/walkthrough page
-                Redirect("Household/Setup");
+                return Redirect("Household/Setup");
             }
             return View(user);
         }

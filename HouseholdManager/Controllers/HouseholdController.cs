@@ -9,6 +9,7 @@ using HouseholdManager.Areas.Identity.Data;
 using HouseholdManager.Data.API;
 using HouseholdManager.Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
@@ -60,10 +61,15 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Setup([Bind("HouseholdName,Icon")] Household household)
+        public async Task<IActionResult> Setup([Bind("Name,Icon")] EditHouseholdViewModel model)
         {
             if (ModelState.IsValid)
             {
+                Household household = new Household()
+                {
+                    Name = model.Name,
+                    Icon = model.Icon
+                };
                 //Set the current user to household administrator
                 var member = await _userManager.GetUserAsync(User);
                 member.MemberType = "Administrator";
@@ -89,10 +95,9 @@ namespace HouseholdManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (household.Id == 0)
-                    _context.Add(household);
-                else
-                    _context.Update(household);
+                var member = await _userManager.GetUserAsync(User);
+
+                _context.Update(household);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

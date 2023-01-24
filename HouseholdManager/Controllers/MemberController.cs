@@ -27,10 +27,9 @@ namespace HouseholdManager.Controllers
         // GET: Member
         public async Task<IActionResult> Index()
         {
-            var dataQuery = _context.Members.Include(t => t.Household).Include(s => s.User);
-            return View(await dataQuery.ToListAsync());
+            return View();
         }
-
+        /*
 
         // GET: Member/AddOrEdit
         public async Task<IActionResult> AddOrEdit(int id = 0)
@@ -85,6 +84,7 @@ namespace HouseholdManager.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        */
 
         [NonAction]
         public void PopulateHouseholds()
@@ -95,14 +95,6 @@ namespace HouseholdManager.Controllers
             ViewBag.Households = HouseholdCollection;
         }
 
-        [NonAction]
-        public void PopulateIdentityUsers()
-        {
-            var UserCollection = _context.IdentityUsers.ToList();
-            IdentityUser DefaultUser = new IdentityUser() { Id = "", UserName = "Choose an Identity User"};
-            UserCollection.Insert(0, DefaultUser);
-            ViewBag.IdentityUsers = UserCollection;
-        }
 
         [NonAction]
         public async Task PopulateIcons()

@@ -49,7 +49,7 @@ namespace HouseholdManager.Controllers
         // GET: Mission/Create
         public IActionResult Create()
         {
-            PopulateMembers();
+            //PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
             return View();
         }
@@ -67,7 +67,7 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            PopulateMembers();
+            //PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
             return View(mission);
         }
@@ -85,7 +85,7 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
-            PopulateMembers();
+            //PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
             return View(mission);
         }
@@ -122,7 +122,7 @@ namespace HouseholdManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            PopulateMembers();
+            //PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
             return View(mission);
         }
@@ -168,15 +168,6 @@ namespace HouseholdManager.Controllers
         private bool MissionExists(int id)
         {
           return _context.Missions.Any(e => e.Id == id);
-        }
-
-        [NonAction]
-        public void PopulateMembers()
-        {
-            var MemberCollection = _context.Members.ToList();
-            Member DefaultMember = new Member() { Id = 0, DisplayName = "Choose a member" };
-            MemberCollection.Insert(0, DefaultMember);
-            ViewBag.Members = MemberCollection;
         }
     }
 }
