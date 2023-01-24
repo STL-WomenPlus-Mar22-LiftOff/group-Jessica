@@ -36,12 +36,12 @@
             @Html.DisplayFor(model => model.DueDate)
         </dd>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Member.MemberUserNameWithIcon)
+            @Html.DisplayFor(model => model.Member.UserNameWithIcon)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="MissionId" />
+        <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Back to List</a>
     </form>

@@ -5,43 +5,39 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HouseholdManager.Models
 {
-    public class Member
+    public class Member : IdentityUser
     {
-        [Key]
-        public int MemberId { get; set; }
-
         [Column(TypeName = "nvarchar(50)")]
         [Required(ErrorMessage = "Member type (Administrator or Member) is required.")]
+        //todo: this should be an enum, or require a custom validation attribute
         public string MemberType { get; set; } = "Member";
 
         [Column(TypeName = "nvarchar(5)")]
         public string Icon { get; set; } = "";
 
-        //HouseholdId-Foreign Key
-        [Range(1, int.MaxValue, ErrorMessage = "Please select household")]
-        public int HouseholdId { get; set; }
+        public ICollection<Mission> Missions { get; set; }
+
+        public int? HouseholdId { get; set; }
 
         public Household? Household { get; set; }
 
-        public string UserName { get; set; }
-
-        public IdentityUser? User { get; set; }
+        public string? DisplayName { get; set; }
 
         [NotMapped]
         public string? HouseholdNameWithIcon
         {
             get
             {
-                return Household == null ? "" : Household.Icon + " " + Household.HouseholdName;
+                return Household == null ? "" : Household.Icon + " " + Household.Name;
             }
         }
 
         [NotMapped]
-        public string? MemberUserNameWithIcon
+        public string? UserNameWithIcon
         {
             get
             {
-                return this.Icon + " " + this.UserName;
+                return this.Icon + " " + this.DisplayName;
             }
         }
     }

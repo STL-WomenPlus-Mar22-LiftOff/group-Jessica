@@ -22,16 +22,80 @@ namespace HouseholdManager.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
+            modelBuilder.Entity("HouseholdManager.Models.Household", b =>
                 {
-                    b.Property<int>("MissionId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MissionId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Households");
+                });
+
+            modelBuilder.Entity("HouseholdManager.Models.Member", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("HouseholdId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("MemberType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HouseholdId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("HouseholdId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MemberId")
+                        .HasColumnType("int");
 
                     b.Property<string>("MissionName")
                         .IsRequired()
@@ -43,7 +107,11 @@ namespace HouseholdManager.Migrations
                     b.Property<int?>("RoomId")
                         .HasColumnType("int");
 
-                    b.HasKey("MissionId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("HouseholdId");
+
+                    b.HasIndex("MemberId");
 
                     b.HasIndex("RoomId");
 
@@ -52,11 +120,11 @@ namespace HouseholdManager.Migrations
 
             modelBuilder.Entity("HouseholdManager.Models.Room", b =>
                 {
-                    b.Property<int>("RoomId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("HouseholdId")
                         .HasColumnType("int");
@@ -70,7 +138,7 @@ namespace HouseholdManager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("RoomId");
+                    b.HasKey("Id");
 
                     b.HasIndex("HouseholdId");
 
@@ -232,7 +300,7 @@ namespace HouseholdManager.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Position")
+                    b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -282,10 +350,8 @@ namespace HouseholdManager.Migrations
             modelBuilder.Entity("HouseholdManager.Models.Member", b =>
                 {
                     b.HasOne("HouseholdManager.Models.Household", "Household")
-                        .WithMany()
-                        .HasForeignKey("HouseholdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Members")
+                        .HasForeignKey("HouseholdId");
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
@@ -293,16 +359,28 @@ namespace HouseholdManager.Migrations
 
                     b.Navigation("Household");
 
-                    b.ToTable("User");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
                 {
+                    b.HasOne("HouseholdManager.Models.Household", "Household")
+                        .WithMany("Missions")
+                        .HasForeignKey("HouseholdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HouseholdManager.Models.Member", "Member")
+                        .WithMany("Missions")
+                        .HasForeignKey("MemberId");
+
                     b.HasOne("HouseholdManager.Models.Room", "Room")
                         .WithMany("Missions")
                         .HasForeignKey("RoomId");
 
                     b.Navigation("Household");
+
+                    b.Navigation("Member");
 
                     b.Navigation("Room");
                 });
@@ -315,7 +393,7 @@ namespace HouseholdManager.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Room");
+                    b.Navigation("Household");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -367,6 +445,25 @@ namespace HouseholdManager.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HouseholdManager.Models.Household", b =>
+                {
+                    b.Navigation("Members");
+
+                    b.Navigation("Missions");
+
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("HouseholdManager.Models.Member", b =>
+                {
+                    b.Navigation("Missions");
+                });
+
+            modelBuilder.Entity("HouseholdManager.Models.Room", b =>
+                {
+                    b.Navigation("Missions");
                 });
 #pragma warning restore 612, 618
         }

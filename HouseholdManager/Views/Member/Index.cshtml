@@ -40,14 +40,11 @@
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm no-a-decoration" href="/Member/AddOrEdit/${MemberId}">
-            <i class="fa-solid fa-pen fa-lg text-secondary"></i>
-        </a>
         <form action="/Member/Delete/${MemberId}" method="post">
             @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-sm btn-link no-a-decoration"
-            onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
-                <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+            <button type="submit" class="btn btn-sm btn-danger"
+            onclick="return confirm(&quot;Are you sure you want to remove this member from the household?&quot;)">
+                <i class="fa-solid fa-xmark fa-lg text-body-secondary"></i>
             </button>
         </form>
     </div>

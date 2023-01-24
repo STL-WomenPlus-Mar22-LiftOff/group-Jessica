@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace HouseholdManager.Areas.Identity.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<Member>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {

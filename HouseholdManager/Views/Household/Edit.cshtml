@@ -1,0 +1,15 @@
+﻿@model HouseholdManager.Models.Household
+
+@{
+    ViewData["PageTitle"] = "Edit Household";
+}
+
+@await Html.PartialAsync("/Household/_EditHouseholdForm")
+<p>
+    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
+    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
+</p>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

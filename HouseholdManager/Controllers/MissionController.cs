@@ -37,7 +37,7 @@ namespace HouseholdManager.Controllers
 
             var mission = await _context.Missions
                 .Include(t => t.Room).Include(u => u.Member)
-                .FirstOrDefaultAsync(m => m.MissionId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (mission == null)
             {
                 return NotFound();
@@ -97,7 +97,7 @@ namespace HouseholdManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("MissionId,MissionName,RoomId,Point,DueDate,MemberId")] Models.Mission mission)
         {
-            if (id != mission.MissionId)
+            if (id != mission.Id)
             {
                 return NotFound();
             }
@@ -111,7 +111,7 @@ namespace HouseholdManager.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MissionExists(mission.MissionId))
+                    if (!MissionExists(mission.Id))
                     {
                         return NotFound();
                     }
@@ -137,7 +137,7 @@ namespace HouseholdManager.Controllers
 
             var mission = await _context.Missions
                 .Include(t => t.Room).Include(u => u.Member)
-                .FirstOrDefaultAsync(m => m.MissionId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (mission == null)
             {
                 return NotFound();
@@ -167,14 +167,14 @@ namespace HouseholdManager.Controllers
 
         private bool MissionExists(int id)
         {
-          return _context.Missions.Any(e => e.MissionId == id);
+          return _context.Missions.Any(e => e.Id == id);
         }
 
         [NonAction]
         public void PopulateMembers()
         {
             var MemberCollection = _context.Members.ToList();
-            Member DefaultMember = new Member() { MemberId = 0, UserName = "Choose a member" };
+            Member DefaultMember = new Member() { Id = 0, DisplayName = "Choose a member" };
             MemberCollection.Insert(0, DefaultMember);
             ViewBag.Members = MemberCollection;
         }

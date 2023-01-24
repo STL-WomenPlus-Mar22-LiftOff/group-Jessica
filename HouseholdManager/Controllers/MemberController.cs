@@ -36,7 +36,7 @@ namespace HouseholdManager.Controllers
         public async Task<IActionResult> AddOrEdit(int id = 0)
         {
             PopulateHouseholds();
-            PopulateIdentityUsers();
+            //PopulateIdentityUsers();
             await PopulateIcons();
             if (id == 0)
                 return View(new Member());
@@ -49,11 +49,11 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,Icon,HouseholdId,UserName")] Member member)
+        public async Task<IActionResult> AddOrEdit([Bind("Id,MemberType,Icon,HouseholdId,DisplayName")] Member member)
         {
             if (ModelState.IsValid)
             {
-                if (member.MemberId == 0)
+                if (member.Id == 0)
                     _context.Add(member);
                 else
                     _context.Update(member);
@@ -61,7 +61,7 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction("Index");
             }
             PopulateHouseholds();
-            PopulateIdentityUsers();
+            //PopulateIdentityUsers();
             await PopulateIcons();
             return View(member);
         }
@@ -90,7 +90,7 @@ namespace HouseholdManager.Controllers
         public void PopulateHouseholds()
         {
             var HouseholdCollection = _context.Households.ToList();
-            Household DefaultHousehold = new Household() { HouseholdId = 0, HouseholdName = "Choose a Household" };
+            Household DefaultHousehold = new Household() { Id = 0, Name = "Choose a Household" };
             HouseholdCollection.Insert(0, DefaultHousehold);
             ViewBag.Households = HouseholdCollection;
         }

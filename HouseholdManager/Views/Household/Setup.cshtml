@@ -1,0 +1,18 @@
+﻿@model HouseholdManager.Models.Household
+
+@{
+    ViewData["Title"] = "Household Setup";
+    ViewData["PageTitle"] = "Household Setup";
+    ViewData["PageActionUrl"] = "/Household/Setup";
+}
+
+<h1>Set Up a Household</h1>
+
+@await Html.PartialAsync("/Household/_EditHouseholdForm")
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

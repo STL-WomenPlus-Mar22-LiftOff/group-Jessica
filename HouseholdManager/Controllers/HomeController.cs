@@ -1,5 +1,7 @@
-﻿using HouseholdManager.Models;
+﻿using HouseholdManager.Areas.Identity.Data;
+using HouseholdManager.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -9,15 +11,27 @@ namespace HouseholdManager.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
+        private readonly UserManager<Member> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext context, 
+                              ILogger<HomeController> logger,
+                              UserManager<Member> userManager)
         {
             _logger = logger;
+            _context = context;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var user = await _userManager.GetUserAsync(User);
+            if (user.HouseholdId is null || user.HouseholdId < 1)
+            {
+                //instead of a redirect, this should be a welcome/walkthrough page
+                Redirect("Household/Setup");
+            }
+            return View(user);
         }
 
         public IActionResult Privacy()

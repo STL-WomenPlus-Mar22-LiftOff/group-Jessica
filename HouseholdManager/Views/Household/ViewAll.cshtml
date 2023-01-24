@@ -1,0 +1,44 @@
+﻿@model IEnumerable<HouseholdManager.Models.Household>
+
+@{
+    ViewData["Title"] = "All Households"
+    ViewData["PageTitle"] = "All Households";
+    ViewData["PageActionUrl"] = "/Household/ViewAll";
+}
+
+<h1>All Households</h1>
+
+<div class="row">
+    <div class="col-md-9">
+        <ejs-grid id="households" dataSource="@Model" gridLines="None"
+                  allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="Household Name" field="HouseholdNameWithIcon"></e-grid-column>
+               
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+
+    </div>
+    <div class="col-md-2">
+        <div class="widget h-100 d-flex justify-content-center align-items-center">
+            <i class="fa-solid fa-people-roof fa-2xl"></i>
+        </div>
+    </div>
+</div>
+
+<script id="actionColumnTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+        <a class="btn btn-sm btn-secondary" href="/Household/AddOrEdit/${HouseholdId}">
+            <i class="fa-solid fa-pen fa-lg text-body-secondary"></i>
+        </a>
+        <form action="/Household/Delete/${HouseholdId}" method="post">
+    @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-danger"
+            onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
+                <i class="fa-solid fa-trash-can fa-lg text-body-secondary"></i>
+            </button>
+        </form>
+    </div>
+</script>

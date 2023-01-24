@@ -7,7 +7,7 @@ namespace HouseholdManager.Models
     public class Room
     {
         [Key]
-        public int RoomId { get; set; }
+        public int Id { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
         [Required(ErrorMessage = "Name is required.")]
@@ -15,5 +15,10 @@ namespace HouseholdManager.Models
         
         [Column(TypeName = "nvarchar(5)")]
         public string Icon { get; set; } = "";
+
+        public ICollection<Mission> Missions { get; set; }
+
+        public Household Household { get; set; }
+        public int HouseholdId { get; set; }
     }
 }

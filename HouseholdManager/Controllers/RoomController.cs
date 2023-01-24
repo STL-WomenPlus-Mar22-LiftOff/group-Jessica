@@ -37,7 +37,7 @@ namespace HouseholdManager.Controllers
             }
 
             var room = await _context.Rooms
-                .FirstOrDefaultAsync(m => m.RoomId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (room == null)
             {
                 return NotFound();
@@ -96,7 +96,7 @@ namespace HouseholdManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("RoomId,Name,Icon")] Room room)
         {
-            if (id != room.RoomId)
+            if (id != room.Id)
             {
                 return NotFound();
             }
@@ -110,7 +110,7 @@ namespace HouseholdManager.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RoomExists(room.RoomId))
+                    if (!RoomExists(room.Id))
                     {
                         return NotFound();
                     }
@@ -134,7 +134,7 @@ namespace HouseholdManager.Controllers
             }
 
             var room = await _context.Rooms
-                .FirstOrDefaultAsync(m => m.RoomId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (room == null)
             {
                 return NotFound();
@@ -165,7 +165,7 @@ namespace HouseholdManager.Controllers
         [NonAction]
         private bool RoomExists(int id)
         {
-          return _context.Rooms.Any(e => e.RoomId == id);
+          return _context.Rooms.Any(e => e.Id == id);
         }
 
 

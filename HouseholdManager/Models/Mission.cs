@@ -9,7 +9,7 @@ namespace HouseholdManager.Models
     public class Mission
     {
         [Key]
-        public int MissionId { get; set; }
+        public int Id { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
 
@@ -17,10 +17,8 @@ namespace HouseholdManager.Models
         [DisplayName("Mission Name")]
         public string MissionName { get; set; }
 
-        //RoomId-Foreign Key
-        [Range(1, int.MaxValue, ErrorMessage = "Please select a room")]
         [DisplayName("Room")]
-        public int RoomId { get; set; }
+        public int? RoomId { get; set; }
 
         public Room? Room { get; set; }
 
@@ -32,11 +30,12 @@ namespace HouseholdManager.Models
         [DisplayName("Due Date")]
         public DateTime DueDate { get; set; }
 
-        //MemberId-Foreign Key
-        [Range(1, int.MaxValue, ErrorMessage = "Please select a member")]
-        public int MemberId { get; set; }
+        public int? MemberId { get; set; }
 
         public Member? Member { get; set; }
+
+        public Household Household { get; set; }
+        public int HouseholdId { get; set; }
 
     }
 }
