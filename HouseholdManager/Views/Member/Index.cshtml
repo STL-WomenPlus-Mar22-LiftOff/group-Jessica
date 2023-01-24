@@ -46,7 +46,7 @@
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
         <a class="btn btn-sm no-a-decoration" href="/Member/AddOrEdit/${MemberId}">
-            <i class="fa-solid fa-pen fa-lg"></i>
+            <i class="fa-solid fa-pen fa-lg text-warning"></i>
         </a>
         <form action="/Member/Delete/${MemberId}" method="post">
             @Html.AntiForgeryToken()

@@ -1,4 +1,4 @@
-﻿@*@{
+﻿@{
     ViewData["Title"] = "Home";
 }
 
@@ -9,9 +9,9 @@
         <text style="font-size: 24px">It ain't much, but it's home</text>
         <text style="font-size: 10px">...page.</text>
     </span>
-</div>*@
+</div>
 
-@model string
+@*@model string
 
 @{
     ViewData["Title"] = "Authentication";
@@ -23,4 +23,4 @@
 @if (User?.Identity?.IsAuthenticated ?? false)
 {
     <a asp-controller="Account" asp-action="Logout" class="btn btn-danger">Logout</a>
-}
+}*@

@@ -31,6 +31,7 @@ namespace HouseholdManager.Controllers
 
 
         // GET: Member/AddOrEdit
+        [Authorize(Roles = "Administrator")]
         public IActionResult AddOrEdit(int id = 0)
         {
             PopulateHouseholds();
@@ -46,6 +47,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,MemberIcon,HouseholdId,UserName")] Member member)
         {
             if (ModelState.IsValid)
@@ -66,6 +68,7 @@ namespace HouseholdManager.Controllers
         // POST: Member/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Members == null)
