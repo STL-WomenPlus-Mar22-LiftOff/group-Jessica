@@ -21,8 +21,15 @@ namespace HouseholdManager.Controllers
         public IActionResult Login(string returnUrl)
         {
             Login login = new Login();
-            login.ReturnUrl = returnUrl;
-            return View(login);
+            if (string.IsNullOrEmpty(returnUrl))
+            {
+                return Redirect("/Welcome/Index");
+            }
+            else
+            {
+                login.ReturnUrl = returnUrl;
+                return View(login);
+            }
         }
 
         [HttpPost]
