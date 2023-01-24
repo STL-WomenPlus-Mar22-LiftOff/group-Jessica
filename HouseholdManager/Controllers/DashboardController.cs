@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator, User")]
     public class DashboardController : Controller
     {
         public IActionResult Index()

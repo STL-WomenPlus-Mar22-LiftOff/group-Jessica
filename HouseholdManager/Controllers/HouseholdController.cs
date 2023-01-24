@@ -9,11 +9,10 @@ using HouseholdManager.Data;
 using HouseholdManager.Models;
 using static HouseholdManager.Models.Household;
 using Microsoft.AspNetCore.Authorization;
-using HouseholdManager.Areas.Identity.Data;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class HouseholdController : Controller
     {
         private readonly ApplicationDbContext _context;
