@@ -2,7 +2,7 @@
 using Owin;
 using Syncfusion.EJ2.Maps;
 
-[assembly: OwinStartup(typeof(AppointmentReminders.Web.Startup))]
+[assembly: OwinStartup(typeof(HouseholdManager.Mission_Reminders.Startup))]
 namespace AppointmentReminders.Web
 {
     public class Startup
