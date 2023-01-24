@@ -31,7 +31,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.ConfigureApplicationCookie(opts =>
 {
-    opts.AccessDeniedPath = "/Stop/Index";
+    opts.AccessDeniedPath = "/Account/AccessDenied";
 });
 
 //Register Syncfusion license
