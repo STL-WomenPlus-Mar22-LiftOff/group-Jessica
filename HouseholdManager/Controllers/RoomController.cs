@@ -7,12 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
 using System.Text.Json;
 using HouseholdManager.Data.API;
-using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator, User")]
     public class RoomController : Controller
     {
         private readonly ApplicationDbContext _context;

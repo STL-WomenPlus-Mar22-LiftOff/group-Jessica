@@ -1,20 +1,21 @@
 ﻿using HouseholdManager.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
+
 namespace HouseholdManager.Controllers
 {
-
-    public class HomeController : Controller
+    [Authorize(Roles = "Administrator, User")]
+    public class WelcomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<WelcomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public WelcomeController(ILogger<WelcomeController> logger)
         {
             _logger = logger;
         }
+
 
         public IActionResult Index()
         {
