@@ -8,7 +8,6 @@ using HouseholdManager.Models;
 using HouseholdManager.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
-using HouseholdManager.Areas.Identity.Data;
 using HouseholdManager.Data.API;
 using HouseholdManager.Data.Interfaces;
 
