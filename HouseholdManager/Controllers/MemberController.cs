@@ -14,7 +14,7 @@ using HouseholdManager.Data.Interfaces;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator, User")]
     public class MemberController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;
@@ -33,10 +33,11 @@ namespace HouseholdManager.Controllers
 
 
         // GET: Member/AddOrEdit
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddOrEdit(int id = 0)
         {
             PopulateHouseholds();
-            PopulateIdentityUsers();
+            PopulateAppUsers(); 
             await PopulateIcons();
             if (id == 0)
                 return View(new Member());
@@ -49,6 +50,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,Icon,HouseholdId,UserName")] Member member)
         {
             if (ModelState.IsValid)
@@ -61,7 +63,7 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction("Index");
             }
             PopulateHouseholds();
-            PopulateIdentityUsers();
+            PopulateAppUsers(); 
             await PopulateIcons();
             return View(member);
         }
@@ -70,6 +72,7 @@ namespace HouseholdManager.Controllers
         // POST: Member/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Members == null)
@@ -96,12 +99,12 @@ namespace HouseholdManager.Controllers
         }
 
         [NonAction]
-        public void PopulateIdentityUsers()
+        public void PopulateAppUsers()
         {
-            var UserCollection = _context.IdentityUsers.ToList();
-            IdentityUser DefaultUser = new IdentityUser() { Id = "", UserName = "Choose an Identity User"};
+            var UserCollection = _context.AppUsers.ToList();
+            AppUser DefaultUser = new AppUser() { Id = "", UserName = "Choose an Identity User"};
             UserCollection.Insert(0, DefaultUser);
-            ViewBag.IdentityUsers = UserCollection;
+            ViewBag.AppUsers = UserCollection;
         }
 
         [NonAction]

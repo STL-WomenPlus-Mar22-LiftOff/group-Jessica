@@ -1,27 +1,29 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using HouseholdManager.Models
 
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Index" title="Manage" class="nav-link">Hello @UserManager.GetUserName(User)!</a>
     </li>
     <li class="nav-item">
-        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button id="logout" type="submit" class="nav-link btn btn-link">Logout</button>
-        </form>
+        <a asp-controller="Account" asp-action="Logout" class="nav-link btn btn-link">Logout</a>
     </li>
 }
 else
 {
-    <li class="nav-item">
-        <a class="nav-link" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    <li>
+        <a asp-area="" asp-controller="Admin" asp-action="Create" title="Manage" class="nav-link">Register</a>
+    </li>
+    <li>
+        <a asp-area="" asp-controller="Account" asp-action="Login" title="Manage" class="nav-link">Log in</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a asp-controller="Account" asp-action="Logout" class="nav-link btn btn-link">Logout</a>
     </li>
 }
 </ul>

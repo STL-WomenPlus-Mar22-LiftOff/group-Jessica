@@ -14,7 +14,7 @@ using HouseholdManager.Data.Interfaces;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class HouseholdController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;
