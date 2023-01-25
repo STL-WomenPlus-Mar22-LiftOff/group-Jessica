@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Mission Reminders\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Hangfire.AspNetCore" Version="1.7.32" />
     <PackageReference Include="Hangfire.Core" Version="1.7.32" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.7.32" />
@@ -22,6 +26,18 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
     <PackageReference Include="Syncfusion.EJ2.AspNet.Core" Version="20.4.0.42" />
     <PackageReference Include="Twilio.AspNet.MVC" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Mission Reminders\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Mission Reminders\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Mission Reminders\Index.cshtml" />
   </ItemGroup>
 
 </Project>
