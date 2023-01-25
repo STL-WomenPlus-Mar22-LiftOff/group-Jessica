@@ -8,9 +8,9 @@
         public List<ThemePickerViewModel> GetThemes()
         {
             List<ThemePickerViewModel> themeList = new List<ThemePickerViewModel>();
-            themeList.Add(new ThemePickerViewModel { Id = "light", Text = "Light Theme" });
-            themeList.Add(new ThemePickerViewModel { Id = "dark", Text = "Dark Theme" });
-            themeList.Add(new ThemePickerViewModel { Id = "deepblue", Text = "Deep Blue Theme" });
+            themeList.Add(new ThemePickerViewModel { Id = "bootstrap5", Text = "Light Theme" });
+            themeList.Add(new ThemePickerViewModel { Id = "bootstrap5-dark", Text = "Dark Theme" });
+            themeList.Add(new ThemePickerViewModel { Id = "bootstrap5-deepblue-custom", Text = "Deep Blue Theme" });
             return themeList;
         }
     }

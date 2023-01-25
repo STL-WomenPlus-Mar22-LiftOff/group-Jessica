@@ -1,13 +1,13 @@
 ﻿<div class="icon-picker">
     <span>
-        <button type="button" class="btn btn-sm btn-accent" data-bs-toggle="button" id="iconSelectButton"><i class="fa-solid fa-icons"></i> Set Icon</button>
-        <label class="icon-font" id="iconDisplay"></label>
+        <button type="button" class="btn btn-secondary" id="iconSelectButton">Select Icon</button>
+            <label class="icon-font" id="iconDisplay" for="iconSelectButton"></label>
     </span>
     <noscript class="alert-danger">Icon selector requires JavaScript.</noscript>
     <div class="container-md box-shadow icon-picker-menu" id="iconMenu" style="visibility: hidden;">
         <span>
             <input class="icon-search" type="search" id="iconSearch" placeholder="Search..."/>
-            <button type="button" class="btn btn-sm btn-warning icon-random" id="iconRandomizer">Randomize</button>
+            <button type="button" class="btn btn-sm btn-secondary icon-random" id="iconRandomizer">Randomize</button>
         </span>
         <ul class="icon-button-list">
             @foreach (Icon icon in (IEnumerable<Icon>)ViewBag.Icons)

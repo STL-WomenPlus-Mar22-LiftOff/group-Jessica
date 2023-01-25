@@ -4,12 +4,13 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Models;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize(Roles = "Administrator, User")]
+    [Authorize]
     public class MissionController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,8 +23,8 @@ namespace HouseholdManager.Controllers
         // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var dataQuery = _context.Missions.Include(t => t.Room).Include(u => u.Member);
-            return View(await dataQuery.ToListAsync());
+            var applicationDbContext = _context.Missions.Include(t => t.Room).Include(u => u.Member);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Mission/Details/5

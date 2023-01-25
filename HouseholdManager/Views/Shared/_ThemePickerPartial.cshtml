@@ -8,7 +8,6 @@
 
 @(Html.EJS().DropDownList("theme-picker")
             .Placeholder("Select a theme")
-            .CssClass("theme-picker")
             .PopupHeight("250px")
             .Width("20%")
             .DataSource((IEnumerable<ThemePickerViewModel>)themePicker.GetThemes())
