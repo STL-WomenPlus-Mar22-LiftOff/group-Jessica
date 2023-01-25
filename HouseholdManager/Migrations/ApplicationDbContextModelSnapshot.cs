@@ -227,6 +227,9 @@ namespace HouseholdManager.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Completed")
+                       .HasColumnType("bit");
+
                     b.Property<int>("MemberId")
                         .HasColumnType("int");
 
@@ -256,7 +259,8 @@ namespace HouseholdManager.Migrations
                             MemberId = 2,
                             MissionName = "Wash dishes",
                             Point = 2,
-                            RoomId = 1
+                            RoomId = 1,
+                            Completed = 0
                         },
                         new
                         {
@@ -265,7 +269,8 @@ namespace HouseholdManager.Migrations
                             MemberId = 1,
                             MissionName = "Make bed",
                             Point = 1,
-                            RoomId = 5
+                            RoomId = 5,
+                            Completed = 0
                         },
                         new
                         {
@@ -274,7 +279,8 @@ namespace HouseholdManager.Migrations
                             MemberId = 2,
                             MissionName = "Make bed",
                             Point = 1,
-                            RoomId = 3
+                            RoomId = 3,
+                            Completed = 0
                         },
                         new
                         {
@@ -283,7 +289,8 @@ namespace HouseholdManager.Migrations
                             MemberId = 1,
                             MissionName = "Mow lawn",
                             Point = 5,
-                            RoomId = 9
+                            RoomId = 9,
+                            Completed = 0
                         },
                         new
                         {
@@ -292,7 +299,8 @@ namespace HouseholdManager.Migrations
                             MemberId = 1,
                             MissionName = "Make dinner",
                             Point = 4,
-                            RoomId = 1
+                            RoomId = 1,
+                            Completed = 0
                         });
                 });
 

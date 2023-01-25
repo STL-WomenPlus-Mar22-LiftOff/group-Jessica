@@ -30,6 +30,9 @@
                             <th>
                                 Member
                             </th>
+                            <th>
+                                Completed
+                            </th>
                             <th class="text-center">
                                 Edit | Details | Delete
                             </th>
@@ -53,6 +56,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Member.MemberUserNameWithIcon)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Completed)
                                 </td>
                                 <td class="text-center">
                                     <a asp-action="Edit" asp-route-id="@item.RoomId" class="btn btn-sm btn-primary mx-1"> <i class="fa-solid fa-pencil"></i> </a>

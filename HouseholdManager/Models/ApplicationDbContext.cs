@@ -168,15 +168,15 @@ namespace HouseholdManager.Models
 
         private static void SeedMission(ModelBuilder builder)
         {
-            Mission mission1 = new Mission() { MissionId = 1, MissionName = "Wash dishes", Point = 2, DueDate = DateTime.Now, RoomId = 1, MemberId = 2, };
+            Mission mission1 = new Mission() { MissionId = 1, MissionName = "Wash dishes", Point = 2, DueDate = DateTime.Now, RoomId = 1, MemberId = 2, Completed = false };
             builder.Entity<Mission>().HasData(mission1);
-            Mission mission2 = new Mission() { MissionId = 2, MissionName = "Make bed", Point = 1, DueDate = DateTime.Now, RoomId = 5, MemberId = 1, };
+            Mission mission2 = new Mission() { MissionId = 2, MissionName = "Make bed", Point = 1, DueDate = DateTime.Now, RoomId = 5, MemberId = 1, Completed = false };
             builder.Entity<Mission>().HasData(mission2);
-            Mission mission3 = new Mission() { MissionId = 3, MissionName = "Make bed", Point = 1, DueDate = DateTime.Now, RoomId = 3, MemberId = 2, };
+            Mission mission3 = new Mission() { MissionId = 3, MissionName = "Make bed", Point = 1, DueDate = DateTime.Now, RoomId = 3, MemberId = 2, Completed = false };
             builder.Entity<Mission>().HasData(mission3);
-            Mission mission4 = new Mission() { MissionId = 4, MissionName = "Mow lawn", Point = 5, DueDate = DateTime.Now, RoomId = 9, MemberId = 1, };
+            Mission mission4 = new Mission() { MissionId = 4, MissionName = "Mow lawn", Point = 5, DueDate = DateTime.Now, RoomId = 9, MemberId = 1, Completed = false };
             builder.Entity<Mission>().HasData(mission4);
-            Mission mission5 = new Mission() { MissionId = 5, MissionName = "Make dinner", Point = 4, DueDate = DateTime.Now, RoomId = 1, MemberId = 1, };
+            Mission mission5 = new Mission() { MissionId = 5, MissionName = "Make dinner", Point = 4, DueDate = DateTime.Now, RoomId = 1, MemberId = 1, Completed = false };
             builder.Entity<Mission>().HasData(mission5);
         }
 

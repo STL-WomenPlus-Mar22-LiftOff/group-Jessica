@@ -6,6 +6,8 @@
 @*Hiding main page title*@
 @*<h1>Create</h1>*@
 
+@Html.CheckBoxFor(m => m.Completed)
+
 <h3>Create a Mission</h3>
 <p>
     <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
@@ -43,6 +45,16 @@
                     <e-dropdownlist-fields value="MemberId" text="UserName"></e-dropdownlist-fields>
                 </ejs-dropdownlist>
                 <span asp-validation-for="MemberId" class="text-danger" fs-6></span>
+            </div>
+            <div>
+                <input data-val="true"
+                       data-val-required="The Completed field is required."
+                       id="Completed"
+                       name="Completed"
+                       type="checkbox"
+                       value="true" />
+
+                <input name="Completed" type="hidden" value="false" />
             </div>
             <div class="row mt-2">
                 <div class="col-md-6">

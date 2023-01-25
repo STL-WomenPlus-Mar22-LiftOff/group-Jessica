@@ -223,7 +223,8 @@ namespace HouseholdManager.Migrations
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     Point = table.Column<int>(type: "int", nullable: false),
                     DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MemberId = table.Column<int>(type: "int", nullable: false)
+                    MemberId = table.Column<int>(type: "int", nullable: false),
+                    Completed = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -302,14 +303,14 @@ namespace HouseholdManager.Migrations
 
             migrationBuilder.InsertData(
                 table: "Missions",
-                columns: new[] { "MissionId", "DueDate", "MemberId", "MissionName", "Point", "RoomId" },
+                columns: new[] { "MissionId", "DueDate", "MemberId", "MissionName", "Point", "RoomId", "Completed" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5630), 2, "Wash dishes", 2, 1 },
-                    { 2, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5666), 1, "Make bed", 1, 5 },
-                    { 3, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5675), 2, "Make bed", 1, 3 },
-                    { 4, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5683), 1, "Mow lawn", 5, 9 },
-                    { 5, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5691), 1, "Make dinner", 4, 1 }
+                    { 1, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5630), 2, "Wash dishes", 2, 1, 0 },
+                    { 2, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5666), 1, "Make bed", 1, 5, 0 },
+                    { 3, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5675), 2, "Make bed", 1, 3, 0 },
+                    { 4, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5683), 1, "Mow lawn", 5, 9 , 0},
+                    { 5, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5691), 1, "Make dinner", 4, 1 , 0}
                 });
 
             migrationBuilder.CreateIndex(
