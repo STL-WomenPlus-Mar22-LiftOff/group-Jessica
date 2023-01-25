@@ -29,7 +29,7 @@ namespace HouseholdManager.Controllers
         {
             return View();
         }
-        /*
+        /* yeet
 
         // GET: Member/AddOrEdit
         public async Task<IActionResult> AddOrEdit(int id = 0)

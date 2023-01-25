@@ -91,21 +91,33 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("HouseholdName,Icon")] Household household)
+        public async Task<IActionResult> Edit([Bind("Name,Icon")] EditHouseholdViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var member = await _userManager.GetUserAsync(User);
-
-                _context.Update(household);
+                var household = member.Household;
+                if (household is null) //this is unlikely, but just in case
+                {
+                    household = new Household();
+                    household.Name = model.Name;
+                    household.Icon = model.Icon;
+                    _context.Add(household);
+                }
+                else
+                {
+                    household.Name = model.Name;
+                    household.Icon = model.Icon;
+                    _context.Update(household);
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             await PopulateIcons();
-            return View(household);
+            return View(model);
         }
 
-
+        //TODO: make this not an enormous security problem
         // POST: Household/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

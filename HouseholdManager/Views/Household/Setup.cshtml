@@ -12,7 +12,7 @@
 
 @await Html.PartialAsync("_WelcomePopup", userName)
 
-<h1>Set Up a Household</h1>
+<h1>Create a Household</h1>
 
 <div class="row">
     <div class="col-md-7">
@@ -20,7 +20,7 @@
             <form asp-action="Setup">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="mb-3">
-                    <ejs-textbox id="householdname" placeholder="HouseholdName" ejs-for="Name" floatLabelType="Always"></ejs-textbox>
+                    <ejs-textbox id="householdname" placeholder="Household Name" ejs-for="Name" floatLabelType="Always"></ejs-textbox>
                     <span asp-validation-for="Name" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
@@ -39,8 +39,6 @@
         </div>
     </div>
 </div>
-
-
 
 @section Scripts {
     @{

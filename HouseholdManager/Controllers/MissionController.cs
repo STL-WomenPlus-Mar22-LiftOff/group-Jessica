@@ -7,17 +7,23 @@ using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace HouseholdManager.Controllers
 {
+    //TODO: Everything that is currently using _context.Missions needs to 
+    //instead be pulling from User.Household.Missions
     [Authorize]
     public class MissionController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Member> _userManager;
 
-        public MissionController(ApplicationDbContext context)
+        public MissionController(ApplicationDbContext context,
+                                 UserManager<Member> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Mission
@@ -49,7 +55,7 @@ namespace HouseholdManager.Controllers
         // GET: Mission/Create
         public IActionResult Create()
         {
-            //PopulateMembers();
+            PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
             return View();
         }
@@ -67,7 +73,7 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            //PopulateMembers();
+            PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
             return View(mission);
         }
@@ -85,7 +91,7 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
-            //PopulateMembers();
+            PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
             return View(mission);
         }
@@ -122,7 +128,7 @@ namespace HouseholdManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            //PopulateMembers();
+            PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
             return View(mission);
         }
@@ -165,9 +171,17 @@ namespace HouseholdManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //TODO: make this check against household missions
         private bool MissionExists(int id)
         {
           return _context.Missions.Any(e => e.Id == id);
+        }
+
+        //TODO: make this populate from household members
+        private List<Member> PopulateMembers()
+        {
+            var members = new List<Member>();
+            return members;
         }
     }
 }

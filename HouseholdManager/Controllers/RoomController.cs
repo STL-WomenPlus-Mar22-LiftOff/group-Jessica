@@ -9,17 +9,23 @@ using HouseholdManager.Data.API;
 using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Data.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace HouseholdManager.Controllers
 {
+    //TODO: everything that is currently using _context.Rooms
+    //needs to be using User.Household.Rooms instead
     [Authorize]
     public class RoomController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Member> _userManager;
 
-        public RoomController(ApplicationDbContext context)
+        public RoomController(ApplicationDbContext context, 
+                              UserManager<Member> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Room
