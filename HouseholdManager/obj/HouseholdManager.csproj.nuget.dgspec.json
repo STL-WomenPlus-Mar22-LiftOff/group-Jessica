@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Erica\\source\\repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj": {}
+    "C:\\Users\\Erica\\Source\\Repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Erica\\source\\repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj": {
+    "C:\\Users\\Erica\\Source\\Repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Erica\\source\\repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
+        "projectUniqueName": "C:\\Users\\Erica\\Source\\Repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
         "projectName": "HouseholdManager",
-        "projectPath": "C:\\Users\\Erica\\source\\repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
+        "projectPath": "C:\\Users\\Erica\\Source\\Repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
         "packagesPath": "C:\\Users\\Erica\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Erica\\source\\repos\\group-Jessica\\HouseholdManager\\obj\\",
+        "outputPath": "C:\\Users\\Erica\\Source\\Repos\\group-Jessica\\HouseholdManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Erica\\AppData\\Roaming\\NuGet\\NuGet.Config",

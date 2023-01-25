@@ -17,19 +17,20 @@ namespace HouseholdManager.SMSReminders
             TwilioClient.Init(accountSid, authToken);
 
 
-            /*var message = MessageResource.Create(
-                messagingServiceSid: "MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+            var message = MessageResource.Create(
+                messagingServiceSid: "MG0dd465e7598684d4a56ab72bf39eb724",
                 body: "Don't forget to complete your message.",
                 sendAt: new DateTime(2021, 11, 30, 20, 36, 27),
                 scheduleType: MessageResource.ScheduleTypeEnum.Fixed,
-                statusCallback: new Uri("https://webhook.site/xxxxx"),
-                to: new Twilio.Types.PhoneNumber("+16362883683")*/
+                statusCallback: new Uri("https://demo.twilio.com/welcome/sms/reply/"),
+                to: new Twilio.Types.PhoneNumber("+16362883683")
+                );
 
-            var message = MessageResource.Create(
+            /*var message = MessageResource.Create(
             from: new Twilio.Types.PhoneNumber("+19288822706"),
             body: "Hi there",
             to: new Twilio.Types.PhoneNumber("+16362883683")
-            );
+            );*/
 
             Console.WriteLine(message.Sid);
         }
