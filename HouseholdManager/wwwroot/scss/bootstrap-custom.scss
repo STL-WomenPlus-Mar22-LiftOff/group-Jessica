@@ -5,10 +5,13 @@
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../lib/bootstrap/scss/functions";
 @import "../lib/bootstrap/scss/mixins";
-@import "../lib/bootstrap/scss/variables";
-@import "../lib/bootstrap/scss/variables-dark";
 
 // 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
+
+@import "../lib/bootstrap/scss/variables";
+@import "../lib/bootstrap/scss/variables-dark";
 
 //Additions to sitewide theme-colors
 @import "../scss/additional-colors.scss";
@@ -17,7 +20,6 @@
 $enable-theme-deepblue: true !default;
 @import "../scss/variables-deepblue.scss";
 
-// 3. Include remainder of required Bootstrap stylesheets
 
 // 4. Include any optional Bootstrap components as you like
 
