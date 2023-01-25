@@ -14,8 +14,8 @@ namespace HouseholdManager.Models
         [Required(ErrorMessage = "Member type (Administrator or Member) is required.")]
         public string MemberType { get; set; } = "Member";
 
-        [Column(TypeName = "nvarchar(5)")]
-        public string Icon { get; set; } = "";
+        [Column(TypeName = "nvarchar(50)")]
+        public string MemberIcon { get; set; } = "";
 
         //HouseholdId-Foreign Key
         [Range(1, int.MaxValue, ErrorMessage = "Please select household")]
@@ -25,14 +25,14 @@ namespace HouseholdManager.Models
 
         public string UserName { get; set; }
 
-        public AppUser? User { get; set; }
+        public IdentityUser? User { get; set; }
 
         [NotMapped]
         public string? HouseholdNameWithIcon
         {
             get
             {
-                return Household == null ? "" : Household.Icon + " " + Household.HouseholdName;
+                return Household == null ? "" : Household.HouseholdIcon + " " + Household.HouseholdName;
             }
         }
 
@@ -41,7 +41,7 @@ namespace HouseholdManager.Models
         {
             get
             {
-                return this.Icon + " " + this.UserName;
+                return this.MemberIcon + " " + this.UserName;
             }
         }
     }

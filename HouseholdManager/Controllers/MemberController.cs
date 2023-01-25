@@ -7,14 +7,14 @@ using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
 using HouseholdManager.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Authorization;
-using HouseholdManager.Data.API;
-using HouseholdManager.Data.Interfaces;
+using HouseholdManager.Areas.Identity.Data;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize(Roles = "Administrator, User")]
-    public class MemberController : Controller, IRequestIcons
+    [Authorize]
+    public class MemberController : Controller
     {
         private readonly ApplicationDbContext _context;
 
@@ -26,18 +26,16 @@ namespace HouseholdManager.Controllers
         // GET: Member
         public async Task<IActionResult> Index()
         {
-            var dataQuery = _context.Members.Include(t => t.Household).Include(s => s.User);
-            return View(await dataQuery.ToListAsync());
+            var applicationDbContext = _context.Members.Include(t => t.Household).Include(s => s.User);
+            return View(await applicationDbContext.ToListAsync());
         }
 
 
         // GET: Member/AddOrEdit
-        [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> AddOrEdit(int id = 0)
+        public IActionResult AddOrEdit(int id = 0)
         {
             PopulateHouseholds();
-            PopulateAppUsers(); 
-            await PopulateIcons();
+            PopulateIdentityUsers();
             if (id == 0)
                 return View(new Member());
             else
@@ -49,8 +47,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
-        public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,Icon,HouseholdId,UserName")] Member member)
+        public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,MemberIcon,HouseholdId,UserName")] Member member)
         {
             if (ModelState.IsValid)
             {
@@ -62,8 +59,7 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction("Index");
             }
             PopulateHouseholds();
-            PopulateAppUsers(); 
-            await PopulateIcons();
+            PopulateIdentityUsers();
             return View(member);
         }
 
@@ -71,7 +67,6 @@ namespace HouseholdManager.Controllers
         // POST: Member/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Members == null)
@@ -98,20 +93,12 @@ namespace HouseholdManager.Controllers
         }
 
         [NonAction]
-        public void PopulateAppUsers()
+        public void PopulateIdentityUsers()
         {
-            var UserCollection = _context.AppUsers.ToList();
-            AppUser DefaultUser = new AppUser() { Id = "", UserName = "Choose an Identity User"};
+            var UserCollection = _context.IdentityUsers.ToList();
+            IdentityUser DefaultUser = new IdentityUser() { Id = "", UserName = "Choose an Identity User"};
             UserCollection.Insert(0, DefaultUser);
-            ViewBag.AppUsers = UserCollection;
-        }
-
-        [NonAction]
-        public async Task PopulateIcons()
-        {
-            IconRequestor req = new IconRequestor();
-            List<Icon> icons = await req.GetIconsFromApi();
-            ViewBag.Icons = icons;
+            ViewBag.IdentityUsers = UserCollection;
         }
 
     }

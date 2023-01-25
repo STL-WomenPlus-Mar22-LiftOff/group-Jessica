@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Data;
 using HouseholdManager.Models;
+using static HouseholdManager.Models.Household;
 using Microsoft.AspNetCore.Authorization;
-using HouseholdManager.Data.API;
-using HouseholdManager.Data.Interfaces;
+using HouseholdManager.Areas.Identity.Data;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize(Roles = "Administrator")]
-    public class HouseholdController : Controller, IRequestIcons
+    [Authorize]
+    public class HouseholdController : Controller
     {
         private readonly ApplicationDbContext _context;
 
@@ -26,18 +26,17 @@ namespace HouseholdManager.Controllers
         // GET: Household
         public async Task<IActionResult> Index()
         {
-            var dataQuery = _context.Households;
-            return View(await dataQuery.ToListAsync());
+            var applicationDbContext = _context.Households;
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Household/AddOrEdit
-        public async Task<IActionResult> AddOrEdit(int id = 0)
+        public IActionResult AddOrEdit(int id = 0)
         {
-            await PopulateIcons();
             if (id == 0)
-                return View(new Household());
+                return View(new Models.Household());
             else
-                return View(_context.Households.Find(id));
+                return View(_context.Rooms.Find(id));
         }
 
         // POST: Household/AddOrEdit
@@ -45,7 +44,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("HouseholdId,HouseholdName,Icon")] Household household)
+        public async Task<IActionResult> AddOrEdit([Bind("HouseholdId,HouseholdName,HouseholdIcon")] Household household)
         {
             if (ModelState.IsValid)
             {
@@ -56,7 +55,6 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            await PopulateIcons();
             return View(household);
         }
 
@@ -78,14 +76,6 @@ namespace HouseholdManager.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
-        }
-
-        [NonAction]
-        public async Task PopulateIcons()
-        {
-            IconRequestor req = new IconRequestor();
-            List<Icon> icons = await req.GetIconsFromApi();
-            ViewBag.Icons = icons;
         }
     }    
 }
