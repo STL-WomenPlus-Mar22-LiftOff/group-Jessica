@@ -121,6 +121,11 @@ body {
     transition: visibility 0.7s linear, opacity 0.7s linear;
 }
 
+.nav-displayname {
+    padding-right: var(--bs-navbar-nav-link-padding-x);
+    padding-left: var(--bs-navbar-nav-link-padding-x);
+}
+
 /*WIP wobble back-and-forth effect
 .effect-wobble {
     animation: wobble 5s linear 0s infinite backwards;

@@ -31,7 +31,8 @@ namespace HouseholdManager.Controllers
             {
                 return Redirect("Household/AddOrJoinHousehold");
             }
-            return View(user);
+            //this may need to change
+            return Redirect("Household/Index");
         }
 
         public IActionResult Privacy()
