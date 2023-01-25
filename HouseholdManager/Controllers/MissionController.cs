@@ -11,8 +11,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HouseholdManager.Controllers
 {
-    //TODO: Everything that is currently using _context.Missions needs to 
-    //instead be pulling from User.Household.Missions
+    //TODO: Everything that is currently using _context.Missions needs to instead be pulling from User.Household.Missions
     [Authorize]
     public class MissionController : Controller
     {
@@ -40,6 +39,7 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
+            var household = 0;
 
             var mission = await _context.Missions
                 .Include(t => t.Room).Include(u => u.Member)

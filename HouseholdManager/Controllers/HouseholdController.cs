@@ -129,7 +129,7 @@ namespace HouseholdManager.Controllers
             return View(model);
         }
 
-        //TODO: make this not an enormous security problem
+        //TODO: make this stop being an enormous security problem
         // POST: Household/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

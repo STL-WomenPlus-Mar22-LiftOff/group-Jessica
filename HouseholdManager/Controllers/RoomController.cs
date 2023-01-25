@@ -13,8 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HouseholdManager.Controllers
 {
-    //TODO: everything that is currently using _context.Rooms
-    //needs to be using User.Household.Rooms instead
+    //TODO: everything that is currently using _context.Rooms needs to be using User.Household.Rooms instead
     [Authorize]
     public class RoomController : Controller, IRequestIcons
     {
