@@ -100,16 +100,16 @@ namespace HouseholdManager.Migrations
                         {
                             Id = "a1addd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "398702f1-2e69-4613-a7ce-9d53e7411a99",
+                            ConcurrencyStamp = "0d97b009-8dea-477a-bc23-40cdba1c826d",
                             Email = "defaultAdmin@yahoo.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "DEFAULTADMIN@YAHOO.COM",
                             NormalizedUserName = "DEFAULTADMIN@YAHOO.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEE3aaWOyb1yu1zcOqyTnqygC8u8otfyNkqwsGktZScqOk1YEOi0PpDUH0AUt5PntDw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEB+NUIrFA0maeFs+IdG0F1COrPxPtOI5tk4u+DR4aRbRscUatOj1Qwm6/9PPU3m9uQ==",
                             PhoneNumber = "111-222-3333",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "55e5c7a5-4126-4d61-8db9-cdcef870faa1",
+                            SecurityStamp = "82dcb1dd-1e0d-4aab-b7aa-c45b05c76d62",
                             TwoFactorEnabled = false,
                             UserName = "defaultAdmin@yahoo.com"
                         },
@@ -117,16 +117,16 @@ namespace HouseholdManager.Migrations
                         {
                             Id = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "26e7a083-3541-43d7-aaea-82a5d7f466e0",
+                            ConcurrencyStamp = "71964642-c2c6-44ae-8549-1065139f045d",
                             Email = "defaultUser@yahoo.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "DEFAULTUSER@YAHOO.COM",
                             NormalizedUserName = "DEFAULTUSER@YAHOO.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP/F33yLbw4XKA+SDiGG1BX0ELQ+rPr3KayBaBvBWRPNEucm4nRMG1VwWHP7MpB8lg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHsBUAZoQ/M3PMOIATbmONWIBHCkBHqRuGK2K3fFWblL41xWJIK6PEkdvOQx4+NDQg==",
                             PhoneNumber = "111-222-3333",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2906eb94-2979-41f4-b5d8-59211342ba3d",
+                            SecurityStamp = "074fbc99-c559-48f5-972f-2a6d2e4373b0",
                             TwoFactorEnabled = false,
                             UserName = "defaultUser@yahoo.com"
                         });
@@ -224,11 +224,11 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MissionId"), 1L, 1);
 
+                    b.Property<bool>("Completed")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<bool>("Completed")
-                       .HasColumnType("bit");
 
                     b.Property<int>("MemberId")
                         .HasColumnType("int");
@@ -255,52 +255,52 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             MissionId = 1,
-                            DueDate = new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5630),
+                            Completed = false,
+                            DueDate = new DateTime(2023, 1, 25, 14, 15, 17, 18, DateTimeKind.Local).AddTicks(2924),
                             MemberId = 2,
                             MissionName = "Wash dishes",
                             Point = 2,
-                            RoomId = 1,
-                            Completed = 0
+                            RoomId = 1
                         },
                         new
                         {
                             MissionId = 2,
-                            DueDate = new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5666),
+                            Completed = false,
+                            DueDate = new DateTime(2023, 1, 25, 14, 15, 17, 18, DateTimeKind.Local).AddTicks(2964),
                             MemberId = 1,
                             MissionName = "Make bed",
                             Point = 1,
-                            RoomId = 5,
-                            Completed = 0
+                            RoomId = 5
                         },
                         new
                         {
                             MissionId = 3,
-                            DueDate = new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5675),
+                            Completed = false,
+                            DueDate = new DateTime(2023, 1, 25, 14, 15, 17, 18, DateTimeKind.Local).AddTicks(2972),
                             MemberId = 2,
                             MissionName = "Make bed",
                             Point = 1,
-                            RoomId = 3,
-                            Completed = 0
+                            RoomId = 3
                         },
                         new
                         {
                             MissionId = 4,
-                            DueDate = new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5683),
+                            Completed = false,
+                            DueDate = new DateTime(2023, 1, 25, 14, 15, 17, 18, DateTimeKind.Local).AddTicks(2979),
                             MemberId = 1,
                             MissionName = "Mow lawn",
                             Point = 5,
-                            RoomId = 9,
-                            Completed = 0
+                            RoomId = 9
                         },
                         new
                         {
                             MissionId = 5,
-                            DueDate = new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5691),
+                            Completed = false,
+                            DueDate = new DateTime(2023, 1, 25, 14, 15, 17, 18, DateTimeKind.Local).AddTicks(2986),
                             MemberId = 1,
                             MissionName = "Make dinner",
                             Point = 4,
-                            RoomId = 1,
-                            Completed = 0
+                            RoomId = 1
                         });
                 });
 

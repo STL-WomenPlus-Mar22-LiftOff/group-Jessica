@@ -257,8 +257,8 @@ namespace HouseholdManager.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Age", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "a1addd14-6340-4840-95c2-db12554843e5", 0, null, "398702f1-2e69-4613-a7ce-9d53e7411a99", "defaultAdmin@yahoo.com", false, null, null, true, null, "DEFAULTADMIN@YAHOO.COM", "DEFAULTADMIN@YAHOO.COM", "AQAAAAEAACcQAAAAEE3aaWOyb1yu1zcOqyTnqygC8u8otfyNkqwsGktZScqOk1YEOi0PpDUH0AUt5PntDw==", "111-222-3333", false, "55e5c7a5-4126-4d61-8db9-cdcef870faa1", false, "defaultAdmin@yahoo.com" },
-                    { "u1ua87c6-b718-4f48-90a2-458e0a2443e6", 0, null, "26e7a083-3541-43d7-aaea-82a5d7f466e0", "defaultUser@yahoo.com", false, null, null, true, null, "DEFAULTUSER@YAHOO.COM", "DEFAULTUSER@YAHOO.COM", "AQAAAAEAACcQAAAAEP/F33yLbw4XKA+SDiGG1BX0ELQ+rPr3KayBaBvBWRPNEucm4nRMG1VwWHP7MpB8lg==", "111-222-3333", false, "2906eb94-2979-41f4-b5d8-59211342ba3d", false, "defaultUser@yahoo.com" }
+                    { "a1addd14-6340-4840-95c2-db12554843e5", 0, null, "0d97b009-8dea-477a-bc23-40cdba1c826d", "defaultAdmin@yahoo.com", false, null, null, true, null, "DEFAULTADMIN@YAHOO.COM", "DEFAULTADMIN@YAHOO.COM", "AQAAAAEAACcQAAAAEB+NUIrFA0maeFs+IdG0F1COrPxPtOI5tk4u+DR4aRbRscUatOj1Qwm6/9PPU3m9uQ==", "111-222-3333", false, "82dcb1dd-1e0d-4aab-b7aa-c45b05c76d62", false, "defaultAdmin@yahoo.com" },
+                    { "u1ua87c6-b718-4f48-90a2-458e0a2443e6", 0, null, "71964642-c2c6-44ae-8549-1065139f045d", "defaultUser@yahoo.com", false, null, null, true, null, "DEFAULTUSER@YAHOO.COM", "DEFAULTUSER@YAHOO.COM", "AQAAAAEAACcQAAAAEHsBUAZoQ/M3PMOIATbmONWIBHCkBHqRuGK2K3fFWblL41xWJIK6PEkdvOQx4+NDQg==", "111-222-3333", false, "074fbc99-c559-48f5-972f-2a6d2e4373b0", false, "defaultUser@yahoo.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -303,14 +303,14 @@ namespace HouseholdManager.Migrations
 
             migrationBuilder.InsertData(
                 table: "Missions",
-                columns: new[] { "MissionId", "DueDate", "MemberId", "MissionName", "Point", "RoomId", "Completed" },
+                columns: new[] { "MissionId", "Completed", "DueDate", "MemberId", "MissionName", "Point", "RoomId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5630), 2, "Wash dishes", 2, 1, 0 },
-                    { 2, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5666), 1, "Make bed", 1, 5, 0 },
-                    { 3, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5675), 2, "Make bed", 1, 3, 0 },
-                    { 4, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5683), 1, "Mow lawn", 5, 9 , 0},
-                    { 5, new DateTime(2023, 1, 23, 19, 52, 9, 421, DateTimeKind.Local).AddTicks(5691), 1, "Make dinner", 4, 1 , 0}
+                    { 1, false, new DateTime(2023, 1, 25, 14, 15, 17, 18, DateTimeKind.Local).AddTicks(2924), 2, "Wash dishes", 2, 1 },
+                    { 2, false, new DateTime(2023, 1, 25, 14, 15, 17, 18, DateTimeKind.Local).AddTicks(2964), 1, "Make bed", 1, 5 },
+                    { 3, false, new DateTime(2023, 1, 25, 14, 15, 17, 18, DateTimeKind.Local).AddTicks(2972), 2, "Make bed", 1, 3 },
+                    { 4, false, new DateTime(2023, 1, 25, 14, 15, 17, 18, DateTimeKind.Local).AddTicks(2979), 1, "Mow lawn", 5, 9 },
+                    { 5, false, new DateTime(2023, 1, 25, 14, 15, 17, 18, DateTimeKind.Local).AddTicks(2986), 1, "Make dinner", 4, 1 }
                 });
 
             migrationBuilder.CreateIndex(
