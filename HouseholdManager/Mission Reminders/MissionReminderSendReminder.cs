@@ -21,7 +21,7 @@ namespace HouseholdManager.Mission_Reminders
             string.Format(MessageTemplate, appointment.Name, appointment.Time.ToString("t"))));
     }
 
-    private static IEnumerable<Appointment> AvailableAppointments()
+    private static IEnumerable<MissionReminder> AvailableAppointments()
     {
         return new MissionReminderFinder(new ReminderRepository(), new TimeConverter())
             .FindAvailableAppointments(DateTime.Now);
