@@ -32,6 +32,18 @@ namespace HouseholdManager.Controllers
             return View();
         }
 
+        //GET: Household/AddOrJoinHousehold
+        public IActionResult AddOrJoinHousehold() 
+        { 
+            return View();
+        }
+
+        //GET: Household/JoinExisting
+        public IActionResult JoinExisting()
+        {
+            return View();
+        }
+
         // GET: Household/ViewAll
         public async Task<IActionResult> ViewAll()
         {

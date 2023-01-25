@@ -6,11 +6,18 @@ namespace HouseholdManager.Models
 {
     public class Household
     {
+        public Household() 
+        {
+            Members = new List<Member>();
+            Rooms = new List<Room>();
+            Missions = new List<Mission>();
+        }
+
         [Key]
         public int Id { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
 
         [Column(TypeName = "nvarchar(5)")]
         public string Icon { get; set; } = "";

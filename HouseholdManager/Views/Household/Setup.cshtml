@@ -1,16 +1,10 @@
 ﻿@model HouseholdManager.Models.ViewModels.EditHouseholdViewModel
-@using Microsoft.AspNetCore.Identity
-
-@inject UserManager<Member> UserManager
 
 @{
     ViewData["Title"] = "Household Setup";
     ViewData["PageTitle"] = "Household Setup";
     ViewData["PageActionUrl"] = "/Household/Setup";
-    var userName = UserManager.GetUserName(User) ?? "New User";
 }
-
-@await Html.PartialAsync("_WelcomePopup", userName)
 
 <h1>Create a Household</h1>
 
