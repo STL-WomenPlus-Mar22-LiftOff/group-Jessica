@@ -1,5 +1,6 @@
 ﻿using HouseholdManager.Areas.Identity.Data;
 using HouseholdManager.Models;
+using HouseholdManager.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
