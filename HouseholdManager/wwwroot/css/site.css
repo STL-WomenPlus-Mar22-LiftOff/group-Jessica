@@ -104,7 +104,9 @@ body {
 .add-join-switchbox {
     width: 75%;
     height: 75%;
-    display: block;
+    display: grid;
+    justify-items: center;
+    grid-template-rows: [heading] 3fr [buttons] 2fr [space] 3fr;
 }
 
 .fade-out-1s {
