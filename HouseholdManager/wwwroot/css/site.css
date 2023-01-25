@@ -77,6 +77,42 @@ body {
     place-self: center;
 }
 
+.welcome-popup {
+    padding: 40px 40px;
+    position: fixed;
+    z-index: 25;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    border-style: solid;
+    border-color: var(--bs-info);
+}
+
+.welcome-popup > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#dismissButton {
+    width: 25%;
+    height: 15%;
+}
+
+.fade-out-1s {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.7s linear, opacity 0.7s linear;
+}
+
+.fade-in-1s {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.7s linear, opacity 0.7s linear;
+}
+
 /*WIP wobble back-and-forth effect
 .effect-wobble {
     animation: wobble 5s linear 0s infinite backwards;

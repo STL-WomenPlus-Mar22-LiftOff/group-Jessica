@@ -44,7 +44,7 @@ namespace HouseholdManager.Controllers
         {
             await PopulateIcons();
             if (id == 0)
-                return View(new Household());
+                return View(new EditHouseholdViewModel());
             else
                 return View(_context.Households.Find(id));
         }
@@ -53,7 +53,7 @@ namespace HouseholdManager.Controllers
         public async Task<IActionResult> Setup()
         {
             await PopulateIcons();
-            return View(new Household());
+            return View(new EditHouseholdViewModel());
         }
 
         // POST: Household/Setup
@@ -82,7 +82,7 @@ namespace HouseholdManager.Controllers
             else
             {
                 await PopulateIcons();
-                return View(household);
+                return View(model);
             }
         }
 
