@@ -1,0 +1,149 @@
+﻿
+@import "../scss/variables-deepblue.scss";
+
+@if $enable-theme-deepblue {
+    @include color-mode(deepblue, true) {
+        --#{$prefix}body-color: #{$body-color-deepblue};
+        --#{$prefix}body-color-rgb: #{to-rgb($body-color-deepblue)};
+        --#{$prefix}body-bg: #{$body-bg-deepblue};
+        --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-deepblue)};
+        --#{$prefix}emphasis-color: #{$body-emphasis-color-deepblue};
+        --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-deepblue)};
+        --#{$prefix}secondary-color: #{$body-secondary-color-deepblue};
+        --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-deepblue)};
+        --#{$prefix}secondary-bg: #{$body-secondary-bg-deepblue};
+        --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-deepblue)};
+        --#{$prefix}tertiary-color: #{$body-tertiary-color-deepblue};
+        --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-deepblue)};
+        --#{$prefix}tertiary-bg: #{$body-tertiary-bg-deepblue};
+        --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-deepblue)};
+        --#{$prefix}emphasis-color: #{$emphasis-color-deepblue};
+        --#{$prefix}primary-text: #{$primary-text-deepblue};
+        --#{$prefix}secondary-text: #{$secondary-text-deepblue};
+        --#{$prefix}success-text: #{$success-text-deepblue};
+        --#{$prefix}info-text: #{$info-text-deepblue};
+        --#{$prefix}warning-text: #{$warning-text-deepblue};
+        --#{$prefix}danger-text: #{$danger-text-deepblue};
+        --#{$prefix}light-text: #{$light-text-deepblue};
+        --#{$prefix}dark-text: #{$dark-text-deepblue};
+        --#{$prefix}primary-bg-subtle: #{$primary-bg-subtle-deepblue};
+        --#{$prefix}secondary-bg-subtle: #{$secondary-bg-subtle-deepblue};
+        --#{$prefix}success-bg-subtle: #{$success-bg-subtle-deepblue};
+        --#{$prefix}info-bg-subtle: #{$info-bg-subtle-deepblue};
+        --#{$prefix}warning-bg-subtle: #{$warning-bg-subtle-deepblue};
+        --#{$prefix}danger-bg-subtle: #{$danger-bg-subtle-deepblue};
+        --#{$prefix}light-bg-subtle: #{$light-bg-subtle-deepblue};
+        --#{$prefix}dark-bg-subtle: #{$dark-bg-subtle-deepblue};
+        --#{$prefix}primary-border-subtle: #{$primary-border-subtle-deepblue};
+        --#{$prefix}secondary-border-subtle: #{$secondary-border-subtle-deepblue};
+        --#{$prefix}success-border-subtle: #{$success-border-subtle-deepblue};
+        --#{$prefix}info-border-subtle: #{$info-border-subtle-deepblue};
+        --#{$prefix}warning-border-subtle: #{$warning-border-subtle-deepblue};
+        --#{$prefix}danger-border-subtle: #{$danger-border-subtle-deepblue};
+        --#{$prefix}light-border-subtle: #{$light-border-subtle-deepblue};
+        --#{$prefix}dark-border-subtle: #{$dark-border-subtle-deepblue};
+        --#{$prefix}heading-color: #{$headings-color-deepblue};
+        --#{$prefix}link-color: #{$link-color-deepblue};
+        --#{$prefix}link-hover-color: #{$link-hover-color-deepblue};
+        --#{$prefix}link-color-rgb: #{to-rgb($link-color-deepblue)};
+        --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-deepblue)};
+        --#{$prefix}code-color: #{$code-color-deepblue};
+        --#{$prefix}border-color: #{$border-color-deepblue};
+        --#{$prefix}border-color-translucent: #{$border-color-translucent-deepblue};
+
+        //These names must match the ones in the map from additional-colors.scss
+        --#{$prefix}accent-text: #{$accent-text-deepblue};
+        --#{$prefix}option-text: #{$option-text-deepblue};
+        --#{$prefix}accent-bg-subtle: #{$accent-bg-subtle-deepblue};
+        --#{$prefix}option-bg-subtle: #{$option-bg-subtle-deepblue};
+        --#{$prefix}accent-border-subtle: #{$accent-border-subtle-deepblue};
+        --#{$prefix}option-border-subtle: #{$option-border-subtle-deepblue};
+    }
+
+}
+
+
+
+
+[data-bs-theme="deepblue"]
+.navbar {
+    --#{$prefix}navbar-color: #{$navbar-deepblue-color};
+    --#{$prefix}navbar-hover-color: #{$navbar-deepblue-hover-color};
+    --#{$prefix}navbar-disabled-color: #{$navbar-deepblue-disabled-color};
+    --#{$prefix}navbar-active-color: #{$navbar-deepblue-active-color};
+}
+
+@each $key, $button-color in $deepblue-button-colors {
+    [data-bs-theme="deepblue"]
+    .btn-#{$key} {
+        @include button-variant( 
+            shade-color($button-color, 30%),
+            shade-color($button-color, 15%),
+            $headings-color-deepblue,
+            $hover-color: shade-color($headings-color-deepblue, 30%),
+            $hover-border: $button-color,
+            $hover-background: shade-color($button-color, 35%),
+            $active-color: shade-color($headings-color-deepblue, 60%),
+            $active-background: shade-color($button-color, 65%),
+            $active-border: shade-color($button-color, 30%),
+            $disabled-background: mix($button-color, $deepblue-abyss, 85%),
+            $disabled-border: mix($button-color, $deepblue-abyss, 85%),
+            $disabled-color: mix($headings-color-deepblue, $deepblue-abyss, 85%)
+        );
+    }
+}
+
+[data-bs-theme="deepblue"]
+.nav-link.active {
+    --#{$prefix}nav-pills-link-active-color: #{$nav-deepblue-pills-link-active-color};
+    --#{$prefix}nav-pills-link-active-bg: #{$nav-deepblue-pills-link-active-bg};
+}
+
+
+[data-bs-theme="deepblue"] 
+.icon-picker-menu {
+    background-color: #{$primary-bg-subtle-deepblue};
+}
+
+//theme picker dropdown
+[data-bs-theme="deepblue"] {
+    //border
+    span.theme-picker.e-input-group:not(.e-success):not(.e-warning):not(.e-error) {
+        border-color: $border-color-deepblue;
+    }
+    //dropdown closed w/ selection made
+    input.e-control.e-dropdownlist.e-lib.e-input {
+        color: $navbar-deepblue-color;
+        background-color: shade-color($body-secondary-bg-deepblue, 50%);
+        border-color: $border-color-deepblue;
+    }
+    //dropdown icon
+    .e-input-group.e-ddl span.e-input-group-icon.e-ddl-icon.e-search-icon {
+        color: $navbar-deepblue-color !important;
+        background-color: shade-color($body-secondary-bg-deepblue, 50%) !important;
+    }
+    //disabled text
+    .e-input-group.e-control-wrapper .e-input[disabled] {
+        color: $navbar-deepblue-disabled-color;
+        -webkit-text-fill-color: $navbar-deepblue-disabled-color;
+    }
+    //placeholder
+    .e-ddl.e-input-group input.e-input::placeholder {
+        color: $navbar-deepblue-color;
+        background-color: shade-color($body-secondary-bg-deepblue, 50%);
+    }
+    //focus/hover/active.
+     e-dropdownbase .e-list-item.e-item-focus,
+    .e-dropdownbase .e-list-item.e-item-focus.e-hover,
+    .e-dropdownbase .e-list-item.e-active,
+    .e-dropdownbase .e-list-item.e-active.e-hover,
+    .e-dropdownbase .e-list-item.e-hover {
+        background-color: $deepblue-primary !important;
+        color: $nav-deepblue-pills-link-active-color !important;
+    }
+    //popup
+    .e-dropdownbase .e-list-item{
+        color: $navbar-deepblue-color;
+        background-color: shade-color($deepblue-primary, 20%);
+    }
+}

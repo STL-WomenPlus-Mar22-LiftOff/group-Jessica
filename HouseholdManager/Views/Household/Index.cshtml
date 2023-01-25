@@ -8,12 +8,7 @@
 
 <h1>All Households</h1>
 
-<p>
-    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Mission</a>
-    <a asp-action="Create" class="btn btn-sm btn-primary"> <i class="fa-solid fa-plus"></i> Room</a>
-    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Household</a>
-    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Member</a>
-</p>
+@await Html.PartialAsync("_CreationButtonsPartial")
 
 <div class="row">
     <div class="col-md-9">
@@ -38,7 +33,7 @@
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
         <a class="btn btn-sm no-a-decoration" href="/Household/AddOrEdit/${HouseholdId}">
-            <i class="fa-solid fa-pen fa-lg"></i>
+            <i class="fa-solid fa-pen fa-lg text-secondary"></i>
         </a>
         <form action="/Household/Delete/${HouseholdId}" method="post">
     @Html.AntiForgeryToken()

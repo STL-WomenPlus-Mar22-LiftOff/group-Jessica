@@ -11,6 +11,7 @@ function selectIcon({ mouseoverText, character, options = "" }) {
         iconMenu.style.visibility = "hidden";
         iconSearchBar.setAttribute("placeholder", phText);
         iconSearchBar.value = "";
+        iconToggle.classList.remove("active");
     }
     iconFormField.setAttribute("value", character);
     iconDisplay.innerText = character;
