@@ -13,7 +13,6 @@ namespace HouseholdManager.Models
 
         [Column(TypeName = "nvarchar(50)")]
 
-        [Required(ErrorMessage = "Name of mission is required.")]
         [DisplayName("Mission Name")]
         public string Name { get; set; }
 
@@ -22,7 +21,6 @@ namespace HouseholdManager.Models
 
         public Room? Room { get; set; }
 
-        [Range(1, 5, ErrorMessage = "Amount should be greater than zero and no more than five.")]
         [DisplayName("Difficulty")]
         public int Point { get; set; }
 

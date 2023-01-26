@@ -9,10 +9,10 @@ using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Models;
 using HouseholdManager.Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
-    //TODO: Everything that is currently using _context.Missions needs to instead be pulling from User.Household.Missions
     [Authorize]
     public class MissionController : Controller, IQueryMembers
     {
@@ -38,22 +38,22 @@ namespace HouseholdManager.Controllers
             return View(await dataQuery.ToListAsync());
         }
 
-        //TODO: check if mission is part of user's household before showing, else 403
         // GET: Mission/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Missions == null)
+            if (id is null || _context.Missions is null)
             {
                 return NotFound();
+            }
+            else if (!await MissionInHousehold((int)id))
+            {
+                return Forbid();
             }
             var mission = await _context.Missions
                 .Include(t => t.Room).Include(u => u.Member)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (mission == null)
-            {
-                return NotFound();
-            }
-
+            if (mission is null) return NotFound();
+            //TODO: View model
             return View(mission);
         }
 
@@ -61,16 +61,16 @@ namespace HouseholdManager.Controllers
         public async Task<IActionResult> Create()
         {
             await PopulateMembers();
-            ViewBag.RoomId = await GetRoomSelectList();
+            ViewBag.Rooms = await GetRoomSelectList();
             return View();
         }
 
-        // TODO: Make this use a view model
         // POST: Mission/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        // TODO: Make this use a view model
         public async Task<IActionResult> Create([Bind("Id,Name,RoomId,Point,DueDate,MemberId")] Mission mission)
         {
             if (ModelState.IsValid)
@@ -80,17 +80,20 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction(nameof(Index));
             }
             await PopulateMembers();
-            ViewBag.RoomId = await GetRoomSelectList(mission);
+            ViewBag.Rooms = await GetRoomSelectList(mission);
             return View(mission);
         }
 
-        // TODO: Check that mission is in member's household
-        // GET: Mission/Edit/5
+        // GET: Mission/Edit/{id}
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Missions == null)
             {
                 return NotFound();
+            }
+            else if (!await MissionInHousehold((int)id))
+            {
+                return Forbid();
             }
 
             var mission = await _context.Missions.FindAsync(id);
@@ -99,25 +102,38 @@ namespace HouseholdManager.Controllers
                 return NotFound();
             }
             await PopulateMembers();
-            ViewBag.RoomId = await GetRoomSelectList(mission);
+            ViewBag.Rooms = await GetRoomSelectList(mission);
+            // TODO: View Model
             return View(mission);
         }
 
-        // TODO: change this to use view model, check that mission is in member's household
-        // POST: Mission/Edit/5
+        // TODO: change this to use view model
+        // POST: Mission/Edit/{id}
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,RoomId,Point,DueDate,MemberId")] Models.Mission mission)
+        public async Task<IActionResult> Edit([Bind("Id,Name,RoomId,Point,DueDate,MemberId")] EditMissionViewModel model)
         {
-            if (id != mission.Id)
+            if (model.Id is null || _context.Missions is null)
             {
                 return NotFound();
             }
+            else if (!await MissionInHousehold((int)model.Id))
+            {
+                return Forbid();
+            }
+            var mission = await _context.Missions.FindAsync(model.Id);
+            if (mission is null) return NotFound();
+            //TODO: room Id and member Id need server-side validation as well
 
             if (ModelState.IsValid)
             {
+                mission.Name = model.Name;
+                mission.DueDate = model.DueDate;
+                mission.MemberId = model.MemberId;
+                mission.RoomId = model.RoomId;
+                mission.Point = model.Point;
                 try
                 {
                     _context.Update(mission);
@@ -125,7 +141,7 @@ namespace HouseholdManager.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MissionExists(mission.Id))
+                    if (!MissionExists((int)model.Id))
                     {
                         return NotFound();
                     }
@@ -137,11 +153,19 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction(nameof(Index));
             }
             await PopulateMembers();
-            ViewBag.RoomId = await GetRoomSelectList(mission);
-            return View(mission);
+            ViewBag.Rooms = await GetRoomSelectList(mission);
+            return View(new EditMissionViewModel
+            {
+                Id = model.Id,
+                MemberId = model.MemberId,
+                Name = model.Name,
+                Point = model.Point,
+                DueDate = model.DueDate,
+                RoomId = model.RoomId
+            });
         }
 
-        // GET: Mission/Delete/5
+        // GET: Mission/Delete/{id}
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Missions == null)
@@ -164,15 +188,24 @@ namespace HouseholdManager.Controllers
             return View(mission);
         }
 
-        // POST: Mission/Delete/5
+        // POST: Mission/Delete/{id}
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
-            if (_context.Missions == null)
+            if (id is null)
+            {
+                return NotFound();
+            }
+            else if (_context.Missions == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Missions'  is null.");
             }
+            else if (!await MissionInHousehold((int)id))
+            {
+                return Forbid();
+            }
+
             var mission = await _context.Missions.FindAsync(id);
             if (mission != null)
             {

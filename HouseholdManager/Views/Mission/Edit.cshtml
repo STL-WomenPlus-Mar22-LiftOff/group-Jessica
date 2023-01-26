@@ -7,7 +7,11 @@
 <h1>Edit</h1>
 
 <h4>Mission</h4>
-<hr />
+
+<p>
+    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
+    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Invite a Member</a>
+</p>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -20,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="RoomId" class="control-label"></label>
-                <select asp-for="RoomId" class="form-control" asp-items="ViewBag.RoomId"></select>
+                <select asp-for="RoomId" class="form-control" asp-items="ViewBag.Rooms"></select>
                 <span asp-validation-for="RoomId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -52,10 +56,6 @@
 <div>
     <a asp-action="Index" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Back to List</a>
 </div>
-<p>
-    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
-    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Invite a Member</a>
-</p>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
