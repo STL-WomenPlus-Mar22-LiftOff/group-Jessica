@@ -9,8 +9,6 @@ using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Models;
 using HouseholdManager.Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using System.Reflection;
-using MessagePack.Formatters;
 
 namespace HouseholdManager.Controllers
 {

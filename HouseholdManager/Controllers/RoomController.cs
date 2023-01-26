@@ -108,12 +108,9 @@ namespace HouseholdManager.Controllers
             });
         }
 
-        // GET: Room/Edit/5
+        // GET: Room/Edit/{id}
         public async Task<IActionResult> Edit(int? id)
         {
-
-            await PopulateIcons();
-
             if (id == null || _context.Rooms == null)
             {
                 return NotFound();
@@ -128,6 +125,7 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
+            await PopulateIcons();
             return View(new EditRoomViewModel
             {
                 Id = room.Id,
@@ -136,7 +134,7 @@ namespace HouseholdManager.Controllers
             });
         }
 
-        // POST: Room/Edit/5
+        // POST: Room/Edit/{id}
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -144,8 +142,8 @@ namespace HouseholdManager.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Name,Icon")] EditRoomViewModel model)
         {
             var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
-            var room = (from rm in household.Rooms
-                        where rm.Id == id
+            var room = (from rm in _context.Rooms
+                        where rm.Id == id && rm.HouseholdId == household.Id
                         select rm).FirstOrDefault();
             if (room is null || id != room.Id)
             {
@@ -160,6 +158,8 @@ namespace HouseholdManager.Controllers
             {
                 try
                 {
+                    room.Icon = model.Icon;
+                    room.Name = model.Name;
                     _context.Update(room);
                     await _context.SaveChangesAsync();
                 }
@@ -185,7 +185,7 @@ namespace HouseholdManager.Controllers
             });
         }
 
-        // GET: Room/Delete/5
+        // GET: Room/Delete/{id}
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Rooms == null)
@@ -212,7 +212,6 @@ namespace HouseholdManager.Controllers
             });
         }
 
-        // TODO: Check that user is allowed to delete room
         // POST: Room/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -248,9 +247,9 @@ namespace HouseholdManager.Controllers
         {
             var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
             if (household is null) return false;
-            var found = from room in household.Rooms
-                        where room.Id == id
-                        select room.Id;
+            var found = from room in _context.Rooms
+                        where room.Id == id && room.HouseholdId == household.Id
+                        select room;
             return found.ToList().Any();
         }
 
