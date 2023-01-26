@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230124223717_MemberInitial")]
-    partial class MemberInitial
+    [Migration("20230126020836_InitialOneToOne")]
+    partial class InitialOneToOne
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,13 +34,11 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("Icon")
                         .IsRequired()
-                        .HasMaxLength(5)
                         .IsUnicode(true)
                         .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
@@ -147,7 +145,7 @@ namespace HouseholdManager.Migrations
                     b.Property<string>("MemberId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("MissionName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
@@ -275,12 +273,10 @@ namespace HouseholdManager.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -317,12 +313,10 @@ namespace HouseholdManager.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");

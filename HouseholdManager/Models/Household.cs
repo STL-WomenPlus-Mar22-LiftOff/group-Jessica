@@ -6,11 +6,11 @@ namespace HouseholdManager.Models
 {
     public class Household
     {
-        public Household() 
+        public Household()
         {
-            Members = new List<Member>();
-            Rooms = new List<Room>();
-            Missions = new List<Mission>();
+            Members = new HashSet<Member>();
+            Rooms = new HashSet<Room>();
+            Missions = new HashSet<Mission>();
         }
 
         [Key]
@@ -22,9 +22,9 @@ namespace HouseholdManager.Models
         [Column(TypeName = "nvarchar(5)")]
         public string Icon { get; set; } = "";
 
-        public ICollection<Member> Members { get; set; }
-        public ICollection<Room> Rooms { get; set; }
-        public ICollection<Mission> Missions { get; set; }
+        public virtual ICollection<Member> Members { get; set; }
+        public virtual ICollection<Room> Rooms { get; set; }
+        public virtual ICollection<Mission> Missions { get; set; }
 
         [NotMapped]
         public string? NameWithIcon

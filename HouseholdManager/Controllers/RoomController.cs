@@ -32,17 +32,17 @@ namespace HouseholdManager.Controllers
         public async Task<IActionResult> Index()
         {
             var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
-            var roomsQuery = from room in household.Rooms
+            var roomsQuery = from room in _context.Rooms
+                             where room.HouseholdId == household.Id
                              select new EditRoomViewModel
                              {
                                  Id = room.Id,
-                                 Name = room.Name,
                                  Icon = room.Icon,
+                                 Name = room.Name
                              };
             return View(roomsQuery.ToList());
         }
 
-        // TODO: View model
         // GET: Room/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -62,7 +62,12 @@ namespace HouseholdManager.Controllers
                 return NotFound();
             }
 
-            return View(room);
+            return View(new EditRoomViewModel
+            {
+                Id = room.Id,
+                Name = room.Name,
+                Icon = room.Icon,
+            });
         }
 
         // GET: Room/Create
@@ -72,25 +77,37 @@ namespace HouseholdManager.Controllers
             return View();
         }
 
-        // TODO: Use a view model
         // POST: Room/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Icon")] Room room)
+        public async Task<IActionResult> Create([Bind("Name,Icon")] EditRoomViewModel model)
         {
             if (ModelState.IsValid)
             {
+                var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+                var room = new Room()
+                {
+                    Name = model.Name,
+                    Icon = model.Icon,
+                    Household = household,
+                    HouseholdId = household.Id
+                };
+                household.Rooms.Add(room);
                 _context.Add(room);
+                _context.Update(household);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             await PopulateIcons();
-            return View(room);
+            return View(new EditRoomViewModel
+            {
+                Name = model.Name,
+                Icon = model.Icon,
+            });
         }
 
-        // TODO: View model
         // GET: Room/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -111,20 +128,32 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
-            return View(room);
+            return View(new EditRoomViewModel
+            {
+                Id = room.Id,
+                Name = room.Name,
+                Icon = room.Icon,
+            });
         }
 
-        // TODO: View model
         // POST: Room/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Icon")] Room room)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,Icon")] EditRoomViewModel model)
         {
-            if (id != room.Id)
+            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            var room = (from rm in household.Rooms
+                        where rm.Id == id
+                        select rm).FirstOrDefault();
+            if (room is null || id != room.Id)
             {
                 return NotFound();
+            } 
+            else if (!await RoomInHousehold(room.Id))
+            {
+                return Forbid();
             }
 
             if (ModelState.IsValid)
@@ -148,10 +177,14 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction(nameof(Index));
             }
             await PopulateIcons();
-            return View(room);
+            return View(new EditRoomViewModel
+            {
+                Id = room.Id,
+                Name = room.Name,
+                Icon = room.Icon,
+            });
         }
 
-        // TODO: View model
         // GET: Room/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -171,7 +204,12 @@ namespace HouseholdManager.Controllers
                 return NotFound();
             }
 
-            return View(room);
+            return View(new EditRoomViewModel
+            {
+                Id = room.Id,
+                Name = room.Name,
+                Icon = room.Icon,
+            });
         }
 
         // TODO: Check that user is allowed to delete room
@@ -215,7 +253,6 @@ namespace HouseholdManager.Controllers
                         select room.Id;
             return found.ToList().Any();
         }
-
 
         [NonAction]
         public async Task PopulateIcons()
