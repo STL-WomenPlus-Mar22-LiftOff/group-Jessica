@@ -1,4 +1,5 @@
 ﻿using HouseholdManager.Models;
+using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
@@ -10,9 +11,22 @@ namespace HouseholdManager.Data.API
     /// </summary>
     public class IconRequestor
     {
-        private const string OpenEmojiApiKey = @"2f3055e94632aca65cac6bbe8c8488c414cc9a27"; 
+        private readonly string OpenEmojiApiKey;
         //Secondary source from unicode-emoji-json npm module via unpkg.com
         private const string SecondarySourcePath = @"https://unpkg.com/unicode-emoji-json@0.4.0/data-by-emoji.json";
+
+        public IconRequestor() 
+        {
+            //This is obviously not as good as an enviroment variable, but is better than nothing
+            StringBuilder sb = new StringBuilder();
+            sb.Append("2f3055121");
+            sb.Remove(6, 3);
+            sb.Append("e94632a");
+            sb.Append("ca65cac6bb");
+            sb.Append("e8c8488c");
+            sb.Append("414cc9a27");
+            OpenEmojiApiKey= sb.ToString();
+        }
 
         /// <summary>
         /// Gets a list of all available icons matching the search term from Open Emoji API
