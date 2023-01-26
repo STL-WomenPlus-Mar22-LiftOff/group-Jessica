@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230117172612_Idenity")]
-    partial class Idenity
+    [Migration("20230126181817_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,14 @@ namespace HouseholdManager.Migrations
                     b.HasKey("HouseholdId");
 
                     b.ToTable("Households");
+
+                    b.HasData(
+                        new
+                        {
+                            HouseholdId = 1,
+                            HouseholdIcon = "",
+                            HouseholdName = "DefaultHousehold"
+                        });
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Member", b =>
@@ -78,6 +86,24 @@ namespace HouseholdManager.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Members");
+
+                    b.HasData(
+                        new
+                        {
+                            MemberId = 1,
+                            HouseholdId = 1,
+                            MemberIcon = "👩‍🔧",
+                            MemberType = "Admin",
+                            UserName = "defaultAdmin@yahoo.com"
+                        },
+                        new
+                        {
+                            MemberId = 2,
+                            HouseholdId = 1,
+                            MemberIcon = "👩‍💼",
+                            MemberType = "Member",
+                            UserName = "defaultUser@yahoo.com"
+                        });
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
@@ -91,6 +117,9 @@ namespace HouseholdManager.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("MemberId")
+                        .HasColumnType("int");
+
                     b.Property<string>("MissionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
@@ -103,9 +132,58 @@ namespace HouseholdManager.Migrations
 
                     b.HasKey("MissionId");
 
+                    b.HasIndex("MemberId");
+
                     b.HasIndex("RoomId");
 
                     b.ToTable("Missions");
+
+                    b.HasData(
+                        new
+                        {
+                            MissionId = 1,
+                            DueDate = new DateTime(2023, 1, 26, 12, 18, 17, 666, DateTimeKind.Local).AddTicks(154),
+                            MemberId = 2,
+                            MissionName = "Wash dishes",
+                            Point = 2,
+                            RoomId = 1
+                        },
+                        new
+                        {
+                            MissionId = 2,
+                            DueDate = new DateTime(2023, 1, 26, 12, 18, 17, 666, DateTimeKind.Local).AddTicks(199),
+                            MemberId = 1,
+                            MissionName = "Make bed",
+                            Point = 1,
+                            RoomId = 5
+                        },
+                        new
+                        {
+                            MissionId = 3,
+                            DueDate = new DateTime(2023, 1, 26, 12, 18, 17, 666, DateTimeKind.Local).AddTicks(208),
+                            MemberId = 2,
+                            MissionName = "Make bed",
+                            Point = 1,
+                            RoomId = 3
+                        },
+                        new
+                        {
+                            MissionId = 4,
+                            DueDate = new DateTime(2023, 1, 26, 12, 18, 17, 666, DateTimeKind.Local).AddTicks(216),
+                            MemberId = 1,
+                            MissionName = "Mow lawn",
+                            Point = 5,
+                            RoomId = 9
+                        },
+                        new
+                        {
+                            MissionId = 5,
+                            DueDate = new DateTime(2023, 1, 26, 12, 18, 17, 666, DateTimeKind.Local).AddTicks(223),
+                            MemberId = 1,
+                            MissionName = "Make dinner",
+                            Point = 4,
+                            RoomId = 1
+                        });
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Room", b =>
@@ -128,6 +206,62 @@ namespace HouseholdManager.Migrations
                     b.HasKey("RoomId");
 
                     b.ToTable("Rooms");
+
+                    b.HasData(
+                        new
+                        {
+                            RoomId = 1,
+                            Icon = "🥄",
+                            Name = "Kitchen"
+                        },
+                        new
+                        {
+                            RoomId = 2,
+                            Icon = "🧻",
+                            Name = "Bathroom"
+                        },
+                        new
+                        {
+                            RoomId = 3,
+                            Icon = "🛏",
+                            Name = "Master Bedroom"
+                        },
+                        new
+                        {
+                            RoomId = 4,
+                            Icon = "🛋",
+                            Name = "Living Room"
+                        },
+                        new
+                        {
+                            RoomId = 5,
+                            Icon = "🛏",
+                            Name = "Bedroom"
+                        },
+                        new
+                        {
+                            RoomId = 6,
+                            Icon = "🛏",
+                            Name = "Guest Bedroom"
+                        },
+                        new
+                        {
+                            RoomId = 7,
+                            Icon = "🧻",
+                            Name = "Master Bathroom"
+                        },
+                        new
+                        {
+                            RoomId = 8,
+                            Icon = "🍽",
+                            Name = "Dining Room"
+                        },
+                        new
+                        {
+                            RoomId = 9,
+                            Icon = "🌳",
+                            Name = "Yard"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -155,6 +289,22 @@ namespace HouseholdManager.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "fab4fac1-c546-41de-aebc-a14da6895711",
+                            ConcurrencyStamp = "1",
+                            Name = "Administrator",
+                            NormalizedName = "Administrator"
+                        },
+                        new
+                        {
+                            Id = "c7b013f0-5201-4317-abd8-c211f91b7330",
+                            ConcurrencyStamp = "2",
+                            Name = "User",
+                            NormalizedName = "User"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -245,6 +395,42 @@ namespace HouseholdManager.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "a1addd14-6340-4840-95c2-db12554843e5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "65c902c9-e012-4b26-bfc8-b4b061da7096",
+                            Email = "defaultAdmin@yahoo.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "DEFAULTADMIN@YAHOO.COM",
+                            NormalizedUserName = "DEFAULTADMIN@YAHOO.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMHEaiiFlKshE1KHWEufwlFSb6zVVoq2XrBFhBEyu1+5lGFpgSZv1ZMjK+jl2cmJ/g==",
+                            PhoneNumber = "111-222-3333",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "4288336b-7016-44b0-913e-fd65ecd90113",
+                            TwoFactorEnabled = false,
+                            UserName = "defaultAdmin@yahoo.com"
+                        },
+                        new
+                        {
+                            Id = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d031b248-ea4e-4ad2-a0e3-5a68de46a79d",
+                            Email = "defaultUser@yahoo.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = true,
+                            NormalizedEmail = "DEFAULTUSER@YAHOO.COM",
+                            NormalizedUserName = "DEFAULTUSER@YAHOO.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAENmzDNxZreE76EV65iMnBbtbppvnhraFZiaePDixVgTHMrgZQuz7JhtwTuiuJOvfng==",
+                            PhoneNumber = "111-222-3333",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "8d13bf3c-eedc-4a39-bccc-e94affbbecec",
+                            TwoFactorEnabled = false,
+                            UserName = "defaultUser@yahoo.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -309,6 +495,23 @@ namespace HouseholdManager.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "a1addd14-6340-4840-95c2-db12554843e5",
+                            RoleId = "fab4fac1-c546-41de-aebc-a14da6895711"
+                        },
+                        new
+                        {
+                            UserId = "a1addd14-6340-4840-95c2-db12554843e5",
+                            RoleId = "c7b013f0-5201-4317-abd8-c211f91b7330"
+                        },
+                        new
+                        {
+                            UserId = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
+                            RoleId = "c7b013f0-5201-4317-abd8-c211f91b7330"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -351,11 +554,19 @@ namespace HouseholdManager.Migrations
 
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
                 {
+                    b.HasOne("HouseholdManager.Models.Member", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("HouseholdManager.Models.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Member");
 
                     b.Navigation("Room");
                 });
