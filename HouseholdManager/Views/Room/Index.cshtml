@@ -6,10 +6,7 @@
 
 <h1>All Rooms</h1>
 
-<p>
-    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Mission</a>
-    <a asp-action="Create" class="btn btn-sm btn-primary"> <i class="fa-solid fa-plus"></i> Room</a>
-</p>
+@await Html.PartialAsync("_CreationButtonsPartial")
 
 <div class="container">
     <div class="row">

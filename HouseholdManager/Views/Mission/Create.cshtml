@@ -7,6 +7,11 @@
 @*<h1>Create</h1>*@
 
 <h3>Create a Mission</h3>
+<p>
+    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
+    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
+    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
+</p>
 <div class="row">
     <div class="col-md-6">
         <form asp-action="Create">
@@ -30,8 +35,15 @@
                 <input asp-for="DueDate" class="form-control" />
                 <span asp-validation-for="DueDate" class="text-danger"></span>
             </div>
-
-            
+            <div class="mb-3">
+                <ejs-dropdownlist id="ddlUser" ejs-for="MemberId"
+                    dataSource="@ViewBag.Members" placeholder="User"
+                    floatLabelType="Always" allowFiltering="true" ignoreAccent="true"
+                    filterType="Contains" popupHeight="220px">
+                    <e-dropdownlist-fields value="MemberId" text="UserName"></e-dropdownlist-fields>
+                </ejs-dropdownlist>
+                <span asp-validation-for="MemberId" class="text-danger" fs-6></span>
+            </div>
             <div class="row mt-2">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -40,7 +52,7 @@
                 </div>
                 <div class="col-md-6">
                     <div>
-                        <a asp-action="Index" class="btn btn-secondary w-100">Cancel</a>
+                        <a asp-action="Index" class="btn btn-secondary w-100" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Cancel</a>
                     </div>
                 </div>
             </div>

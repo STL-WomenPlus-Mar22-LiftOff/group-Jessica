@@ -6,10 +6,7 @@
 
 <h1>All Missions</h1>
 
-<p>
-    <a asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Mission</a>
-    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-primary"> <i class="fa-solid fa-plus"></i> Room</a>
-</p>
+@await Html.PartialAsync("_CreationButtonsPartial")
 
 <div class="containter">
     <div class="row">
@@ -29,6 +26,9 @@
                             </th>
                             <th>
                                 Due Date
+                            </th>
+                            <th>
+                                Member
                             </th>
                             <th class="text-center">
                                 Edit | Details | Delete
@@ -50,6 +50,9 @@
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.DueDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Member.MemberUserNameWithIcon)
                                 </td>
                                 <td class="text-center">
                                     <a asp-action="Edit" asp-route-id="@item.RoomId" class="btn btn-sm btn-primary mx-1"> <i class="fa-solid fa-pencil"></i> </a>

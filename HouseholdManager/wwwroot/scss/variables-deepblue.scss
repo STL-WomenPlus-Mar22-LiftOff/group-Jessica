@@ -1,0 +1,168 @@
+﻿//
+//"Deep Blue" theme
+//
+
+$deepblue-glacier: #669bbc;
+$deepblue-blacklight: #5107c4;
+$deepblue-regalia: #6f22b1;
+$deepblue-coral: #c1121f;
+$deepblue-crimson: #7a2012;
+$deepblue-clownfish: #c1641c;
+$deepblue-yellowtail: #bb9b44;
+$deepblue-sunlight: #e8d9ae;
+$deepblue-algae: #19b152;
+$deepblue-seafoam: #25d199;
+$deepblue-wave: #3aa5d4;
+$deepblue-whitewater: #c4e2fd;
+$deepblue-ice: #a3c5f4;
+$deepblue-fathom: #1375a4;
+$deepblue-sunken: #053142;
+$deepblue-abyss: #001526;
+$deepblue-gray-900: shade-color($deepblue-fathom, 80%);
+$deepblue-gray-800: shade-color($deepblue-fathom, 60%);
+$deepblue-gray-700: shade-color($deepblue-fathom, 40%);
+$deepblue-gray-600: shade-color($deepblue-fathom, 20%);
+$deepblue-gray-500: $deepblue-fathom;
+$deepblue-gray-400: tint-color($deepblue-fathom, 20%);
+$deepblue-gray-300: tint-color($deepblue-fathom, 40%);
+$deepblue-gray-200: tint-color($deepblue-fathom, 60%);
+$deepblue-gray-100: tint-color($deepblue-fathom, 80%);
+$deepblue-primary: tint-color($deepblue-fathom, 10%);
+$deepblue-secondary: $deepblue-sunlight;
+$deepblue-success: shade-color($deepblue-seafoam, 25%);
+$deepblue-info: $deepblue-wave;
+$deepblue-warning: $deepblue-yellowtail;
+$deepblue-danger: $deepblue-coral;
+$deepblue-option: tint-color($deepblue-crimson, 10%);
+$deepblue-accent: mix($deepblue-glacier, $deepblue-regalia);
+
+
+//
+// Global colors
+//
+
+
+$primary-text-deepblue: $deepblue-ice;
+$secondary-text-deepblue: $deepblue-gray-300;
+$success-text-deepblue: $deepblue-algae;
+$info-text-deepblue: $deepblue-info;
+$warning-text-deepblue: $deepblue-warning;
+$danger-text-deepblue: $deepblue-danger;
+$light-text-deepblue: $deepblue-gray-800;
+$dark-text-deepblue: $deepblue-gray-100;
+
+$primary-bg-subtle-deepblue: $deepblue-gray-700;
+$secondary-bg-subtle-deepblue: $deepblue-gray-800;
+$success-bg-subtle-deepblue: mix($deepblue-algae, $deepblue-abyss);
+$info-bg-subtle-deepblue: mix($deepblue-wave, $deepblue-abyss);
+$warning-bg-subtle-deepblue: mix($deepblue-clownfish, $deepblue-abyss);
+$danger-bg-subtle-deepblue: mix($deepblue-coral, $deepblue-abyss);
+$light-bg-subtle-deepblue: $deepblue-gray-200;
+$dark-bg-subtle-deepblue: $deepblue-gray-900;
+
+$primary-border-subtle-deepblue: $deepblue-gray-500;
+$secondary-border-subtle-deepblue: $deepblue-gray-700;
+$success-border-subtle-deepblue: shade-color($deepblue-algae, 25%);
+$info-border-subtle-deepblue: shade-color($deepblue-wave, 25%);
+$warning-border-subtle-deepblue: shade-color($deepblue-clownfish, 25%);
+$danger-border-subtle-deepblue: shade-color($deepblue-coral, 25%);
+$light-border-subtle-deepblue: $deepblue-gray-300;
+$dark-border-subtle-deepblue: $deepblue-gray-800;
+
+$body-color-deepblue: mix($deepblue-gray-300, $deepblue-sunlight);
+$body-bg-deepblue: $deepblue-gray-900;
+$body-emphasis-color-deepblue: mix($deepblue-gray-200, $deepblue-sunlight);
+$body-secondary-color-deepblue: rgba($body-color-deepblue, .75);
+$body-secondary-bg-deepblue: $deepblue-gray-800;
+$body-tertiary-color-deepblue: rgba($body-color-deepblue, .5);
+$body-tertiary-bg-deepblue: shade-color($deepblue-gray-600, 50%);
+$emphasis-color-deepblue: $deepblue-whitewater;
+$border-color-deepblue: $deepblue-gray-700;
+$border-color-translucent-deepblue: rgba($deepblue-glacier, .15);
+$headings-color-deepblue: mix($deepblue-gray-100, $deepblue-sunlight, 50%);
+$link-color-deepblue: mix($deepblue-secondary, $deepblue-gray-500);
+$link-hover-color-deepblue: tint-color($deepblue-regalia, 25%);
+$code-color-deepblue: tint-color($deepblue-coral, 25%);
+
+//
+// Additional Colors (see additional-colors.scss)
+//
+
+$accent-text-deepblue: $deepblue-accent;
+$option-text-deepblue: $deepblue-option;
+$accent-bg-subtle-deepblue: mix($deepblue-crimson, $deepblue-abyss);
+$option-bg-subtle-deepblue: mix($deepblue-blacklight, $deepblue-abyss);
+$accent-border-subtle-deepblue: shade-color($deepblue-crimson, 25%);
+$option-border-subtle-deepblue: $deepblue-blacklight;
+
+
+//
+// Navbars
+//
+
+$navbar-deepblue-hover-color: mix($emphasis-color-deepblue, $deepblue-blacklight, 75%);
+$navbar-deepblue-color: $headings-color-deepblue;
+$navbar-deepblue-disabled-color: mix($navbar-deepblue-color, $deepblue-abyss, 50%);
+$navbar-deepblue-active-color: mix($navbar-deepblue-color, $deepblue-secondary, 50%);
+$nav-deepblue-pills-link-active-color: mix($emphasis-color-deepblue, $deepblue-glacier, 75%);
+$nav-deepblue-pills-link-active-bg: shade-color(mix($deepblue-primary, $deepblue-wave, 50%), 50%);
+
+//
+// Forms
+//
+
+$form-select-indicator-color-deepblue: $body-color-deepblue;
+$form-select-indicator-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color-deepblue}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
+
+$form-switch-color-deepblue: rgba($deepblue-whitewater, .25);
+$form-switch-bg-image-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color-deepblue}'/></svg>");
+
+
+//
+// Accordion
+//
+
+$accordion-button-icon-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-deepblue}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+$accordion-button-active-icon-deepblue: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-deepblue}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+
+
+//
+// Color Maps
+//
+$deepblue-theme-colors: (
+    "deepblue-abyss": $deepblue-abyss,
+    "deepblue-algae": $deepblue-algae,
+    "deepblue-blacklight": $deepblue-blacklight,
+    "deepblue-clownfish": $deepblue-clownfish,
+    "deepblue-coral": $deepblue-coral,
+    "deepblue-crimson": $deepblue-crimson,
+    "deepblue-fathom": $deepblue-fathom,
+    "deepblue-glacier": $deepblue-glacier,
+    "deepblue-ice": $deepblue-ice,
+    "deepblue-regalia": $deepblue-regalia,
+    "deepblue-seafoam": $deepblue-seafoam,
+    "deepblue-sunken": $deepblue-sunken,
+    "deepblue-sunlight": $deepblue-sunlight,
+    "deepblue-wave": $deepblue-wave,
+    "deepblue-whitewater": $deepblue-whitewater,
+    "deepblue-yellowtail": $deepblue-yellowtail
+);
+
+$deepblue-button-colors: (
+  "primary": $deepblue-primary,
+  "secondary": $deepblue-yellowtail,
+  "success": $deepblue-success,
+  "info": $deepblue-info,
+  "warning": $deepblue-clownfish,
+  "danger": $deepblue-danger,
+  "light": $deepblue-sunlight,
+  "dark": $deepblue-abyss,
+  "option": $deepblue-option,
+  "accent": $deepblue-accent
+);
+
+
+//Adding the color map to theme-colors allows bootstrap to
+//auto-generate things like buttons and css variables.
+
+$theme-colors: map-merge($theme-colors, $deepblue-theme-colors);

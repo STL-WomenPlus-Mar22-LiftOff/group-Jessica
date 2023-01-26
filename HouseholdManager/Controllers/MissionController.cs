@@ -4,10 +4,13 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using HouseholdManager.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Models;
 
 namespace HouseholdManager.Controllers
 {
+    [Authorize]
     public class MissionController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,8 +23,8 @@ namespace HouseholdManager.Controllers
         // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Missions.Include(t => t.Room);
-            return View(await applicationDbContext.ToListAsync());
+            var dataQuery = _context.Missions.Include(t => t.Room).Include(u => u.Member);
+            return View(await dataQuery.ToListAsync());
         }
 
         // GET: Mission/Details/5
@@ -33,7 +36,7 @@ namespace HouseholdManager.Controllers
             }
 
             var mission = await _context.Missions
-                .Include(t => t.Room)
+                .Include(t => t.Room).Include(u => u.Member)
                 .FirstOrDefaultAsync(m => m.MissionId == id);
             if (mission == null)
             {
@@ -46,6 +49,7 @@ namespace HouseholdManager.Controllers
         // GET: Mission/Create
         public IActionResult Create()
         {
+            PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
             return View();
         }
@@ -55,7 +59,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MissionId,MissionName,RoomId,Point,DueDate")] Models.Mission mission)
+        public async Task<IActionResult> Create([Bind("MissionId,MissionName,RoomId,Point,DueDate,MemberId")] Models.Mission mission)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +67,7 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
             return View(mission);
         }
@@ -80,6 +85,7 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
+            PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
             return View(mission);
         }
@@ -89,7 +95,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MissionId,MissionName,RoomId,Point,DueDate")] Models.Mission mission)
+        public async Task<IActionResult> Edit(int id, [Bind("MissionId,MissionName,RoomId,Point,DueDate,MemberId")] Models.Mission mission)
         {
             if (id != mission.MissionId)
             {
@@ -116,6 +122,7 @@ namespace HouseholdManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
             return View(mission);
         }
@@ -129,7 +136,7 @@ namespace HouseholdManager.Controllers
             }
 
             var mission = await _context.Missions
-                .Include(t => t.Room)
+                .Include(t => t.Room).Include(u => u.Member)
                 .FirstOrDefaultAsync(m => m.MissionId == id);
             if (mission == null)
             {
@@ -161,6 +168,15 @@ namespace HouseholdManager.Controllers
         private bool MissionExists(int id)
         {
           return _context.Missions.Any(e => e.MissionId == id);
+        }
+
+        [NonAction]
+        public void PopulateMembers()
+        {
+            var MemberCollection = _context.Members.ToList();
+            Member DefaultMember = new Member() { MemberId = 0, UserName = "Choose a member" };
+            MemberCollection.Insert(0, DefaultMember);
+            ViewBag.Members = MemberCollection;
         }
     }
 }
