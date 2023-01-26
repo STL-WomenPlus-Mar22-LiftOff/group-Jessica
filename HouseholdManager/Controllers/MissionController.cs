@@ -186,12 +186,13 @@ namespace HouseholdManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //TODO: make this check against household missions
+        [NonAction]
         private bool MissionExists(int id)
         {
           return _context.Missions.Any(e => e.Id == id);
         }
 
+        [NonAction]
         private async Task<bool> MissionInHousehold(int id)
         {
             var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
@@ -201,11 +202,13 @@ namespace HouseholdManager.Controllers
             return found.ToList().Any();
         }
 
+        [NonAction]
         private async Task<List<Member>> PopulateMembers()
         {
             return await _controller.GetMembersInHousehold(_userManager, User, _context);
         }
 
+        [NonAction]
         private async Task<SelectList> GetRoomSelectList(Mission mission)
         {
             var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
@@ -215,6 +218,7 @@ namespace HouseholdManager.Controllers
                                   mission.RoomId);
         }
 
+        [NonAction]
         private async Task<SelectList> GetRoomSelectList()
         {
             var household = await _controller.GetCurrentHousehold(_userManager, User, _context);

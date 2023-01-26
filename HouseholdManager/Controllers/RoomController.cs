@@ -27,12 +27,14 @@ namespace HouseholdManager.Controllers
             _userManager = userManager;
         }
 
+        // TODO: Populate from Household rooms
         // GET: Room
         public async Task<IActionResult> Index()
         {
               return View(await _context.Rooms.ToListAsync());
         }
 
+        // TODO: Check if room is in household
         // GET: Room/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -58,6 +60,7 @@ namespace HouseholdManager.Controllers
             return View();
         }
 
+        // TODO: Use a view model, check that user has household
         // POST: Room/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -75,6 +78,7 @@ namespace HouseholdManager.Controllers
             return View(room);
         }
 
+        // TODO: Check that room is in household
         // GET: Room/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -94,6 +98,7 @@ namespace HouseholdManager.Controllers
             return View(room);
         }
 
+        // TODO: Check that room is in household, use view model
         // POST: Room/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -130,6 +135,7 @@ namespace HouseholdManager.Controllers
             return View(room);
         }
 
+        // TODO: Check that room is in household
         // GET: Room/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -148,6 +154,7 @@ namespace HouseholdManager.Controllers
             return View(room);
         }
 
+        // TODO: Check that user is allowed to delete room
         // POST: Room/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
