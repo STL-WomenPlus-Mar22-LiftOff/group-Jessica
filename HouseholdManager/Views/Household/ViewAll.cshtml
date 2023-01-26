@@ -14,7 +14,7 @@
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Household Name" field="HouseholdNameWithIcon"></e-grid-column>
+                <e-grid-column headerText="Household Name" field="NameWithIcon"></e-grid-column>
                
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
@@ -30,11 +30,11 @@
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm btn-secondary" href="/Household/AddOrEdit/${HouseholdId}">
+        <a class="btn btn-sm btn-secondary" href="/Household/Edit/${Id}">
             <i class="fa-solid fa-pen fa-lg text-body-secondary"></i>
         </a>
-        <form action="/Household/Delete/${HouseholdId}" method="post">
-    @Html.AntiForgeryToken()
+        <form action="/Household/Delete/${Id}" method="post">
+            @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-sm btn-danger"
             onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
                 <i class="fa-solid fa-trash-can fa-lg text-body-secondary"></i>

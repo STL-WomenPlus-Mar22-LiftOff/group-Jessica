@@ -32,12 +32,14 @@ namespace HouseholdManager.Controllers
             return View();
         }
 
+        //TODO: Low priority, redirect off this page if the user already has a household
         //GET: Household/AddOrJoinHousehold
         public IActionResult AddOrJoinHousehold() 
         { 
             return View();
         }
 
+        //TODO: Low priority, redirect off this page if the user already has a household
         //GET: Household/JoinExisting
         public IActionResult JoinExisting()
         {
@@ -48,7 +50,8 @@ namespace HouseholdManager.Controllers
         public async Task<IActionResult> ViewAll()
         {
             var dataQuery = _context.Households;
-            return View(await dataQuery.ToListAsync());
+            var list = await dataQuery.ToListAsync();
+            return View(list);
         }
 
         // GET: Household/AddOrEdit
