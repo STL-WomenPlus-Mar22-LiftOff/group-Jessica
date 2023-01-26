@@ -15,7 +15,7 @@ namespace HouseholdManager.Models
 
         [Required(ErrorMessage = "Name of mission is required.")]
         [DisplayName("Mission Name")]
-        public string MissionName { get; set; }
+        public string Name { get; set; }
 
         [DisplayName("Room")]
         public int? RoomId { get; set; }

@@ -7,14 +7,18 @@ using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Models;
+using HouseholdManager.Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using System.Reflection;
+using MessagePack.Formatters;
 
 namespace HouseholdManager.Controllers
 {
     //TODO: Everything that is currently using _context.Missions needs to instead be pulling from User.Household.Missions
     [Authorize]
-    public class MissionController : Controller
+    public class MissionController : Controller, IQueryMembers
     {
+        private readonly IQueryMembers _controller;
         private readonly ApplicationDbContext _context;
         private readonly UserManager<Member> _userManager;
 
@@ -23,15 +27,20 @@ namespace HouseholdManager.Controllers
         {
             _context = context;
             _userManager = userManager;
+            _controller = this;
         }
 
         // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var dataQuery = _context.Missions.Include(t => t.Room).Include(u => u.Member);
+            var househould = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            var dataQuery = _context.Missions.Where(mission => mission.HouseholdId == househould.Id)
+                                             .Include(t => t.Room)
+                                             .Include(u => u.Member);
             return View(await dataQuery.ToListAsync());
         }
 
+        //TODO: check if mission is part of user's household before showing, else 403
         // GET: Mission/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -39,8 +48,6 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
-            var household = 0;
-
             var mission = await _context.Missions
                 .Include(t => t.Room).Include(u => u.Member)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -53,19 +60,20 @@ namespace HouseholdManager.Controllers
         }
 
         // GET: Mission/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            PopulateMembers();
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name");
+            await PopulateMembers();
+            ViewBag.RoomId = await GetRoomSelectList();
             return View();
         }
 
+        // TODO: Make this use a view model
         // POST: Mission/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MissionId,MissionName,RoomId,Point,DueDate,MemberId")] Models.Mission mission)
+        public async Task<IActionResult> Create([Bind("Id,Name,RoomId,Point,DueDate,MemberId")] Mission mission)
         {
             if (ModelState.IsValid)
             {
@@ -73,11 +81,12 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            PopulateMembers();
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            await PopulateMembers();
+            ViewBag.RoomId = await GetRoomSelectList(mission);
             return View(mission);
         }
 
+        // TODO: Check that mission is in member's household
         // GET: Mission/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -91,11 +100,12 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
-            PopulateMembers();
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            await PopulateMembers();
+            ViewBag.RoomId = await GetRoomSelectList(mission);
             return View(mission);
         }
 
+        // TODO: change this to use view model, check that mission is in member's household
         // POST: Mission/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -128,8 +138,8 @@ namespace HouseholdManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            PopulateMembers();
-            ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            await PopulateMembers();
+            ViewBag.RoomId = await GetRoomSelectList(mission);
             return View(mission);
         }
 
@@ -140,6 +150,10 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
+            else if (!await MissionInHousehold((int)id))
+            {
+                return Forbid();
+            }
 
             var mission = await _context.Missions
                 .Include(t => t.Room).Include(u => u.Member)
@@ -148,7 +162,7 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
-
+            // TODO: View model
             return View(mission);
         }
 
@@ -164,6 +178,7 @@ namespace HouseholdManager.Controllers
             var mission = await _context.Missions.FindAsync(id);
             if (mission != null)
             {
+                // TODO: check that user is allowed to delete this mission
                 _context.Missions.Remove(mission);
             }
             
@@ -177,11 +192,36 @@ namespace HouseholdManager.Controllers
           return _context.Missions.Any(e => e.Id == id);
         }
 
-        //TODO: make this populate from household members
-        private List<Member> PopulateMembers()
+        private async Task<bool> MissionInHousehold(int id)
         {
-            var members = new List<Member>();
-            return members;
+            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            var found = from mission in household.Missions
+                        where mission.Id == id
+                        select mission;
+            return found.ToList().Any();
+        }
+
+        private async Task<List<Member>> PopulateMembers()
+        {
+            return await _controller.GetMembersInHousehold(_userManager, User, _context);
+        }
+
+        private async Task<SelectList> GetRoomSelectList(Mission mission)
+        {
+            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            return new SelectList(_context.Rooms.Where(room => room.HouseholdId == household.Id), 
+                                  "RoomId", 
+                                  "Name", 
+                                  mission.RoomId);
+        }
+
+        private async Task<SelectList> GetRoomSelectList()
+        {
+            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            return new SelectList(_context.Rooms.Where(room => room.HouseholdId == household.Id),
+                                  "RoomId",
+                                  "Name");
+
         }
     }
 }

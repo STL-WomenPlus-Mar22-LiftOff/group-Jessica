@@ -86,8 +86,10 @@ namespace HouseholdManager.Controllers
                 var member = await _userManager.GetUserAsync(User);
                 member.MemberType = "Administrator";
                 household.Members.Add(member);
+                member.Household = household;
                 //Save to database
                 _context.Add(household);
+                _context.Update(member);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

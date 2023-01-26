@@ -16,13 +16,13 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="MissionName" class="control-label">Mission Name</label>
-                <input asp-for="MissionName" class="form-control" />
-                <span asp-validation-for="MissionName" class="text-danger"></span>
+                <label asp-for="Name" class="control-label">Mission Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="RoomId" class="control-label"></label>
-                <select asp-for="RoomId" class ="form-control" asp-items="ViewBag.RoomId"></select>
+                <select asp-for="RoomId" class ="form-control" asp-items=(SelectList)ViewBag.RoomId></select>
             </div>
             <div class="form-group">
                 <label asp-for="Point" class="control-label"></label>

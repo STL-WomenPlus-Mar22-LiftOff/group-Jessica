@@ -1,5 +1,7 @@
-﻿using HouseholdManager.Models;
+﻿using HouseholdManager.Areas.Identity.Data;
+using HouseholdManager.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace HouseholdManager.Data.Interfaces
@@ -10,17 +12,27 @@ namespace HouseholdManager.Data.Interfaces
     /// </summary>
     public interface IQueryMembers
     {
-        protected virtual async Task<Member> GetCurrentMember(UserManager<Member> userManager, ClaimsPrincipal user)
+        public virtual async Task<Member> GetCurrentMember(UserManager<Member> userManager, ClaimsPrincipal user)
         {
             return await userManager.GetUserAsync(user);
         }
 
-        protected virtual async Task<List<Member>> GetMembersInHousehold(UserManager<Member> userManager, ClaimsPrincipal user)
+        public virtual async Task<List<Member>> GetMembersInHousehold(UserManager<Member> userManager, ClaimsPrincipal user, ApplicationDbContext context)
         {
             var currentMember = await GetCurrentMember(userManager, user);
-            var members = (from houseMember in currentMember.Household?.Members
-                           select houseMember).ToList();
+            var members = (from house in context.Households
+                           where house.Id == currentMember.HouseholdId
+                           select house.Members).FirstOrDefault()!.ToList();
             return members;
+        }
+
+        public virtual async Task<Household> GetCurrentHousehold(UserManager<Member> userManager, ClaimsPrincipal user, ApplicationDbContext context)
+        {
+            var currentMember = await GetCurrentMember(userManager, user);
+            var household = from house in context.Households
+                            where house.Id == currentMember.HouseholdId
+                            select house;
+            return household.FirstOrDefault() ?? throw new KeyNotFoundException($"{currentMember.UserName}'s Household is null.");
         }
     }
 }
