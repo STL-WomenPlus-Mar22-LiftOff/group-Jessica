@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
 using HouseholdManager.Data.API;
@@ -10,6 +9,7 @@ using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
@@ -28,13 +28,17 @@ namespace HouseholdManager.Controllers
             _controller = this;
         }
 
-        // TODO: Maybe use a view model?
         // GET: Room
         public async Task<IActionResult> Index()
         {
             var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
             var roomsQuery = from room in household.Rooms
-                             select room;
+                             select new EditRoomViewModel
+                             {
+                                 Id = room.Id,
+                                 Name = room.Name,
+                                 Icon = room.Icon,
+                             };
             return View(roomsQuery.ToList());
         }
 
@@ -74,7 +78,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RoomId,Name,Icon")] Room room)
+        public async Task<IActionResult> Create([Bind("Name,Icon")] Room room)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +120,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Icon")] Room room)
+        public async Task<IActionResult> Edit(int id, [Bind("Name,Icon")] Room room)
         {
             if (id != room.Id)
             {
@@ -180,6 +184,11 @@ namespace HouseholdManager.Controllers
             {
                 return Problem("Entity set 'ApplicationDbContext.Rooms'  is null.");
             }
+            else if (!await RoomInHousehold((int)id))
+            {
+                return Forbid();
+            }
+
             var room = await _context.Rooms.FindAsync(id);
             if (room != null)
             {

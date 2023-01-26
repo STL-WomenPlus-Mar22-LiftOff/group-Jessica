@@ -8,7 +8,7 @@ namespace HouseholdManager.Data.Interfaces
 {
     /// <summary>
     /// This uses the "trait" design pattern to implement shared methods related 
-    /// to accessing a household's members.
+    /// to accessing a household and its members.
     /// </summary>
     public interface IQueryMembers
     {
