@@ -54,14 +54,31 @@ namespace HouseholdManager.Controllers
             return View(list);
         }
 
-        // GET: Household/AddOrEdit
+        // GET: Household/Edit/{id}
         public async Task<IActionResult> Edit(int id = 0)
         {
             await PopulateIcons();
-            if (id == 0)
-                return View(new EditHouseholdViewModel());
+            if (id < 1)
+            {
+                return RedirectToAction(nameof(Index));
+            }
             else
-                return View(_context.Households.Find(id));
+            {
+                var member = await _userManager.GetUserAsync(User);
+                /* TODO: Ideally a future admin role should bypass this check, commented out for now
+                if (id != member.HouseholdId)
+                {
+                    return Forbid();
+                }
+                */
+                var household = _context.Households.Find(id);
+                if (household is null) return NotFound();
+                return View(new EditHouseholdViewModel
+                {
+                    Icon = household.Icon,
+                    Name = household.Name
+                });
+            }
         }
 
         //GET: Household/Setup
