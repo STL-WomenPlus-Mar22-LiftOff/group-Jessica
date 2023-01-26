@@ -196,9 +196,10 @@ namespace HouseholdManager.Controllers
         private async Task<bool> MissionInHousehold(int id)
         {
             var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            if (household is null) return false;
             var found = from mission in household.Missions
                         where mission.Id == id
-                        select mission;
+                        select mission.Id;
             return found.ToList().Any();
         }
 

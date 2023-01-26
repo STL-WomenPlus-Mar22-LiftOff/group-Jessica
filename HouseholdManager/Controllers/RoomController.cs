@@ -13,10 +13,10 @@ using Microsoft.AspNetCore.Identity;
 
 namespace HouseholdManager.Controllers
 {
-    //TODO: everything that is currently using _context.Rooms needs to be using User.Household.Rooms instead
     [Authorize]
-    public class RoomController : Controller, IRequestIcons
+    public class RoomController : Controller, IRequestIcons, IQueryMembers
     {
+        private readonly IQueryMembers _controller;
         private readonly ApplicationDbContext _context;
         private readonly UserManager<Member> _userManager;
 
@@ -25,22 +25,30 @@ namespace HouseholdManager.Controllers
         {
             _context = context;
             _userManager = userManager;
+            _controller = this;
         }
 
-        // TODO: Populate from Household rooms
+        // TODO: Maybe use a view model?
         // GET: Room
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Rooms.ToListAsync());
+            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            var roomsQuery = from room in household.Rooms
+                             select room;
+            return View(roomsQuery.ToList());
         }
 
-        // TODO: Check if room is in household
+        // TODO: View model
         // GET: Room/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Rooms == null)
             {
                 return NotFound();
+            }
+            else if (!await RoomInHousehold((int)id))
+            {
+                return Forbid();
             }
 
             var room = await _context.Rooms
@@ -60,7 +68,7 @@ namespace HouseholdManager.Controllers
             return View();
         }
 
-        // TODO: Use a view model, check that user has household
+        // TODO: Use a view model
         // POST: Room/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -78,7 +86,7 @@ namespace HouseholdManager.Controllers
             return View(room);
         }
 
-        // TODO: Check that room is in household
+        // TODO: View model
         // GET: Room/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -89,6 +97,10 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
+            else if (!await RoomInHousehold((int)id))
+            {
+                return Forbid();
+            }
 
             var room = await _context.Rooms.FindAsync(id);
             if (room == null)
@@ -98,13 +110,13 @@ namespace HouseholdManager.Controllers
             return View(room);
         }
 
-        // TODO: Check that room is in household, use view model
+        // TODO: View model
         // POST: Room/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RoomId,Name,Icon")] Room room)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Icon")] Room room)
         {
             if (id != room.Id)
             {
@@ -135,13 +147,17 @@ namespace HouseholdManager.Controllers
             return View(room);
         }
 
-        // TODO: Check that room is in household
+        // TODO: View model
         // GET: Room/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Rooms == null)
             {
                 return NotFound();
+            }
+            else if (!await RoomInHousehold((int)id))
+            {
+                return Forbid();
             }
 
             var room = await _context.Rooms
@@ -178,6 +194,17 @@ namespace HouseholdManager.Controllers
         private bool RoomExists(int id)
         {
           return _context.Rooms.Any(e => e.Id == id);
+        }
+
+        [NonAction]
+        private async Task<bool> RoomInHousehold(int id)
+        {
+            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            if (household is null) return false;
+            var found = from room in household.Rooms
+                        where room.Id == id
+                        select room.Id;
+            return found.ToList().Any();
         }
 
 
