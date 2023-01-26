@@ -22,6 +22,64 @@ namespace HouseholdManager.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("HouseholdManager.Models.Household", b =>
+                {
+                    b.Property<int>("HouseholdId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HouseholdId"), 1L, 1);
+
+                    b.Property<string>("HouseholdName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.HasKey("HouseholdId");
+
+                    b.ToTable("Households");
+                });
+
+            modelBuilder.Entity("HouseholdManager.Models.Member", b =>
+                {
+                    b.Property<int>("MemberId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MemberId"), 1L, 1);
+
+                    b.Property<int>("HouseholdId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("MemberType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MemberId");
+
+                    b.HasIndex("HouseholdId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Members");
+                });
+
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
                 {
                     b.Property<int>("MissionId")
@@ -33,6 +91,9 @@ namespace HouseholdManager.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("MemberId")
+                        .HasColumnType("int");
+
                     b.Property<string>("MissionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
@@ -40,10 +101,12 @@ namespace HouseholdManager.Migrations
                     b.Property<int>("Point")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RoomId")
+                    b.Property<int>("RoomId")
                         .HasColumnType("int");
 
                     b.HasKey("MissionId");
+
+                    b.HasIndex("MemberId");
 
                     b.HasIndex("RoomId");
 
@@ -58,9 +121,6 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoomId"), 1L, 1);
 
-                    b.Property<int>("HouseholdId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Icon")
                         .IsRequired()
                         .IsUnicode(true)
@@ -71,8 +131,6 @@ namespace HouseholdManager.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("RoomId");
-
-                    b.HasIndex("HouseholdId");
 
                     b.ToTable("Rooms");
                 });
@@ -232,7 +290,7 @@ namespace HouseholdManager.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Position")
+                    b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -293,27 +351,24 @@ namespace HouseholdManager.Migrations
 
                     b.Navigation("Household");
 
-                    b.ToTable("User");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
                 {
-                    b.HasOne("HouseholdManager.Models.Room", "Room")
-                        .WithMany("Missions")
-                        .HasForeignKey("RoomId");
-
-                    b.Navigation("Household");
-
-                    b.Navigation("Room");
-                });
-
-            modelBuilder.Entity("HouseholdManager.Models.Room", b =>
-                {
-                    b.HasOne("HouseholdManager.Models.Household", "Household")
-                        .WithMany("Rooms")
-                        .HasForeignKey("HouseholdId")
+                    b.HasOne("HouseholdManager.Models.Member", "Member")
+                        .WithMany()
+                        .HasForeignKey("MemberId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("HouseholdManager.Models.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Member");
 
                     b.Navigation("Room");
                 });

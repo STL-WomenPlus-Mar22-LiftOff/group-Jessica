@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230119213030_iconSupportAdditional")]
-    partial class iconSupportAdditional
+    [Migration("20230126214400_BootstrapSass")]
+    partial class BootstrapSass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
