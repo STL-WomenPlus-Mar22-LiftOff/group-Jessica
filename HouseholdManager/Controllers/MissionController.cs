@@ -71,7 +71,7 @@ namespace HouseholdManager.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         // TODO: Make this use a view model
-        public async Task<IActionResult> Create([Bind("Id,Name,RoomId,Point,DueDate,MemberId")] Mission mission)
+        public async Task<IActionResult> Create([Bind("Id,Name,RoomId,Point,DueDate,MemberId")] EditMissionViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace HouseholdManager.Controllers
             }
             await PopulateMembers();
             ViewBag.Rooms = await GetRoomSelectList(mission);
-            return View(mission);
+            return View(model);
         }
 
         // GET: Mission/Edit/{id}
