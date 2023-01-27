@@ -80,6 +80,7 @@ namespace HouseholdManager.Controllers
                     //This is inelegant and should probably be reworked later
                     return Redirect("Household/AddOrJoinHousehold");
                 }
+                var household = await _memberService.GetCurrentHousehold();
                 Mission mission = new Mission
                 {
                     HouseholdId = (int)user.HouseholdId,
@@ -89,7 +90,9 @@ namespace HouseholdManager.Controllers
                     RoomId = model.RoomId,
                     Point = model.Point
                 };
+                household.Missions.Add(mission);
                 _context.Add(mission);
+                _context.Update(household);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -230,8 +233,8 @@ namespace HouseholdManager.Controllers
         {
             var household = await _memberService.GetCurrentHousehold();
             if (household is null) return false;
-            var found = from mission in household.Missions
-                        where mission.Id == id
+            var found = from mission in _context.Missions
+                        where mission.Id == id && mission.HouseholdId == household.Id
                         select mission.Id;
             return found.ToList().Any();
         }
