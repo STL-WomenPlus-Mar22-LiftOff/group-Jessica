@@ -244,20 +244,21 @@ namespace HouseholdManager.Controllers
         [NonAction]
         private async Task<SelectList> GetRoomSelectList(int id)
         {
-            var household = await _memberService.GetCurrentHousehold();
-            return new SelectList(_context.Rooms.Where(room => room.HouseholdId == household.Id),
-                                  "RoomId",
-                                  "Name",
-                                  id);
+            var user = await _memberService.GetCurrentMember();
+            var query = from room in _context.Rooms
+                        where room.HouseholdId == user.HouseholdId
+                        select room;
+            return new SelectList(query.ToList(), "Id", "Name", id);
         }
 
         [NonAction]
         private async Task<SelectList> GetRoomSelectList()
         {
-            var household = await _memberService.GetCurrentHousehold();
-            return new SelectList(_context.Rooms.Where(room => room.HouseholdId == household.Id),
-                                  "RoomId",
-                                  "Name");
+            var user = await _memberService.GetCurrentMember();
+            var query = from room in _context.Rooms
+                        where room.HouseholdId == user.HouseholdId
+                        select room;
+            return new SelectList(query.ToList(), "Id", "Name");
 
         }
     }

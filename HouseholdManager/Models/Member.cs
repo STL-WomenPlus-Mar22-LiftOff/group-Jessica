@@ -21,15 +21,18 @@ namespace HouseholdManager.Models
 
         public Household? Household { get; set; }
 
-        public string? DisplayName
+        private string? _displayName;
+
+        [NotMapped]
+        public string DisplayName
         {
             get
             {
-                return DisplayName ?? this.UserName;
+                return _displayName ?? this.UserName;
             }
             set
             {
-                DisplayName = value;
+                _displayName = value;
             }
         } 
 
