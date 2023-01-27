@@ -40,7 +40,7 @@ namespace HouseholdManager.Controllers
             //Exception thrown if user has no household
             catch (KeyNotFoundException e)
             {
-                Console.Error.WriteLine(e.Message);
+                Console.Error.WriteLine($"Caught exception: {e.Message}");
                 return Forbid();
             }
             var dataQuery = _context.Missions.Where(mission => mission.HouseholdId == household.Id)
@@ -62,10 +62,11 @@ namespace HouseholdManager.Controllers
                 return Forbid();
             }
             var mission = await _context.Missions
-                .Include(t => t.Room).Include(u => u.Member)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                                        .Include(t => t.Room)
+                                        .Include(u => u.Member)
+                                        .FirstOrDefaultAsync(m => m.Id == id);
             return mission is null ? NotFound() 
-                                   : View(new EditMissionViewModel((int)id, mission));
+                                   : View(new FullMissionViewModel(mission));
         }
 
         // GET: Mission/Create
@@ -197,9 +198,11 @@ namespace HouseholdManager.Controllers
             }
 
             var mission = await _context.Missions
-                .Include(t => t.Room).Include(u => u.Member)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            return View(new EditMissionViewModel(mission));
+                                        .Include(t => t.Room)
+                                        .Include(u => u.Member)
+                                        .FirstOrDefaultAsync(m => m.Id == id);
+            return mission is null ? NotFound()
+                                   : View(new FullMissionViewModel(mission));
         }
 
         // POST: Mission/Delete/{id}

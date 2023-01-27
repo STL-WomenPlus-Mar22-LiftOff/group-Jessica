@@ -40,7 +40,7 @@ namespace HouseholdManager.Controllers
             //Exception thrown if user has no household
             catch (KeyNotFoundException e)
             {
-                Console.Error.WriteLine(e.Message);
+                Console.Error.WriteLine($"Caught exception: {e.Message}");
                 return Forbid();
             }
             var roomsQuery = from room in _context.Rooms
