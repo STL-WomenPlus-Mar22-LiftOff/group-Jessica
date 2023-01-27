@@ -14,24 +14,25 @@ using HouseholdManager.Models.ViewModels;
 namespace HouseholdManager.Controllers
 {
     [Authorize]
-    public class RoomController : Controller, IRequestIcons, IQueryMembers
+    public class RoomController : Controller, IRequestIcons
     {
-        private readonly IQueryMembers _controller;
+        private readonly IQueryMembers _memberService;
         private readonly ApplicationDbContext _context;
         private readonly UserManager<Member> _userManager;
 
         public RoomController(ApplicationDbContext context, 
-                              UserManager<Member> userManager)
+                              UserManager<Member> userManager,
+                              IQueryMembers memberService)
         {
             _context = context;
             _userManager = userManager;
-            _controller = this;
+            _memberService = memberService;
         }
 
         // GET: Room
         public async Task<IActionResult> Index()
         {
-            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            var household = await _memberService.GetCurrentHousehold();
             var roomsQuery = from room in _context.Rooms
                              where room.HouseholdId == household.Id
                              select new EditRoomViewModel
@@ -86,7 +87,7 @@ namespace HouseholdManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+                var household = await _memberService.GetCurrentHousehold();
                 var room = new Room()
                 {
                     Name = model.Name,
@@ -141,7 +142,7 @@ namespace HouseholdManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Name,Icon")] EditRoomViewModel model)
         {
-            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            var household = await _memberService.GetCurrentHousehold();
             var room = (from rm in _context.Rooms
                         where rm.Id == id && rm.HouseholdId == household.Id
                         select rm).FirstOrDefault();
@@ -245,7 +246,7 @@ namespace HouseholdManager.Controllers
         [NonAction]
         private async Task<bool> RoomInHousehold(int id)
         {
-            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            var household = await _memberService.GetCurrentHousehold();
             if (household is null) return false;
             var found = from room in _context.Rooms
                         where room.Id == id && room.HouseholdId == household.Id

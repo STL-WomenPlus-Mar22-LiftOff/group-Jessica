@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HouseholdManager.Areas.Identity.Data;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace HouseholdManager.Models.ViewModels
 {
     public class EditMissionViewModel
     {
+
         public int? Id { get; set; }
 
         [Required(ErrorMessage = "Name of mission is required.")]
@@ -25,5 +28,6 @@ namespace HouseholdManager.Models.ViewModels
         public DateTime DueDate { get; set; }
 
         public string? MemberId { get; set; }
+
     }
 }

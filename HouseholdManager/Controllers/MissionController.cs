@@ -14,24 +14,25 @@ using HouseholdManager.Models.ViewModels;
 namespace HouseholdManager.Controllers
 {
     [Authorize]
-    public class MissionController : Controller, IQueryMembers
+    public class MissionController : Controller
     {
-        private readonly IQueryMembers _controller;
+        private readonly IQueryMembers _memberService;
         private readonly ApplicationDbContext _context;
         private readonly UserManager<Member> _userManager;
 
         public MissionController(ApplicationDbContext context,
-                                 UserManager<Member> userManager)
+                                 UserManager<Member> userManager,
+                                 IQueryMembers memberService)
         {
             _context = context;
             _userManager = userManager;
-            _controller = this;
+            _memberService = memberService;
         }
 
         // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var househould = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            var househould = await _memberService.GetCurrentHousehold();
             var dataQuery = _context.Missions.Where(mission => mission.HouseholdId == househould.Id)
                                              .Include(t => t.Room)
                                              .Include(u => u.Member);
@@ -75,12 +76,20 @@ namespace HouseholdManager.Controllers
         {
             if (ModelState.IsValid)
             {
+                Mission mission = new Mission
+                {
+                    Name = model.Name,
+                    MemberId = model.MemberId,
+                    DueDate = model.DueDate,
+                    RoomId = model.RoomId,
+                    Point = model.Point
+                };
                 _context.Add(mission);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             await PopulateMembers();
-            ViewBag.Rooms = await GetRoomSelectList(mission);
+            ViewBag.Rooms = await GetRoomSelectList((int)model.RoomId);
             return View(model);
         }
 
@@ -209,7 +218,7 @@ namespace HouseholdManager.Controllers
             var mission = await _context.Missions.FindAsync(id);
             if (mission != null)
             {
-                // TODO: check that user is allowed to delete this mission
+                // TODO: check that _user is allowed to delete this mission
                 _context.Missions.Remove(mission);
             }
             
@@ -226,7 +235,7 @@ namespace HouseholdManager.Controllers
         [NonAction]
         private async Task<bool> MissionInHousehold(int id)
         {
-            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            var household = await _memberService.GetCurrentHousehold();
             if (household is null) return false;
             var found = from mission in household.Missions
                         where mission.Id == id
@@ -237,23 +246,29 @@ namespace HouseholdManager.Controllers
         [NonAction]
         private async Task<List<Member>> PopulateMembers()
         {
-            return await _controller.GetMembersInHousehold(_userManager, User, _context);
+            return await _memberService.GetMembersInHousehold();
         }
 
         [NonAction]
         private async Task<SelectList> GetRoomSelectList(Mission mission)
         {
-            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
-            return new SelectList(_context.Rooms.Where(room => room.HouseholdId == household.Id), 
-                                  "RoomId", 
-                                  "Name", 
-                                  mission.RoomId);
+            return await GetRoomSelectList(mission.Id);
+        }
+
+        [NonAction]
+        private async Task<SelectList> GetRoomSelectList(int id)
+        {
+            var household = await _memberService.GetCurrentHousehold();
+            return new SelectList(_context.Rooms.Where(room => room.HouseholdId == household.Id),
+                                  "RoomId",
+                                  "Name",
+                                  id);
         }
 
         [NonAction]
         private async Task<SelectList> GetRoomSelectList()
         {
-            var household = await _controller.GetCurrentHousehold(_userManager, User, _context);
+            var household = await _memberService.GetCurrentHousehold();
             return new SelectList(_context.Rooms.Where(room => room.HouseholdId == household.Id),
                                   "RoomId",
                                   "Name");

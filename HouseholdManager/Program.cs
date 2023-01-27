@@ -1,4 +1,6 @@
 using HouseholdManager.Areas.Identity.Data;
+using HouseholdManager.Data.Interfaces;
+using HouseholdManager.Data.Services;
 using HouseholdManager.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -17,24 +19,9 @@ builder.Services.AddIdentity<Member, IdentityRole>(options => options.SignIn.Req
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders()
     .AddDefaultUI();
-/*
 
 builder.Services.AddHttpContextAccessor();
-// Identity services
-builder.Services.TryAddScoped<IUserValidator<Member>, UserValidator<Member>>();
-builder.Services.TryAddScoped<IPasswordValidator<Member>, PasswordValidator<Member>>();
-builder.Services.TryAddScoped<IPasswordHasher<Member>, PasswordHasher<Member>>();
-builder.Services.TryAddScoped<ILookupNormalizer, UpperInvariantLookupNormalizer>();
-builder.Services.TryAddScoped<IRoleValidator<IdentityRole>, RoleValidator<IdentityRole>>();
-// No interface for the error describer so we can add errors without rev'ing the interface
-builder.Services.TryAddScoped<IdentityErrorDescriber>();
-builder.Services.TryAddScoped<ISecurityStampValidator, SecurityStampValidator<Member>>();
-builder.Services.TryAddScoped<ITwoFactorSecurityStampValidator, TwoFactorSecurityStampValidator<Member>>();
-builder.Services.TryAddScoped<IUserClaimsPrincipalFactory<Member>, UserClaimsPrincipalFactory<Member, IdentityRole>>();
-builder.Services.TryAddScoped<UserManager<Member>>();
-builder.Services.TryAddScoped<SignInManager<Member>>();
-builder.Services.TryAddScoped<RoleManager<IdentityRole>>();
-*/
+builder.Services.AddScoped<IQueryMembers, MemberService>();
 
 //Register Syncfusion license
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBMAY9C3t2VVhkQlFadVdJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxQdkRjWH5ZcHBRRmRbVE0=");
