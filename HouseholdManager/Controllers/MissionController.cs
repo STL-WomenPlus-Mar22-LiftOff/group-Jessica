@@ -236,7 +236,7 @@ namespace HouseholdManager.Controllers
             if (household is null) return false;
             var found = from mission in _context.Missions
                         where mission.Id == id && mission.HouseholdId == household.Id
-                        select mission.Id;
+                        select mission;
             return found.ToList().Any();
         }
 

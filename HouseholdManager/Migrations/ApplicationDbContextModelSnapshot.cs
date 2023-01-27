@@ -41,7 +41,7 @@ namespace HouseholdManager.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Households");
+                    b.ToTable("Households", (string)null);
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Member", b =>
@@ -158,7 +158,7 @@ namespace HouseholdManager.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Missions");
+                    b.ToTable("Missions", (string)null);
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Room", b =>
@@ -185,7 +185,7 @@ namespace HouseholdManager.Migrations
 
                     b.HasIndex("HouseholdId");
 
-                    b.ToTable("Rooms");
+                    b.ToTable("Rooms", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
