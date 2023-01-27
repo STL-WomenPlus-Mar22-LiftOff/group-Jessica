@@ -35,21 +35,21 @@ namespace HouseholdManager.Areas.Identity.Data
         public DbSet<IdentityUser> IdentityUsers { get; set; }
 
         //This column needs to be set to Unicode in order to store icon emojis
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder mb)
         {
-            base.OnModelCreating(builder);
-            builder.Entity("HouseholdManager.Models.Room", b =>
+            base.OnModelCreating(mb);
+            mb.Entity("HouseholdManager.Models.Room", b =>
             {
                 b.Property<string>("Icon").IsUnicode(true);
             });
 
-            SeedHousehold(builder);
-            SeedRoles(builder);
-            SeedUsers(builder);
-            SeedUserRoles(builder);
-            SeedUserMember(builder);
-            SeedRoom(builder);
-            SeedMission(builder);
+            SeedHousehold(mb);
+            SeedRoles(mb);
+            SeedUsers(mb);
+            SeedUserRoles(mb);
+            SeedUserMember(mb);
+            SeedRoom(mb);
+            SeedMission(mb);
         }
 
         private static void SeedHousehold(ModelBuilder builder)
