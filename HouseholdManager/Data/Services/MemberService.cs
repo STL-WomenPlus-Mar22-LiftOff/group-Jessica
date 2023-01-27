@@ -56,7 +56,7 @@ namespace HouseholdManager.Data.Services
                         select room;
             return rooms.ToList();
         }
-        
+
         public virtual async Task<List<Mission>> GetCurrentHouseholdMissions()
         {
             var household = await GetCurrentHousehold();

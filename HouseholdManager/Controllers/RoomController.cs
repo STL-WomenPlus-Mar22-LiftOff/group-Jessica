@@ -32,7 +32,17 @@ namespace HouseholdManager.Controllers
         // GET: Room
         public async Task<IActionResult> Index()
         {
-            var household = await _memberService.GetCurrentHousehold();
+            Household household;
+            try
+            {
+                household = await _memberService.GetCurrentHousehold();
+            }
+            //Exception thrown if user has no household
+            catch (KeyNotFoundException e)
+            {
+                Console.Error.WriteLine(e.Message);
+                return Forbid();
+            }
             var roomsQuery = from room in _context.Rooms
                              where room.HouseholdId == household.Id
                              select new EditRoomViewModel(room);

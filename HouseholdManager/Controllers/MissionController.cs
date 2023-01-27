@@ -32,10 +32,21 @@ namespace HouseholdManager.Controllers
         // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var household = await _memberService.GetCurrentHousehold();
+            Household household;
+            try
+            {
+                household = await _memberService.GetCurrentHousehold();
+            }
+            //Exception thrown if user has no household
+            catch (KeyNotFoundException e)
+            {
+                Console.Error.WriteLine(e.Message);
+                return Forbid();
+            }
             var dataQuery = _context.Missions.Where(mission => mission.HouseholdId == household.Id)
                                              .Include(t => t.Room)
                                              .Include(u => u.Member);
+            //TODO: this should probably use a view model like Room/Index does
             return View(await dataQuery.ToListAsync());
         }
 

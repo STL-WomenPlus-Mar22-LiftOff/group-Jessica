@@ -29,6 +29,8 @@ namespace HouseholdManager.Controllers
         {
             return View();
         }
+        // TODO: Put this back together somehow
+
         /* yeet
 
         // GET: Member/AddOrEdit
