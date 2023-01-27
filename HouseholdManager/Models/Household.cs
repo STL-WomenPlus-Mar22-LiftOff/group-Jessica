@@ -35,5 +35,16 @@ namespace HouseholdManager.Models
             }
         }
 
+        //If anyone has a better solution for how to get SyncFusion components to use the 
+        //icon font for *just* the icon, be my guest
+        [NotMapped]
+        public string? NameWithIconHtml
+        {
+            get
+            {
+                return $"<text class='icon-font'>{this.Icon}</text> {this.Name}";
+            }
+        }
+
     }
 }

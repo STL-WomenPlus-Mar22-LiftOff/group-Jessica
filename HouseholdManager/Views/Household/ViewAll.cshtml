@@ -14,7 +14,7 @@
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Household Name" field="NameWithIcon"></e-grid-column>
+                <e-grid-column headerText="Household Name" field="NameWithIconHtml" :disableHtmlEncode="false"></e-grid-column>
                
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>

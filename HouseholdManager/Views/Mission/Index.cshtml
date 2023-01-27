@@ -52,7 +52,8 @@
                                     @Html.DisplayFor(modelItem => item.DueDate)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Member.UserNameWithIcon)
+                                    <text class="icon-font">@Html.DisplayFor(modelItem => item.Member.Icon)</text>
+                                    @Html.DisplayFor(modelItem => item.Member.DisplayName)
                                 </td>
                                 <td class="text-center">
                                     <a asp-action="Edit" asp-route-id="@item.RoomId" class="btn btn-sm btn-primary mx-1"> <i class="fa-solid fa-pencil"></i> </a>

@@ -8,6 +8,25 @@ namespace HouseholdManager.Models.ViewModels
 {
     public class EditMissionViewModel
     {
+        public EditMissionViewModel(Mission mission)
+        {
+            Id = mission.Id;
+            MemberId = mission.MemberId;
+            Name = mission.Name;
+            Point = mission.Point;
+            DueDate = mission.DueDate;
+            RoomId = mission.RoomId;
+        }
+
+        public EditMissionViewModel(int id, Mission mission)
+        {
+            Id = id;
+            MemberId = mission.MemberId;
+            Name = mission.Name;
+            Point = mission.Point;
+            DueDate = mission.DueDate;
+            RoomId = mission.RoomId;
+        }
 
         public int? Id { get; set; }
 

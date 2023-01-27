@@ -21,7 +21,17 @@ namespace HouseholdManager.Models
 
         public Household? Household { get; set; }
 
-        public string? DisplayName { get; set; }
+        public string? DisplayName
+        {
+            get
+            {
+                return DisplayName ?? this.UserName;
+            }
+            set
+            {
+                DisplayName = value;
+            }
+        } 
 
         [NotMapped]
         public string? HouseholdNameWithIcon
@@ -37,7 +47,7 @@ namespace HouseholdManager.Models
         {
             get
             {
-                return this.Icon + " " + this.DisplayName;
+                return this.Icon + " " + this.DisplayName ?? this.UserName;
             }
         }
     }

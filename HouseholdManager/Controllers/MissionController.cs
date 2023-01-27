@@ -32,14 +32,14 @@ namespace HouseholdManager.Controllers
         // GET: Mission
         public async Task<IActionResult> Index()
         {
-            var househould = await _memberService.GetCurrentHousehold();
-            var dataQuery = _context.Missions.Where(mission => mission.HouseholdId == househould.Id)
+            var household = await _memberService.GetCurrentHousehold();
+            var dataQuery = _context.Missions.Where(mission => mission.HouseholdId == household.Id)
                                              .Include(t => t.Room)
                                              .Include(u => u.Member);
             return View(await dataQuery.ToListAsync());
         }
 
-        // GET: Mission/Details/5
+        // GET: Mission/Details/{id}
         public async Task<IActionResult> Details(int? id)
         {
             if (id is null || _context.Missions is null)
@@ -53,9 +53,8 @@ namespace HouseholdManager.Controllers
             var mission = await _context.Missions
                 .Include(t => t.Room).Include(u => u.Member)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (mission is null) return NotFound();
-            //TODO: View model
-            return View(mission);
+            return mission is null ? NotFound() 
+                                   : View(new EditMissionViewModel((int)id, mission));
         }
 
         // GET: Mission/Create
@@ -71,7 +70,6 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        // TODO: Make this use a view model
         public async Task<IActionResult> Create([Bind("Id,Name,RoomId,Point,DueDate,MemberId")] EditMissionViewModel model)
         {
             if (ModelState.IsValid)
@@ -89,14 +87,15 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction(nameof(Index));
             }
             await PopulateMembers();
-            ViewBag.Rooms = await GetRoomSelectList((int)model.RoomId);
+            ViewBag.Rooms = model.RoomId is null ? await GetRoomSelectList()
+                                                 : await GetRoomSelectList((int)model.RoomId);
             return View(model);
         }
 
         // GET: Mission/Edit/{id}
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Missions == null)
+            if (id is null || _context.Missions is null)
             {
                 return NotFound();
             }
@@ -106,17 +105,15 @@ namespace HouseholdManager.Controllers
             }
 
             var mission = await _context.Missions.FindAsync(id);
-            if (mission == null)
+            if (mission is null)
             {
                 return NotFound();
             }
             await PopulateMembers();
-            ViewBag.Rooms = await GetRoomSelectList(mission);
-            // TODO: View Model
-            return View(mission);
+            ViewBag.Rooms = await GetRoomSelectList((int)id);
+            return View(new EditMissionViewModel((int)id, mission));
         }
 
-        // TODO: change this to use view model
         // POST: Mission/Edit/{id}
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -133,9 +130,6 @@ namespace HouseholdManager.Controllers
                 return Forbid();
             }
             var mission = await _context.Missions.FindAsync(model.Id);
-            if (mission is null) return NotFound();
-            //TODO: room Id and member Id need server-side validation as well
-
             if (ModelState.IsValid)
             {
                 mission.Name = model.Name;
@@ -161,17 +155,12 @@ namespace HouseholdManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            await PopulateMembers();
-            ViewBag.Rooms = await GetRoomSelectList(mission);
-            return View(new EditMissionViewModel
+            else
             {
-                Id = model.Id,
-                MemberId = model.MemberId,
-                Name = model.Name,
-                Point = model.Point,
-                DueDate = model.DueDate,
-                RoomId = model.RoomId
-            });
+                await PopulateMembers();
+                ViewBag.Rooms = await GetRoomSelectList(mission);
+                return View(new EditMissionViewModel(mission));
+            }
         }
 
         // GET: Mission/Delete/{id}
@@ -189,12 +178,7 @@ namespace HouseholdManager.Controllers
             var mission = await _context.Missions
                 .Include(t => t.Room).Include(u => u.Member)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (mission == null)
-            {
-                return NotFound();
-            }
-            // TODO: View model
-            return View(mission);
+            return View(new EditMissionViewModel(mission));
         }
 
         // POST: Mission/Delete/{id}
@@ -208,7 +192,7 @@ namespace HouseholdManager.Controllers
             }
             else if (_context.Missions == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Missions'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Missions' is null.");
             }
             else if (!await MissionInHousehold((int)id))
             {
@@ -216,12 +200,7 @@ namespace HouseholdManager.Controllers
             }
 
             var mission = await _context.Missions.FindAsync(id);
-            if (mission != null)
-            {
-                // TODO: check that _user is allowed to delete this mission
-                _context.Missions.Remove(mission);
-            }
-            
+            _context.Missions.Remove(mission);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -232,6 +211,13 @@ namespace HouseholdManager.Controllers
           return _context.Missions.Any(e => e.Id == id);
         }
 
+        /// <summary>
+        /// Given a mission ID, checks if that mission is part of the user's household.  This 
+        /// also functions as a null check, returning false if there is no mission with that ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>True if the mission is found to have the same household 
+        /// ID as the user, otherwise false</returns>
         [NonAction]
         private async Task<bool> MissionInHousehold(int id)
         {
@@ -246,7 +232,7 @@ namespace HouseholdManager.Controllers
         [NonAction]
         private async Task<List<Member>> PopulateMembers()
         {
-            return await _memberService.GetMembersInHousehold();
+            return await _memberService.GetCurrentHouseholdMembers();
         }
 
         [NonAction]

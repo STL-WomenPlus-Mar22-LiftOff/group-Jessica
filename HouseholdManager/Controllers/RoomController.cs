@@ -35,12 +35,7 @@ namespace HouseholdManager.Controllers
             var household = await _memberService.GetCurrentHousehold();
             var roomsQuery = from room in _context.Rooms
                              where room.HouseholdId == household.Id
-                             select new EditRoomViewModel
-                             {
-                                 Id = room.Id,
-                                 Icon = room.Icon,
-                                 Name = room.Name
-                             };
+                             select new EditRoomViewModel(room);
             return View(roomsQuery.ToList());
         }
 
@@ -63,12 +58,7 @@ namespace HouseholdManager.Controllers
                 return NotFound();
             }
 
-            return View(new EditRoomViewModel
-            {
-                Id = room.Id,
-                Name = room.Name,
-                Icon = room.Icon,
-            });
+            return View(new EditRoomViewModel(room));
         }
 
         // GET: Room/Create
@@ -102,11 +92,7 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction(nameof(Index));
             }
             await PopulateIcons();
-            return View(new EditRoomViewModel
-            {
-                Name = model.Name,
-                Icon = model.Icon,
-            });
+            return View(new EditRoomViewModel(model.Name, model.Icon));
         }
 
         // GET: Room/Edit/{id}
@@ -127,12 +113,7 @@ namespace HouseholdManager.Controllers
                 return NotFound();
             }
             await PopulateIcons();
-            return View(new EditRoomViewModel
-            {
-                Id = room.Id,
-                Name = room.Name,
-                Icon = room.Icon,
-            });
+            return View(new EditRoomViewModel(room));
         }
 
         // POST: Room/Edit/{id}
@@ -178,12 +159,7 @@ namespace HouseholdManager.Controllers
                 return RedirectToAction(nameof(Index));
             }
             await PopulateIcons();
-            return View(new EditRoomViewModel
-            {
-                Id = room.Id,
-                Name = room.Name,
-                Icon = room.Icon,
-            });
+            return View(new EditRoomViewModel(room));
         }
 
         // GET: Room/Delete/{id}
@@ -205,12 +181,7 @@ namespace HouseholdManager.Controllers
                 return NotFound();
             }
 
-            return View(new EditRoomViewModel
-            {
-                Id = room.Id,
-                Name = room.Name,
-                Icon = room.Icon,
-            });
+            return View(new EditRoomViewModel(room));
         }
 
         // POST: Room/Delete/5
