@@ -33,9 +33,17 @@
                 @await Html.PartialAsync("_IconMenuPartial")
                 <span asp-validation-for="Icon" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary w-100" />
-                <a asp-action="Index" class="btn btn-secondary w-100> <i class="fa-solid fa-left-to-line"></i> Back to List</a>
+            <div class="row mt-2">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary w-100"> <i class="fa-solid fa-floppy-disk"></i> Save</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <a asp-action="Index" class="btn btn-secondary w-100"> <i class="fa-solid fa-arrow-left"></i> Cancel</a>
+                    </div>
+                </div>
             </div>
         </form>
     </div>

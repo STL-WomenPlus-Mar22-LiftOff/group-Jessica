@@ -11,41 +11,51 @@
     <h4>Mission</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-8">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-8">
             @Html.DisplayNameFor(model => model.RoomName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
+            <text class="icon-font">@Html.DisplayFor(model => model.RoomIcon)</text> @*trailing space here is intentional*@
             @Html.DisplayFor(model => model.RoomName)
-        </dd>
-        <dt class = "col-sm-2">
+        </dd><br />
+        <dt class = "col-sm-8">
             @Html.DisplayNameFor(model => model.Point)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Point)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-8">
             @Html.DisplayNameFor(model => model.DueDate)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DueDate)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-sm-8">
             @Html.DisplayNameFor(model => model.MemberName)
         </dt>
         <dd class="col-sm-10">
+            <text class="icon-font">@Html.DisplayFor(model => model.MemberIcon)</text> @*trailing space here is intentional*@
             @Html.DisplayFor(model => model.MemberName)
         </dd>
     </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Back to List</a>
-    </form>
+
+    <div class="row mt-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <button type="submit" class="btn btn-primary w-100"> <i class="fa-solid fa-xmark"></i> Delete</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <a asp-action="Index" class="btn btn-secondary w-100"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
+        </div>
+    </div>
 </div>

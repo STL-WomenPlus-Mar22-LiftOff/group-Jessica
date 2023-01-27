@@ -25,11 +25,17 @@
         </dd>
     </dl>
     
-    <form asp-action="Delete">
-        <span>
-            <input type="hidden" asp-for="Id" />
-            <input type="submit" value="Delete" class="btn btn-danger w-100" />
-            <a asp-action="Index" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-left-to-line w-100"></i> Back to List</a>
-        </span>
-    </form>
+    <div class="row mt-2">
+        <div class="col-md-6">
+            <div class="form-group">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <button type="submit" class="btn btn-primary w-100"> <i class="fa-solid fa-xmark"></i> Delete</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <a asp-action="Index" class="btn btn-secondary w-100"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
+        </div>
+    </div>
 </div>

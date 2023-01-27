@@ -126,6 +126,14 @@ body {
     padding-left: var(--bs-navbar-nav-link-padding-x);
 }
 
+.mission-details {
+    border: 3px solid var(--bs-body-bg-tertiary);
+    padding: 1em;
+    display: inline-block;
+    width: 80%;
+}
+
+
 /*WIP wobble back-and-forth effect
 .effect-wobble {
     animation: wobble 5s linear 0s infinite backwards;
