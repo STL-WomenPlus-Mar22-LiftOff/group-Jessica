@@ -30,8 +30,10 @@
                     </div>
 
                 <div class="mb-3">
-                    <ejs-textbox id="memberIcon" placeholder="MemberIcon" ejs-for="MemberIcon" floatLabelType="Always"></ejs-textbox>
-                    <span asp-validation-for="MemberIcon" class="text-danger" fs-6></span>
+                    <label asp-for="Icon" class="control-label"></label>
+                    <input asp-for="Icon" id="iconInput" class="form-control" hidden />
+                    @await Html.PartialAsync("_IconMenuPartial")
+                    <span asp-validation-for="Icon" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
                     <ejs-dropdownlist id="ddlHousehold" ejs-for="HouseholdId"
@@ -54,8 +56,8 @@
 </div>
 <p>
     <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
-    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
     <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
+    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
 </p>
 
 @*@section Scripts {

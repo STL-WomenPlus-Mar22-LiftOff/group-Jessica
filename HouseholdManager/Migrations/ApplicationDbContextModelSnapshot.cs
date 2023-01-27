@@ -30,13 +30,14 @@ namespace HouseholdManager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HouseholdId"), 1L, 1);
 
-                    b.Property<string>("HouseholdIcon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<string>("HouseholdName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(5)");
 
                     b.HasKey("HouseholdId");
 
@@ -54,9 +55,10 @@ namespace HouseholdManager.Migrations
                     b.Property<int>("HouseholdId")
                         .HasColumnType("int");
 
-                    b.Property<string>("MemberIcon")
+                    b.Property<string>("Icon")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .IsUnicode(true)
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("MemberType")
                         .IsRequired()

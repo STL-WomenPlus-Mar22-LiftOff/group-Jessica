@@ -7,14 +7,15 @@ using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
 using HouseholdManager.Data;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Areas.Identity.Data;
+using HouseholdManager.Data.API;
+using HouseholdManager.Data.Interfaces;
 
 namespace HouseholdManager.Controllers
 {
     [Authorize]
-    public class MemberController : Controller
+    public class MemberController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;
 
@@ -26,16 +27,17 @@ namespace HouseholdManager.Controllers
         // GET: Member
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Members.Include(t => t.Household).Include(s => s.User);
-            return View(await applicationDbContext.ToListAsync());
+            var dataQuery = _context.Members.Include(t => t.Household).Include(s => s.User);
+            return View(await dataQuery.ToListAsync());
         }
 
 
         // GET: Member/AddOrEdit
-        public IActionResult AddOrEdit(int id = 0)
+        public async Task<IActionResult> AddOrEdit(int id = 0)
         {
             PopulateHouseholds();
             PopulateIdentityUsers();
+            await PopulateIcons();
             if (id == 0)
                 return View(new Member());
             else
@@ -47,7 +49,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,MemberIcon,HouseholdId,UserName")] Member member)
+        public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,Icon,HouseholdId,UserName")] Member member)
         {
             if (ModelState.IsValid)
             {
@@ -60,6 +62,7 @@ namespace HouseholdManager.Controllers
             }
             PopulateHouseholds();
             PopulateIdentityUsers();
+            await PopulateIcons();
             return View(member);
         }
 
@@ -99,6 +102,14 @@ namespace HouseholdManager.Controllers
             IdentityUser DefaultUser = new IdentityUser() { Id = "", UserName = "Choose an Identity User"};
             UserCollection.Insert(0, DefaultUser);
             ViewBag.IdentityUsers = UserCollection;
+        }
+
+        [NonAction]
+        public async Task PopulateIcons()
+        {
+            IconRequestor req = new IconRequestor();
+            List<Icon> icons = await req.GetIconsFromApi();
+            ViewBag.Icons = icons;
         }
 
     }

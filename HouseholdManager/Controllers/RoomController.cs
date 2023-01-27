@@ -5,15 +5,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
-using System.Text.Json;
 using HouseholdManager.Data.API;
 using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
+using HouseholdManager.Data.Interfaces;
 
 namespace HouseholdManager.Controllers
 {
     [Authorize]
-    public class RoomController : Controller
+    public class RoomController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;
 
@@ -49,9 +49,7 @@ namespace HouseholdManager.Controllers
         // GET: Room/Create
         public async Task<IActionResult> Create()
         {
-            IconRequestor req = new IconRequestor();
-            List<Icon> icons = await req.GetIconsFromApi();
-            ViewBag.Icons = icons;
+            await PopulateIcons();
             return View();
         }
 
@@ -68,15 +66,15 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            await PopulateIcons();
             return View(room);
         }
 
         // GET: Room/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            IconRequestor req = new IconRequestor();
-            List<Icon> icons = await req.GetIconsFromApi();
-            ViewBag.Icons = icons;
+
+            await PopulateIcons();
 
             if (id == null || _context.Rooms == null)
             {
@@ -123,6 +121,7 @@ namespace HouseholdManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            await PopulateIcons();
             return View(room);
         }
 
@@ -163,11 +162,20 @@ namespace HouseholdManager.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [NonAction]
         private bool RoomExists(int id)
         {
           return _context.Rooms.Any(e => e.RoomId == id);
         }
 
-        
+
+        [NonAction]
+        public async Task PopulateIcons()
+        {
+            IconRequestor req = new IconRequestor();
+            List<Icon> icons = await req.GetIconsFromApi();
+            ViewBag.Icons = icons;
+        }
+
     }
 }

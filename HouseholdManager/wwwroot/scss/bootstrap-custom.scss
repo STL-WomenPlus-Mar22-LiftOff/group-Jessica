@@ -1,0 +1,37 @@
+﻿
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../lib/bootstrap/scss/functions";
+@import "../lib/bootstrap/scss/mixins";
+
+// 2. Include any default variable overrides here
+
+//example
+//$primary: #a71221;
+
+// 3. Include remainder of required Bootstrap stylesheets
+
+@import "../lib/bootstrap/scss/variables";
+@import "../lib/bootstrap/scss/variables-dark";
+
+//Additions to sitewide theme-colors
+@import "../scss/additional-colors.scss";
+
+//Deep blue theme variables
+$enable-theme-deepblue: true !default;
+@import "../scss/variables-deepblue.scss";
+
+
+// 4. Include any optional Bootstrap components as you like
+
+@import "../lib/bootstrap/scss/bootstrap";
+
+// 5. Add additional custom code here
+
+//Deep blue theme overrides and custom css
+@import "../scss/theme-deepblue.scss";
+
+//Custom dark mode extension
+@import "../scss/theme-dark-custom.scss";

@@ -31,11 +31,6 @@ body {
     z-index: 1;
 }
 
-[data-bs-theme="deepblue"] 
-.icon-picker-menu {
-    background-color: var(--light);
-}
-
 .icon-button-list {
     position: relative;
     transform: translateX(-10%);
@@ -74,6 +69,12 @@ body {
 
 .icon-font {
     font-family: "Noto Color Emoji" !important;
+}
+
+.button-row-container {
+    display: inline-grid;
+    grid-template-columns: [first] auto [second] auto [third] auto [fourth] auto;
+    place-self: center;
 }
 
 /*WIP wobble back-and-forth effect
