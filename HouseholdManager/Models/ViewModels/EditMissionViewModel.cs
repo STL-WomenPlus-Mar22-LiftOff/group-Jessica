@@ -8,6 +8,8 @@ namespace HouseholdManager.Models.ViewModels
 {
     public class EditMissionViewModel
     {
+        public EditMissionViewModel() { }
+
         public EditMissionViewModel(Mission mission)
         {
             Id = mission.Id;
@@ -32,7 +34,7 @@ namespace HouseholdManager.Models.ViewModels
 
         [Required(ErrorMessage = "Name of mission is required.")]
         [DisplayName("Mission Name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [DisplayName("Room")]
         public int? RoomId { get; set; }
@@ -44,6 +46,7 @@ namespace HouseholdManager.Models.ViewModels
 
         [BindProperty, DataType(DataType.Date)]
         [DisplayName("Due Date")]
+        [Required]
         public DateTime DueDate { get; set; }
 
         public string? MemberId { get; set; }

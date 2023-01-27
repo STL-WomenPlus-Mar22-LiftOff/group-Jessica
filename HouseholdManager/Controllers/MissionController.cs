@@ -74,8 +74,15 @@ namespace HouseholdManager.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = await _memberService.GetCurrentMember();
+                if (user.HouseholdId is null)
+                {
+                    //This is inelegant and should probably be reworked later
+                    return Redirect("Household/AddOrJoinHousehold");
+                }
                 Mission mission = new Mission
                 {
+                    HouseholdId = (int)user.HouseholdId,
                     Name = model.Name,
                     MemberId = model.MemberId,
                     DueDate = model.DueDate,
@@ -247,7 +254,7 @@ namespace HouseholdManager.Controllers
             var user = await _memberService.GetCurrentMember();
             var query = from room in _context.Rooms
                         where room.HouseholdId == user.HouseholdId
-                        select room;
+                        select new RoomListItemViewModel(room.Name, room.Icon, room.Id);
             return new SelectList(query.ToList(), "Id", "Name", id);
         }
 
@@ -257,7 +264,7 @@ namespace HouseholdManager.Controllers
             var user = await _memberService.GetCurrentMember();
             var query = from room in _context.Rooms
                         where room.HouseholdId == user.HouseholdId
-                        select room;
+                        select new RoomListItemViewModel(room.Name, room.Icon, room.Id);
             return new SelectList(query.ToList(), "Id", "Name");
 
         }

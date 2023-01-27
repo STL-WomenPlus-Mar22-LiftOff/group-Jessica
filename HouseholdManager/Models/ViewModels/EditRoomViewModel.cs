@@ -5,6 +5,12 @@ namespace HouseholdManager.Models.ViewModels
 {
     public class EditRoomViewModel
     {
+        public EditRoomViewModel() 
+        {
+            Name = "";
+            Icon = "";
+        }
+
         public EditRoomViewModel(string name, string icon)
         {
             //-1 should always be invalid

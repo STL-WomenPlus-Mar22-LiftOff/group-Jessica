@@ -78,6 +78,11 @@ namespace HouseholdManager.Controllers
             if (ModelState.IsValid)
             {
                 var household = await _memberService.GetCurrentHousehold();
+                if (household is null)
+                {
+                    //This is inelegant and should probably be reworked later
+                    return Redirect("Household/AddOrJoinHousehold");
+                }
                 var room = new Room()
                 {
                     Name = model.Name,

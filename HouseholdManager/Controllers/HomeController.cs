@@ -27,6 +27,7 @@ namespace HouseholdManager.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
+            if (user is null) return View();
             if (user.HouseholdId is null || user.HouseholdId < 1)
             {
                 return Redirect("Household/AddOrJoinHousehold");

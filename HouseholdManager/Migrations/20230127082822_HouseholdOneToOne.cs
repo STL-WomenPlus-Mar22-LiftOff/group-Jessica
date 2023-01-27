@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HouseholdManager.Migrations
 {
-    public partial class InitialOneToOne : Migration
+    public partial class HouseholdOneToOne : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,7 +66,6 @@ namespace HouseholdManager.Migrations
                     MemberType = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
                     HouseholdId = table.Column<int>(type: "int", nullable: true),
-                    DisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
