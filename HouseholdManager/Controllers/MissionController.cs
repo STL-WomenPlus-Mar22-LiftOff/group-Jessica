@@ -70,7 +70,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,RoomId,Point,DueDate,MemberId")] EditMissionViewModel model)
+        public async Task<IActionResult> Create([Bind("Name,RoomId,Point,DueDate,MemberId")] EditMissionViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -231,6 +231,7 @@ namespace HouseholdManager.Controllers
         [NonAction]
         private async Task<bool> MissionInHousehold(int id)
         {
+            //TODO: Figure out why this doesn't work properly
             var household = await _memberService.GetCurrentHousehold();
             if (household is null) return false;
             var found = from mission in _context.Missions
