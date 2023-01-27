@@ -32,14 +32,14 @@ namespace HouseholdManager.Controllers
             return View();
         }
 
-        //TODO: Low priority, redirect off this page if the _user already has a household
+        //TODO: Low priority, redirect off this page if the user already has a household
         //GET: Household/AddOrJoinHousehold
         public IActionResult AddOrJoinHousehold() 
         { 
             return View();
         }
 
-        //TODO: Low priority, redirect off this page if the _user already has a household
+        //TODO: Low priority, redirect off this page if the user already has a household
         //GET: Household/JoinExisting
         public IActionResult JoinExisting()
         {
