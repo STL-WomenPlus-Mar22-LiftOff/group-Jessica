@@ -38,5 +38,25 @@ namespace HouseholdManager.Models
 
         public Member? Member { get; set; }
 
+
+        [NotMapped]
+        public string? RoomNameWithIcon
+        {
+            get
+            {
+                return Room == null ? "" : Room.Icon + " " + Room.Name;
+            }
+
+        }
+
+        [NotMapped]
+        public string? MemberUserNameWithIcon
+        {
+            get
+            {
+                return Member == null ? "" : Member.Icon + " " + Member.UserName;
+            }
+        }
     }
+
 }
