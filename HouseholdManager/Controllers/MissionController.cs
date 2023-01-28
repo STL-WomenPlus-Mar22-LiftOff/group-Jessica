@@ -47,6 +47,7 @@ namespace HouseholdManager.Controllers
         }
 
         // GET: Mission/Create
+        [Authorize(Roles = "Administrator,User")]
         public IActionResult Create()
         {
             PopulateMembers();
@@ -59,6 +60,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> Create([Bind("MissionId,MissionName,RoomId,Point,DueDate,MemberId")] Models.Mission mission)
         {
             if (ModelState.IsValid)
@@ -73,6 +75,7 @@ namespace HouseholdManager.Controllers
         }
 
         // GET: Mission/Edit/5
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Missions == null)
@@ -95,6 +98,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> Edit(int id, [Bind("MissionId,MissionName,RoomId,Point,DueDate,MemberId")] Models.Mission mission)
         {
             if (id != mission.MissionId)
@@ -128,6 +132,7 @@ namespace HouseholdManager.Controllers
         }
 
         // GET: Mission/Delete/5
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Missions == null)
@@ -149,6 +154,7 @@ namespace HouseholdManager.Controllers
         // POST: Mission/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Missions == null)
