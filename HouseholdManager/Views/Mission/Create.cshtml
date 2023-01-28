@@ -33,6 +33,7 @@
                 <span asp-validation-for="DueDate" class="text-danger"></span>
             </div>
             <div class="mb-3">
+                @*TODO: Fix this dropdownlist*@
                 <ejs-dropdownlist id="ddlUser" ejs-for="MemberId"
                     dataSource="@ViewBag.Members" placeholder="User"
                     floatLabelType="Always" allowFiltering="true" ignoreAccent="true"

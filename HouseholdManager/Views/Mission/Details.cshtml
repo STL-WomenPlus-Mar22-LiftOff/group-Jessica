@@ -9,20 +9,23 @@
 <div>
     <h4>Mission</h4>
     <hr />
-    <dl class="row mission-details">
+    <dl class="row room-mission-details">
         <dt class = "col-sm-8">
             @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-8">
-            @Html.DisplayNameFor(model => model.RoomName)
-        </dt>
-        <dd class="col-sm-10">
-            <text class="icon-font">@Html.DisplayFor(model => model.RoomIcon)</text>@*trailing space here is intentional*@
-            @Html.DisplayFor(model => model.RoomName)
-        </dd>
+        @if (!string.IsNullOrEmpty(Model.RoomName))
+        {
+            <dt class = "col-sm-8">
+                @Html.DisplayNameFor(model => model.RoomName)
+            </dt>
+            <dd class="col-sm-10">
+                <text class="icon-font">@Html.DisplayFor(model => model.RoomIcon)</text>@*trailing space here is intentional*@
+                @Html.DisplayFor(model => model.RoomName)
+            </dd>
+        }
         <dt class = "col-sm-8">
             @Html.DisplayNameFor(model => model.Point)
         </dt>
@@ -35,13 +38,16 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DueDate)
         </dd>
-        <dt class="col-sm-8">
-            @Html.DisplayNameFor(model => model.MemberName)
-        </dt>
-        <dd class="col-sm-10">
-            <text class="icon-font">@Html.DisplayFor(model => model.MemberIcon)</text> @*trailing space here is intentional*@
-            @Html.DisplayFor(model => model.MemberName)
-        </dd>
+        @if (!string.IsNullOrEmpty(Model.MemberName))
+        {
+            <dt class="col-sm-8">
+                @Html.DisplayNameFor(model => model.MemberName)
+            </dt>
+            <dd class="col-sm-10">
+                <text class="icon-font">@Html.DisplayFor(model => model.MemberIcon)</text> @*trailing space here is intentional*@
+                @Html.DisplayFor(model => model.MemberName)
+            </dd>
+        }
     </dl>
     <div class="row mt-2">
         <div class="col-md-6">

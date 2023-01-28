@@ -126,7 +126,7 @@ body {
     padding-left: var(--bs-navbar-nav-link-padding-x);
 }
 
-.mission-details {
+.room-mission-details {
     border: 3px solid var(--bs-body-bg-tertiary);
     padding: 1em;
     display: inline-block;
