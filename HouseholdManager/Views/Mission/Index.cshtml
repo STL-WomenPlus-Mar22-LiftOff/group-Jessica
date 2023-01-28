@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HouseholdManager.Models.Mission>
+﻿@model IEnumerable<HouseholdManager.Models.ViewModels.FullMissionViewModel>
 
 @{
     ViewData["Title"] = "Missions";
@@ -19,7 +19,7 @@
                                 Mission
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Room)
+                                @Html.DisplayNameFor(model => model.RoomName)
                             </th>
                             <th>
                                 Points
@@ -43,7 +43,8 @@
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Room.Name)
+                                    <text class="icon-font">@Html.DisplayFor(modelItem => item.RoomIcon)</text>
+                                    @Html.DisplayFor(modelItem => item.RoomName)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Point)
@@ -52,8 +53,8 @@
                                     @Html.DisplayFor(modelItem => item.DueDate)
                                 </td>
                                 <td>
-                                    <text class="icon-font">@Html.DisplayFor(modelItem => item.Member.Icon)</text>
-                                    @Html.DisplayFor(modelItem => item.Member.DisplayName)
+                                    <text class="icon-font">@Html.DisplayFor(modelItem => item.MemberIcon)</text>
+                                    @Html.DisplayFor(modelItem => item.MemberName)
                                 </td>
                                 <td class="text-center">
                                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary mx-1"> <i class="fa-solid fa-pencil"></i> </a>

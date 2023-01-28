@@ -1,7 +1,4 @@
 ﻿using System.ComponentModel;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using System.Reflection;
-using System.Reflection.Metadata;
 
 namespace HouseholdManager.Models.ViewModels
 {
@@ -44,12 +41,12 @@ namespace HouseholdManager.Models.ViewModels
         }
         */
 
-        [DisplayName("Member Name")]
+        [DisplayName("Member")]
         public string MemberName { get; set; }
 
         public string MemberIcon { get; set; }
 
-        [DisplayName("Room Name")]
+        [DisplayName("Room")]
         public string RoomName { get; set; }
 
         public string RoomIcon { get; set;}

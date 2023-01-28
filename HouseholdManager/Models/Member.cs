@@ -9,7 +9,7 @@ namespace HouseholdManager.Models
     {
         [Column(TypeName = "nvarchar(50)")]
         [Required(ErrorMessage = "Member type (Administrator or Member) is required.")]
-        //todo: this should be an enum, or require a custom validation attribute
+        // TODO: low priority, this should be an enum, or require a custom validation attribute
         public string MemberType { get; set; } = "Member";
 
         [Column(TypeName = "nvarchar(5)")]

@@ -45,9 +45,18 @@ namespace HouseholdManager.Controllers
             }
             var dataQuery = _context.Missions.Where(mission => mission.HouseholdId == household.Id)
                                              .Include(t => t.Room)
-                                             .Include(u => u.Member);
-            //TODO: this should probably use a view model like Room/Index does
-            return View(await dataQuery.ToListAsync());
+                                             .Include(u => u.Member)
+                                             .ToList();
+            if (dataQuery is null)
+            {
+                return View(new FullMissionViewModel());
+            }
+            else
+            {
+                var viewModelList = (from entry in dataQuery
+                                     select new FullMissionViewModel(entry)).ToList();
+                return View(viewModelList);
+            }
         }
 
         // GET: Mission/Details/{id}
