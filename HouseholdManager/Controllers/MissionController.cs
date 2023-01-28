@@ -81,7 +81,7 @@ namespace HouseholdManager.Controllers
         // GET: Mission/Create
         public async Task<IActionResult> Create()
         {
-            await PopulateMembers();
+            ViewBag.Members = await PopulateMembers();
             ViewBag.Rooms = await GetRoomSelectList();
             return View();
         }
@@ -117,7 +117,7 @@ namespace HouseholdManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            await PopulateMembers();
+            ViewBag.Members = await PopulateMembers();
             ViewBag.Rooms = model.RoomId is null ? await GetRoomSelectList()
                                                  : await GetRoomSelectList((int)model.RoomId);
             return View(model);
@@ -140,7 +140,7 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
-            await PopulateMembers();
+            ViewBag.Members = await PopulateMembers();
             ViewBag.Rooms = await GetRoomSelectList((int)id);
             return View(new EditMissionViewModel((int)id, mission));
         }
@@ -188,7 +188,7 @@ namespace HouseholdManager.Controllers
             }
             else
             {
-                await PopulateMembers();
+                ViewBag.Members = await PopulateMembers();
                 ViewBag.Rooms = await GetRoomSelectList(mission);
                 return View(new EditMissionViewModel(mission));
             }
