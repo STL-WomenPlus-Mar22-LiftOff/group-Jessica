@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Data;
 using HouseholdManager.Models;
 using Microsoft.AspNetCore.Authorization;
+using HouseholdManager.Areas.Identity.Data;
 using HouseholdManager.Data.API;
 using HouseholdManager.Data.Interfaces;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize]
     public class HouseholdController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;

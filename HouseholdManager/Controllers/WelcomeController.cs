@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize(Roles = "Administrator, User")]
+
     public class WelcomeController : Controller
     {
         private readonly ILogger<WelcomeController> _logger;

@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
 using HouseholdManager.Data.API;
+using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Data.Interfaces;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize(Roles = "Administrator, User")]
+    [Authorize]
     public class RoomController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;
