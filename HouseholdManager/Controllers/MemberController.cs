@@ -71,6 +71,12 @@ namespace HouseholdManager.Controllers
             }
         }
 
+        // GET: Member/Invite
+        public IActionResult Invite()
+        {
+            return View();
+        }
+
 
         /* 
 
