@@ -18,33 +18,46 @@ namespace HouseholdManager.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<Member> _userManager;
+        private readonly IQueryMembers _memberService;
 
         public HouseholdController(ApplicationDbContext context,
-                                  UserManager<Member> userManager)
+                                  UserManager<Member> userManager,
+                                  IQueryMembers memberService)
         {
             _userManager = userManager;
             _context = context;
+            _memberService = memberService;
         }
 
         //GET: Household
         public IActionResult Index()
         {
+            //TODO: Make this actually do something useful
             return View();
         }
 
-        //TODO: Low priority, redirect off this page if the user already has a household
         //GET: Household/AddOrJoinHousehold
-        public IActionResult AddOrJoinHousehold() 
-        { 
-            return View();
+        public async Task<IActionResult> AddOrJoinHousehold() 
+        {
+            return await UserHasHousehold() ? RedirectToAction("Index")
+                                            : View();
         }
 
-        //TODO: Low priority, redirect off this page if the user already has a household
         //GET: Household/JoinExisting
-        public IActionResult JoinExisting()
+        public async Task<IActionResult> JoinExisting()
         {
-            return View();
+            return await UserHasHousehold() ? RedirectToAction("Index")
+                                            : View(); //TODO: ViewModel
         }
+
+        /*
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> JoinExisting(JoinHouseholdViewModel model)
+        {
+        // TODO
+        }
+        */
 
         // GET: Household/ViewAll
         public async Task<IActionResult> ViewAll()
@@ -52,6 +65,47 @@ namespace HouseholdManager.Controllers
             var dataQuery = _context.Households;
             var list = await dataQuery.ToListAsync();
             return View(list);
+        }
+
+
+        //GET: Household/Setup
+        public async Task<IActionResult> Setup()
+        {
+            await PopulateIcons();
+            return View(new EditHouseholdViewModel());
+        }
+
+        // POST: Household/Setup
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Setup([Bind("Name,Icon")] EditHouseholdViewModel model)
+        {
+            if (await UserHasHousehold()) return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                Household household = new Household()
+                {
+                    Name = model.Name,
+                    Icon = model.Icon
+                };
+                //Set the current _user to household administrator
+                var member = await _userManager.GetUserAsync(User);
+                member.MemberType = "Administrator";
+                household.Members.Add(member);
+                member.Household = household;
+                //Save to database
+                _context.Add(household);
+                _context.Update(member);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                await PopulateIcons();
+                return View(model);
+            }
         }
 
         // GET: Household/Edit/{id}
@@ -78,45 +132,6 @@ namespace HouseholdManager.Controllers
                     Icon = household.Icon,
                     Name = household.Name
                 });
-            }
-        }
-
-        //GET: Household/Setup
-        public async Task<IActionResult> Setup()
-        {
-            await PopulateIcons();
-            return View(new EditHouseholdViewModel());
-        }
-
-        // POST: Household/Setup
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Setup([Bind("Name,Icon")] EditHouseholdViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                Household household = new Household()
-                {
-                    Name = model.Name,
-                    Icon = model.Icon
-                };
-                //Set the current _user to household administrator
-                var member = await _userManager.GetUserAsync(User);
-                member.MemberType = "Administrator";
-                household.Members.Add(member);
-                member.Household = household;
-                //Save to database
-                _context.Add(household);
-                _context.Update(member);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                await PopulateIcons();
-                return View(model);
             }
         }
 
@@ -159,7 +174,7 @@ namespace HouseholdManager.Controllers
         {
             if (_context.Households == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Households'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Households' is null.");
             }
             var household = await _context.Households.FindAsync(id);
             if (household != null)
@@ -177,6 +192,20 @@ namespace HouseholdManager.Controllers
             IconRequestor req = new IconRequestor();
             List<Icon> icons = await req.GetIconsFromApi();
             ViewBag.Icons = icons;
+        }
+
+        [NonAction]
+        public async Task<bool> UserHasHousehold()
+        {
+            try
+            {
+                _ = await _memberService.GetCurrentHousehold();
+                return true;
+            }
+            //user has no household
+            catch (KeyNotFoundException) {
+                return false;
+            }
         }
     }    
 }
