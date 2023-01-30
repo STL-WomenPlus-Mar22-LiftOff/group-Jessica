@@ -41,7 +41,7 @@ namespace HouseholdManager.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Households", (string)null);
+                    b.ToTable("Households");
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Member", b =>
@@ -54,6 +54,10 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -158,7 +162,7 @@ namespace HouseholdManager.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Missions", (string)null);
+                    b.ToTable("Missions");
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Room", b =>
@@ -185,7 +189,7 @@ namespace HouseholdManager.Migrations
 
                     b.HasIndex("HouseholdId");
 
-                    b.ToTable("Rooms", (string)null);
+                    b.ToTable("Rooms");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

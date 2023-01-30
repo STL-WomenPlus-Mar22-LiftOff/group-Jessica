@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230127082822_HouseholdOneToOne")]
+    [Migration("20230130193732_HouseholdOneToOne")]
     partial class HouseholdOneToOne
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,6 +56,10 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")

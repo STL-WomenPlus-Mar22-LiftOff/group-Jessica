@@ -1,15 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace HouseholdManager.Models.ViewModels
 {
     public class EditMemberProfileViewModel
     {
-        public string UserName;
+        public string? UserName { get; set; }
 
         [StringLength(50, ErrorMessage = "Display name is limited to 50 characters.")]
-        public string DisplayName;
+        [DisplayName("Display Name")]
+        public string DisplayName { get; set; }
 
-        [StringLength(5, ErrorMessage = "Invalid icon.")]
-        public string Icon;
+        //[StringLength(5, ErrorMessage = "Invalid icon.")]
+        public string Icon { get; set; }
     }
 }

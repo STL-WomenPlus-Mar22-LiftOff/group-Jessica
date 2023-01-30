@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace HouseholdManager.Models
 {
@@ -13,7 +14,7 @@ namespace HouseholdManager.Models
         public string MemberType { get; set; } = "Member";
 
         [Column(TypeName = "nvarchar(5)")]
-        public string Icon { get; set; } = "";
+        public string Icon { get; set; } = string.Empty;
 
         public ICollection<Mission> Missions { get; set; }
 
@@ -22,18 +23,19 @@ namespace HouseholdManager.Models
         public Household? Household { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-        private string? UserDisplayName;
+        private string _displayName = string.Empty;
 
-        [NotMapped]
+        [BackingField(nameof(_displayName))]
         public string DisplayName
         {
             get
             {
-                return UserDisplayName ?? this.UserName;
+                return string.IsNullOrEmpty(_displayName) ? this.UserName
+                                                          : _displayName;         
             }
             set
             {
-                UserDisplayName = value;
+                _displayName = value;
             }
         } 
 

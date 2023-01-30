@@ -5,8 +5,7 @@
 
 @{
     var user = await UserManager.GetUserAsync(User) ?? new Member();
-    string displayName = !string.IsNullOrEmpty(user.DisplayName) ? user.DisplayName
-                                                                 : UserManager.GetUserName(User);
+    string displayName = user.DisplayName;
     string userIcon = user.Icon ?? "";
 }
 
