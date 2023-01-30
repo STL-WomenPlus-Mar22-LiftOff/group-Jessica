@@ -11,7 +11,7 @@ namespace HouseholdManager.Mission_Reminders
             public int Id { get; set; }
 
             [Required]
-            public string MemberName { get; set; }
+            public string Name { get; set; }
 
             [Required, Phone, Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
