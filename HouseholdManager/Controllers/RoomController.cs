@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using HouseholdManager.Models.ViewModels;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace HouseholdManager.Controllers
 {
@@ -206,7 +207,7 @@ namespace HouseholdManager.Controllers
         {
             if (_context.Rooms == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Rooms'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Rooms' is null.");
             }
             else if (!await RoomInHousehold((int)id))
             {
@@ -214,11 +215,22 @@ namespace HouseholdManager.Controllers
             }
 
             var room = await _context.Rooms.FindAsync(id);
-            if (room != null)
+            if (room is null) return NotFound();
+            var missionQuery = from mission in _context.Missions
+                           where mission.RoomId == id
+                           select mission;
+            //Check for missions in room and remove RoomId from those missions
+            if (missionQuery.Any())
             {
-                _context.Rooms.Remove(room);
+                foreach (Mission mission in missionQuery)
+                {
+                    mission.RoomId = null;
+                    _context.Update(mission);
+                }
+                await _context.SaveChangesAsync();
             }
-            
+            //Delete room
+            _context.Rooms.Remove(room);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
