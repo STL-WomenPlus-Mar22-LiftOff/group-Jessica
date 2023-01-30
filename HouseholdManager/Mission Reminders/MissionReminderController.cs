@@ -1,19 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HouseholdManager.Areas.Identity.Data;
+using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Web.Mvc;
 using ActionResult = Microsoft.AspNetCore.Mvc.ActionResult;
+//using HouseholdManager.Mission_Reminders.MissionReminderModel;
+
 
 namespace HouseholdManager.Mission_Reminders
 {
-    public class ReminderController : Controller
+    public class MissionReminderController : Controller
     {
-        private readonly IReminderRepository _repository;
+        private readonly ApplicationDbContext _context
+            ;
 
-        public ReminderController() : this(new ReminderRepository()) { }
+        //public MissionReminderController() : this(new ApplicationDbContext()) { }
 
-        public ReminderController(IReminderRepository repository)
+        public MissionReminderController(ApplicationDbContext context)
         {
-            _repository = repository;
+            _context = context;
         }
 
         public SelectListItem[] Timezones
@@ -32,8 +36,8 @@ namespace HouseholdManager.Mission_Reminders
         // GET: Appointments
         public ActionResult Index()
         {
-            var reminders = _repository.FindAll();
-            return View(reminders);
+            var missionReminder = _context.FindAll();
+            return View(missionReminder);
         }
 
         // GET: Appointments/Details/5
@@ -44,8 +48,8 @@ namespace HouseholdManager.Mission_Reminders
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var reminder = _repository.FindById(id.Value);
-            if (reminder == null)
+            var missionReminder = _context.FindById(id.Value);
+            if (missionReminder == null)
             {
                 return HttpNotFound();
             }
@@ -59,28 +63,28 @@ namespace HouseholdManager.Mission_Reminders
             ViewBag.Timezones = Timezones;
             // Use an empty appointment to setup the default
             // values.
-            var reminder = new Reminder
+            var missionReminder = new MissionReminder
             {
                 Timezone = "Pacific Standard Time",
                 Time = DateTime.Now
             };
 
-            return View(Reminder);
+            return View(missionReminder);
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "ID,Name,PhoneNumber,Time,Timezone")] Appointment appointment)
+        public ActionResult Create([Bind(Include = "ID,Name,PhoneNumber,Time,Timezone")] MissionReminder missionReminder)
         {
-            reminder.CreatedAt = DateTime.Now;
+            missionReminder.CreatedAt = DateTime.Now;
 
             if (ModelState.IsValid)
             {
-                _repository.Create(reminder);
+                _context.Create(missionReminder);
 
-                return RedirectToAction("Details", new { id = reminder.Id });
+                return RedirectToAction("Details", new { id = missionReminder.Id });
             }
 
-            return View("Create", reminder);
+            return View("Create", missionReminder);
         }
 
         // GET: Appointments/Edit/5
@@ -92,33 +96,33 @@ namespace HouseholdManager.Mission_Reminders
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var reminder = _repository.FindById(id.Value);
-            if (reminder == null)
+            var missionReminder = _context.FindById(id.Value);
+            if (missionReminder == null)
             {
                 return HttpNotFound();
             }
 
             ViewBag.Timezones = Timezones;
-            return View(reminder);
+            return View(missionReminder);
         }
 
         // POST: /Appointments/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID,Name,PhoneNumber,Time,Timezone")] Appointment appointment)
+        public ActionResult Edit([Bind(Include = "ID,Name,PhoneNumber,Time,Timezone")] MissionReminder missionReminder)
         {
             if (ModelState.IsValid)
             {
-                _repository.Update(reminder);
-                return RedirectToAction("Details", new { id = appointment.Id });
+                _context.Update(missionReminder);
+                return RedirectToAction("Details", new { id = missionReminder.Id });
             }
-            return View(appointment);
+            return View(missionReminder);
         }
 
         // DELETE: Appointments/Delete/5
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            _repository.Delete(id);
+            _context.Delete(id);
             return RedirectToAction("Index");
         }
     }

@@ -2,7 +2,7 @@
 using Owin;
 using Syncfusion.EJ2.Maps;
 
-[assembly: OwinStartup(typeof(HouseholdManager.Mission_Reminders.Startup))]
+[assembly: OwinStartup(typeof(HouseholdManager.Startup))]
 namespace HouseholdManager
 {
     public class Startup

@@ -44,6 +44,15 @@ namespace HouseholdManager.Areas.Identity.Data
             });
         }
 
+        internal object FindAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal object FindById(int value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-﻿using HouseholdManager.Repository;
+﻿using HouseholdManager.;
 using HouseholdManager.Mission_Reminders;
 using Syncfusion.EJ2.Linq;
 using Twilio.Rest;
@@ -14,15 +14,15 @@ namespace HouseholdManager.Mission_Reminders
         {
             var twilioRestClient = new Domain.Twilio.RestClient();
 
-            AvailableAppointments().ForEach(appointment =>
+           AvailableMissionReminder().ForEach(appointment =>
                 twilioRestClient.SendSmsMessage(
                 appointment.PhoneNumber,
-                string.Format(MessageTemplate, appointment.Name, appointment.Time.ToString("t"))));
+                string.Format(MessageTemplate, missionReminder.Name, missionReminder.Time.ToString("t"))));
         }
 
-        private static IEnumerable<Appointment> AvailableAppointments()
+        private static IEnumerable<MissionReminder> AvailableAppointments()
         {
-            return new AppointmentsFinder(new AppointmentRepository(), new TimeConverter())
+            return new MissionReminderFinder(new ApplicationDbContext(), new TimeConverter())
                 .FindAvailableAppointments(DateTime.Now);
         }
     }

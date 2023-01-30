@@ -1,7 +1,7 @@
 ﻿using Twilio.Rest;
-using HouseholdManager.Mission_Reminders.Repository;
+using HouseholdManager.ApplicationDb;
 using HouseholdManager.Mission_Reminders.MissionReminderFinder;
-
+using HouseholdManager.Areas.Identity.Data;
 
 namespace HouseholdManager.Mission_Reminders
 {
@@ -15,15 +15,15 @@ namespace HouseholdManager.Mission_Reminders
     {
         var twilioRestClient = new Domain.Twilio.RestClient();
 
-        AvailableAppointments().ForEach(appointment =>
+        AvailableMissionReminder().ForEach(appointment =>
             twilioRestClient.SendSmsMessage(
             appointment.PhoneNumber,
             string.Format(MessageTemplate, appointment.Name, appointment.Time.ToString("t"))));
     }
 
-    private static IEnumerable<MissionReminderModel> AvailableAppointments()
+    private static IEnumerable<MissionReminderModel> AvailableMissionReminder()
     {
-        return new MissionReminderFinder(new ReminderRepository(), new TimeConverter())
+        return new MissionReminderFinder(new ApplicationDbContext(), new TimeConverter())
             .FindAvailableAppointments(DateTime.Now);
     }
 }

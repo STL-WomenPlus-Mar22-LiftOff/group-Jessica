@@ -1,9 +1,8 @@
 ﻿@page
-@model HouseholdManager.Mission_Reminders.IndexModel
-@model IEnumerable<HouseholdManager.Mission_Reminders>
+@model IEnumerable<HouseholdManager.Mission_Reminders.MissionReminderModel>
 
     <div class="page-header">
-        <h1>Appointments</h1>
+        <h1>Mission Reminders</h1>
     </div>
 
     <table class="table table-striped">
@@ -31,7 +30,7 @@
         @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.ActionLink(item.Id.ToString(), "Details", new {Controller = "Appointments", id = item.Id})
+                @Html.ActionLink(item.Id.ToString(), "Details", new {Controller = "Mission Reminders", id = item.Id})
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -46,9 +45,9 @@
                 @Html.DisplayFor(modelItem => item.CreatedAt)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { Controller = "Appointments", id = item.Id }, new { @class = "btn btn-default btn-xs" })
+                @Html.ActionLink("Edit", "Edit", new { Controller = "Mission Reminders", id = item.Id }, new { @class = "btn btn-default btn-xs" })
 
-                @Html.DeleteLink("Delete", "Appointments",
+                @Html.DeleteLink("Delete", "Mission Reminder",
                 new { id = item.Id },
                 new { @class = "btn btn-danger btn-xs", onclick = "return confirm('Are you sure?');" })
             </td>
@@ -57,4 +56,4 @@
 
     </table>
 
-    @Html.ActionLink("New", "Create", new { Controller = "Appointments" }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("New", "Create", new { Controller = "Mission Reminders" }, new { @class = "btn btn-primary" })
