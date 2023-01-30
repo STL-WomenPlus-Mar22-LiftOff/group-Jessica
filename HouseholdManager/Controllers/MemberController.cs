@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Areas.Identity.Data;
 using HouseholdManager.Data.API;
 using HouseholdManager.Data.Interfaces;
+using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
@@ -20,22 +21,59 @@ namespace HouseholdManager.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IQueryMembers _memberService;
 
+        // TODO: Put this controller back together somehow
         public MemberController(ApplicationDbContext context, IQueryMembers memberService)
         {
             _context = context;
             _memberService = memberService;
         }
-
+        
         // GET: Member
         public async Task<IActionResult> Index()
         {
+            // TODO: This should probably use a view model
             List<Member> members = await _memberService.GetCurrentHouseholdMembers();
             return View(members);
         }
 
+        // GET: Member/EditProfile
+        public async Task<IActionResult> EditProfile()
+        {
+            var user = await _memberService.GetCurrentMember();
+            var viewModel = new EditMemberProfileViewModel
+            {
+                UserName = user.UserName,
+                DisplayName = user.DisplayName ?? string.Empty,
+                Icon = user.Icon ?? string.Empty
+            };
+            await PopulateIcons();
+            return View(viewModel); 
+        }
+
+        // POST: Member/EditProfile
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProfile([Bind("DisplayName,Icon")] EditMemberProfileViewModel model)
+        {
+            var user = await _memberService.GetCurrentMember();
+            if (ModelState.IsValid) 
+            {
+                user.DisplayName = model.DisplayName;
+                user.Icon = model.Icon;
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                model.UserName = user.UserName;
+                await PopulateIcons();
+                return View(model);
+            }
+        }
+
 
         /* 
-        // TODO: Put this back together somehow
 
         // GET: Member/AddOrEdit
         public async Task<IActionResult> AddOrEdit(int id = 0)

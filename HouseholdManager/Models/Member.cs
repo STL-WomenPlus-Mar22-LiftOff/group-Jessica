@@ -21,18 +21,19 @@ namespace HouseholdManager.Models
 
         public Household? Household { get; set; }
 
-        private string? _displayName;
+        [Column(TypeName = "nvarchar(50)")]
+        private string? UserDisplayName;
 
         [NotMapped]
         public string DisplayName
         {
             get
             {
-                return _displayName ?? this.UserName;
+                return UserDisplayName ?? this.UserName;
             }
             set
             {
-                _displayName = value;
+                UserDisplayName = value;
             }
         } 
 
