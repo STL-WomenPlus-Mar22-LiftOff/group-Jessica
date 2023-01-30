@@ -36,4 +36,5 @@ namespace HouseholdManager.Models
         public int HouseholdId { get; set; }
 
     }
+
 }
