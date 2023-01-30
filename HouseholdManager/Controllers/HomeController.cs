@@ -33,7 +33,7 @@ namespace HouseholdManager.Controllers
                 return Redirect("Household/AddOrJoinHousehold");
             }
             //this may need to change
-            return Redirect("Household/Index");
+            return Redirect("Household/Welcome");
         }
 
         public IActionResult Privacy()

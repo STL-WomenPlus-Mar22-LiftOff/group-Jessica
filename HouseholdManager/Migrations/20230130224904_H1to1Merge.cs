@@ -5,11 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HouseholdManager.Migrations
 {
-<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
-    public partial class HouseholdOneToOne : Migration
-========
-    public partial class BootstrapSass : Migration
->>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
+    public partial class H1to1Merge : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,30 +29,12 @@ namespace HouseholdManager.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
                     Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
-========
-                    HouseholdName = table.Column<string>(type: "nvarchar(50)", nullable: false),
->>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
                     Icon = table.Column<string>(type: "nvarchar(5)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Households", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Rooms",
-                columns: table => new
-                {
-                    RoomId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Rooms", x => x.RoomId);
                 });
 
             migrationBuilder.CreateTable(
@@ -226,20 +204,12 @@ namespace HouseholdManager.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
                     Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: true),
                     Point = table.Column<int>(type: "int", nullable: false),
                     DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MemberId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     HouseholdId = table.Column<int>(type: "int", nullable: false)
-========
-                    MemberType = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
-                    HouseholdId = table.Column<int>(type: "int", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
->>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
                 },
                 constraints: table =>
                 {
@@ -262,33 +232,66 @@ namespace HouseholdManager.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Missions",
-                columns: table => new
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "c7b013f0-5201-4317-abd8-c211f91b7330", "2", "User", "User" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "fab4fac1-c546-41de-aebc-a14da6895711", "1", "Administrator", "Administrator" });
+
+            migrationBuilder.InsertData(
+                table: "Households",
+                columns: new[] { "Id", "Icon", "Name" },
+                values: new object[] { 1, "", "DefaultHousehold" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DisplayName", "Email", "EmailConfirmed", "HouseholdId", "Icon", "LockoutEnabled", "LockoutEnd", "MemberType", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
                 {
-                    MissionId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MissionName = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    RoomId = table.Column<int>(type: "int", nullable: false),
-                    Point = table.Column<int>(type: "int", nullable: false),
-                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MemberId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
+                    { "a1addd14-6340-4840-95c2-db12554843e5", 0, "aeba6e6d-1ea6-45d9-a40c-4600c995ba69", "", "defaultAdmin@yahoo.com", false, 1, "👩‍🔧", true, null, "Admin", "DEFAULTADMIN@YAHOO.COM", "DEFAULTADMIN@YAHOO.COM", "AQAAAAEAACcQAAAAEG2Bng+5uDTz6gXh6vsJ3go1mKk1jzEO2kILtis8+ZXGtNpfLpl4tFlnmrVxiObcpw==", "111-222-3333", false, "b7f0f57f-c2fc-4828-a5c6-0a9860a89ed2", false, "defaultAdmin@yahoo.com" },
+                    { "u1ua87c6-b718-4f48-90a2-458e0a2443e6", 0, "861ad237-121b-484d-90f7-eb60293b5e04", "", "defaultUser@yahoo.com", false, 1, "👩‍💼", true, null, "Member", "DEFAULTUSER@YAHOO.COM", "DEFAULTUSER@YAHOO.COM", "AQAAAAEAACcQAAAAEOPLVhnwXC5BW7SeJg91Jxh+B2mxa8elmwXtQNaU/+iKJdX4byUFqu21xkzW+Zd6Iw==", "111-222-3333", false, "0696e3e1-6d8e-426a-9bc0-34dd3574ac81", false, "defaultUser@yahoo.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "Id", "HouseholdId", "Icon", "Name" },
+                values: new object[,]
                 {
-                    table.PrimaryKey("PK_Missions", x => x.MissionId);
-                    table.ForeignKey(
-                        name: "FK_Missions_Members_MemberId",
-                        column: x => x.MemberId,
-                        principalTable: "Members",
-                        principalColumn: "MemberId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Missions_Rooms_RoomId",
-                        column: x => x.RoomId,
-                        principalTable: "Rooms",
-                        principalColumn: "RoomId",
-                        onDelete: ReferentialAction.Cascade);
+                    { 1, 1, "🥄", "Kitchen" },
+                    { 2, 1, "🧻", "Bathroom" },
+                    { 3, 1, "🛏", "Master Bedroom" },
+                    { 4, 1, "🛋", "Living Room" },
+                    { 5, 1, "🛏", "Bedroom" },
+                    { 6, 1, "🛏", "Guest Bedroom" },
+                    { 7, 1, "🧻", "Master Bathroom" },
+                    { 8, 1, "🍽", "Dining Room" },
+                    { 9, 1, "🌳", "Yard" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "c7b013f0-5201-4317-abd8-c211f91b7330", "a1addd14-6340-4840-95c2-db12554843e5" },
+                    { "fab4fac1-c546-41de-aebc-a14da6895711", "a1addd14-6340-4840-95c2-db12554843e5" },
+                    { "c7b013f0-5201-4317-abd8-c211f91b7330", "u1ua87c6-b718-4f48-90a2-458e0a2443e6" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Missions",
+                columns: new[] { "Id", "DueDate", "HouseholdId", "MemberId", "Name", "Point", "RoomId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2697), 1, "u1ua87c6-b718-4f48-90a2-458e0a2443e6", "Wash dishes", 2, 1 },
+                    { 2, new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2745), 1, "a1addd14-6340-4840-95c2-db12554843e5", "Make bed", 1, 5 },
+                    { 3, new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2755), 1, "u1ua87c6-b718-4f48-90a2-458e0a2443e6", "Make bed", 1, 3 },
+                    { 4, new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2764), 1, "a1addd14-6340-4840-95c2-db12554843e5", "Mow lawn", 5, 9 },
+                    { 5, new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2774), 1, "a1addd14-6340-4840-95c2-db12554843e5", "Make dinner", 4, 1 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -341,14 +344,6 @@ namespace HouseholdManager.Migrations
                 column: "HouseholdId");
 
             migrationBuilder.CreateIndex(
-<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
-========
-                name: "IX_Members_UserId",
-                table: "Members",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
->>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
                 name: "IX_Missions_MemberId",
                 table: "Missions",
                 column: "MemberId");
@@ -357,14 +352,11 @@ namespace HouseholdManager.Migrations
                 name: "IX_Missions_RoomId",
                 table: "Missions",
                 column: "RoomId");
-<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rooms_HouseholdId",
                 table: "Rooms",
                 column: "HouseholdId");
-========
->>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -391,21 +383,12 @@ namespace HouseholdManager.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Members");
-
-            migrationBuilder.DropTable(
-                name: "Rooms");
-
-            migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
                 name: "Rooms");
 
             migrationBuilder.DropTable(
-========
->>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
                 name: "Households");
         }
     }

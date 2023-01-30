@@ -24,12 +24,12 @@ namespace HouseholdManager.Controllers
             int CountAll = allMissions.Count();
             ViewBag.AllMissions = allMissions;
 
-            //Doughnut Chart-Missions done by Contributor
+            //Doughnut Chart-Missions done by Member
             ViewBag.DoughnutChartData = allMissions
-                .GroupBy(j => j.Member.MemberId)
+                .GroupBy(j => j.Member.Id)
                 .Select(k => new
                 {
-                    memberNameWithIcon = k.First().Member.Icon + " " + k.First().Member.UserName,
+                    memberNameWithIcon = k.First().Member.Icon + " " + k.First().Member.DisplayName,
                     amount = k.Sum(j => j.Point),
                     formattedAmount = k.Sum(j => j.Point).ToString("0"),
                 })

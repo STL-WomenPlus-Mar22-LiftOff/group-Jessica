@@ -42,6 +42,14 @@ namespace HouseholdManager.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Households");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Icon = "",
+                            Name = "DefaultHousehold"
+                        });
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Member", b =>
@@ -125,6 +133,50 @@ namespace HouseholdManager.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "a1addd14-6340-4840-95c2-db12554843e5",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "aeba6e6d-1ea6-45d9-a40c-4600c995ba69",
+                            DisplayName = "",
+                            Email = "defaultAdmin@yahoo.com",
+                            EmailConfirmed = false,
+                            HouseholdId = 1,
+                            Icon = "👩‍🔧",
+                            LockoutEnabled = true,
+                            MemberType = "Admin",
+                            NormalizedEmail = "DEFAULTADMIN@YAHOO.COM",
+                            NormalizedUserName = "DEFAULTADMIN@YAHOO.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEG2Bng+5uDTz6gXh6vsJ3go1mKk1jzEO2kILtis8+ZXGtNpfLpl4tFlnmrVxiObcpw==",
+                            PhoneNumber = "111-222-3333",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b7f0f57f-c2fc-4828-a5c6-0a9860a89ed2",
+                            TwoFactorEnabled = false,
+                            UserName = "defaultAdmin@yahoo.com"
+                        },
+                        new
+                        {
+                            Id = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "861ad237-121b-484d-90f7-eb60293b5e04",
+                            DisplayName = "",
+                            Email = "defaultUser@yahoo.com",
+                            EmailConfirmed = false,
+                            HouseholdId = 1,
+                            Icon = "👩‍💼",
+                            LockoutEnabled = true,
+                            MemberType = "Member",
+                            NormalizedEmail = "DEFAULTUSER@YAHOO.COM",
+                            NormalizedUserName = "DEFAULTUSER@YAHOO.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOPLVhnwXC5BW7SeJg91Jxh+B2mxa8elmwXtQNaU/+iKJdX4byUFqu21xkzW+Zd6Iw==",
+                            PhoneNumber = "111-222-3333",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "0696e3e1-6d8e-426a-9bc0-34dd3574ac81",
+                            TwoFactorEnabled = false,
+                            UserName = "defaultUser@yahoo.com"
+                        });
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Mission", b =>
@@ -163,6 +215,58 @@ namespace HouseholdManager.Migrations
                     b.HasIndex("RoomId");
 
                     b.ToTable("Missions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DueDate = new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2697),
+                            HouseholdId = 1,
+                            MemberId = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
+                            Name = "Wash dishes",
+                            Point = 2,
+                            RoomId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DueDate = new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2745),
+                            HouseholdId = 1,
+                            MemberId = "a1addd14-6340-4840-95c2-db12554843e5",
+                            Name = "Make bed",
+                            Point = 1,
+                            RoomId = 5
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DueDate = new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2755),
+                            HouseholdId = 1,
+                            MemberId = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
+                            Name = "Make bed",
+                            Point = 1,
+                            RoomId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DueDate = new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2764),
+                            HouseholdId = 1,
+                            MemberId = "a1addd14-6340-4840-95c2-db12554843e5",
+                            Name = "Mow lawn",
+                            Point = 5,
+                            RoomId = 9
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DueDate = new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2774),
+                            HouseholdId = 1,
+                            MemberId = "a1addd14-6340-4840-95c2-db12554843e5",
+                            Name = "Make dinner",
+                            Point = 4,
+                            RoomId = 1
+                        });
                 });
 
             modelBuilder.Entity("HouseholdManager.Models.Room", b =>
@@ -190,6 +294,71 @@ namespace HouseholdManager.Migrations
                     b.HasIndex("HouseholdId");
 
                     b.ToTable("Rooms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            HouseholdId = 1,
+                            Icon = "🥄",
+                            Name = "Kitchen"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            HouseholdId = 1,
+                            Icon = "🧻",
+                            Name = "Bathroom"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            HouseholdId = 1,
+                            Icon = "🛏",
+                            Name = "Master Bedroom"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            HouseholdId = 1,
+                            Icon = "🛋",
+                            Name = "Living Room"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            HouseholdId = 1,
+                            Icon = "🛏",
+                            Name = "Bedroom"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            HouseholdId = 1,
+                            Icon = "🛏",
+                            Name = "Guest Bedroom"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            HouseholdId = 1,
+                            Icon = "🧻",
+                            Name = "Master Bathroom"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            HouseholdId = 1,
+                            Icon = "🍽",
+                            Name = "Dining Room"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            HouseholdId = 1,
+                            Icon = "🌳",
+                            Name = "Yard"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -217,6 +386,22 @@ namespace HouseholdManager.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "fab4fac1-c546-41de-aebc-a14da6895711",
+                            ConcurrencyStamp = "1",
+                            Name = "Administrator",
+                            NormalizedName = "Administrator"
+                        },
+                        new
+                        {
+                            Id = "c7b013f0-5201-4317-abd8-c211f91b7330",
+                            ConcurrencyStamp = "2",
+                            Name = "User",
+                            NormalizedName = "User"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -304,6 +489,23 @@ namespace HouseholdManager.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "a1addd14-6340-4840-95c2-db12554843e5",
+                            RoleId = "fab4fac1-c546-41de-aebc-a14da6895711"
+                        },
+                        new
+                        {
+                            UserId = "a1addd14-6340-4840-95c2-db12554843e5",
+                            RoleId = "c7b013f0-5201-4317-abd8-c211f91b7330"
+                        },
+                        new
+                        {
+                            UserId = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
+                            RoleId = "c7b013f0-5201-4317-abd8-c211f91b7330"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

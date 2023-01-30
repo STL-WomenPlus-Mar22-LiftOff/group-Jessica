@@ -56,7 +56,6 @@ namespace HouseholdManager.Areas.Identity.Data
             SeedRoles(mb);
             SeedUsers(mb);
             SeedUserRoles(mb);
-            SeedUserMember(mb);
             SeedRoom(mb);
             SeedMission(mb);
         }
@@ -82,11 +81,14 @@ namespace HouseholdManager.Areas.Identity.Data
 
         private static void SeedUsers(ModelBuilder builder)
         {
-            PasswordHasher<IdentityUser> passwordHasher = new PasswordHasher<IdentityUser>();
-            IdentityUser user = new IdentityUser();
+            PasswordHasher<Member> passwordHasher = new PasswordHasher<Member>();
+            Member user = new Member();
 
-            IdentityUser appAdmin = new IdentityUser()
+            Member appAdmin = new Member()
             {
+                Icon = "👩‍🔧",
+                HouseholdId = 1,
+                MemberType = "Admin",
                 Id = "a1addd14-6340-4840-95c2-db12554843e5",
                 UserName = "defaultAdmin@yahoo.com",
                 NormalizedUserName = "DEFAULTADMIN@YAHOO.COM",
@@ -100,10 +102,13 @@ namespace HouseholdManager.Areas.Identity.Data
                 TwoFactorEnabled = false,
                 LockoutEnabled = true
             };
-            builder.Entity<IdentityUser>().HasData(appAdmin);
+            builder.Entity<Member>().HasData(appAdmin);
 
-            IdentityUser appUser = new IdentityUser()
+            Member appUser = new Member()
             {
+                Icon = "👩‍💼",
+                HouseholdId = 1,
+                MemberType = "Member",
                 Id = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
                 UserName = "defaultUser@yahoo.com",
                 NormalizedUserName = "DEFAULTUSER@YAHOO.COM",
@@ -117,7 +122,7 @@ namespace HouseholdManager.Areas.Identity.Data
                 TwoFactorEnabled = false,
                 LockoutEnabled = true
             };
-            builder.Entity<IdentityUser>().HasData(appUser);
+            builder.Entity<Member>().HasData(appUser);
         }
 
         private static void SeedUserRoles(ModelBuilder builder)
@@ -128,47 +133,39 @@ namespace HouseholdManager.Areas.Identity.Data
                 new IdentityUserRole<string>() { UserId = "u1ua87c6-b718-4f48-90a2-458e0a2443e6", RoleId = "c7b013f0-5201-4317-abd8-c211f91b7330" });
         }
 
-        private static void SeedUserMember(ModelBuilder builder)
-        {
-            Member member1 = new Member() { MemberId = 1, MemberType = "Admin", HouseholdId = 1, UserName = "defaultAdmin@yahoo.com", Icon = "👩‍🔧" };
-            builder.Entity<Member>().HasData(member1);
-            Member member2 = new Member() { MemberId = 2, MemberType = "Member", HouseholdId = 1, UserName = "defaultUser@yahoo.com", Icon = "👩‍💼" };
-            builder.Entity<Member>().HasData(member2);
-        }
-
         private static void SeedRoom(ModelBuilder builder)
         {
-            Room room1 = new Room() { RoomId = 1, Name = "Kitchen", Icon = "🥄" };
+            Room room1 = new Room() { Id = 1, Name = "Kitchen", Icon = "🥄", HouseholdId = 1 };
             builder.Entity<Room>().HasData(room1);
-            Room room2 = new Room() { RoomId = 2, Name = "Bathroom", Icon = "🧻" };
+            Room room2 = new Room() { Id = 2, Name = "Bathroom", Icon = "🧻", HouseholdId = 1 };
             builder.Entity<Room>().HasData(room2);
-            Room room3 = new Room() { RoomId = 3, Name = "Master Bedroom", Icon = "🛏" };
+            Room room3 = new Room() { Id = 3, Name = "Master Bedroom", Icon = "🛏", HouseholdId = 1 };
             builder.Entity<Room>().HasData(room3);
-            Room room4 = new Room() { RoomId = 4, Name = "Living Room", Icon = "🛋" };
+            Room room4 = new Room() { Id = 4, Name = "Living Room", Icon = "🛋", HouseholdId = 1 };
             builder.Entity<Room>().HasData(room4);
-            Room room5 = new Room() { RoomId = 5, Name = "Bedroom", Icon = "🛏" };
+            Room room5 = new Room() { Id = 5, Name = "Bedroom", Icon = "🛏", HouseholdId = 1 };
             builder.Entity<Room>().HasData(room5);
-            Room room6 = new Room() { RoomId = 6, Name = "Guest Bedroom", Icon = "🛏" };
+            Room room6 = new Room() { Id = 6, Name = "Guest Bedroom", Icon = "🛏", HouseholdId = 1 };
             builder.Entity<Room>().HasData(room6);
-            Room room7 = new Room() { RoomId = 7, Name = "Master Bathroom", Icon = "🧻" };
+            Room room7 = new Room() { Id = 7, Name = "Master Bathroom", Icon = "🧻", HouseholdId = 1 };
             builder.Entity<Room>().HasData(room7);
-            Room room8 = new Room() { RoomId = 8, Name = "Dining Room", Icon = "🍽" };
+            Room room8 = new Room() { Id = 8, Name = "Dining Room", Icon = "🍽", HouseholdId = 1 };
             builder.Entity<Room>().HasData(room8);
-            Room room9 = new Room() { RoomId = 9, Name = "Yard", Icon = "🌳" };
+            Room room9 = new Room() { Id = 9, Name = "Yard", Icon = "🌳", HouseholdId = 1 };
             builder.Entity<Room>().HasData(room9);
         }
 
         private static void SeedMission(ModelBuilder builder)
         {
-            Mission mission1 = new Mission() { MissionId = 1, MissionName = "Wash dishes", Point = 2, DueDate = DateTime.Now, RoomId = 1, MemberId = 2, };
+            Mission mission1 = new Mission() { Id = 1, Name = "Wash dishes", Point = 2, DueDate = DateTime.Now, RoomId = 1, MemberId = "u1ua87c6-b718-4f48-90a2-458e0a2443e6", HouseholdId = 1 };
             builder.Entity<Mission>().HasData(mission1);
-            Mission mission2 = new Mission() { MissionId = 2, MissionName = "Make bed", Point = 1, DueDate = DateTime.Now, RoomId = 5, MemberId = 1, };
+            Mission mission2 = new Mission() { Id = 2, Name = "Make bed", Point = 1, DueDate = DateTime.Now, RoomId = 5, MemberId = "a1addd14-6340-4840-95c2-db12554843e5", HouseholdId = 1 };
             builder.Entity<Mission>().HasData(mission2);
-            Mission mission3 = new Mission() { MissionId = 3, MissionName = "Make bed", Point = 1, DueDate = DateTime.Now, RoomId = 3, MemberId = 2, };
+            Mission mission3 = new Mission() { Id = 3, Name = "Make bed", Point = 1, DueDate = DateTime.Now, RoomId = 3, MemberId = "u1ua87c6-b718-4f48-90a2-458e0a2443e6", HouseholdId = 1 };
             builder.Entity<Mission>().HasData(mission3);
-            Mission mission4 = new Mission() { MissionId = 4, MissionName = "Mow lawn", Point = 5, DueDate = DateTime.Now, RoomId = 9, MemberId = 1, };
+            Mission mission4 = new Mission() { Id = 4, Name = "Mow lawn", Point = 5, DueDate = DateTime.Now, RoomId = 9, MemberId = "a1addd14-6340-4840-95c2-db12554843e5", HouseholdId = 1 };
             builder.Entity<Mission>().HasData(mission4);
-            Mission mission5 = new Mission() { MissionId = 5, MissionName = "Make dinner", Point = 4, DueDate = DateTime.Now, RoomId = 1, MemberId = 1, };
+            Mission mission5 = new Mission() { Id = 5, Name = "Make dinner", Point = 4, DueDate = DateTime.Now, RoomId = 1, MemberId = "a1addd14-6340-4840-95c2-db12554843e5", HouseholdId = 1 };
             builder.Entity<Mission>().HasData(mission5);
         }
 
