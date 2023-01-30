@@ -2,7 +2,7 @@
 
 namespace HouseholdManager.Mission_Reminders
 {
-    public class DateTimeExtension
+    public static class DateTimeExtension
     {
         public static string ToCustomDateString(this DateTime dateTime)
         {

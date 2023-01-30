@@ -1,9 +1,7 @@
-﻿using HouseholdManager.Areas.Identity.Data;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using System.Web.Mvc;
-using ActionResult = Microsoft.AspNetCore.Mvc.ActionResult;
-using Controller = Microsoft.AspNetCore.Mvc.Controller;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
 //using HouseholdManager.Mission_Reminders.MissionReminderModel;
 
 
@@ -11,12 +9,12 @@ namespace HouseholdManager.Mission_Reminders
 {
     public class MissionReminderController : Controller
     {
-        private readonly ApplicationDbContext _context
+        private readonly MissionReminderDbContext _context
             ;
 
-        //public MissionReminderController() : this(new ApplicationDbContext()) { }
+        //public MissionReminderController() : this(new MissionReminderDb()) { }
 
-        public MissionReminderController(ApplicationDbContext context)
+        public MissionReminderController(MissionReminderDbContext context)
         {
             _context = context;
         }
@@ -46,7 +44,7 @@ namespace HouseholdManager.Mission_Reminders
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new StatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var missionReminder = _context.FindById(id.Value);
@@ -74,7 +72,7 @@ namespace HouseholdManager.Mission_Reminders
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "ID,Name,PhoneNumber,Time,Timezone")]MissionReminder missionReminder)
+        public ActionResult Create([Bind("ID,Name,PhoneNumber,Time,Timezone")]MissionReminder missionReminder)
         {
             missionReminder.CreatedAt = DateTime.Now;
 
@@ -94,13 +92,13 @@ namespace HouseholdManager.Mission_Reminders
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new StatusCodeResult(BadRequestResult);
             }
 
             var missionReminder = _context.FindById(id.Value);
             if (missionReminder == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             ViewBag.Timezones = Timezones;
@@ -109,7 +107,7 @@ namespace HouseholdManager.Mission_Reminders
 
         // POST: /Appointments/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "ID,Name,PhoneNumber,Time,Timezone")] MissionReminder missionReminder)
+        public ActionResult Edit([Bind("ID,Name,PhoneNumber,Time,Timezone")] MissionReminder missionReminder)
         {
             if (ModelState.IsValid)
             {

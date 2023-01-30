@@ -1,10 +1,10 @@
 ﻿using Twilio.Rest;
-using HouseholdManager.ApplicationDb;
 using HouseholdManager.Mission_Reminders;
 using HouseholdManager.Areas.Identity.Data;
 using Syncfusion.EJ2.Linq;
 
-namespace HouseholdManager.Mission_Reminders
+namespace HouseholdManager.Mission_Reminders.MissionReminderModel
+
 {
     public class MissionReminderSendReminder
     {
@@ -22,9 +22,9 @@ namespace HouseholdManager.Mission_Reminders
             string.Format(MessageTemplate, missionReminder.Name, missionReminder.Time.ToString("t"))));
     }
 
-    private static IEnumerable<MissionReminderModel> AvailableMissionReminder()
+    private static IEnumerable<MissionReminder> AvailableMissionReminder()
     {
-        return new MissionReminderFinder(new ApplicationDbContext(), new TimeConverter())
+        return new MissionReminderFinder(new MissionReminderDbContext(), new TimeConverter())
             .FindAvailableAppointments(DateTime.Now);
     }
 }
