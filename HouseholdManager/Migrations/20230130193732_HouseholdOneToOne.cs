@@ -5,7 +5,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HouseholdManager.Migrations
 {
+<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
     public partial class HouseholdOneToOne : Migration
+========
+    public partial class BootstrapSass : Migration
+>>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,12 +33,30 @@ namespace HouseholdManager.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
                     Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
+========
+                    HouseholdName = table.Column<string>(type: "nvarchar(50)", nullable: false),
+>>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
                     Icon = table.Column<string>(type: "nvarchar(5)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Households", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rooms",
+                columns: table => new
+                {
+                    RoomId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rooms", x => x.RoomId);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,12 +226,20 @@ namespace HouseholdManager.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
                     Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     RoomId = table.Column<int>(type: "int", nullable: true),
                     Point = table.Column<int>(type: "int", nullable: false),
                     DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MemberId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     HouseholdId = table.Column<int>(type: "int", nullable: false)
+========
+                    MemberType = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    HouseholdId = table.Column<int>(type: "int", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+>>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
                 },
                 constraints: table =>
                 {
@@ -230,6 +260,35 @@ namespace HouseholdManager.Migrations
                         column: x => x.RoomId,
                         principalTable: "Rooms",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Missions",
+                columns: table => new
+                {
+                    MissionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MissionName = table.Column<string>(type: "nvarchar(50)", nullable: false),
+                    RoomId = table.Column<int>(type: "int", nullable: false),
+                    Point = table.Column<int>(type: "int", nullable: false),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MemberId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Missions", x => x.MissionId);
+                    table.ForeignKey(
+                        name: "FK_Missions_Members_MemberId",
+                        column: x => x.MemberId,
+                        principalTable: "Members",
+                        principalColumn: "MemberId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Missions_Rooms_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Rooms",
+                        principalColumn: "RoomId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -282,6 +341,14 @@ namespace HouseholdManager.Migrations
                 column: "HouseholdId");
 
             migrationBuilder.CreateIndex(
+<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
+========
+                name: "IX_Members_UserId",
+                table: "Members",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+>>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
                 name: "IX_Missions_MemberId",
                 table: "Missions",
                 column: "MemberId");
@@ -290,11 +357,14 @@ namespace HouseholdManager.Migrations
                 name: "IX_Missions_RoomId",
                 table: "Missions",
                 column: "RoomId");
+<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rooms_HouseholdId",
                 table: "Rooms",
                 column: "HouseholdId");
+========
+>>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -321,12 +391,21 @@ namespace HouseholdManager.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Members");
 
             migrationBuilder.DropTable(
                 name: "Rooms");
 
             migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.cs
+                name: "Rooms");
+
+            migrationBuilder.DropTable(
+========
+>>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.cs
                 name: "Households");
         }
     }

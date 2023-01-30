@@ -8,7 +8,7 @@ namespace HouseholdManager.Data.Services
 {
     /// <summary>
     /// Provides methods to access the current, logged in Member and related objects.
-    /// Use this by dependency injecting an IQueryMembers into a constructor.
+    /// Use this by dependency injecting an <see cref="IQueryMembers"/> into a constructor.
     /// </summary>
     public class MemberService : IQueryMembers
     {

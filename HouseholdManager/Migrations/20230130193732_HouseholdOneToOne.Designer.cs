@@ -12,8 +12,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
+<<<<<<<< HEAD:HouseholdManager/Migrations/20230130193732_HouseholdOneToOne.Designer.cs
     [Migration("20230130193732_HouseholdOneToOne")]
     partial class HouseholdOneToOne
+========
+    [Migration("20230126214400_BootstrapSass")]
+    partial class BootstrapSass
+>>>>>>>> a157bf48a3f014ff8f3877f088f184b03bf6e876:HouseholdManager/Migrations/20230126214400_BootstrapSass.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
