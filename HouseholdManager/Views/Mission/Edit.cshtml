@@ -1,5 +1,6 @@
 ﻿@model HouseholdManager.Models.Mission
 
+
 @{
     ViewData["Title"] = "Edit Mission";
 }
@@ -34,7 +35,8 @@
                 <span asp-validation-for="DueDate" class="text-danger"></span>
             </div>
             <div>
-                <input data-val="true" id="Completed"name="Completed"type="checkbox" value="true" />
+                <label asp-for="Completed" class="control-label"></label>
+                <input data-val="true" data-val-required="The Completed field is required." id="Completed" name="Completed" type="checkbox" value="true" />
                 <input name="Completed" type="hidden" value="false" />
             </div>
             <div class="mb-3">

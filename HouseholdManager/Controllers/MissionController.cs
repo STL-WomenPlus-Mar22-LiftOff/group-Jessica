@@ -24,6 +24,7 @@ namespace HouseholdManager.Controllers
         public async Task<IActionResult> Index()
         {
             var dataQuery = _context.Missions.Include(t => t.Room).Include(u => u.Member);
+            ModelState.Clear();
             return View(await dataQuery.ToListAsync());
         }
 
@@ -42,7 +43,7 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
-
+            ModelState.Clear();
             return View(mission);
         }
 
@@ -87,6 +88,7 @@ namespace HouseholdManager.Controllers
             }
             PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            ModelState.Clear();
             return View(mission);
         }
 
@@ -124,6 +126,7 @@ namespace HouseholdManager.Controllers
             }
             PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            ModelState.Clear();
             return View(mission);
         }
 
