@@ -40,9 +40,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Identity": {
+            "Hangfire.AspNetCore": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[1.7.32, )"
+            },
+            "Hangfire.Core": {
+              "target": "Package",
+              "version": "[1.7.32, )"
+            },
+            "Hangfire.SqlServer": {
+              "target": "Package",
+              "version": "[1.7.32, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
@@ -66,6 +74,10 @@
               "target": "Package",
               "version": "[6.0.12, )"
             },
+            "Microsoft.Owin": {
+              "target": "Package",
+              "version": "[4.2.2, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.11, )"
@@ -73,6 +85,10 @@
             "Syncfusion.EJ2.AspNet.Core": {
               "target": "Package",
               "version": "[20.4.0.42, )"
+            },
+            "Twilio.AspNet.MVC": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [
