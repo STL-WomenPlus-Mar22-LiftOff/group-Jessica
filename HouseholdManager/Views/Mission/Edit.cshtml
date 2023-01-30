@@ -33,6 +33,10 @@
                 <input asp-for="DueDate" class="form-control" />
                 <span asp-validation-for="DueDate" class="text-danger"></span>
             </div>
+            <div>
+                <input data-val="true" id="Completed"name="Completed"type="checkbox" value="true" />
+                <input name="Completed" type="hidden" value="false" />
+            </div>
             <div class="mb-3">
                 <ejs-dropdownlist id="ddlUser" ejs-for="MemberId"
                     dataSource="@ViewBag.Members" placeholder="User"

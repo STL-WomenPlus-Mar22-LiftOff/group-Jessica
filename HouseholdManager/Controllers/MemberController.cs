@@ -49,7 +49,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,Icon,HouseholdId,UserName")] Member member)
+        public async Task<IActionResult> AddOrEdit([Bind("MemberId,MemberType,Icon,HouseholdId,UserName,Completed")] Member member)
         {
             if (ModelState.IsValid)
             {
