@@ -35,4 +35,5 @@ namespace HouseholdManager.Mission_Reminders
 
             return MvcHtmlString.Create(form.ToString());
         }
+    }
 }

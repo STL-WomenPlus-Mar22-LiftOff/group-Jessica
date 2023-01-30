@@ -5,7 +5,7 @@ using Twilio.Rest.Api.V2010.Account;
 
 namespace HouseholdManager.Mission_Reminders
 {
-    public class RestClient    
+    public class RestClient
     {
         private readonly ITwilioRestClient _client;
         private readonly string _accountSid = WebConfigurationManager.AppSettings["AccountSid"];
@@ -31,4 +31,5 @@ namespace HouseholdManager.Mission_Reminders
                 body: message,
                 client: _client);
         }
+    }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Web.Mvc;
 using ActionResult = Microsoft.AspNetCore.Mvc.ActionResult;
+using Controller = Microsoft.AspNetCore.Mvc.Controller;
 //using HouseholdManager.Mission_Reminders.MissionReminderModel;
 
 
@@ -54,7 +55,7 @@ namespace HouseholdManager.Mission_Reminders
                 return HttpNotFound();
             }
 
-            return View(MissionReminder);
+            return View(missionReminder);
         }
 
         // GET: Appointments/Create
@@ -73,7 +74,7 @@ namespace HouseholdManager.Mission_Reminders
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "ID,Name,PhoneNumber,Time,Timezone")] MissionReminder missionReminder)
+        public ActionResult Create([Bind(Include = "ID,Name,PhoneNumber,Time,Timezone")]MissionReminder missionReminder)
         {
             missionReminder.CreatedAt = DateTime.Now;
 
