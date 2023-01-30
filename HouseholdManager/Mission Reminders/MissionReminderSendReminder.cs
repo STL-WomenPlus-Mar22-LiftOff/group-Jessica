@@ -1,7 +1,8 @@
 ﻿using Twilio.Rest;
 using HouseholdManager.ApplicationDb;
-using HouseholdManager.Mission_Reminders.MissionReminderFinder;
+using HouseholdManager.Mission_Reminders;
 using HouseholdManager.Areas.Identity.Data;
+using Syncfusion.EJ2.Linq;
 
 namespace HouseholdManager.Mission_Reminders
 {
@@ -9,16 +10,16 @@ namespace HouseholdManager.Mission_Reminders
     {
     
         private const string MessageTemplate =
-            "Hi {0}. Just a reminder that you have an appointment coming up at {1}.";
+            "Hi {0}. Just a reminder that you have an mission due at {1}.";
 
     public void Execute()
     {
-        var twilioRestClient = new Domain.Twilio.RestClient();
+        var twilioRestClient = new RestClient();
 
-        AvailableMissionReminder().ForEach(appointment =>
+        AvailableMissionReminder().ForEach(missionReminder =>
             twilioRestClient.SendSmsMessage(
-            appointment.PhoneNumber,
-            string.Format(MessageTemplate, appointment.Name, appointment.Time.ToString("t"))));
+            missionReminder.PhoneNumber,
+            string.Format(MessageTemplate, missionReminder.Name, missionReminder.Time.ToString("t"))));
     }
 
     private static IEnumerable<MissionReminderModel> AvailableMissionReminder()

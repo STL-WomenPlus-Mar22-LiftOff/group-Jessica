@@ -5,8 +5,7 @@ namespace HouseholdManager.Mission_Reminders
 {
     public class MissionReminderModel
     {
-        public class MissionReminder
-        {
+        
             public static int ReminderTime = 30;
             public int Id { get; set; }
 
@@ -24,7 +23,7 @@ namespace HouseholdManager.Mission_Reminders
 
             [Display(Name = "Created at")]
             public DateTime CreatedAt { get; set; }
-        }
+        
     }
 }
-}
+
