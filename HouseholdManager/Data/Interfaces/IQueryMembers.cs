@@ -3,7 +3,8 @@
 namespace HouseholdManager.Data.Interfaces
 {
     /// <summary>
-    /// Interface for dependency injection of <seealso cref="HouseholdManager.Data.Services.MemberService"/>
+    /// Interface for methods related to querying a member and their household, 
+    /// see also: <seealso cref="HouseholdManager.Data.Services.MemberService"/>
     /// </summary>
     public interface IQueryMembers
     {

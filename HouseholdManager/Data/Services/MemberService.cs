@@ -25,12 +25,12 @@ namespace HouseholdManager.Data.Services
             user = _accessor?.HttpContext?.User ?? throw new MemberAccessException($"MemberService unable to access current user");
         }
 
-        public virtual async Task<Member> GetCurrentMember()
+        public async Task<Member> GetCurrentMember()
         {
             return await _userManager.GetUserAsync(user);
         }
 
-        public virtual async Task<List<Member>> GetCurrentHouseholdMembers()
+        public async Task<List<Member>> GetCurrentHouseholdMembers()
         {
             var currentMember = await GetCurrentMember();
             var members = from member in _context.Members
@@ -39,7 +39,7 @@ namespace HouseholdManager.Data.Services
             return members.ToList();
         }
 
-        public virtual async Task<Household> GetCurrentHousehold()
+        public async Task<Household> GetCurrentHousehold()
         {
             var currentMember = await GetCurrentMember();
             var household = from house in _context.Households
@@ -48,7 +48,7 @@ namespace HouseholdManager.Data.Services
             return household.FirstOrDefault() ?? throw new KeyNotFoundException($"{currentMember.UserName}'s Household is null.");
         }
 
-        public virtual async Task<List<Room>> GetCurrentHouseholdRooms()
+        public async Task<List<Room>> GetCurrentHouseholdRooms()
         {
             var household = await GetCurrentHousehold();
             var rooms = from room in _context.Rooms
@@ -57,7 +57,7 @@ namespace HouseholdManager.Data.Services
             return rooms.ToList();
         }
 
-        public virtual async Task<List<Mission>> GetCurrentHouseholdMissions()
+        public async Task<List<Mission>> GetCurrentHouseholdMissions()
         {
             var household = await GetCurrentHousehold();
             var missions = from mission in _context.Missions

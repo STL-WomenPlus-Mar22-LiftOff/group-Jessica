@@ -17,7 +17,7 @@ namespace HouseholdManager.Data.API
 
         public IconRequestor() 
         {
-            //This is obviously not as good as an enviroment variable, but is better than nothing
+            //TODO: Use an environment variable for this instead
             StringBuilder sb = new StringBuilder();
             sb.Append("2f3055121");
             sb.Remove(6, 3);
@@ -123,8 +123,7 @@ namespace HouseholdManager.Data.API
         /// <para>Fetches corresponding Unicode slug from Open Emoji API when passed an icon</para>
         /// <para>This method is not particularly fast, as the API does not natively support this 
         /// type of search.  It has to get and then query the entire list of thousands of emojis.
-        /// The alternative is to save the slug to the database instead of the icon, which probably 
-        /// isn't better. </para>
+        /// The alternative is to save the slug to the database in addition to the icon.</para>
         /// <para>If there is already an existing collection of icons from the API, this can be 
         /// passed in as an optional parameter to speed things up a bit.</para>
         /// </summary>

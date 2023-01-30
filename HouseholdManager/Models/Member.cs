@@ -46,7 +46,7 @@ namespace HouseholdManager.Models
         }
 
         [NotMapped]
-        public string? UserNameWithIcon
+        public string UserNameWithIcon
         {
             get
             {

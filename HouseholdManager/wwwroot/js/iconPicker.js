@@ -1,10 +1,10 @@
-﻿const iconToggle = document.getElementById("iconSelectButton");
-const iconMenu = document.getElementById("iconMenu");
-const iconSearchBar = document.getElementById("iconSearch");
-const iconFormField = document.getElementById("iconInput");
-const iconDisplay = document.getElementById("iconDisplay");
-const iconRandom = document.getElementById("iconRandomizer");
-const phText = iconSearchBar.getAttribute("placeholder");
+﻿const iconToggle = document.getElementById("iconSelectButton"),
+      iconMenu = document.getElementById("iconMenu"),
+      iconSearchBar = document.getElementById("iconSearch"),
+      iconFormField = document.getElementById("iconInput"),
+      iconDisplay = document.getElementById("iconDisplay"),
+      iconRandom = document.getElementById("iconRandomizer"),
+      phText = iconSearchBar.getAttribute("placeholder");
 
 function selectIcon({ mouseoverText, character, options = "" }) {
     if (!options.includes("keepMenuOpen")) {

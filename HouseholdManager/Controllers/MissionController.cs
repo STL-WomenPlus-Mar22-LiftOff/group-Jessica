@@ -161,9 +161,10 @@ namespace HouseholdManager.Controllers
                 return Forbid();
             }
             var mission = await _context.Missions.FindAsync(model.Id);
+            if (mission is null) return NotFound();
             if (ModelState.IsValid)
             {
-                mission.Name = model.Name;
+                mission.Name = model.Name ?? string.Empty;
                 mission.DueDate = model.DueDate;
                 mission.MemberId = model.MemberId;
                 mission.RoomId = model.RoomId;
@@ -233,6 +234,8 @@ namespace HouseholdManager.Controllers
             }
 
             var mission = await _context.Missions.FindAsync(id);
+            if (mission is null) return NotFound();
+
             _context.Missions.Remove(mission);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -254,7 +257,6 @@ namespace HouseholdManager.Controllers
         [NonAction]
         private async Task<bool> MissionInHousehold(int id)
         {
-            //TODO: Figure out why this doesn't work properly
             var household = await _memberService.GetCurrentHousehold();
             if (household is null) return false;
             var found = from mission in _context.Missions
@@ -264,9 +266,11 @@ namespace HouseholdManager.Controllers
         }
 
         [NonAction]
-        private async Task<List<Member>> PopulateMembers()
+        private async Task<List<ListMemberViewModel>> PopulateMembers()
         {
-            return await _memberService.GetCurrentHouseholdMembers();
+            var members = await _memberService.GetCurrentHouseholdMembers();
+            return (from member in members
+                    select new ListMemberViewModel(member.Id, member.UserNameWithIcon!)).ToList();
         }
 
         [NonAction]

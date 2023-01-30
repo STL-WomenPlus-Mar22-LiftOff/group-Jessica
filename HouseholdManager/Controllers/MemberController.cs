@@ -18,20 +18,24 @@ namespace HouseholdManager.Controllers
     public class MemberController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;
+        private readonly IQueryMembers _memberService;
 
-        public MemberController(ApplicationDbContext context)
+        public MemberController(ApplicationDbContext context, IQueryMembers memberService)
         {
             _context = context;
+            _memberService = memberService;
         }
 
         // GET: Member
         public async Task<IActionResult> Index()
         {
-            return View();
+            List<Member> members = await _memberService.GetCurrentHouseholdMembers();
+            return View(members);
         }
-        // TODO: Put this back together somehow
 
-        /* yeet
+
+        /* 
+        // TODO: Put this back together somehow
 
         // GET: Member/AddOrEdit
         public async Task<IActionResult> AddOrEdit(int id = 0)
@@ -88,6 +92,7 @@ namespace HouseholdManager.Controllers
         }
         */
 
+        // TODO: Call this from an admin-only action method
         [NonAction]
         public void PopulateHouseholds()
         {
