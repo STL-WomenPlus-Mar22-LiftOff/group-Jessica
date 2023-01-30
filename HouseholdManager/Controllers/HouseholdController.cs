@@ -32,6 +32,7 @@ namespace HouseholdManager.Controllers
         }
 
         // GET: Household/AddOrEdit
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddOrEdit(int id = 0)
         {
             await PopulateIcons();
@@ -46,6 +47,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddOrEdit([Bind("HouseholdId,HouseholdName,Icon")] Household household)
         {
             if (ModelState.IsValid)
@@ -65,6 +67,7 @@ namespace HouseholdManager.Controllers
         // POST: Household/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Households == null)

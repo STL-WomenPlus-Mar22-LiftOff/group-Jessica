@@ -47,6 +47,7 @@ namespace HouseholdManager.Controllers
         }
 
         // GET: Room/Create
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> Create()
         {
             await PopulateIcons();
@@ -58,6 +59,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> Create([Bind("RoomId,Name,Icon")] Room room)
         {
             if (ModelState.IsValid)
@@ -71,6 +73,7 @@ namespace HouseholdManager.Controllers
         }
 
         // GET: Room/Edit/5
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> Edit(int? id)
         {
 
@@ -94,6 +97,7 @@ namespace HouseholdManager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> Edit(int id, [Bind("RoomId,Name,Icon")] Room room)
         {
             if (id != room.RoomId)
@@ -126,6 +130,7 @@ namespace HouseholdManager.Controllers
         }
 
         // GET: Room/Delete/5
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Rooms == null)
@@ -146,6 +151,7 @@ namespace HouseholdManager.Controllers
         // POST: Room/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Rooms == null)
