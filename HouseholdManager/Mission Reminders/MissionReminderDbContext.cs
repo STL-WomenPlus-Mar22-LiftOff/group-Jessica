@@ -1,10 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HouseholdManager.Areas.Identity.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace HouseholdManager.Mission_Reminders
 {
-    public class MissionReminderDbContext: DbContext
+    public class MissionReminderDbContext: ApplicationDbContext 
     {
         private readonly MissionReminderDb _context = new MissionReminderDb();
+
+        public MissionReminderDbContext(DbContextOptions options) : base(options)
+        {
+        }
 
         public void Create(MissionReminder missionReminder)
         {
