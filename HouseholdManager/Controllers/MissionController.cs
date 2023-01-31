@@ -86,13 +86,13 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
-            if(mission.Completed = true)
-            {
+            //if(mission.Completed = true)
+            //{
 
-            }
+            //}
             PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
-            ModelState.Clear();
+            //ModelState.Clear();
             return View(mission);
         }
 
