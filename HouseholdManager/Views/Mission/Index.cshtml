@@ -11,13 +11,14 @@
 <div class="row">
     <div class="col-md-15">
         <ejs-grid id="missions" dataSource="@Model" gridLines="None"
-            allowSorting="true" allowPaging="true" showColumnChooser="true">
+                  allowSorting="true" allowPaging="true" showColumnChooser="true" CheckboxOnly="true" PersistSelection="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
                 <e-grid-column headerText="Mission" field="MissionName" width="150px"></e-grid-column>
                 <e-grid-column headerText="Room" field="RoomNameWithIcon" width="150px"></e-grid-column>
                 <e-grid-column headerText="Points" field="Point" width="75px"></e-grid-column>
                 <e-grid-column headerText="Due Date" field="DueDate" width="125px"></e-grid-column>
+                <e-grid-column headerText="Completed" field="Completed" width="125px"></e-grid-column>
                 <e-grid-column headerText="Member" field="MemberUserNameWithIcon" width="200px"></e-grid-column>
                 <e-grid-column headerText="Edit | Details | Delete" template="#actionColumnTemplate" width="200px"></e-grid-column>
             </e-grid-columns>
