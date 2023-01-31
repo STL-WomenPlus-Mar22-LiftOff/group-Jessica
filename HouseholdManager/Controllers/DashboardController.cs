@@ -5,7 +5,6 @@ using HouseholdManager.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace HouseholdManager.Controllers
 {
@@ -24,18 +23,21 @@ namespace HouseholdManager.Controllers
 
         public async Task<ActionResult> Index()
         {
-            int missionCount;
+            Household? household;
             List<Mission>? missions;
             List<Member>? members;
             try
             {
                 //Mission table
-                missions = await _memberService.GetCurrentHouseholdMissions();
+                household = await _memberService.GetCurrentHousehold();
                 members = await _memberService.GetCurrentHouseholdMembers();
-                //TODO: check that missions is not empty?
+                missions = await (from mission in _context.Missions.Include(x => x.Room)
+                                  where mission.HouseholdId == household.Id
+                                  select mission).ToListAsync();
                 if (missions is null) throw new ArgumentNullException(nameof(missions));
-                missionCount = missions.Count();
-                ViewBag.AllMissions = missions;
+                var viewMissions = (from mission in missions
+                                    select new FullMissionViewModel(mission)).ToList();
+                ViewBag.AllMissions = viewMissions;
             }
             catch (Exception e) when (e is KeyNotFoundException ||
                                       e is ArgumentNullException) 
@@ -49,15 +51,15 @@ namespace HouseholdManager.Controllers
                             group mission by mission.MemberId into missionsByMember
                             select missionsByMember;
             List<DashboardViewModel> dashboardData = new List<DashboardViewModel>();
-            foreach (var data in dataQuery)
+            foreach (var memberMissionData in dataQuery)
             {
-                var member = members.Find(x => x.Id == data.Key);
+                var member = members.Find(x => x.Id == memberMissionData.Key);
                 dashboardData.Add(new DashboardViewModel
                 {
                     MemberIcon = member.Icon,
                     MemberName = member.DisplayName,
-                    Amount = data.Sum(x => x.Point),
-                    FormattedAmount = data.Sum(x => x.Point).ToString("0")
+                    Amount = memberMissionData.Sum(x => x.Point),
+                    FormattedAmount = memberMissionData.Sum(x => x.Point).ToString("0")
                 });
             }
 

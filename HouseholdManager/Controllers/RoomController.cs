@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using HouseholdManager.Models.ViewModels;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace HouseholdManager.Controllers
 {

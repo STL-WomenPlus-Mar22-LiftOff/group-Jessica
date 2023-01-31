@@ -1,8 +1,5 @@
-﻿@model HouseholdManager.Models.ViewModels.DashboardViewModel
+﻿@using HouseholdManager.Models.ViewModels
 
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @{
     ViewData["Title"] = "Dashboard";
 }
@@ -14,22 +11,27 @@
             <div class="p-4">
                 <h5 class="fw-bold">Missions:</h5>
             </div>
-            <ejs-grid id="missions" dataSource="@ViewBag.AllMissions" gridLines="None"
+            <ejs-grid id="missions" dataSource="@(List<FullMissionViewModel>)ViewBag.AllMissions" gridLines="None"
                       allowSorting="true" allowPaging="true">
                 <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
                 <e-grid-columns>
-                    <e-grid-column headerText="Due Date" field="DueDate" width="120px"></e-grid-column>
-                    <e-grid-column headerText="Mission Name" field="Name"></e-grid-column>
-                    <e-grid-column headerText="Member Assigned" template="#memberNameTemplate" width="200px" textAlign="Left"></e-grid-column>
-                    <e-grid-column headerText="Room" field="Room.Name" width="150px" textAlign="Left"></e-grid-column>
-                    <e-grid-column headerText="Points" field="Point" width="90px" textAlign="Center"></e-grid-column>
-                    <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
+                    <e-grid-column headerText="Due Date" field="DueDate" width="15%" textAlign="Left"></e-grid-column>
+                    <e-grid-column headerText="Mission Name" field="Name" width="20%" textAlign="Left"></e-grid-column>
+                    <e-grid-column headerText="Member" template="#memberNameTemplate" width="15%" textAlign="Left"></e-grid-column>
+                    <e-grid-column headerText="Room" template="#roomNameTemplate" width="20%" textAlign="Left"></e-grid-column>
+                    <e-grid-column headerText="Points" field="Point" width="90px" textAlign="Left" width="10%"></e-grid-column>
+                    <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="20%"></e-grid-column>
                 </e-grid-columns>
             </ejs-grid>
         </div>
 </div>
+
 <script id="memberNameTemplate" type="text/x-template">
-    <text class="icon-font">${Model.MemberIcon}</text> <text>${Model.MemberName}</text>
+    <text class="icon-font">${MemberIcon}</text> <text>${MemberName}</text>
+</script>
+
+<script id="roomNameTemplate" type="text/x-template">
+    <text class="icon-font">${RoomIcon}</text> <text>${RoomName}</text>
 </script>
 
 <script id="actionColumnTemplate" type="text/x-template">
@@ -59,13 +61,13 @@
             </div>
             <ejs-accumulationchart id="doughnutchart" enableSmartLabels>
                 <e-accumulation-series-collection>
-                    <e-accumulation-series dataSource="@ViewBag.DoughnutChartData"
-                            xName="memberNameWithIcon" yName="amount" innerRadius="40%" legendShape="Circle">
-                        <e-accumulationseries-datalabel name="formattedAmount" visible></e-accumulationseries-datalabel>
+                    <e-accumulation-series dataSource="@(List<DashboardViewModel>)ViewBag.DoughnutChartData"
+                            xName="MemberName" yName="Amount" innerRadius="40%" legendShape="Circle">
+                        <e-accumulationseries-datalabel name="FormattedAmount" visible></e-accumulationseries-datalabel>
                     </e-accumulation-series>
                 </e-accumulation-series-collection>
                 <e-accumulationchart-legendsettings position="Top">
-                    <e-legendsettings-textstyle  color="#fff" size="1rem"></e-legendsettings-textstyle>
+                    <e-legendsettings-textstyle  color="var(--bs-heading-color)" size="1rem"></e-legendsettings-textstyle>
                 </e-accumulationchart-legendsettings>
                 <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
             </ejs-accumulationchart>

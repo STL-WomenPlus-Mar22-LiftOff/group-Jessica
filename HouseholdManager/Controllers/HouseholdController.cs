@@ -32,8 +32,7 @@ namespace HouseholdManager.Controllers
         //GET: Household
         public IActionResult Index()
         {
-            //TODO: Make this actually do something useful
-            return View();
+            return RedirectToAction("Index", "Dashboard");
         }
 
         //GET: Household/AddOrJoinHousehold
