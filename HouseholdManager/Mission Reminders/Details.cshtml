@@ -1,0 +1,22 @@
+﻿@using HouseholdManager.Mission_Reminders;
+@model HouseholdManager.Mission_Reminders.MissionReminder;
+
+<div class="page-header">
+    <h1>Mission Reminder</h1>
+</div>
+
+<dl class="dl-horizontal">
+    <dt><strong>@Html.DisplayNameFor(x => x.Name)</strong></dt>
+    <dd>@Html.DisplayFor(x => x.Name)</dd>
+    <dt><strong>@Html.DisplayNameFor(x => x.PhoneNumber)</strong></dt>
+    <dd>@Html.DisplayFor(x => x.PhoneNumber)</dd>
+    <dt><strong>@Html.DisplayNameFor(x => x.Time)</strong></dt>
+    <dd>@Html.DisplayFor(x => x.Time)</dd>
+</dl>
+
+
+@Html.ActionLink("Back", "Index", new { Controller = "Mission Reminders" }, new { @class = "btn btn-default" })
+@Html.ActionLink("Edit", "Edit", new { Controller = "Mission Reminders", id = Model.Id }, new { @class = "btn btn-default" })
+@Html.DeleteLink("Delete", "Appointments",
+new { id = Model.Id },
+new { @class = "btn btn-danger", onclick = "return confirm('Are you sure?');" })

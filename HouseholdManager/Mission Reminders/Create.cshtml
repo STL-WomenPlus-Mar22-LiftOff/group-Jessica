@@ -1,0 +1,16 @@
+﻿@model HouseholdManager.Mission_Reminders
+
+<div class="page-header">
+    <h1>New Appointment</h1>
+</div>
+
+@using (Html.BeginForm("Create", "Mission Reminder", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.Partial("_Form")
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <input type="submit" value="Create Mission Reminder" class="btn btn-primary" />
+            @Html.ActionLink("Cancel", "Index", new { Controller = "Mission Reminder" }, new { @class = "btn btn-default" })
+        </div>
+    </div>
+}

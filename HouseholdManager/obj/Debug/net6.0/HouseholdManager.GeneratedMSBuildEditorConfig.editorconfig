@@ -175,6 +175,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Erica/Source/Repos/group-Jessica/HouseholdManager/Mission Reminders/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = TWlzc2lvbiBSZW1pbmRlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Erica/Source/Repos/group-Jessica/HouseholdManager/Mission Reminders/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = TWlzc2lvbiBSZW1pbmRlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Erica/Source/Repos/group-Jessica/HouseholdManager/Mission Reminders/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = TWlzc2lvbiBSZW1pbmRlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Erica/Source/Repos/group-Jessica/HouseholdManager/Mission Reminders/ReminderForm.cshtml]
 build_metadata.AdditionalFiles.TargetPath = TWlzc2lvbiBSZW1pbmRlcnNcUmVtaW5kZXJGb3JtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
