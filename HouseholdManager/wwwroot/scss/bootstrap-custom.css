@@ -13380,6 +13380,10 @@ textarea.form-control-lg {
   background-color: #0b4662;
 }
 
+[data-bs-theme=deepblue] .form-bg {
+  background-color: #082f42;
+}
+
 [data-bs-theme=deepblue] span.theme-picker.e-input-group:not(.e-success):not(.e-warning):not(.e-error) {
   border-color: #0b4662;
 }
@@ -13420,4 +13424,8 @@ textarea.form-control-lg {
   --bs-option-bg-subtle: #883f08;
   --bs-accent-border-subtle: #5e3f8b;
   --bs-option-border-subtle: #9a4709;
+}
+
+[data-bs-theme=dark] .form-bg {
+  background-color: #2b3035;
 }

@@ -3,8 +3,6 @@
 @{
     ViewData["Title"] = "Create Mission";
 }
-@*Hiding main page title*@
-@*<h1>Create</h1>*@
 
 <h3>Create a Mission</h3>
 <p>
@@ -13,7 +11,8 @@
     <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
 </p>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-7">
+        <div class="widget p-5 form-bg">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -35,6 +34,11 @@
                 <input asp-for="DueDate" class="form-control" />
                 <span asp-validation-for="DueDate" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Completed" class="control-label">Completed</label>
+                <input asp-for="Completed" data-val="true" data-val-required="The Completed field is required." id="Completed" name="Completed" type="checkbox" value="true" />
+                <input name="Completed" type="hidden" value="false" />
+            </div>
             <div class="mb-3">
                 <ejs-dropdownlist id="ddlUser" ejs-for="MemberId"
                     dataSource="@ViewBag.Members" placeholder="User"
@@ -44,20 +48,13 @@
                 </ejs-dropdownlist>
                 <span asp-validation-for="MemberId" class="text-danger" fs-6></span>
             </div>
-            <div class="row mt-2">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <button type="submit" value="Submit" class="btn btn-primary w-100"> <i class="fa-solid fa-floppy-disk"></i> Create</button>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div>
-                        <a asp-action="Index" class="btn btn-secondary w-100" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-arrow-left"></i> Cancel</a>
-                    </div>
-                </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary form-button"> <i class="fa-solid fa-floppy-disk"></i> Create</button>
+                <a asp-action="Index" class="btn btn-secondary form-button"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
             </div>
             
         </form>
+        </div>
     </div>
 </div>
 

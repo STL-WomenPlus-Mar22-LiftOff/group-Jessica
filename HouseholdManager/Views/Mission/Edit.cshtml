@@ -1,5 +1,6 @@
 ﻿@model HouseholdManager.Models.Mission
 
+
 @{
     ViewData["Title"] = "Edit Mission";
 }
@@ -9,7 +10,8 @@
 <h4>Mission</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-7">
+        <div class="widget p-5 form-bg">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MissionId" />
@@ -33,6 +35,11 @@
                 <input asp-for="DueDate" class="form-control" />
                 <span asp-validation-for="DueDate" class="text-danger"></span>
             </div>
+            <div>
+                <label asp-for="Completed" class="control-label"></label>
+                <input asp-for="Completed" type="checkbox" data-val="true" value="true" id="Completed" name="Completed"/>
+                <input name="Completed" type="hidden" value="false" />
+            </div>
             <div class="mb-3">
                 <ejs-dropdownlist id="ddlUser" ejs-for="MemberId"
                     dataSource="@ViewBag.Members" placeholder="User"
@@ -41,12 +48,13 @@
                     <e-dropdownlist-fields value="MemberId" text="UserName"></e-dropdownlist-fields>
                 </ejs-dropdownlist>
                 <span asp-validation-for="MemberId" class="text-danger" fs-6></span>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-floppy-disk"></i>Save</button>
-                <a asp-action="Index" class="btn btn-secondary mx-2"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
-            </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary form-button"> <i class="fa-solid fa-floppy-disk"></i> Save</button>
+                    <a asp-action="Index" class="btn btn-secondary form-button"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
+                </div>
         </form>
+        </div>
     </div>
 </div>
 

@@ -1,22 +1,30 @@
 ﻿@model HouseholdManager.Models.Member
 
 @{
-    ViewData["PageTitle"] = Model.MemberId == 0 ? "Create a new member" : "Edit member";
+    ViewData["Title"] = Model.MemberId == 0 ? "Create a New Member" : "Edit Member";
 }
+
+<h3>@ViewData["Title"]</h3>
+
+<p>
+    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
+    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
+    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
+</p>
 
 
 <div class="row">
     <div class="col-md-7">
-        <div class="widget p-5" style="background-color: #1a222b">
+        <div class="widget p-5 form-bg">
             <form asp-action="AddOrEdit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" name="MemberId" value="@Model.MemberId" />
                 <div class="mb-3">
-                    <div class='e-btn-group custom-rbt-group'>
-                        <input type="radio" id="radioleft" name="MemberType" value="Admin" checked="@(Model.MemberType=="Admin")" />
-                        <label class="e-btn" for="radioleft">Admin</label>
-                        <input type="radio" id="radiomiddle" name="MemberType" value="Member" checked="@(Model.MemberType=="Member")" />
-                        <label class="e-btn" for="radiomiddle">Member</label>
+                    <div class="btn-group" role="radiogroup">
+                        <input type="radio" class="btn-check" id="radioleft" name="MemberType" value="Admin" checked="@(Model.MemberType=="Admin")" />
+                        <label class="btn btn-outline-secondary" for="radioleft">Admin</label>
+                        <input type="radio" class="btn-check" id="radiomiddle" name="MemberType" value="Member" checked="@(Model.MemberType=="Member")" />
+                        <label class="btn btn-outline-secondary" for="radiomiddle">Member</label>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -44,7 +52,10 @@
                     </ejs-dropdownlist>
                     <span asp-validation-for="HouseholdId" class="text-danger" fs-6></span>
                 </div>
-                <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary form-button"> <i class="fa-solid fa-floppy-disk"></i> Save</button>
+                    <a asp-action="Index" class="btn btn-secondary form-button"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
+                </div>
             </form>
         </div>
     </div>
@@ -54,11 +65,6 @@
         </div>
     </div>
 </div>
-<p>
-    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
-    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
-    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
-</p>
 
 @*@section Scripts {
     @{

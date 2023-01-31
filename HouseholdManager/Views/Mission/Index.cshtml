@@ -11,35 +11,34 @@
 <div class="row">
     <div class="col-md-15">
         <ejs-grid id="missions" dataSource="@Model" gridLines="None"
-            allowSorting="true" allowPaging="true" showColumnChooser="true">
+                  allowSorting="true" allowPaging="true" showColumnChooser="true" CheckboxOnly="true" PersistSelection="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Mission" field="MissionName" width="150px"></e-grid-column>
-                <e-grid-column headerText="Room" field="RoomNameWithIcon" width="150px"></e-grid-column>
-                <e-grid-column headerText="Points" field="Point" width="75px"></e-grid-column>
-                <e-grid-column headerText="Due Date" field="DueDate" width="125px"></e-grid-column>
-                <e-grid-column headerText="Member" field="MemberUserNameWithIcon" width="200px"></e-grid-column>
-                <e-grid-column headerText="Edit | Details | Delete" template="#actionColumnTemplate" width="200px"></e-grid-column>
+                <e-grid-column headerText="Room" field="Name" width="15%"></e-grid-column>
+                <e-grid-column headerText="Points" field="Point" width="10%"></e-grid-column>
+                <e-grid-column headerText="Due Date" field="DueDate" width="15%"></e-grid-column>
+                <e-grid-column headerText="Completed" field="Completed" width="10%"></e-grid-column>
+                <e-grid-column headerText="Member" field="MemberUserNameWithIcon" width="15%"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="20%"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
 
-    </div>>
+    </div>
 </div>
-
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm no-a-decoration" href="/Mission/Edit/${MissionId}">
-            <i class="fa-solid fa-pen fa-lg text-secondary"></i>
+        <a class="btn btn-sm btn-primary mx-1" href="/Mission/Edit/${MissionId}">
+            <i class="fa-solid fa-pen fa-lg"></i>
         </a>
-        <a class="btn btn-sm no-a-decoration" href="/Mission/Details/${MissionId}">
-            <i class="fa-solid fa-list-check fa-lg text-primary"></i>
+        <a class="btn btn-sm btn-secondary mx-1" href="/Mission/Details/${MissionId}">
+            <i class="fa-solid fa-list-check"></i>
         </a>
         <form action="/Mission/Delete/${MissionId}" method="post">
     @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-sm btn-link no-a-decoration"
+            <button type="submit" class="btn btn-sm btn-warning mx-1"
             onclick="return confirm(&quot;Are you sure you want to delete this record?&quot;)">
-                <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+                <i class="fa-solid fa-trash-can"></i>
             </button>
         </form>
     </div>

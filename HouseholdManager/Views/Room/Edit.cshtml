@@ -20,7 +20,8 @@
 </div>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-7">
+        <div class="widget p-5 form-bg">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="RoomId" />
@@ -36,10 +37,11 @@
                 <span asp-validation-for="Icon" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary mx-2"> <i class="fa-solid fa-pen-to-square"></i>Save</button>
-                <a asp-action="Index" class="btn btn-secondary mx-2"> <i class="fa-solid fa-arrow-left"></i>Back to List</a>
+                <button type="submit" class="btn btn-primary form-button"> <i class="fa-solid fa-floppy-disk"></i> Save</button>
+                <a asp-action="Index" class="btn btn-secondary form-button"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
             </div>
         </form>
+        </div>
     </div>
 </div>
 
