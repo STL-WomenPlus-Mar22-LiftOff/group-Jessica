@@ -52,6 +52,14 @@
               "target": "Package",
               "version": "[1.7.32, )"
             },
+            "Microsoft.AspNet.SignalR.Core": {
+              "target": "Package",
+              "version": "[2.4.3, )"
+            },
+            "Microsoft.AspNet.SignalR.Owin": {
+              "target": "Package",
+              "version": "[1.2.2, )"
+            },
             "Microsoft.AspNet.WebApi.Owin": {
               "target": "Package",
               "version": "[5.2.9, )"

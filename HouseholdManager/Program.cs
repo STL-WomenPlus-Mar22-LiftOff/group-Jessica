@@ -1,6 +1,8 @@
+using Hangfire;
 using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+//using Microsoft.AspNet.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +38,9 @@ app.UseAuthentication(); ;
 
 app.UseAuthorization();
 
+app.UseHangfireDashboard();
+app.UseHangfireServer();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
@@ -43,3 +48,4 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
