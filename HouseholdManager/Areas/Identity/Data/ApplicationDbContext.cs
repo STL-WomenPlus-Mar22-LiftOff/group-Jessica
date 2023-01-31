@@ -13,6 +13,10 @@ namespace HouseholdManager.Areas.Identity.Data
 
         }
 
+        public ApplicationDbContext(string v)
+        {
+        }
+
         //protected override void ConfigureConventions(ModelConfigurationBuilder builder)
         //{
         //    builder.Properties<DateOnly>()

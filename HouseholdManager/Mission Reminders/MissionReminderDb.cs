@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HouseholdManager.Areas.Identity.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HouseholdManager.Mission_Reminders
 {
-    public class MissionReminderDb : DbContext
+    public class MissionReminderDb : ApplicationDbContext
     {
         public MissionReminderDb()
             : base("DefaultConnection")

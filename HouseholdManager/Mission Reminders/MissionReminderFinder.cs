@@ -1,4 +1,5 @@
-﻿using NuGet.Protocol.Core.Types;
+﻿using HouseholdManager.Mission_Reminders;
+using NuGet.Protocol.Core.Types;
 
 namespace HouseholdManager.Mission_Reminders
 {
@@ -16,7 +17,11 @@ namespace HouseholdManager.Mission_Reminders
         _timeConverter = timeConverter;
     }
 
-    public IList<MissionReminder> FindAvailableMissionReminder(DateTime currentTime)
+        public MissionReminderFinder(MissionReminderDbContext missionReminderDbContext, TimeConverter timeConverter)
+        {
+        }
+
+        public IList<MissionReminder> FindAvailableMissionReminder(DateTime currentTime)
     {
         var appts = _context.FindAll();
         var availablMissionReminder = _context.FindAll()
@@ -29,4 +34,12 @@ namespace HouseholdManager.Mission_Reminders
         return availableMissionReminder.ToList();
     }
 }
+
+    internal class availableMissionReminder
+    {
+        internal static IList<MissionReminder> ToList()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

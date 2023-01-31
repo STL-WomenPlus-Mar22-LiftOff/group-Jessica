@@ -3,15 +3,17 @@ using Twilio.Clients;
 using Twilio.Types;
 using Twilio.Rest.Api.V2010.Account;
 using Microsoft.AspNetCore.Mvc;
+using System.Configuration;
+using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
 
 namespace HouseholdManager.Mission_Reminders
 {
     public class RestClient
     {
         private readonly ITwilioRestClient _client;
-        private readonly string _accountSid = WebConfigurationManager.AppSettings["AccountSid"];
-        private readonly string _authToken = WebConfigurationManager.AppSettings["AuthToken"];
-        private readonly string _twilioNumber = WebConfigurationManager.AppSettings["TwilioNumber"];
+        private readonly string _accountSid = ConfigurationManager.AppSettings["AccountSid"];
+        private readonly string _authToken = ConfigurationManager.AppSettings["AuthToken"];
+        private readonly string _twilioNumber = ConfigurationManager.AppSettings["TwilioNumber"];
 
         public RestClient()
         {

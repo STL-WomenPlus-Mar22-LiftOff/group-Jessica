@@ -4,6 +4,8 @@ using HouseholdManager.Mission_Reminders;
 using Owin;
 using Syncfusion.EJ2.Maps;
 
+
+
 namespace HouseholdManager.Mission_Reminders
 {
     public class Hangfire
@@ -13,8 +15,8 @@ namespace HouseholdManager.Mission_Reminders
             GlobalConfiguration.Configuration
                 .UseSqlServerStorage("DefaultConnection");
 
-            IApplicationBuilder applicationBuilder = app.UseHangfireDashboard("/jobs");
-            IApplicationBuilder applicationBuilder1 = app.UseHangfireServer();
+            app.UseHangfireDashboard("/jobs");
+            app.UseHangfireServer();
         }
 
         public static void InitializeJobs()
