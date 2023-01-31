@@ -8,7 +8,7 @@ using System.Diagnostics;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator,User")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

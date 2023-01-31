@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HouseholdManager.Migrations
 {
-    public partial class H1to1Merge : Migration
+    public partial class DashFix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -252,8 +252,8 @@ namespace HouseholdManager.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DisplayName", "Email", "EmailConfirmed", "HouseholdId", "Icon", "LockoutEnabled", "LockoutEnd", "MemberType", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "a1addd14-6340-4840-95c2-db12554843e5", 0, "aeba6e6d-1ea6-45d9-a40c-4600c995ba69", "", "defaultAdmin@yahoo.com", false, 1, "👩‍🔧", true, null, "Admin", "DEFAULTADMIN@YAHOO.COM", "DEFAULTADMIN@YAHOO.COM", "AQAAAAEAACcQAAAAEG2Bng+5uDTz6gXh6vsJ3go1mKk1jzEO2kILtis8+ZXGtNpfLpl4tFlnmrVxiObcpw==", "111-222-3333", false, "b7f0f57f-c2fc-4828-a5c6-0a9860a89ed2", false, "defaultAdmin@yahoo.com" },
-                    { "u1ua87c6-b718-4f48-90a2-458e0a2443e6", 0, "861ad237-121b-484d-90f7-eb60293b5e04", "", "defaultUser@yahoo.com", false, 1, "👩‍💼", true, null, "Member", "DEFAULTUSER@YAHOO.COM", "DEFAULTUSER@YAHOO.COM", "AQAAAAEAACcQAAAAEOPLVhnwXC5BW7SeJg91Jxh+B2mxa8elmwXtQNaU/+iKJdX4byUFqu21xkzW+Zd6Iw==", "111-222-3333", false, "0696e3e1-6d8e-426a-9bc0-34dd3574ac81", false, "defaultUser@yahoo.com" }
+                    { "a1addd14-6340-4840-95c2-db12554843e5", 0, "f1729b34-06ae-4d71-b95e-34a5910d9c74", "", "defaultAdmin@yahoo.com", false, 1, "👩‍🔧", true, null, "Admin", "DEFAULTADMIN@YAHOO.COM", "DEFAULTADMIN@YAHOO.COM", "AQAAAAEAACcQAAAAEHyH1NbGY+A3AoHM2JAPvoNaL27+sJ9uB9uLVOduZEfKph1Q6RBkCnQnOFZWucNOOg==", "111-222-3333", false, "0c8a31f2-5b08-40dc-993d-e434f1486935", false, "defaultAdmin@yahoo.com" },
+                    { "u1ua87c6-b718-4f48-90a2-458e0a2443e6", 0, "581bc7df-db1c-4c08-abdb-df2aa311cc96", "", "defaultUser@yahoo.com", false, 1, "👩‍💼", true, null, "Member", "DEFAULTUSER@YAHOO.COM", "DEFAULTUSER@YAHOO.COM", "AQAAAAEAACcQAAAAEGEMivR+UZPZwK3SLUw8TrzbJkhOBta3CXPxMnbx5VDEnKFUrLPuo5k4BcVR4sAzDQ==", "111-222-3333", false, "80ae73ef-86fe-45fa-b33c-84d88aa04dd6", false, "defaultUser@yahoo.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -287,11 +287,11 @@ namespace HouseholdManager.Migrations
                 columns: new[] { "Id", "DueDate", "HouseholdId", "MemberId", "Name", "Point", "RoomId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2697), 1, "u1ua87c6-b718-4f48-90a2-458e0a2443e6", "Wash dishes", 2, 1 },
-                    { 2, new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2745), 1, "a1addd14-6340-4840-95c2-db12554843e5", "Make bed", 1, 5 },
-                    { 3, new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2755), 1, "u1ua87c6-b718-4f48-90a2-458e0a2443e6", "Make bed", 1, 3 },
-                    { 4, new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2764), 1, "a1addd14-6340-4840-95c2-db12554843e5", "Mow lawn", 5, 9 },
-                    { 5, new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2774), 1, "a1addd14-6340-4840-95c2-db12554843e5", "Make dinner", 4, 1 }
+                    { 1, new DateTime(2023, 1, 30, 20, 28, 39, 926, DateTimeKind.Local).AddTicks(1442), 1, "u1ua87c6-b718-4f48-90a2-458e0a2443e6", "Wash dishes", 2, 1 },
+                    { 2, new DateTime(2023, 1, 30, 20, 28, 39, 926, DateTimeKind.Local).AddTicks(1480), 1, "a1addd14-6340-4840-95c2-db12554843e5", "Make bed", 1, 5 },
+                    { 3, new DateTime(2023, 1, 30, 20, 28, 39, 926, DateTimeKind.Local).AddTicks(1490), 1, "u1ua87c6-b718-4f48-90a2-458e0a2443e6", "Make bed", 1, 3 },
+                    { 4, new DateTime(2023, 1, 30, 20, 28, 39, 926, DateTimeKind.Local).AddTicks(1499), 1, "a1addd14-6340-4840-95c2-db12554843e5", "Mow lawn", 5, 9 },
+                    { 5, new DateTime(2023, 1, 30, 20, 28, 39, 926, DateTimeKind.Local).AddTicks(1510), 1, "a1addd14-6340-4840-95c2-db12554843e5", "Make dinner", 4, 1 }
                 });
 
             migrationBuilder.CreateIndex(

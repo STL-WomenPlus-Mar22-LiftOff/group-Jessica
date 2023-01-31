@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230130224904_H1to1Merge")]
-    partial class H1to1Merge
+    [Migration("20230131022840_DashFix")]
+    partial class DashFix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -141,7 +141,7 @@ namespace HouseholdManager.Migrations
                         {
                             Id = "a1addd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "aeba6e6d-1ea6-45d9-a40c-4600c995ba69",
+                            ConcurrencyStamp = "f1729b34-06ae-4d71-b95e-34a5910d9c74",
                             DisplayName = "",
                             Email = "defaultAdmin@yahoo.com",
                             EmailConfirmed = false,
@@ -151,10 +151,10 @@ namespace HouseholdManager.Migrations
                             MemberType = "Admin",
                             NormalizedEmail = "DEFAULTADMIN@YAHOO.COM",
                             NormalizedUserName = "DEFAULTADMIN@YAHOO.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG2Bng+5uDTz6gXh6vsJ3go1mKk1jzEO2kILtis8+ZXGtNpfLpl4tFlnmrVxiObcpw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHyH1NbGY+A3AoHM2JAPvoNaL27+sJ9uB9uLVOduZEfKph1Q6RBkCnQnOFZWucNOOg==",
                             PhoneNumber = "111-222-3333",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b7f0f57f-c2fc-4828-a5c6-0a9860a89ed2",
+                            SecurityStamp = "0c8a31f2-5b08-40dc-993d-e434f1486935",
                             TwoFactorEnabled = false,
                             UserName = "defaultAdmin@yahoo.com"
                         },
@@ -162,7 +162,7 @@ namespace HouseholdManager.Migrations
                         {
                             Id = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "861ad237-121b-484d-90f7-eb60293b5e04",
+                            ConcurrencyStamp = "581bc7df-db1c-4c08-abdb-df2aa311cc96",
                             DisplayName = "",
                             Email = "defaultUser@yahoo.com",
                             EmailConfirmed = false,
@@ -172,10 +172,10 @@ namespace HouseholdManager.Migrations
                             MemberType = "Member",
                             NormalizedEmail = "DEFAULTUSER@YAHOO.COM",
                             NormalizedUserName = "DEFAULTUSER@YAHOO.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOPLVhnwXC5BW7SeJg91Jxh+B2mxa8elmwXtQNaU/+iKJdX4byUFqu21xkzW+Zd6Iw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGEMivR+UZPZwK3SLUw8TrzbJkhOBta3CXPxMnbx5VDEnKFUrLPuo5k4BcVR4sAzDQ==",
                             PhoneNumber = "111-222-3333",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0696e3e1-6d8e-426a-9bc0-34dd3574ac81",
+                            SecurityStamp = "80ae73ef-86fe-45fa-b33c-84d88aa04dd6",
                             TwoFactorEnabled = false,
                             UserName = "defaultUser@yahoo.com"
                         });
@@ -222,7 +222,7 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             Id = 1,
-                            DueDate = new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2697),
+                            DueDate = new DateTime(2023, 1, 30, 20, 28, 39, 926, DateTimeKind.Local).AddTicks(1442),
                             HouseholdId = 1,
                             MemberId = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
                             Name = "Wash dishes",
@@ -232,7 +232,7 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             Id = 2,
-                            DueDate = new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2745),
+                            DueDate = new DateTime(2023, 1, 30, 20, 28, 39, 926, DateTimeKind.Local).AddTicks(1480),
                             HouseholdId = 1,
                             MemberId = "a1addd14-6340-4840-95c2-db12554843e5",
                             Name = "Make bed",
@@ -242,7 +242,7 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             Id = 3,
-                            DueDate = new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2755),
+                            DueDate = new DateTime(2023, 1, 30, 20, 28, 39, 926, DateTimeKind.Local).AddTicks(1490),
                             HouseholdId = 1,
                             MemberId = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
                             Name = "Make bed",
@@ -252,7 +252,7 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             Id = 4,
-                            DueDate = new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2764),
+                            DueDate = new DateTime(2023, 1, 30, 20, 28, 39, 926, DateTimeKind.Local).AddTicks(1499),
                             HouseholdId = 1,
                             MemberId = "a1addd14-6340-4840-95c2-db12554843e5",
                             Name = "Mow lawn",
@@ -262,7 +262,7 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             Id = 5,
-                            DueDate = new DateTime(2023, 1, 30, 16, 49, 4, 326, DateTimeKind.Local).AddTicks(2774),
+                            DueDate = new DateTime(2023, 1, 30, 20, 28, 39, 926, DateTimeKind.Local).AddTicks(1510),
                             HouseholdId = 1,
                             MemberId = "a1addd14-6340-4840-95c2-db12554843e5",
                             Name = "Make dinner",

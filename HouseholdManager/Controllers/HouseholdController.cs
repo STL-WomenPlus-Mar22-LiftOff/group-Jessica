@@ -67,7 +67,6 @@ namespace HouseholdManager.Controllers
             return View(list);
         }
 
-
         //GET: Household/Setup
         public async Task<IActionResult> Setup()
         {
@@ -90,8 +89,9 @@ namespace HouseholdManager.Controllers
                     Name = model.Name,
                     Icon = model.Icon
                 };
-                //Set the current _user to household administrator
+                //Set the current user to household administrator
                 var member = await _userManager.GetUserAsync(User);
+                //TODO: Eventually rework this to user IdentityRoles
                 member.MemberType = "Administrator";
                 household.Members.Add(member);
                 member.Household = household;
@@ -166,7 +166,7 @@ namespace HouseholdManager.Controllers
             return View(model);
         }
 
-        // POST: Household/Delete/5
+        // POST: Household/Delete/{id}
         [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
