@@ -8,20 +8,23 @@
                                                                  (IEnumerable<Icon>)ViewBag.Icons);
 }
 
-<h1>Edit</h1>
-
-<h4>Room</h4>
-<div class="row alert-info">
-    <label title=@Html.DisplayFor(model => model.Name)>Current @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</label>
-    <span title=@iconMouseOverText>
-        <label>Current @Html.DisplayNameFor(model => model.Icon): <text class="icon-font">@Html.DisplayFor(model => model.Icon)</text></label>
-        <label class="icon-slug-display-small">@iconMouseOverText</label>
-    </span>
-</div>
+<h3>Edit Room</h3>
+<p>
+    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
+    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
+    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
+</p>
 <hr />
 <div class="row">
     <div class="col-md-7">
         <div class="widget p-5 form-bg">
+            <div class="row alert-info">
+                <label title=@Html.DisplayFor(model => model.Name)>Current @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</label>
+                <span title=@iconMouseOverText>
+                    <label>Current @Html.DisplayNameFor(model => model.Icon): <text class="icon-font">@Html.DisplayFor(model => model.Icon)</text></label>
+                    <label class="icon-slug-display-small">@iconMouseOverText</label>
+                </span>
+            </div>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="RoomId" />
@@ -44,13 +47,6 @@
         </div>
     </div>
 </div>
-
-    
-<p>
-    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
-    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
-    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
-</p>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
