@@ -142,7 +142,7 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             MissionId = 1,
-                            DueDate = new DateTime(2023, 1, 27, 9, 58, 2, 199, DateTimeKind.Local).AddTicks(554),
+                            DueDate = new DateTime(2023, 1, 30, 23, 4, 30, 369, DateTimeKind.Local).AddTicks(9541),
                             MemberId = 2,
                             MissionName = "Wash dishes",
                             Point = 2,
@@ -151,7 +151,7 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             MissionId = 2,
-                            DueDate = new DateTime(2023, 1, 27, 9, 58, 2, 199, DateTimeKind.Local).AddTicks(667),
+                            DueDate = new DateTime(2023, 1, 30, 23, 4, 30, 369, DateTimeKind.Local).AddTicks(9582),
                             MemberId = 1,
                             MissionName = "Make bed",
                             Point = 1,
@@ -160,7 +160,7 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             MissionId = 3,
-                            DueDate = new DateTime(2023, 1, 27, 9, 58, 2, 199, DateTimeKind.Local).AddTicks(679),
+                            DueDate = new DateTime(2023, 1, 30, 23, 4, 30, 369, DateTimeKind.Local).AddTicks(9592),
                             MemberId = 2,
                             MissionName = "Make bed",
                             Point = 1,
@@ -169,7 +169,7 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             MissionId = 4,
-                            DueDate = new DateTime(2023, 1, 27, 9, 58, 2, 199, DateTimeKind.Local).AddTicks(689),
+                            DueDate = new DateTime(2023, 1, 30, 23, 4, 30, 369, DateTimeKind.Local).AddTicks(9602),
                             MemberId = 1,
                             MissionName = "Mow lawn",
                             Point = 5,
@@ -178,7 +178,7 @@ namespace HouseholdManager.Migrations
                         new
                         {
                             MissionId = 5,
-                            DueDate = new DateTime(2023, 1, 27, 9, 58, 2, 199, DateTimeKind.Local).AddTicks(697),
+                            DueDate = new DateTime(2023, 1, 30, 23, 4, 30, 369, DateTimeKind.Local).AddTicks(9612),
                             MemberId = 1,
                             MissionName = "Make dinner",
                             Point = 4,
@@ -401,16 +401,16 @@ namespace HouseholdManager.Migrations
                         {
                             Id = "a1addd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "099d6d7b-8a7e-43a5-8cf1-0da39c99628d",
+                            ConcurrencyStamp = "6c118363-8099-45c0-a0bc-cc4cc11fe213",
                             Email = "defaultAdmin@yahoo.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "DEFAULTADMIN@YAHOO.COM",
                             NormalizedUserName = "DEFAULTADMIN@YAHOO.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELeKW1R6ys0U4t3pqRsMZgzlBxnW7EN+2WzzFPq1k6GsGbqicTqDQlYjWFqd3Tx1rw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHawR8g1A3X7EyColPEyW2IRzeegLKYOrnOFTI9Fan4dUdrlQvPVLwiK+4inHv3ldA==",
                             PhoneNumber = "111-222-3333",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7fe6d526-fe7c-4e7c-894b-9ae6ac77202a",
+                            SecurityStamp = "7337126c-e3ba-4d16-8b81-5154bf19a690",
                             TwoFactorEnabled = false,
                             UserName = "defaultAdmin@yahoo.com"
                         },
@@ -418,16 +418,16 @@ namespace HouseholdManager.Migrations
                         {
                             Id = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c1b8df6d-d480-45ea-b8f7-93eae78f06d6",
+                            ConcurrencyStamp = "dba406c5-d9a0-4c6a-a11e-b28517bd6610",
                             Email = "defaultUser@yahoo.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "DEFAULTUSER@YAHOO.COM",
                             NormalizedUserName = "DEFAULTUSER@YAHOO.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBA1wJ+EHpEa/w4lNA9wuJWrVnF7NNhmFtrwI1xOi75EXVzdoL5ZVXeewZhEG6/3yw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJobKk+Z+JfKXe9M339SJ1Q+icZFy05yFTkJXCDQ2Dk35h2ypr/LgUSIjh3l+hQ8VQ==",
                             PhoneNumber = "111-222-3333",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8a89dec9-741b-4fa9-a940-f191e8848c20",
+                            SecurityStamp = "4ea21103-a7dc-4b3b-b874-bac32bb60499",
                             TwoFactorEnabled = false,
                             UserName = "defaultUser@yahoo.com"
                         });

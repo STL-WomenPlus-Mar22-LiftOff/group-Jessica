@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HouseholdManager.Migrations
 {
-    public partial class BootstrapSass : Migration
+    public partial class buttons : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -237,6 +237,76 @@ namespace HouseholdManager.Migrations
                         principalTable: "Rooms",
                         principalColumn: "RoomId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "c7b013f0-5201-4317-abd8-c211f91b7330", "2", "User", "User" },
+                    { "fab4fac1-c546-41de-aebc-a14da6895711", "1", "Administrator", "Administrator" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "a1addd14-6340-4840-95c2-db12554843e5", 0, "6c118363-8099-45c0-a0bc-cc4cc11fe213", "defaultAdmin@yahoo.com", false, true, null, "DEFAULTADMIN@YAHOO.COM", "DEFAULTADMIN@YAHOO.COM", "AQAAAAEAACcQAAAAEHawR8g1A3X7EyColPEyW2IRzeegLKYOrnOFTI9Fan4dUdrlQvPVLwiK+4inHv3ldA==", "111-222-3333", false, "7337126c-e3ba-4d16-8b81-5154bf19a690", false, "defaultAdmin@yahoo.com" },
+                    { "u1ua87c6-b718-4f48-90a2-458e0a2443e6", 0, "dba406c5-d9a0-4c6a-a11e-b28517bd6610", "defaultUser@yahoo.com", false, true, null, "DEFAULTUSER@YAHOO.COM", "DEFAULTUSER@YAHOO.COM", "AQAAAAEAACcQAAAAEJobKk+Z+JfKXe9M339SJ1Q+icZFy05yFTkJXCDQ2Dk35h2ypr/LgUSIjh3l+hQ8VQ==", "111-222-3333", false, "4ea21103-a7dc-4b3b-b874-bac32bb60499", false, "defaultUser@yahoo.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Households",
+                columns: new[] { "HouseholdId", "HouseholdName", "Icon" },
+                values: new object[] { 1, "DefaultHousehold", "" });
+
+            migrationBuilder.InsertData(
+                table: "Rooms",
+                columns: new[] { "RoomId", "Icon", "Name" },
+                values: new object[,]
+                {
+                    { 1, "🥄", "Kitchen" },
+                    { 2, "🧻", "Bathroom" },
+                    { 3, "🛏", "Master Bedroom" },
+                    { 4, "🛋", "Living Room" },
+                    { 5, "🛏", "Bedroom" },
+                    { 6, "🛏", "Guest Bedroom" },
+                    { 7, "🧻", "Master Bathroom" },
+                    { 8, "🍽", "Dining Room" },
+                    { 9, "🌳", "Yard" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "c7b013f0-5201-4317-abd8-c211f91b7330", "a1addd14-6340-4840-95c2-db12554843e5" },
+                    { "fab4fac1-c546-41de-aebc-a14da6895711", "a1addd14-6340-4840-95c2-db12554843e5" },
+                    { "c7b013f0-5201-4317-abd8-c211f91b7330", "u1ua87c6-b718-4f48-90a2-458e0a2443e6" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Members",
+                columns: new[] { "MemberId", "HouseholdId", "Icon", "MemberType", "UserId", "UserName" },
+                values: new object[,]
+                {
+                    { 1, 1, "👩‍🔧", "Admin", null, "defaultAdmin@yahoo.com" },
+                    { 2, 1, "👩‍💼", "Member", null, "defaultUser@yahoo.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Missions",
+                columns: new[] { "MissionId", "DueDate", "MemberId", "MissionName", "Point", "RoomId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 1, 30, 23, 4, 30, 369, DateTimeKind.Local).AddTicks(9541), 2, "Wash dishes", 2, 1 },
+                    { 2, new DateTime(2023, 1, 30, 23, 4, 30, 369, DateTimeKind.Local).AddTicks(9582), 1, "Make bed", 1, 5 },
+                    { 3, new DateTime(2023, 1, 30, 23, 4, 30, 369, DateTimeKind.Local).AddTicks(9592), 2, "Make bed", 1, 3 },
+                    { 4, new DateTime(2023, 1, 30, 23, 4, 30, 369, DateTimeKind.Local).AddTicks(9602), 1, "Mow lawn", 5, 9 },
+                    { 5, new DateTime(2023, 1, 30, 23, 4, 30, 369, DateTimeKind.Local).AddTicks(9612), 1, "Make dinner", 4, 1 }
                 });
 
             migrationBuilder.CreateIndex(

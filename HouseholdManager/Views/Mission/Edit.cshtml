@@ -43,15 +43,13 @@
                 <span asp-validation-for="MemberId" class="text-danger" fs-6></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-floppy-disk"></i>Save</button>
+                <a asp-action="Index" class="btn btn-secondary mx-2"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Back to List</a>
-</div>
 <p>
     <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
     <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
