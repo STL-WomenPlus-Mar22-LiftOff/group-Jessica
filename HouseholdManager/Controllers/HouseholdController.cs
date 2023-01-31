@@ -13,7 +13,7 @@ using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator,User")]
     public class HouseholdController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;
@@ -166,8 +166,8 @@ namespace HouseholdManager.Controllers
             return View(model);
         }
 
-        // TODO: make this stop being an enormous security problem
         // POST: Household/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

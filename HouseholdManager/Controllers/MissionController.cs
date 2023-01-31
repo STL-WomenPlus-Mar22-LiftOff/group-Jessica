@@ -13,7 +13,7 @@ using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator,User")]
     public class MissionController : Controller
     {
         private readonly IQueryMembers _memberService;

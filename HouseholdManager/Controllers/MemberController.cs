@@ -14,7 +14,7 @@ using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator,User")]
     public class MemberController : Controller, IRequestIcons
     {
         private readonly ApplicationDbContext _context;

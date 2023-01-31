@@ -14,7 +14,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator,User")]
     public class RoomController : Controller, IRequestIcons
     {
         private readonly IQueryMembers _memberService;

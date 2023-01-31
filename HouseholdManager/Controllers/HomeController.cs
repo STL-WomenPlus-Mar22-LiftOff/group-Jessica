@@ -12,15 +12,12 @@ namespace HouseholdManager.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _context;
         private readonly UserManager<Member> _userManager;
 
-        public HomeController(ApplicationDbContext context, 
-                              ILogger<HomeController> logger,
+        public HomeController(ILogger<HomeController> logger,
                               UserManager<Member> userManager)
         {
             _logger = logger;
-            _context = context;
             _userManager = userManager;
         }
 
@@ -32,8 +29,10 @@ namespace HouseholdManager.Controllers
             {
                 return Redirect("Household/AddOrJoinHousehold");
             }
-            //this may need to change
-            return Redirect("Household/Welcome");
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Privacy()

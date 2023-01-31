@@ -9,13 +9,14 @@
 @await Html.PartialAsync("_CreationButtonsPartial")
 
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-15">
         <ejs-grid id="members" dataSource="@Model" gridLines="None"
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="MemberName" field="MemberUserNameWithIcon"></e-grid-column>
+                <e-grid-column headerText="Name" template="#memberNameTemplate"></e-grid-column>
                 <e-grid-column headerText="MemberType" template="#typeColumnTemplate" width="150px"></e-grid-column>
+                @*TODO: Fix me*@
                 <e-grid-column headerText="Household" field="HouseholdNameWithIcon" width="100px" textAlign="Left"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
@@ -27,6 +28,10 @@
         </div>
     </div>
 </div>
+
+<script id="memberNameTemplate" type="text/x-template">
+    <text class="icon-font">${Icon}</text> <text>${Name}</text>
+</script>
 
 <script id="typeColumnTemplate" type="text/x-template">
     ${if(MemberType=="Member")}
@@ -47,3 +52,4 @@
         </form>
     </div>
 </script>
+
