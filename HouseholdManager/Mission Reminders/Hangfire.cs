@@ -5,6 +5,9 @@ using Owin;
 using Syncfusion.EJ2.Maps;
 using Microsoft.AspNetCore.SignalR;
 
+using Microsoft.AspNetCore.StaticFiles;
+
+
 namespace HouseholdManager.Mission_Reminders
 {
     public class Hangfire
