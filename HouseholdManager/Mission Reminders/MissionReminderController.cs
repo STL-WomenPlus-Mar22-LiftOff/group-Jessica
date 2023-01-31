@@ -44,13 +44,13 @@ namespace HouseholdManager.Mission_Reminders
         {
             if (id == null)
             {
-                return new StatusCodeResult(HttpStatusCode.BadRequest);
+                return new StatusCodeResult((int)HttpStatusCode.BadRequest);
             }
 
             var missionReminder = _context.FindById(id.Value);
             if (missionReminder == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
 
             return View(missionReminder);
@@ -92,7 +92,7 @@ namespace HouseholdManager.Mission_Reminders
         {
             if (id == null)
             {
-                return new StatusCodeResult(BadRequestResult);
+                return new StatusCodeResult((int)HttpStatusCode.BadRequest);
             }
 
             var missionReminder = _context.FindById(id.Value);
