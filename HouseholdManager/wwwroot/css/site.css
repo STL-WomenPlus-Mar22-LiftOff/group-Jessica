@@ -77,6 +77,14 @@ body {
     place-self: center;
 }
 
+.form-bg {
+    background-color: var(--bs-secondary-bg);
+}
+
+.form-button {
+    width: 40%;
+}
+
 /*WIP wobble back-and-forth effect
 .effect-wobble {
     animation: wobble 5s linear 0s infinite backwards;

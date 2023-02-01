@@ -13,7 +13,7 @@ namespace HouseholdManager.Models
         [Required(ErrorMessage = "Household name is required.")]
         public string HouseholdName { get; set; }
 
-        [Column(TypeName = "nvarchar(5)")]
+        [Column(TypeName = "nvarchar(20)")]
         public string Icon { get; set; } = "";
 
         [NotMapped]

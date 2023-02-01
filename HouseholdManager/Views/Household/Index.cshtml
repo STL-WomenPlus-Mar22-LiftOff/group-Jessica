@@ -16,9 +16,9 @@
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Household Name" field="HouseholdNameWithIcon"></e-grid-column>
+                <e-grid-column headerText="Household Name" field="HouseholdNameWithIcon" width="75%px"></e-grid-column>
                
-                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="25%"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
 
@@ -32,14 +32,17 @@
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm no-a-decoration" href="/Household/AddOrEdit/${HouseholdId}">
-            <i class="fa-solid fa-pen fa-lg text-secondary"></i>
+        <a class="btn btn-sm btn-primary mx-1" href="/Mission/Edit/${HouseholdId}">
+            <i class="fa-solid fa-pen fa-lg"></i>
+        </a>
+        <a class="btn btn-sm btn-secondary mx-1" href="/Mission/Details/${HouseholdId}">
+            <i class="fa-solid fa-list-check"></i>
         </a>
         <form action="/Household/Delete/${HouseholdId}" method="post">
     @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-sm btn-link no-a-decoration"
-            onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
-                <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+            <button type="submit" class="btn btn-sm btn-warning mx-1"
+            onclick="return confirm(&quot;Are you sure you want to delete this record?&quot;)">
+                <i class="fa-solid fa-trash-can"></i>
             </button>
         </form>
     </div>
