@@ -22,9 +22,9 @@ namespace HouseholdManager.Mission_Reminders.MissionReminderModel
             string.Format(MessageTemplate, missionReminder.Name, missionReminder.Time.ToString("t"))));
     }
 
-    private static IEnumerable<MissionReminder> AvailableMissionReminder()
-    {
-        return new MissionReminderFinder(new MissionReminderDbContext(), new TimeConverter())
+        private static IEnumerable<MissionReminder> AvailableMissionReminder()
+        {
+            return new MissionReminderFinder(new MissionReminderDbContext(), new TimeConverter())
             .FindAvailableAppointments(DateTime.Now);
     }
 }

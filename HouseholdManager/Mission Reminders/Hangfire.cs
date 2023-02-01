@@ -12,7 +12,7 @@ namespace HouseholdManager.Mission_Reminders
 {
     public class Hangfire
     {
-        public static void ConfigureHangfire(WebApplicationBuilder app)
+        public static void ConfigureHangfire(IAppBuilder app)
         {
             GlobalConfiguration.Configuration
                 .UseSqlServerStorage("DefaultConnection");

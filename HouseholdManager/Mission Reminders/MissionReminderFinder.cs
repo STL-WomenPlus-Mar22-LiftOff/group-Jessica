@@ -33,7 +33,12 @@ namespace HouseholdManager.Mission_Reminders
 
         return availableMissionReminder.ToList();
     }
-}
+
+        internal IEnumerable<MissionReminder> FindAvailableAppointments(DateTime now)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
     internal class availableMissionReminder
     {

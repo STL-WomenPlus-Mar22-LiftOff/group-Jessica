@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9sm159TPV+bXGZiraHIYwZ8IqJGW4zUNmR5hD3LXmmhcdynsjpFiBHhd7V5Xakp7ItOFkyRte+9lGsETcN2c6Q==",
+  "dgSpecHash": "VP/5ti8SZOjVf3CNnk+bH8405tiq4MLMMqFgVYogaSE+oCNuUsiF9lhWsQl3t7kXlBB8zwjLUka6TVgHw95SXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Erica\\Source\\Repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
+  "projectFilePath": "C:\\Users\\Erica\\source\\repos\\group-Jessica\\HouseholdManager\\HouseholdManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Erica\\.nuget\\packages\\hangfire.aspnetcore\\1.7.32\\hangfire.aspnetcore.1.7.32.nupkg.sha512",
     "C:\\Users\\Erica\\.nuget\\packages\\hangfire.core\\1.7.32\\hangfire.core.1.7.32.nupkg.sha512",

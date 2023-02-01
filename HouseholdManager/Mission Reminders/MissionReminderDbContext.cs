@@ -11,6 +11,8 @@ namespace HouseholdManager.Mission_Reminders
         {
         }
 
+       
+
         public void Create(MissionReminder missionReminder)
         {
             _context.MissionReminder.Add(missionReminder);
