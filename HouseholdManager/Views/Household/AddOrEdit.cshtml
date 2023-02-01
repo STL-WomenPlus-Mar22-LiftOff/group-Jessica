@@ -1,18 +1,25 @@
 ﻿@model HouseholdManager.Models.Household
 
 @{
-    ViewData["PageTitle"] = Model.HouseholdId == 0 ? "Create a new household" : "Edit household";
+    ViewData["Title"] = Model.HouseholdId == 0 ? "Create a New Household" : "Edit Household";
 }
 
 
+<h3>@ViewData["Title"]</h3>
+<p>
+    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
+    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
+    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
+</p>
+
 <div class="row">
     <div class="col-md-7">
-        <div class="widget p-5" style="background-color: #1a222b">
+        <div class="widget p-5 form-bg">
             <form asp-action="AddOrEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" name="HouseholdId" value="@Model.HouseholdId" />
                 <div class="mb-3">
-                    <ejs-textbox id="householdname" placeholder="HouseholdName" ejs-for="HouseholdName" floatLabelType="Always"></ejs-textbox>
+                    <ejs-textbox id="householdname" placeholder="Household Name" ejs-for="HouseholdName" floatLabelType="Always"></ejs-textbox>
                     <span asp-validation-for="HouseholdName" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
@@ -20,8 +27,11 @@
                     <input asp-for="Icon" id="iconInput" class="form-control" hidden />
                     @await Html.PartialAsync("_IconMenuPartial")
                     <span asp-validation-for="Icon" class="text-danger" fs-6></span>
-                </div>               
-                <ejs-button id="submit" type="submit" content="Submit" cssClass="e-success"></ejs-button>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary form-button"> <i class="fa-solid fa-floppy-disk"></i> Save</button>
+                    <a asp-action="Index" class="btn btn-secondary form-button"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
+                </div>
             </form>
         </div>
     </div>
@@ -31,11 +41,6 @@
         </div>
     </div>
 </div>
-<p>
-    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
-    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
-    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
-</p>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -1,5 +1,5 @@
 ﻿
-
+//@import "../lib/bootstrap/scss/_variables-dark.scss";
 //
 // Additional Colors (see additional-colors.scss)
 //
@@ -24,3 +24,8 @@ $option-border-subtle-dark: shade-color($custom-option, 15%);
   }
 }
 
+
+[data-bs-theme="dark"]
+.form-bg {
+    background-color: #{$body-tertiary-bg-dark};
+}
