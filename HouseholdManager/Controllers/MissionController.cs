@@ -24,6 +24,7 @@ namespace HouseholdManager.Controllers
         public async Task<IActionResult> Index()
         {
             var dataQuery = _context.Missions.Include(t => t.Room).Include(u => u.Member);
+            
             return View(await dataQuery.ToListAsync());
         }
 
@@ -42,7 +43,7 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
-
+            
             return View(mission);
         }
 
@@ -61,7 +62,8 @@ namespace HouseholdManager.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator,User")]
-        public async Task<IActionResult> Create([Bind("MissionId,MissionName,RoomId,Point,DueDate,MemberId")] Models.Mission mission)
+
+        public async Task<IActionResult> Create([Bind("MissionId,MissionName,RoomId,Point,DueDate,MemberId,Completed")] Models.Mission mission)
         {
             if (ModelState.IsValid)
             {
@@ -88,8 +90,13 @@ namespace HouseholdManager.Controllers
             {
                 return NotFound();
             }
+            //if(mission.Completed = true)
+            //{
+
+            //}
             PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            //ModelState.Clear();
             return View(mission);
         }
 
@@ -99,7 +106,7 @@ namespace HouseholdManager.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator,User")]
-        public async Task<IActionResult> Edit(int id, [Bind("MissionId,MissionName,RoomId,Point,DueDate,MemberId")] Models.Mission mission)
+        public async Task<IActionResult> Edit(int id, [Bind("MissionId,MissionName,RoomId,Point,DueDate,MemberId,Completed")] Models.Mission mission)
         {
             if (id != mission.MissionId)
             {
@@ -128,6 +135,7 @@ namespace HouseholdManager.Controllers
             }
             PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
+            ModelState.Clear();
             return View(mission);
         }
 

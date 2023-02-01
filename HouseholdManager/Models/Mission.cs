@@ -38,6 +38,8 @@ namespace HouseholdManager.Models
 
         public Member? Member { get; set; }
 
+        public bool Completed { get; set; }
+
 
         [NotMapped]
         public string? RoomNameWithIcon
