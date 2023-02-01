@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HouseholdManager.Migrations
 {
-    public partial class Buttons : Migration
+    public partial class IconCharacterFix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -55,7 +55,7 @@ namespace HouseholdManager.Migrations
                     HouseholdId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HouseholdName = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false)
+                    Icon = table.Column<string>(type: "nvarchar(20)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -69,7 +69,7 @@ namespace HouseholdManager.Migrations
                     RoomId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false)
+                    Icon = table.Column<string>(type: "nvarchar(20)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -189,7 +189,7 @@ namespace HouseholdManager.Migrations
                     MemberId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MemberType = table.Column<string>(type: "nvarchar(50)", nullable: false),
-                    Icon = table.Column<string>(type: "nvarchar(5)", nullable: false),
+                    Icon = table.Column<string>(type: "nvarchar(20)", nullable: false),
                     HouseholdId = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
@@ -254,8 +254,8 @@ namespace HouseholdManager.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "a1addd14-6340-4840-95c2-db12554843e5", 0, "d8f03645-ee3a-43e6-8f7c-f5c8aea6f6ca", "defaultAdmin@yahoo.com", false, true, null, "DEFAULTADMIN@YAHOO.COM", "DEFAULTADMIN@YAHOO.COM", "AQAAAAEAACcQAAAAECNUL3HPvx/79gMscH16ZgQCuHWS0cjPYhXkLC+CS4Ord7TzlVH0Ej7A7OE8wmG+Fw==", "111-222-3333", false, "3f81a621-83b4-453a-b217-e75fc6baccc4", false, "defaultAdmin@yahoo.com" },
-                    { "u1ua87c6-b718-4f48-90a2-458e0a2443e6", 0, "79d762ab-4c8f-4d3f-88c1-35a94ba1ca31", "defaultUser@yahoo.com", false, true, null, "DEFAULTUSER@YAHOO.COM", "DEFAULTUSER@YAHOO.COM", "AQAAAAEAACcQAAAAEGR2DSQk1DFajesvlGiK7IN+NEc9P3j15nqlPTR92GWhl4sAQM6OMiyE7D6/s3KoZA==", "111-222-3333", false, "75246bb9-305a-4967-be64-bb77aacba3be", false, "defaultUser@yahoo.com" }
+                    { "a1addd14-6340-4840-95c2-db12554843e5", 0, "ab3eeed0-defd-41e9-b1bd-36661b62829d", "defaultAdmin@yahoo.com", false, true, null, "DEFAULTADMIN@YAHOO.COM", "DEFAULTADMIN@YAHOO.COM", "AQAAAAEAACcQAAAAENFo9vgxEGXoObDLtNeg1E4EAhglostSfvFOkO49dwmG408JAN2qbOfAk4yM/8pG+A==", "111-222-3333", false, "8bbd6713-9a6a-4572-a0a2-7f159540fba0", false, "defaultAdmin@yahoo.com" },
+                    { "u1ua87c6-b718-4f48-90a2-458e0a2443e6", 0, "87e350eb-1d91-4711-96d9-f9c46cf314fe", "defaultUser@yahoo.com", false, true, null, "DEFAULTUSER@YAHOO.COM", "DEFAULTUSER@YAHOO.COM", "AQAAAAEAACcQAAAAEK5S9m0kGIvt8YgHuLX9cGIRE8T2ZlaAZJL8V3rcHEh+EHGunYODzGG/LClIuugq6w==", "111-222-3333", false, "33ca19e6-a47d-4a14-b372-519aa161a80d", false, "defaultUser@yahoo.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -303,11 +303,11 @@ namespace HouseholdManager.Migrations
                 columns: new[] { "MissionId", "Completed", "DueDate", "MemberId", "MissionName", "Point", "RoomId" },
                 values: new object[,]
                 {
-                    { 1, false, new DateTime(2023, 1, 31, 15, 26, 35, 666, DateTimeKind.Local).AddTicks(2695), 2, "Wash dishes", 2, 1 },
-                    { 2, false, new DateTime(2023, 1, 31, 15, 26, 35, 666, DateTimeKind.Local).AddTicks(2737), 1, "Make bed", 1, 5 },
-                    { 3, false, new DateTime(2023, 1, 31, 15, 26, 35, 666, DateTimeKind.Local).AddTicks(2747), 2, "Make bed", 1, 3 },
-                    { 4, false, new DateTime(2023, 1, 31, 15, 26, 35, 666, DateTimeKind.Local).AddTicks(2757), 1, "Mow lawn", 5, 9 },
-                    { 5, false, new DateTime(2023, 1, 31, 15, 26, 35, 666, DateTimeKind.Local).AddTicks(2767), 1, "Make dinner", 4, 1 }
+                    { 1, false, new DateTime(2023, 1, 31, 21, 45, 23, 545, DateTimeKind.Local).AddTicks(9822), 2, "Wash dishes", 2, 1 },
+                    { 2, false, new DateTime(2023, 1, 31, 21, 45, 23, 545, DateTimeKind.Local).AddTicks(9860), 1, "Make bed", 1, 5 },
+                    { 3, false, new DateTime(2023, 1, 31, 21, 45, 23, 545, DateTimeKind.Local).AddTicks(9870), 2, "Make bed", 1, 3 },
+                    { 4, false, new DateTime(2023, 1, 31, 21, 45, 23, 545, DateTimeKind.Local).AddTicks(9879), 1, "Mow lawn", 5, 9 },
+                    { 5, false, new DateTime(2023, 1, 31, 21, 45, 23, 545, DateTimeKind.Local).AddTicks(9889), 1, "Make dinner", 4, 1 }
                 });
 
             migrationBuilder.CreateIndex(
