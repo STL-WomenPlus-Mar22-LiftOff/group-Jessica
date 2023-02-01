@@ -19,7 +19,7 @@ namespace HouseholdManager.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("Index", "Home");
         }
 
         public IActionResult Privacy()

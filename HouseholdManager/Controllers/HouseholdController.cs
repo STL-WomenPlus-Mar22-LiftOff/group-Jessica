@@ -31,6 +31,24 @@ namespace HouseholdManager.Controllers
             return View(await dataQuery.ToListAsync());
         }
 
+        // GET: Household/Details
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Households == null)
+            {
+                return NotFound();
+            }
+
+            var household = await _context.Households
+                .FirstOrDefaultAsync(m => m.HouseholdId == id);
+            if (household == null)
+            {
+                return NotFound();
+            }
+
+            return View(household);
+        }
+
         // GET: Household/AddOrEdit
         [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> AddOrEdit(int id = 0)

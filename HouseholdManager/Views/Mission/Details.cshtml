@@ -5,11 +5,7 @@
 }
 
 <h1>Details</h1>
-<p>
-    <a asp-controller="Room" asp-action="Create" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Room</a>
-    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
-    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
-</p>
+@await Html.PartialAsync("_CreationButtonsPartial")
 
 <div>
     <h4>Mission</h4>
@@ -45,6 +41,9 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Completed)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Member.UserName)
+        </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Member.MemberUserNameWithIcon)
         </dd>
