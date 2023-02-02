@@ -168,18 +168,10 @@
         @include deepblue-e-grid;
     }
 
-    .e-grid .e-numericcontainer .e-numericitem {
-        @include deepblue-e-grid;
-    }
-
-    .e-grid .e-gridheader {
-        @include deepblue-e-grid;
-    }
-
-    .e-grid .e-headercell {
-        @include deepblue-e-grid;
-    }
-
+    .e-grid .e-pagercontainer,
+    .e-grid .e-numericcontainer .e-numericitem,
+    .e-grid .e-gridheader,
+    .e-grid .e-headercell,
     .e-pagercontainer .e-icons {
         @include deepblue-e-grid;
     }
@@ -198,7 +190,7 @@
     }
 
     .e-grid .e-row.e-altrow {
-        background-color: $primary-bg-subtle-deepblue !important;
+        background-color: shade-color($primary-bg-subtle-deepblue, 40%) !important;
     }
 
     .e-grid .e-row {

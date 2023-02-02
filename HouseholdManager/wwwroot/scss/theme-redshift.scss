@@ -163,18 +163,10 @@
         @include redshift-e-grid;
     }
 
-    .e-grid .e-numericcontainer .e-numericitem {
-        @include redshift-e-grid;
-    }
-
-    .e-grid .e-gridheader {
-        @include redshift-e-grid;
-    }
-
-    .e-grid .e-headercell {
-        @include redshift-e-grid;
-    }
-
+    .e-grid .e-pagercontainer,
+    .e-grid .e-numericcontainer .e-numericitem,
+    .e-grid .e-gridheader,
+    .e-grid .e-headercell,
     .e-pagercontainer .e-icons {
         @include redshift-e-grid;
     }

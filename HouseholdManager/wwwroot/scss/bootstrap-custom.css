@@ -13427,21 +13427,10 @@ textarea.form-control-lg {
   color: #c4e2fd !important;
   border-color: #1375a4 !important;
 }
-[data-bs-theme=deepblue] .e-grid .e-numericcontainer .e-numericitem {
-  background-color: #041721 !important;
-  color: #c4e2fd !important;
-  border-color: #1375a4 !important;
-}
-[data-bs-theme=deepblue] .e-grid .e-gridheader {
-  background-color: #041721 !important;
-  color: #c4e2fd !important;
-  border-color: #1375a4 !important;
-}
-[data-bs-theme=deepblue] .e-grid .e-headercell {
-  background-color: #041721 !important;
-  color: #c4e2fd !important;
-  border-color: #1375a4 !important;
-}
+[data-bs-theme=deepblue] .e-grid .e-pagercontainer,
+[data-bs-theme=deepblue] .e-grid .e-numericcontainer .e-numericitem,
+[data-bs-theme=deepblue] .e-grid .e-gridheader,
+[data-bs-theme=deepblue] .e-grid .e-headercell,
 [data-bs-theme=deepblue] .e-pagercontainer .e-icons {
   background-color: #041721 !important;
   color: #c4e2fd !important;
@@ -13460,7 +13449,7 @@ textarea.form-control-lg {
   background-color: #36454d !important;
 }
 [data-bs-theme=deepblue] .e-grid .e-row.e-altrow {
-  background-color: #0b4662 !important;
+  background-color: #072a3b !important;
 }
 [data-bs-theme=deepblue] .e-grid .e-row {
   background-color: #041721 !important;
@@ -13753,21 +13742,10 @@ textarea.form-control-lg {
   color: #e7bcad !important;
   border-color: #8f3249 !important;
 }
-[data-bs-theme=redshift] .e-grid .e-numericcontainer .e-numericitem {
-  background-color: #140400 !important;
-  color: #e7bcad !important;
-  border-color: #8f3249 !important;
-}
-[data-bs-theme=redshift] .e-grid .e-gridheader {
-  background-color: #140400 !important;
-  color: #e7bcad !important;
-  border-color: #8f3249 !important;
-}
-[data-bs-theme=redshift] .e-grid .e-headercell {
-  background-color: #140400 !important;
-  color: #e7bcad !important;
-  border-color: #8f3249 !important;
-}
+[data-bs-theme=redshift] .e-grid .e-pagercontainer,
+[data-bs-theme=redshift] .e-grid .e-numericcontainer .e-numericitem,
+[data-bs-theme=redshift] .e-grid .e-gridheader,
+[data-bs-theme=redshift] .e-grid .e-headercell,
 [data-bs-theme=redshift] .e-pagercontainer .e-icons {
   background-color: #140400 !important;
   color: #e7bcad !important;
