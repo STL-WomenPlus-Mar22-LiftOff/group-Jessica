@@ -12,9 +12,9 @@ namespace HouseholdManager.Models
         public int MissionId { get; set; }
 
         [Column(TypeName = "nvarchar(50)")]
-
         [Required(ErrorMessage = "Name of mission is required.")]
         [DisplayName("Mission Name")]
+        [StringLength(50, MinimumLength = 2)]
         public string MissionName { get; set; }
 
         //RoomId-Foreign Key

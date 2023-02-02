@@ -5,13 +5,10 @@
 }
 
 <h3>Create a Room</h3>
-<p>
-    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
-    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
-    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
-</p>
+@await Html.PartialAsync("_CreationButtonsPartial")
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-7">
+        <div class="widget p-5 form-bg">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -25,21 +22,12 @@
                 @await Html.PartialAsync("_IconMenuPartial")
                 <span asp-validation-for="Icon" class="text-danger"></span>
             </div>
-
-            <div class="row mt-2">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <input type="submit" value="Submit" class="btn btn-primary w-100" />
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div>
-                        <a asp-action="Index" class="btn btn-secondary w-100">Cancel</a>
-                    </div>
-                </div>
+            <div class="form-group">
+                    <button type="submit" class="btn btn-primary form-button"> <i class="fa-solid fa-floppy-disk"></i> Create</button>
+                    <a asp-action="Index" class="btn btn-secondary form-button"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
             </div>
-
         </form>
+        </div>
     </div>
 </div>
 <div>

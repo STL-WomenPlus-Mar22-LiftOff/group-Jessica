@@ -14,101 +14,45 @@
                   allowSorting="true" allowPaging="true" showColumnChooser="true" CheckboxOnly="true" PersistSelection="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Mission" field="MissionName" width="150px"></e-grid-column>
-                <e-grid-column headerText="Room" field="RoomNameWithIcon" width="150px"></e-grid-column>
-                <e-grid-column headerText="Points" field="Point" width="75px"></e-grid-column>
-                <e-grid-column headerText="Due Date" field="DueDate" width="125px"></e-grid-column>
-                <e-grid-column headerText="Completed" field="Completed" width="125px"></e-grid-column>
-                <e-grid-column headerText="Member" field="MemberUserNameWithIcon" width="200px"></e-grid-column>
-                <e-grid-column headerText="Edit | Details | Delete" template="#actionColumnTemplate" width="200px"></e-grid-column>
+                <e-grid-column headerText="Mission" field="MissionName" width="23%"></e-grid-column>
+                <e-grid-column headerText="Room" field="RoomNameWithIcon" width="15%"></e-grid-column>
+                <e-grid-column headerText="Points" field="Point" width="8%" textAlign="Center"></e-grid-column>
+                <e-grid-column headerText="Due Date" field="DueDate" format="MMM-dd-yyyy" width="12%"></e-grid-column>
+                <e-grid-column headerText="Completed" template="#actionYesNoTemplate" width="12%" textAlign="Center"></e-grid-column>
+                <e-grid-column headerText="Member" field="MemberUserNameWithIcon" width="15%"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="15%"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
 
-    </div>>
+    </div>
 </div>
 
+<script id="actionYesNoTemplate" type="text/x-template">
+    ${if(Completed==1)}
+        <span class="badge bg-success">Yes</span>
+    ${else}
+        <span class="badge bg-danger">No</span>
+        ${/if}
+</script>
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm no-a-decoration" href="/Mission/Edit/${MissionId}">
-            <i class="fa-solid fa-pen fa-lg text-secondary"></i>
+        <a class="btn btn-sm btn-primary mx-1" href="/Mission/Edit/${MissionId}">
+            <i class="fa-solid fa-pen fa-lg"></i>
         </a>
-        <a class="btn btn-sm no-a-decoration" href="/Mission/Details/${MissionId}">
-            <i class="fa-solid fa-list-check fa-lg text-primary"></i>
+        <a class="btn btn-sm btn-secondary mx-1" href="/Mission/Details/${MissionId}">
+            <i class="fa-solid fa-list-check"></i>
         </a>
         <form action="/Mission/Delete/${MissionId}" method="post">
     @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-sm btn-link no-a-decoration"
+            <button type="submit" class="btn btn-sm btn-warning mx-1"
             onclick="return confirm(&quot;Are you sure you want to delete this record?&quot;)">
-                <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+                <i class="fa-solid fa-trash-can"></i>
             </button>
         </form>
     </div>
 </script>
 
-
-<!--Old Version of Mission/Index table. Just for our records. -AK->
-
-@*<div class="containter">
-    <div class="row">
-        <div class="col-md-15">
-            <div class="panel-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                Mission
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Room)
-                            </th>
-                            <th>
-                                Points
-                            </th>
-                            <th>
-                                Due Date
-                            </th>
-                            <th>
-                                Member
-                            </th>
-                            <th class="text-center">
-                                Edit | Details | Delete
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.MissionName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Room.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Point)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DueDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Member.MemberUserNameWithIcon)
-                                </td>
-                                <td class="text-center">
-                                    <a asp-action="Edit" asp-route-id="@item.RoomId" class="btn btn-sm btn-primary mx-1"> <i class="fa-solid fa-pencil"></i> </a>
-                                    <a asp-action="Details" asp-route-id="@item.RoomId" class="btn btn-sm btn-secondary mx-1"> <i class="fa-solid fa-list-check"></i> </a>
-                                    <a asp-action="Delete" asp-route-id="@item.RoomId" class="btn btn-sm btn-warning mx-1"> <i class="fa-solid fa-trash-can"></i></a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-*@
 
 
 

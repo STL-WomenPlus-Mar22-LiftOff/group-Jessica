@@ -14,7 +14,7 @@ namespace HouseholdManager.Models
         [Required(ErrorMessage = "Member type (Administrator or Member) is required.")]
         public string MemberType { get; set; } = "Member";
 
-        [Column(TypeName = "nvarchar(5)")]
+        [Column(TypeName = "nvarchar(20)")]
         public string Icon { get; set; } = "";
 
         //HouseholdId-Foreign Key
