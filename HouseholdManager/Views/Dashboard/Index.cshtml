@@ -8,39 +8,55 @@
     ViewData["Title"] = "Dashboard";
 }
 
+<h3>@ViewData["Title"]</h3>
 
 @*Summary Widgets*@
+
+@await Html.PartialAsync("_CreationButtonsPartial")
+
 <div class="row">
-        <div class="col-md-12">
-            <div class="p-4">
-                <h5 class="fw-bold">Missions:</h5>
-            </div>
-            <ejs-grid id="missions" dataSource="@ViewBag.AllMissions" gridLines="None"
+    <div class="col-md-12">
+        <div class="p-4">
+            <h5 class="fw-bold">Missions:</h5>
+        </div>
+        <ejs-grid id="missions" dataSource="@ViewBag.AllMissions" gridLines="None"
                       allowSorting="true" allowPaging="true">
                 <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
-                <e-grid-columns>
-                    <e-grid-column headerText="Due Date" field="DueDate" width="120px"></e-grid-column>
-                    <e-grid-column headerText="Mission Name" field="MissionName"></e-grid-column>
-                    <e-grid-column headerText="Member Assigned" field="Member.MemberUserNameWithIcon" width="200px" textAlign="Left"></e-grid-column>
-                    <e-grid-column headerText="Room" field="Room.Name" width="150px" textAlign="Left"></e-grid-column>
-                    <e-grid-column headerText="Points" field="Point" width="90px" textAlign="Center"></e-grid-column>
-                       <e-grid-column headerText="Completed" field="Completed" width="120px"></e-grid-column>
-                    <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
-                </e-grid-columns>
-            </ejs-grid>
-        </div>
+            <e-grid-columns>
+                <e-grid-column headerText="Mission" field="MissionName" width="23%"></e-grid-column>
+                <e-grid-column headerText="Room" field="RoomNameWithIcon" width="15%"></e-grid-column>
+                <e-grid-column headerText="Points" field="Point" width="8%" textAlign="Center"></e-grid-column>
+                <e-grid-column headerText="Due Date" field="DueDate" format="MMM-dd-yyyy" width="12%"></e-grid-column>
+                <e-grid-column headerText="Completed" template="#actionYesNoTemplate" width="12%" textAlign="Center"></e-grid-column>
+                <e-grid-column headerText="Member" field="MemberUserNameWithIcon" width="15%"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="15%"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+
+    </div>
 </div>
+
+<script id="actionYesNoTemplate" type="text/x-template">
+    ${if(Completed==1)}
+        <span class="badge bg-success">Yes</span>
+    ${else}
+        <span class="badge bg-danger">No</span>
+        ${/if}
+</script>
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm no-a-decoration" href="/Mission/Edit/${MissionId}">
-            <i class="fa-solid fa-pen fa-lg text-secondary"></i>
+        <a class="btn btn-sm btn-primary mx-1" href="/Mission/Edit/${MissionId}">
+            <i class="fa-solid fa-pen fa-lg"></i>
+        </a>
+        <a class="btn btn-sm btn-secondary mx-1" href="/Mission/Details/${MissionId}">
+            <i class="fa-solid fa-list-check"></i>
         </a>
         <form action="/Mission/Delete/${MissionId}" method="post">
     @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-sm btn-link no-a-decoration"
-            onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
-                <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+            <button type="submit" class="btn btn-sm btn-warning mx-1"
+            onclick="return confirm(&quot;Are you sure you want to delete this record?&quot;)">
+                <i class="fa-solid fa-trash-can"></i>
             </button>
         </form>
     </div>

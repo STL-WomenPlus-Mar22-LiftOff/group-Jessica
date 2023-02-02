@@ -89,6 +89,25 @@ namespace HouseholdManager.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: Member/Details
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Members == null)
+            {
+                return NotFound();
+            }
+
+            var member = await _context.Members
+                .Include(t => t.Household)
+                .FirstOrDefaultAsync(m => m.MemberId == id);
+            if (member == null)
+            {
+                return NotFound();
+            }
+
+            return View(member);
+        }
+
         [NonAction]
         public void PopulateHouseholds()
         {

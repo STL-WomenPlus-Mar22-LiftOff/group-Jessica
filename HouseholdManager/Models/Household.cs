@@ -11,6 +11,7 @@ namespace HouseholdManager.Models
 
         [Column(TypeName = "nvarchar(50)")]
         [Required(ErrorMessage = "Household name is required.")]
+        [StringLength(50, MinimumLength = 2)]
         public string HouseholdName { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]

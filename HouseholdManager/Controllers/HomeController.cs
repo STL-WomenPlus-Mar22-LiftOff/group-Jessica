@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace HouseholdManager.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
