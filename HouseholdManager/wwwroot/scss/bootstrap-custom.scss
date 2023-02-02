@@ -19,9 +19,23 @@
 //Additions to sitewide theme-colors
 @import "../scss/additional-colors.scss";
 
+//Theme-switchable bg color variable definitions for lioht mode
+@include color-mode(light, true) 
+{
+    --#{$prefix}bg-primary-theme: #{$primary};
+    --#{$prefix}bg-secondary-theme: #{$secondary};
+    --#{$prefix}bg-info-theme: #{$info};
+    --#{$prefix}bg-success-theme: #{$success};
+    --#{$prefix}bg-warning-theme: #{$warning};
+    --#{$prefix}bg-danger-theme: #{$danger};
+    --#{$prefix}bg-accent-theme: #{$custom-accent};
+    --#{$prefix}bg-option-theme: #{$custom-option};
+}
+
 //Deep blue theme variables
 $enable-theme-deepblue: true !default;
 @import "../scss/variables-deepblue.scss";
+
 //Redshift theme variables
 $enable-theme-redshift: true !default;
 @import "../scss/variables-redshift.scss";
@@ -41,3 +55,12 @@ $enable-theme-redshift: true !default;
 
 //Custom dark mode extension
 @import "../scss/theme-dark-custom.scss";
+
+//List for dynamic generation of new css classes
+$theme-colortypes: "primary", "secondary", "info", "success", "warning", "danger", "option", "accent";
+
+@each $type in $theme-colortypes {
+    .bg-#{$type}-theme {
+        background-color: var(--#{$prefix}bg-#{$type}-theme);
+    }
+}

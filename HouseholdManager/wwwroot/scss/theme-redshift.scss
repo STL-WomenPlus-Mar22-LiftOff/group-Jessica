@@ -50,6 +50,15 @@
         --#{$prefix}code-color: #{$code-color-redshift};
         --#{$prefix}border-color: #{$border-color-redshift};
         --#{$prefix}border-color-translucent: #{$border-color-translucent-redshift};
+        
+        --#{$prefix}bg-primary-theme: #{$redshift-primary};
+        --#{$prefix}bg-secondary-theme: #{$redshift-secondary};
+        --#{$prefix}bg-info-theme: #{$redshift-info};
+        --#{$prefix}bg-success-theme: #{$redshift-success};
+        --#{$prefix}bg-warning-theme: #{$redshift-warning};
+        --#{$prefix}bg-danger-theme: #{$redshift-danger};
+        --#{$prefix}bg-accent-theme: #{$redshift-accent};
+        --#{$prefix}bg-option-theme: #{$redshift-option};
 
         //These names must match the ones in the map from additional-colors.scss
         --#{$prefix}accent-text: #{$accent-text-redshift};

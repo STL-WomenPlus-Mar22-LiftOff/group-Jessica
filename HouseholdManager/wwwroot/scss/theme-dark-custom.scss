@@ -14,13 +14,21 @@ $option-border-subtle-dark: shade-color($custom-option, 15%);
 
 @if $enable-dark-mode {
   @include color-mode(dark, true) {
-    //These names must match the ones in the map from additional-colors.scss
-    --#{$prefix}accent-text: #{$accent-text-dark};
-    --#{$prefix}option-text: #{$option-text-dark};
-    --#{$prefix}accent-bg-subtle: #{$accent-bg-subtle-dark};
-    --#{$prefix}option-bg-subtle: #{$option-bg-subtle-dark};
-    --#{$prefix}accent-border-subtle: #{$accent-border-subtle-dark};
-    --#{$prefix}option-border-subtle: #{$option-border-subtle-dark};
+        //These names must match the ones in the map from additional-colors.scss
+        --#{$prefix}accent-text: #{$accent-text-dark};
+        --#{$prefix}option-text: #{$option-text-dark};
+        --#{$prefix}accent-bg-subtle: #{$accent-bg-subtle-dark};
+        --#{$prefix}option-bg-subtle: #{$option-bg-subtle-dark};
+        --#{$prefix}accent-border-subtle: #{$accent-border-subtle-dark};
+        --#{$prefix}option-border-subtle: #{$option-border-subtle-dark};
+        --#{$prefix}bg-primary-theme: #{$primary};
+        --#{$prefix}bg-secondary-theme: #{$secondary};
+        --#{$prefix}bg-info-theme: #{$info};
+        --#{$prefix}bg-success-theme: #{$success};
+        --#{$prefix}bg-warning-theme: #{$warning};
+        --#{$prefix}bg-danger-theme: #{$danger};
+        --#{$prefix}bg-accent-theme: #{$custom-accent};
+        --#{$prefix}bg-option-theme: #{$custom-option};
   }
 }
 
