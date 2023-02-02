@@ -1,4 +1,4 @@
-﻿@model HouseholdManager.Models.Mission
+﻿@model HouseholdManager.Models.ViewModels.MissionViewModel;
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -23,18 +23,25 @@
                       allowSorting="true" allowPaging="true">
                 <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Mission" field="MissionName" width="23%"></e-grid-column>
-                <e-grid-column headerText="Room" field="RoomNameWithIcon" width="15%"></e-grid-column>
-                <e-grid-column headerText="Points" field="Point" width="8%" textAlign="Center"></e-grid-column>
+                <e-grid-column headerText="Mission" field="MissionName" width="15%"></e-grid-column>
+                <e-grid-column headerText="Room" template="#roomNameTemplate" width="15%"></e-grid-column>
+                <e-grid-column headerText="Points" field="Point" width="10%" textAlign="Center"></e-grid-column>
                 <e-grid-column headerText="Due Date" field="DueDate" format="MMM-dd-yyyy" width="12%"></e-grid-column>
-                <e-grid-column headerText="Completed" template="#actionYesNoTemplate" width="12%" textAlign="Center"></e-grid-column>
-                <e-grid-column headerText="Member" field="MemberUserNameWithIcon" width="15%"></e-grid-column>
-                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="15%"></e-grid-column>
+                <e-grid-column headerText="Completed" template="#actionYesNoTemplate" width="15%" textAlign="Center"></e-grid-column>
+                <e-grid-column headerText="Member" template="#memberNameTemplate" width="15%"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="18%"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
 
     </div>
 </div>
+
+<script id="roomNameTemplate" type="text/x-template">
+    <text class="icon-font">${RoomIcon}</text> <text>${RoomName}</text>
+</script>
+<script id="memberNameTemplate" type="text/x-template">
+    <text class="icon-font">${MemberIcon}</text> <text>${MemberUserName}</text>
+</script>
 
 <script id="actionYesNoTemplate" type="text/x-template">
     ${if(Completed==1)}

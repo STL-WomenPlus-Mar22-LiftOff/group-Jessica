@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Models;
+using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
@@ -24,8 +25,10 @@ namespace HouseholdManager.Controllers
         public async Task<IActionResult> Index()
         {
             var dataQuery = _context.Missions.Include(t => t.Room).Include(u => u.Member);
-            
-            return View(await dataQuery.ToListAsync());
+            List<MissionViewModel> model = await (from mission in dataQuery 
+                                                  select new MissionViewModel(mission))
+                                                  .ToListAsync();
+            return View(model);
         }
 
         // GET: Mission/Details/5

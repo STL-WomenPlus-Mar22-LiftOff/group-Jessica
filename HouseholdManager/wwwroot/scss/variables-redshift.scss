@@ -29,7 +29,7 @@ $redshift-primary: $redshift-torchlight;
 $redshift-secondary: $redshift-barren;
 $redshift-success: $redshift-blueshift;
 $redshift-info: $redshift-supergiant;
-$redshift-warning: $redshift-magma;
+$redshift-warning: tint-color($redshift-magma, 25%);
 $redshift-danger: $redshift-laser;
 $redshift-option: $redshift-nebula;
 $redshift-accent: mix($redshift-laser, $redshift-nebula);
