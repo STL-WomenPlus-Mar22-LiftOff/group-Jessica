@@ -69,6 +69,10 @@
             "Syncfusion.EJ2.AspNet.Core": {
               "target": "Package",
               "version": "[20.4.0.42, )"
+            },
+            "twilio": {
+              "target": "Package",
+              "version": "[6.2.2, )"
             }
           },
           "imports": [

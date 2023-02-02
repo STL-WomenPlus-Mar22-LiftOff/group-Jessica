@@ -33,6 +33,7 @@ namespace HouseholdManager.Areas.Identity.Data
         public DbSet<Household> Households { get; set; }
 
         public DbSet<IdentityUser> IdentityUsers { get; set; }
+        public object MessageProperty { get; internal set; }
 
         //These columns needs to be set to Unicode in order to store icon emojis
         protected override void OnModelCreating(ModelBuilder mb)

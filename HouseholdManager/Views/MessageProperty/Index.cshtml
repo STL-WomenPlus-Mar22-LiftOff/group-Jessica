@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<HouseholdManager.Models.MessageProperty>
+
+@inject SignInManager<TwilioUser> SignInManager
+@inject UserManager<TwilioUser> UserManager
+
+@{
+    ViewData["Title"] = "Vacation Properties";
+}
+
+
+@section hero
+    {
+        <div class="hero-text">
+            <h1>Need to send a message</h1>
+            <p>Just go on ahead.</p>
+        </div>
+}
+    <div class="container">
+        <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <a asp-action="Create" asp-controller="Send" asp-route-id="@item.Id" class="property">
+                    < alt="Message" />
+                    <h2>@item.Description</h2>
+                </a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model HouseholdManager.Models.Send;
+@inject UserManager<TwilioUser> UserManager
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@section hero
+{
+   <div>
+        <h2>@ViewBag.MessageProperty.Description</h2>
+    </div>
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            @if (UserManager.GetUserId(User) == ViewBag.MessageProperty.UserId)
+            {
+                <div>
+                    <a asp-controller="MessageProperty" asp-action="Edit" asp-route-id="@ViewBag.MessageProperty.Id">Edit Message</a> |
+                    <a asp-controller="MessageProperty" asp-action="Delete" asp-route-id="@ViewBag.MessageProperty.Id">Delete Message</a>
+                </div>
+            }
+            <h3>Send a Message</h3>
+            <hr/>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Message" class="control-label">Would you like to say anything to the admin?</label>
+                    <textarea asp-for="Message" class="form-control" placeholder='Hello! When is my mission due...'></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <input asp-for="MessagePropertyId" type="hidden" class="form-control" value="@ViewBag.MessageProperty.Id"/>
+                <div class="form-group">
+                    <input type="submit" value="Reserve Now" class="btn btn-default"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <a asp-action="Index" asp-controller="MessageProperty">Back to Messages</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

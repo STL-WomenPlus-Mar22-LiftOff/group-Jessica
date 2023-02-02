@@ -203,6 +203,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/MessageProperty/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVByb3BlcnR5XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/MessageProperty/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVByb3BlcnR5XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/MessageProperty/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVByb3BlcnR5XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/MessageProperty/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVByb3BlcnR5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Mission/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -241,6 +257,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Room/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Send/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VuZFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Shared/Error.cshtml]
