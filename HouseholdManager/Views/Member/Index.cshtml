@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HouseholdManager.Models.Member>
+﻿@model IEnumerable<HouseholdManager.Models.ViewModels.MemberViewModel>
 
 @{
     ViewData["PageTitle"] = "Members";
@@ -16,9 +16,9 @@
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="MemberName" field="MemberUserNameWithIcon" width="25%"></e-grid-column>
+                <e-grid-column headerText="MemberName" template="#memberNameTemplate" width="25%"></e-grid-column>
                 <e-grid-column headerText="MemberType" template="#typeColumnTemplate" width="25%"></e-grid-column>
-                <e-grid-column headerText="Household" field="HouseholdNameWithIcon" width="25%" textAlign="Left"></e-grid-column>
+                <e-grid-column headerText="Household" template="#householdNameTemplate" width="25%" textAlign="Left"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="25%"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
@@ -29,6 +29,14 @@
         </div>
     </div>
 </div>
+
+<script id="householdNameTemplate" type="text/x-template">
+    <text class="icon-font">${HouseholdIcon}</text> <text>${HouseholdName}</text>
+</script>
+
+<script id="memberNameTemplate" type="text/x-template">
+    <text class="icon-font">${Icon}</text> <text>${UserName}</text>
+</script>
 
 <script id="typeColumnTemplate" type="text/x-template">
     ${if(MemberType=="Member")}

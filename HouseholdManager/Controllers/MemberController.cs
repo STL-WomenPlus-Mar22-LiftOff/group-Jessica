@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Areas.Identity.Data;
 using HouseholdManager.Data.API;
 using HouseholdManager.Data.Interfaces;
+using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
@@ -27,8 +28,12 @@ namespace HouseholdManager.Controllers
         // GET: Member
         public async Task<IActionResult> Index()
         {
-            var dataQuery = _context.Members.Include(t => t.Household).Include(s => s.User);
-            return View(await dataQuery.ToListAsync());
+            var dataQuery = _context.Members.Include(t => t.Household)
+                                            .Include(s => s.User);
+            List<MemberViewModel> model = await (from member in dataQuery
+                                                 select new MemberViewModel(member))
+                                                 .ToListAsync();
+            return View(model);
         }
 
 
