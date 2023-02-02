@@ -11,7 +11,7 @@ public class Notification
     public string? Message { get; set; }
 
 
-    public static Notification BuildHostNotification(Send send)
+    public static Notification BuildAdminNotification(Send send)
     {
         var message = new StringBuilder();
         message.AppendFormat("You have a message {0} for {1}:{2}",
@@ -33,7 +33,7 @@ public class Notification
     public static Notification BuildGuestNotification(Send send)
     {
         var message = new StringBuilder();
-        message.AppendFormat("Your reservation request to stay at {0} was {1} by the host.",
+        message.AppendFormat("Your mission at {0} was {1} by the admin.",
             send.MessageProperty.Description,
             send.Status == MessageStatus.Confirmed ? "ACCEPTED" : "REJECTED");
 

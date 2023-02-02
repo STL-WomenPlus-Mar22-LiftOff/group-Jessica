@@ -24,8 +24,8 @@ namespace HouseholdManager.Models.Repositories
         Task<int> UpdateSendAsync(Send send);
 
         Task<TwilioUser> FindUserByPhoneNumberAsync(string number);
-        //Task FindSendFirstOrDefaultAsync(int? id);
-        //Task FindFirstSendByHostAsync(string id);
+        Task FindSendFirstOrDefaultAsync(int? id);
+        Task FindFirstSendByHostAsync(string id);
     }
 
     public class ApplicationDbRepository : IApplicationDbRepository

@@ -28,7 +28,6 @@ namespace HouseholdManager.Controllers
             _notifier = notifier;
         }
 
-        public object Notification { get; private set; }
 
         // GET: Reservation/Create/1
         public async Task<IActionResult> Create(int? id)
@@ -68,7 +67,7 @@ namespace HouseholdManager.Controllers
                 send.CreatedAt = DateTime.Now;
 
                 await _repository.CreateSendAsync(send);
-                var notification = Notification.BuildHostNotification(
+                var notification = Notification.BuildAdminNotification(
                     await _repository.FindSendWithRelationsAsync(send.Id));
 
                 await _notifier.SendNotificationAsync(notification);
