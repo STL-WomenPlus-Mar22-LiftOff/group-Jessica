@@ -147,3 +147,56 @@
         background-color: shade-color($deepblue-primary, 20%);
     }
 }
+
+@mixin deepblue-e-grid {
+    background-color: $body-bg-deepblue !important;
+    color: $emphasis-color-deepblue !important;
+    border-color: $primary-border-subtle-deepblue !important;
+}
+
+[data-bs-theme="deepblue"] {
+    .e-grid {
+        @include deepblue-e-grid;
+    }
+
+    div.e-grid.e-hover.e-control {
+        @include deepblue-e-grid;
+    }
+
+    .e-grid .e-numericcontainer .e-numericitem {
+        @include deepblue-e-grid;
+    }
+
+    .e-grid .e-gridheader {
+        @include deepblue-e-grid;
+    }
+
+    .e-grid .e-headercell {
+        @include deepblue-e-grid;
+    }
+
+    .e-pagercontainer .e-icons {
+        @include deepblue-e-grid;
+    }
+
+    .e-grid .e-gridpager {
+        @include deepblue-e-grid;
+        color: $emphasis-color-deepblue !important;
+    }
+
+    .e-grid .e-row:hover .e-rowcell {
+        background-color: tint-color($body-bg-deepblue, 20%) !important;
+    }
+
+    .e-grid .e-rowcell.e-selectionbackground {
+        background-color: tint-color($body-bg-deepblue, 20%) !important;
+    }
+
+    .e-grid .e-row.e-altrow {
+        background-color: $primary-bg-subtle-deepblue !important;
+    }
+
+    .e-grid .e-row {
+        @include deepblue-e-grid;
+    }
+}

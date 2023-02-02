@@ -22,6 +22,9 @@
 //Deep blue theme variables
 $enable-theme-deepblue: true !default;
 @import "../scss/variables-deepblue.scss";
+//Redshift theme variables
+$enable-theme-redshift: true !default;
+@import "../scss/variables-redshift.scss";
 
 
 // 4. Include any optional Bootstrap components as you like
@@ -32,6 +35,9 @@ $enable-theme-deepblue: true !default;
 
 //Deep blue theme overrides and custom css
 @import "../scss/theme-deepblue.scss";
+
+//Redshift theme overrides and custom css
+@import "../scss/theme-redshift.scss";
 
 //Custom dark mode extension
 @import "../scss/theme-dark-custom.scss";

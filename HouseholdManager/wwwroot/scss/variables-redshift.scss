@@ -1,0 +1,150 @@
+﻿//
+//"Redshift" theme
+//
+
+$redshift-infrared: #641501;
+$redshift-torchlight: #bf4261;
+$redshift-magma: #e25a21;
+$redshift-gilded: #c4ab71;
+$redshift-nova: #dfa592;
+$redshift-blueshift: #347ae5;
+$redshift-nebula: #a83f9b;
+$redshift-laser: #f10217;
+$redshift-emberglow: #81231a;
+$redshift-zeropoint: #291d2e;
+$redshift-supergiant: #81abfd;
+$redshift-barren: #917a79;
+$redshift-solar: #f5cdaa;
+$redshift-void: #1a0b08;
+$redshift-gray-900: shade-color($redshift-infrared, 80%);
+$redshift-gray-800: shade-color($redshift-infrared, 60%);
+$redshift-gray-700: shade-color($redshift-infrared, 40%);
+$redshift-gray-600: shade-color($redshift-infrared, 20%);
+$redshift-gray-500: $redshift-infrared;
+$redshift-gray-400: tint-color($redshift-infrared, 20%);
+$redshift-gray-300: tint-color($redshift-infrared, 40%);
+$redshift-gray-200: tint-color($redshift-infrared, 60%);
+$redshift-gray-100: tint-color($redshift-infrared, 80%);
+$redshift-primary: $redshift-torchlight;
+$redshift-secondary: $redshift-barren;
+$redshift-success: $redshift-blueshift;
+$redshift-info: $redshift-supergiant;
+$redshift-warning: $redshift-magma;
+$redshift-danger: $redshift-laser;
+$redshift-option: $redshift-nebula;
+$redshift-accent: mix($redshift-laser, $redshift-nebula);
+
+
+//
+// Global colors
+//
+
+
+$primary-text-redshift: $redshift-nova;
+$secondary-text-redshift: $redshift-gray-200;
+$success-text-redshift: $redshift-blueshift;
+$info-text-redshift: $redshift-info;
+$warning-text-redshift: $redshift-warning;
+$danger-text-redshift: $redshift-danger;
+$light-text-redshift: $redshift-gray-800;
+$dark-text-redshift: $redshift-gray-100;
+
+$primary-bg-subtle-redshift: $redshift-gray-700;
+$secondary-bg-subtle-redshift: $redshift-gray-400;
+$success-bg-subtle-redshift: mix($redshift-success, $redshift-void);
+$info-bg-subtle-redshift: mix($redshift-info, $redshift-void);
+$warning-bg-subtle-redshift: mix($redshift-warning, $redshift-void);
+$danger-bg-subtle-redshift: mix($redshift-danger, $redshift-void);
+$light-bg-subtle-redshift: $redshift-gray-200;
+$dark-bg-subtle-redshift: $redshift-gray-900;
+
+$primary-border-subtle-redshift: shade-color($redshift-primary, 25%);
+$secondary-border-subtle-redshift: shade-color($redshift-secondary, 25%);
+$success-border-subtle-redshift: shade-color($redshift-success, 25%);
+$info-border-subtle-redshift: shade-color($redshift-info, 25%);
+$warning-border-subtle-redshift: shade-color($redshift-warning, 25%);
+$danger-border-subtle-redshift: shade-color($redshift-danger, 25%);
+$light-border-subtle-redshift: $redshift-gray-300;
+$dark-border-subtle-redshift: $redshift-gray-800;
+
+$body-color-redshift: mix($redshift-gray-300, $redshift-nova);
+$body-bg-redshift: $redshift-gray-900;
+$body-emphasis-color-redshift: mix($redshift-gray-200, $redshift-nova);
+$body-secondary-color-redshift: rgba($body-color-redshift, .75);
+$body-secondary-bg-redshift: $redshift-gray-800;
+$body-tertiary-color-redshift: rgba($body-color-redshift, .5);
+$body-tertiary-bg-redshift: shade-color($redshift-gray-600, 50%);
+$emphasis-color-redshift: tint-color($redshift-nova, 25%);
+$border-color-redshift: $redshift-gray-700;
+$border-color-translucent-redshift: rgba($redshift-gray-800, .15);
+$headings-color-redshift: mix($redshift-gray-100, $redshift-nova, 50%);
+$link-color-redshift: mix($redshift-secondary, $redshift-gray-500);
+$link-hover-color-redshift: tint-color($redshift-nebula, 25%);
+$code-color-redshift: tint-color($redshift-laser, 25%);
+
+//
+// Additional Colors (see additional-colors.scss)
+//
+
+$accent-text-redshift: $redshift-accent;
+$option-text-redshift: $redshift-option;
+$accent-bg-subtle-redshift: mix($redshift-accent, $redshift-void);
+$option-bg-subtle-redshift: mix($redshift-option, $redshift-void);
+$accent-border-subtle-redshift: shade-color($redshift-accent, 25%);
+$option-border-subtle-redshift: shade-color($redshift-option, 25%);
+
+
+//
+// Navbars
+//
+
+$navbar-redshift-hover-color: mix($emphasis-color-redshift, $redshift-nebula, 75%);
+$navbar-redshift-color: $headings-color-redshift;
+$navbar-redshift-disabled-color: mix($navbar-redshift-color, $redshift-void, 50%);
+$navbar-redshift-active-color: mix($navbar-redshift-color, $redshift-secondary, 50%);
+$nav-redshift-pills-link-active-color: mix($emphasis-color-redshift, $redshift-nova, 75%);
+$nav-redshift-pills-link-active-bg: shade-color(mix($redshift-primary, $redshift-emberglow, 50%), 50%);
+
+//
+// Forms
+//
+
+$form-select-indicator-color-redshift: $body-color-redshift;
+$form-select-indicator-redshift: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color-redshift}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>");
+
+$form-switch-color-redshift: rgba($redshift-nova, .25);
+$form-switch-bg-image-redshift: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color-redshift}'/></svg>");
+
+
+//
+// Accordion
+//
+
+$accordion-button-icon-redshift: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-redshift}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+$accordion-button-active-icon-redshift: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$primary-text-redshift}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+
+
+//
+// Color Maps
+//
+//$redshift-theme-colors: (
+//);
+
+$redshift-button-colors: (
+  "primary": $redshift-primary,
+  "secondary": $redshift-secondary,
+  "success": $redshift-success,
+  "info": $redshift-info,
+  "warning": $redshift-warning,
+  "danger": $redshift-danger,
+  "light": $redshift-nova,
+  "dark": $redshift-void,
+  "option": $redshift-option,
+  "accent": $redshift-accent
+);
+
+
+//Adding the color map to theme-colors allows bootstrap to
+//auto-generate things like buttons and css variables.
+
+//$theme-colors: map-merge($theme-colors, $redshift-theme-colors);

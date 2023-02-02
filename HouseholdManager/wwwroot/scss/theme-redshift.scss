@@ -1,0 +1,202 @@
+﻿
+@import "../scss/variables-redshift.scss";
+
+@if $enable-theme-redshift {
+    @include color-mode(redshift, true) {
+        --#{$prefix}body-color: #{$body-color-redshift};
+        --#{$prefix}body-color-rgb: #{to-rgb($body-color-redshift)};
+        --#{$prefix}body-bg: #{$body-bg-redshift};
+        --#{$prefix}body-bg-rgb: #{to-rgb($body-bg-redshift)};
+        --#{$prefix}emphasis-color: #{$body-emphasis-color-redshift};
+        --#{$prefix}emphasis-color-rgb: #{to-rgb($body-emphasis-color-redshift)};
+        --#{$prefix}secondary-color: #{$body-secondary-color-redshift};
+        --#{$prefix}secondary-color-rgb: #{to-rgb($body-secondary-color-redshift)};
+        --#{$prefix}secondary-bg: #{$body-secondary-bg-redshift};
+        --#{$prefix}secondary-bg-rgb: #{to-rgb($body-secondary-bg-redshift)};
+        --#{$prefix}tertiary-color: #{$body-tertiary-color-redshift};
+        --#{$prefix}tertiary-color-rgb: #{to-rgb($body-tertiary-color-redshift)};
+        --#{$prefix}tertiary-bg: #{$body-tertiary-bg-redshift};
+        --#{$prefix}tertiary-bg-rgb: #{to-rgb($body-tertiary-bg-redshift)};
+        --#{$prefix}emphasis-color: #{$emphasis-color-redshift};
+        --#{$prefix}primary-text: #{$primary-text-redshift};
+        --#{$prefix}secondary-text: #{$secondary-text-redshift};
+        --#{$prefix}success-text: #{$success-text-redshift};
+        --#{$prefix}info-text: #{$info-text-redshift};
+        --#{$prefix}warning-text: #{$warning-text-redshift};
+        --#{$prefix}danger-text: #{$danger-text-redshift};
+        --#{$prefix}light-text: #{$light-text-redshift};
+        --#{$prefix}dark-text: #{$dark-text-redshift};
+        --#{$prefix}primary-bg-subtle: #{$primary-bg-subtle-redshift};
+        --#{$prefix}secondary-bg-subtle: #{$secondary-bg-subtle-redshift};
+        --#{$prefix}success-bg-subtle: #{$success-bg-subtle-redshift};
+        --#{$prefix}info-bg-subtle: #{$info-bg-subtle-redshift};
+        --#{$prefix}warning-bg-subtle: #{$warning-bg-subtle-redshift};
+        --#{$prefix}danger-bg-subtle: #{$danger-bg-subtle-redshift};
+        --#{$prefix}light-bg-subtle: #{$light-bg-subtle-redshift};
+        --#{$prefix}dark-bg-subtle: #{$dark-bg-subtle-redshift};
+        --#{$prefix}primary-border-subtle: #{$primary-border-subtle-redshift};
+        --#{$prefix}secondary-border-subtle: #{$secondary-border-subtle-redshift};
+        --#{$prefix}success-border-subtle: #{$success-border-subtle-redshift};
+        --#{$prefix}info-border-subtle: #{$info-border-subtle-redshift};
+        --#{$prefix}warning-border-subtle: #{$warning-border-subtle-redshift};
+        --#{$prefix}danger-border-subtle: #{$danger-border-subtle-redshift};
+        --#{$prefix}light-border-subtle: #{$light-border-subtle-redshift};
+        --#{$prefix}dark-border-subtle: #{$dark-border-subtle-redshift};
+        --#{$prefix}heading-color: #{$headings-color-redshift};
+        --#{$prefix}link-color: #{$link-color-redshift};
+        --#{$prefix}link-hover-color: #{$link-hover-color-redshift};
+        --#{$prefix}link-color-rgb: #{to-rgb($link-color-redshift)};
+        --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-redshift)};
+        --#{$prefix}code-color: #{$code-color-redshift};
+        --#{$prefix}border-color: #{$border-color-redshift};
+        --#{$prefix}border-color-translucent: #{$border-color-translucent-redshift};
+
+        //These names must match the ones in the map from additional-colors.scss
+        --#{$prefix}accent-text: #{$accent-text-redshift};
+        --#{$prefix}option-text: #{$option-text-redshift};
+        --#{$prefix}accent-bg-subtle: #{$accent-bg-subtle-redshift};
+        --#{$prefix}option-bg-subtle: #{$option-bg-subtle-redshift};
+        --#{$prefix}accent-border-subtle: #{$accent-border-subtle-redshift};
+        --#{$prefix}option-border-subtle: #{$option-border-subtle-redshift};
+    }
+
+}
+
+
+
+
+[data-bs-theme="redshift"]
+.navbar {
+    --#{$prefix}navbar-color: #{$navbar-redshift-color};
+    --#{$prefix}navbar-hover-color: #{$navbar-redshift-hover-color};
+    --#{$prefix}navbar-disabled-color: #{$navbar-redshift-disabled-color};
+    --#{$prefix}navbar-active-color: #{$navbar-redshift-active-color};
+}
+
+@each $key, $button-color in $redshift-button-colors {
+    [data-bs-theme="redshift"]
+    .btn-#{$key} {
+        @include button-variant( 
+            shade-color($button-color, 30%),
+            shade-color($button-color, 15%),
+            $headings-color-redshift,
+            $hover-color: shade-color($headings-color-redshift, 30%),
+            $hover-border: $button-color,
+            $hover-background: shade-color($button-color, 35%),
+            $active-color: shade-color($headings-color-redshift, 60%),
+            $active-background: shade-color($button-color, 65%),
+            $active-border: shade-color($button-color, 30%),
+            $disabled-background: mix($button-color, $redshift-void, 85%),
+            $disabled-border: mix($button-color, $redshift-void, 85%),
+            $disabled-color: mix($headings-color-redshift, $redshift-void, 85%)
+        );
+    }
+}
+
+[data-bs-theme="redshift"]
+.nav-link.active {
+    --#{$prefix}nav-pills-link-active-color: #{$nav-redshift-pills-link-active-color};
+    --#{$prefix}nav-pills-link-active-bg: #{$nav-redshift-pills-link-active-bg};
+}
+
+
+[data-bs-theme="redshift"] 
+.icon-picker-menu {
+    background-color: #{$primary-bg-subtle-redshift};
+}
+
+//theme picker dropdown
+[data-bs-theme="redshift"] {
+    //border
+    span.theme-picker.e-input-group:not(.e-success):not(.e-warning):not(.e-error) {
+        border-color: $border-color-redshift;
+    }
+    //dropdown closed w/ selection made
+    input.e-control.e-dropdownlist.e-lib.e-input {
+        color: $navbar-redshift-color;
+        background-color: shade-color($body-secondary-bg-redshift, 50%);
+        border-color: $border-color-redshift;
+    }
+    //dropdown icon
+    .e-input-group.e-ddl span.e-input-group-icon.e-ddl-icon.e-search-icon {
+        color: $navbar-redshift-color !important;
+        background-color: shade-color($body-secondary-bg-redshift, 50%) !important;
+    }
+    //disabled text
+    .e-input-group.e-control-wrapper .e-input[disabled] {
+        color: $navbar-redshift-disabled-color;
+        -webkit-text-fill-color: $navbar-redshift-disabled-color;
+    }
+    //placeholder
+    .e-ddl.e-input-group input.e-input::placeholder {
+        color: $navbar-redshift-color;
+        background-color: shade-color($body-secondary-bg-redshift, 50%);
+    }
+    //focus/hover/active.
+     e-dropdownbase .e-list-item.e-item-focus,
+    .e-dropdownbase .e-list-item.e-item-focus.e-hover,
+    .e-dropdownbase .e-list-item.e-active,
+    .e-dropdownbase .e-list-item.e-active.e-hover,
+    .e-dropdownbase .e-list-item.e-hover {
+        background-color: $redshift-primary !important;
+        color: $nav-redshift-pills-link-active-color !important;
+    }
+    //popup
+    .e-dropdownbase .e-list-item{
+        color: $navbar-redshift-color;
+        background-color: shade-color($redshift-primary, 20%);
+    }
+}
+
+@mixin redshift-e-grid {
+    background-color: $body-bg-redshift !important;
+    color: $emphasis-color-redshift !important;
+    border-color: $primary-border-subtle-redshift !important;
+}
+
+[data-bs-theme="redshift"] {
+    .e-grid {
+        @include redshift-e-grid;
+    }
+
+    div.e-grid.e-hover.e-control {
+        @include redshift-e-grid;
+    }
+
+    .e-grid .e-numericcontainer .e-numericitem {
+        @include redshift-e-grid;
+    }
+
+    .e-grid .e-gridheader {
+        @include redshift-e-grid;
+    }
+
+    .e-grid .e-headercell {
+        @include redshift-e-grid;
+    }
+
+    .e-pagercontainer .e-icons {
+        @include redshift-e-grid;
+    }
+
+    .e-grid .e-gridpager {
+        @include redshift-e-grid;
+        color: $emphasis-color-redshift !important;
+    }
+
+    .e-grid .e-row:hover .e-rowcell {
+        background-color: tint-color($body-bg-redshift, 20%) !important;
+    }
+
+    .e-grid .e-rowcell.e-selectionbackground {
+        background-color: tint-color($body-bg-redshift, 20%) !important;
+    }
+
+    .e-grid .e-row.e-altrow {
+        background-color: $primary-bg-subtle-redshift !important;
+    }
+
+    .e-grid .e-row {
+        @include redshift-e-grid;
+    }
+}
