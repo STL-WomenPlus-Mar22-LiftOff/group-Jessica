@@ -13,7 +13,6 @@ namespace HouseholdManager.Domain.Messages
     public interface INotifier
     {
         Task SendNotificationAsync(Notification notification);
-        Task SendNotificationAsync(Send notification);
     }
 
     public class Notifier : INotifier
@@ -35,9 +34,6 @@ namespace HouseholdManager.Domain.Messages
             await _client.SendMessageAsync(notification.To, notification.Message);
         }
 
-        public Task SendNotificationAsync(Send notification)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

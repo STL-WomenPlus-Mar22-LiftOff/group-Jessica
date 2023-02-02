@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using HouseholdManager.Data;
 using HouseholdManager.Domain.Messages;
 using HouseholdManager.Models.Repositories;
 using Microsoft.AspNetCore.Identity;

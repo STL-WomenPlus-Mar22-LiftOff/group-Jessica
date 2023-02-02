@@ -6,7 +6,7 @@ using HouseholdManager.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using ApplicationDbContext = HouseholdManager.Data.ApplicationDbContext;
+
 
 namespace HouseholdManager.Models.Repositories
 {
@@ -61,7 +61,7 @@ namespace HouseholdManager.Models.Repositories
 
         public async Task<int> DeleteMessagePropertyAsync(MessageProperty messageProperty)
         {
-            _context.MessageProperty.remove(messageProperty);
+            _context.MessageProperty.Remove(messageProperty);
             return await _context.SaveChangesAsync();
         }
 
@@ -105,10 +105,7 @@ namespace HouseholdManager.Models.Repositories
             throw new NotImplementedException();
         }
 
-        Task IApplicationDbRepository.FindSendFirstOrDefaultAsync(int? id)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public Task FindFirstSendByHostAsync(string id)
         {

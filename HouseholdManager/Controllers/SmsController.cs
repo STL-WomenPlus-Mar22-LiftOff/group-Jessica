@@ -19,6 +19,7 @@ namespace HouseholdManager.Controllers
     {
         private readonly Models.Repositories.IApplicationDbRepository _repository;
         private readonly INotifier _notifier;
+        private Notification notification;
 
         public SmsController(
             IApplicationDbRepository repository,
@@ -39,20 +40,20 @@ namespace HouseholdManager.Controllers
             try
             {
                 var host = await _repository.FindUserByPhoneNumberAsync(from);
-                var notification = await _repository.FindFirstPendingSendByHostAsync(host.Id);
+                var send = await _repository.FindFirstPendingSendByHostAsync(host.Id);
 
                 var smsRequest = body;
-                notification.Status =
+                send.Status =
                     smsRequest.Equals("accept", StringComparison.InvariantCultureIgnoreCase) ||
                     smsRequest.Equals("yes", StringComparison.InvariantCultureIgnoreCase)
                         ? MessageStatus.Confirmed
                         : MessageStatus.Rejected;
 
-                await _repository.UpdateSendAsync(notification);
-                smsResponse = $"You have successfully {notification.Status} the message";
+                await _repository.UpdateSendAsync(send);
+                smsResponse = $"You have successfully {send.Status} the message";
 
                 // Notify guest with host response
-                var send = Notification.BuildGuestNotification(notification);
+                var notification = Notification.BuildGuestNotification(send);
 
                 await _notifier.SendNotificationAsync(notification);
             }

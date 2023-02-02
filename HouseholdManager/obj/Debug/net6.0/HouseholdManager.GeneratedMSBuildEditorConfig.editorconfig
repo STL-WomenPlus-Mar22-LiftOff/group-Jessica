@@ -8,305 +8,305 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HouseholdManager
 build_property.RootNamespace = HouseholdManager
-build_property.ProjectDir = C:\Users\Erica\source\repos\group-Jessica\HouseholdManager\
+build_property.ProjectDir = C:\Users\Erica\Source\Repos\group-Jessica1\HouseholdManager\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Erica\source\repos\group-Jessica\HouseholdManager
+build_property.MSBuildProjectDirectory = C:\Users\Erica\Source\Repos\group-Jessica1\HouseholdManager
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWxDaGFuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Lockout.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Logout.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGlzYWJsZTJmYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRXh0ZXJuYWxMb2dpbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/Error.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Dashboard/Index.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Home/Index.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Home/Privacy.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Household/AddOrEdit.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Household/AddOrEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG91c2Vob2xkXEFkZE9yRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Household/Index.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Household/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG91c2Vob2xkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Member/AddOrEdit.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Member/AddOrEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEFkZE9yRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Member/Index.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Member/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/MessageProperty/Create.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/MessageProperty/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVByb3BlcnR5XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/MessageProperty/Delete.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/MessageProperty/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVByb3BlcnR5XERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/MessageProperty/Edit.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/MessageProperty/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVByb3BlcnR5XEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/MessageProperty/Index.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/MessageProperty/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVByb3BlcnR5XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Mission/Create.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Mission/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Mission/Delete.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Mission/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Mission/Details.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Mission/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Mission/Edit.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Mission/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Mission/Index.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Mission/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzc2lvblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Room/Create.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Room/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Room/Delete.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Room/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Room/Details.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Room/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Room/Edit.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Room/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Room/Index.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Room/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9vbVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Send/Create.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Send/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VuZFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Shared/Error.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Shared/_CreationButtonsPartial.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Shared/_CreationButtonsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DcmVhdGlvbkJ1dHRvbnNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Shared/_IconMenuPartial.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Shared/_IconMenuPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9JY29uTWVudVBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Shared/_LoginLayout.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Shared/_LoginLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Shared/_ThemePickerPartial.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Shared/_ThemePickerPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9UaGVtZVBpY2tlclBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Welcome/Index.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Welcome/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VsY29tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Welcome/Privacy.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Welcome/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VsY29tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/_ViewImports.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/_ViewStart.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Erica/source/repos/group-Jessica/HouseholdManager/Views/Shared/_Layout.cshtml]
+[C:/Users/Erica/Source/Repos/group-Jessica1/HouseholdManager/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zhav4njgvv

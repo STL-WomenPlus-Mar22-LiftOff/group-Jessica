@@ -1,4 +1,4 @@
-﻿using HouseholdManager.Areas.Identity.Data;
+﻿/*using HouseholdManager.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -19,4 +19,4 @@ namespace HouseholdManager.Data
     public DbSet<TwilioUser> TwilioUser { get; set; }
      
     }
-}
+}*/
