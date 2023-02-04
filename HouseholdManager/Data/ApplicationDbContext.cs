@@ -2,21 +2,22 @@
 using Microsoft.EntityFrameworkCore;
 using HouseholdManager.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace HouseholdManager.Data
 {
     public class ApplicationDbContext : IdentityDbContext
-    { 
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
     {
-    }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+                : base(options)
+        {
+        }
 
-    public DbSet<MessageProperty> MessageProperty { get; set; }
+        public DbSet<MessageProperty> MessageProperty { get; set; }
 
-    public DbSet<Send> Send { get; set; }
+        public DbSet<Send> Send { get; set; }
 
-    public DbSet<TwilioUser> TwilioUser { get; set; }
-     
+        public DbSet<IdentityUser> IdentiyUsers { get; set; }
+
     }
 }*/

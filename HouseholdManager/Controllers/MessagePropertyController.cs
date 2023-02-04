@@ -18,14 +18,17 @@ namespace HouseholdManager.Controllers
     {
         
             private readonly IApplicationDbRepository _repository;
+        //private readonly IApplicationDbContext _context;
 
             private readonly IUserRepository _userRepository;
 
             public MessagePropertyController(
                 IUserRepository userRepository,
+               //ApplicationDbContext context,
                 IApplicationDbRepository repository)
             {
                 _userRepository = userRepository;
+               //_context = context;
                 _repository = repository;
             }
 
