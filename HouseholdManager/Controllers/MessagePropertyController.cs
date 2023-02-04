@@ -84,7 +84,7 @@ namespace HouseholdManager.Controllers
             [ValidateAntiForgeryToken]
             public async Task<IActionResult> Edit(int id, [Bind("Id,Description")] MessageProperty messagePropertyUpdate)
             {
-                if (id != messagePropertyUpdate.Id)
+                if (id != messagePropertyUpdate.MessagePropertyId)
                 {
                     return NotFound();
                 }

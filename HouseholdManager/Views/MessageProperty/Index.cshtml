@@ -20,7 +20,7 @@
         @foreach (var item in Model)
         {
             <div class="col-md-4">
-                <a asp-action="Create" asp-controller="Send" asp-route-id="@item.Id" class="property">
+                <a asp-action="Create" asp-controller="Send" asp-route-id="@item.MessagePropertyId" class="property">
                     < alt="Message" />
                     <h2>@item.Description</h2>
                 </a>

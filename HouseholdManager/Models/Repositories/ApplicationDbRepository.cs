@@ -44,7 +44,7 @@ namespace HouseholdManager.Models.Repositories
 
         public async Task<MessageProperty> FindMessagePropertyFirstOrDefaultAsync(int? id)
         {
-            return await _context.MessageProperty.FirstOrDefaultAsync(m => m.Id == id);
+            return await _context.MessageProperty.FirstOrDefaultAsync(m => m.MessagePropertyId == id);
         }
 
         public async Task<int> CreateMessagePropertyAsync(MessageProperty messageProperty)
@@ -75,7 +75,7 @@ namespace HouseholdManager.Models.Repositories
         public async Task<Send> FindSendWithRelationsAsync(int id)
         {
             return await _context.Send
-                .Where(r => r.Id == id)
+                .Where(r => r.SendId == id)
                 .Include(r => r.MessageProperty)
                 .FirstAsync();
         }

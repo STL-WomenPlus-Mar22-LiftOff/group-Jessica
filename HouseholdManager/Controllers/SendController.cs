@@ -68,7 +68,7 @@ namespace HouseholdManager.Controllers
 
                 await _repository.CreateSendAsync(send);
                 var notification = Notification.BuildAdminNotification(
-                    await _repository.FindSendWithRelationsAsync(send.Id));
+                    await _repository.FindSendWithRelationsAsync(send.SendId));
 
                 await _notifier.SendNotificationAsync(notification);
 
