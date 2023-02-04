@@ -37,7 +37,6 @@ namespace HouseholdManager.Areas.Identity.Data
         public DbSet<MessageProperty> MessageProperty { get; set; }
 
         public DbSet<Send> Send { get; set; }
-        public object IdentityUser { get; internal set; }
 
         //public DbSet<TwilioUser> TwilioUser { get; set; }
 

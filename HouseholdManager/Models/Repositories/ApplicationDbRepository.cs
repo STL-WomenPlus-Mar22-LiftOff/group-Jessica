@@ -97,7 +97,7 @@ namespace HouseholdManager.Models.Repositories
 
         public async Task<IdentityUser> FindUserByPhoneNumberAsync(string number)
         {
-            return await _context.IdentityUser.FirstAsync(u => u.PhoneNumber == number);
+            return await _context.IdentityUsers.FirstAsync(u => u.PhoneNumber == number);
         }
 
         public Task<MessageProperty> FindVacationPropertyFirstOrDefaultAsync(int? id)

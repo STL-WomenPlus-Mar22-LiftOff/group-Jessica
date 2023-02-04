@@ -1,6 +1,10 @@
 using HouseholdManager.Areas.Identity.Data;
+using HouseholdManager.Domain.Messages;
+using HouseholdManager.Domain.Twilio;
+using HouseholdManager.Models.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +14,11 @@ builder.Services.AddControllersWithViews();
 //DI
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
+
+builder.Services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
+builder.Services.AddSingleton<INotifier>(new Notifier(
+                    builder.Configuration.GetSection("Twilio").Get<TwilioConfiguration>()));
+
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
