@@ -4,11 +4,101 @@
     ViewData["Title"] = "Missions";
 }
 
+
 <h1>All Missions</h1>
 
 @await Html.PartialAsync("_CreationButtonsPartial")
 
-<div class="row">
+<div class="containter">
+    <div class="row">
+        <div class="col-md-15">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Mission
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Room)
+                            </th>
+                            <th>
+                                Points
+                            </th>
+                            <th>
+                                Due Date
+                            </th>
+                            <th>
+                                Member
+                            </th>
+                            <th>
+                                Completed
+                            </th>
+                            <th class="text-center">
+                                Edit | Details | Delete
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MissionName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Room.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Point)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DueDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Member.MemberUserNameWithIcon)
+                                </td>
+                                <td id="Completed" type="checkbox" value="model.Completed">
+                                    <input asp-for=@item.Completed type="checkbox" id="Completed" value="true" />
+                                    <input name="Completed" type="hidden" value="false" />
+                                    @*@Html.DisplayFor(modelItem => item.Completed)*@
+                                </td>
+                                <td class="text-center">
+                                    <a asp-action="Edit" asp-route-id="@item.RoomId" class="btn btn-sm btn-primary mx-1"> <i class="fa-solid fa-pencil"></i> </a>
+                                    <a asp-action="Details" asp-route-id="@item.RoomId" class="btn btn-sm btn-secondary mx-1"> <i class="fa-solid fa-list-check"></i> </a>
+                                    <a asp-action="Delete" asp-route-id="@item.RoomId" class="btn btn-sm btn-warning mx-1"> <i class="fa-solid fa-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="Completed" type="checkbox">
+        ${ "#actionYesNoTemplate" }.click{
+        function() {
+            alert("clicked");
+        }
+    };
+
+</script>
+
+<script>
+        $('input[type=checkbox][name=Checked]').click(function() {
+        if (this.checked) {
+            $(Mission.Completed = true);
+            alert(`${this.value} is checked`);
+        }
+        else  {
+            $(Mission.Completed = false);
+alert(
+    `${this.value} is unchecked`);
+        }
+    });
+</script>
+@*<div class="row">
     <div class="col-md-15">
         <ejs-grid id="missions" dataSource="@Model" gridLines="None"
                   allowSorting="true" allowPaging="true" showColumnChooser="true" CheckboxOnly="true" PersistSelection="true">
@@ -25,15 +115,21 @@
         </ejs-grid>
 
     </div>
-</div>
+</div>*@
 
-<script id="actionYesNoTemplate" type="text/x-template">
-    ${if(Completed==1)}
-        <span class="badge bg-success">Yes</span>
-    ${else}
-        <span class="badge bg-danger">No</span>
-        ${/if}
+<script id="actionYesNoTemplate" @*type="checkbox"*@>
+    ${"#actionYesNoTemplate"}.click{function(){
+        alert("clicked");
+    }};
+
 </script>
+
+
+@*
+<script id="actionYesNoTemplate" type="text/x-template">
+     ${if(Completed==1)}
+     <span type="checkbox"></span>
+</script>*@
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
