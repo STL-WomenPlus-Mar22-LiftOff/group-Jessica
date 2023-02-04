@@ -1,50 +1,40 @@
-﻿@using Microsoft.AspNetCore.Identity;
-@model HouseholdManager.Models.Send;
-@inject UserManager<TwilioUser> UserManager
+﻿@model HouseholdManager.Models.Send
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Notification";
 }
 
-@section hero
-{
-   <div>
-        <h2>@ViewBag.MessageProperty.Description</h2>
-    </div>
-}
-<div class="container">
-    <div class="row">
-        <div class="col-md-offset-2 col-md-8">
-            @if (UserManager.GetUserId(User) == ViewBag.MessageProperty.UserId)
-            {
-                <div>
-                    <a asp-controller="MessageProperty" asp-action="Edit" asp-route-id="@ViewBag.MessageProperty.Id">Edit Message</a> |
-                    <a asp-controller="MessageProperty" asp-action="Delete" asp-route-id="@ViewBag.MessageProperty.Id">Delete Message</a>
-                </div>
-            }
-            <h3>Send a Message</h3>
-            <hr/>
+<h3>Create a Room</h3>
+<p>
+    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
+    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
+    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-outline-primary mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
+    <a asp-controller="Send" asp-action="AddOrEdit" ckass="btn btn-sm btn-outline-primary mx-2"><i class="fa/solid fa-plus"></i> Create a Notification</a>
+
+</p>
+<div class="row">
+    <div class="col-md-7">
+        <div class="widget p-5 form-bg">
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Message" class="control-label">Would you like to say anything to the admin?</label>
-                    <textarea asp-for="Message" class="form-control" placeholder='Hello! When is my mission due...'></textarea>
-                    <span asp-validation-for="Message" class="text-danger"></span>
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
-                <input asp-for="MessagePropertyId" type="hidden" class="form-control" value="@ViewBag.MessageProperty.Id"/>
+               
                 <div class="form-group">
-                    <input type="submit" value="Reserve Now" class="btn btn-default"/>
+                    <button type="submit" class="btn btn-primary form-button"> <i class="fa-solid fa-floppy-disk"></i> Create</button>
+                    <a asp-action="Index" class="btn btn-secondary form-button"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
                 </div>
             </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <a asp-action="Index" asp-controller="MessageProperty">Back to Messages</a>
-        </div>
-    </div>
 </div>
-
+<div>
+</div>
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
