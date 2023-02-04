@@ -4,7 +4,7 @@ namespace HouseholdManager.Models
 {
     public class Send
     {
-        public int Id { get; set; }
+        public int SendId { get; set; }
         public string? Name { get; set; }
         public string? PhoneNumber { get; set; }
         public MessageStatus Status { get; set; }
