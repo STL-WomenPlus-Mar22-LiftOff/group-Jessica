@@ -62,7 +62,7 @@ namespace HouseholdManager.Controllers
             {
                 var user = await _userRepository.GetUserAsync(HttpContext.User);
                 send.Status = MessageStatus.Pending;
-                send.Name = user.Name;
+                send.Name = user.UserName;
                 send.PhoneNumber = user.PhoneNumber;
                 send.CreatedAt = DateTime.Now;
 

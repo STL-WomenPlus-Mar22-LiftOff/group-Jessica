@@ -37,8 +37,9 @@ namespace HouseholdManager.Areas.Identity.Data
         public DbSet<MessageProperty> MessageProperty { get; set; }
 
         public DbSet<Send> Send { get; set; }
+        public object IdentityUser { get; internal set; }
 
-        public DbSet<TwilioUser> TwilioUser { get; set; }
+        //public DbSet<TwilioUser> TwilioUser { get; set; }
 
         //These columns needs to be set to Unicode in order to store icon emojis
         protected override void OnModelCreating(ModelBuilder mb)

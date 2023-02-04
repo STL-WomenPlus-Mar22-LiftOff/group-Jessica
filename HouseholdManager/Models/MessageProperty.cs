@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HouseholdManager.Models
 {
@@ -10,7 +11,7 @@ namespace HouseholdManager.Models
         public DateTime CreatedAt { get; set; }
 
         [ForeignKey("UserId")]
-        public TwilioUser? User { get; set; }
+        public IdentityUser? User { get; set; }
 
         public virtual IList<Send> Send { get; set; }
     }

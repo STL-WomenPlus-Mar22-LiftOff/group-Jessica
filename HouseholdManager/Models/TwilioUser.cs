@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿/*using Microsoft.AspNetCore.Identity;
 
 namespace HouseholdManager.Models
 {
@@ -7,3 +7,4 @@ namespace HouseholdManager.Models
         public string? Name { get; set; }
     }
 }
+*/

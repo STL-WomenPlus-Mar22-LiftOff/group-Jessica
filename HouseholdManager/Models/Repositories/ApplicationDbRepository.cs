@@ -23,7 +23,7 @@ namespace HouseholdManager.Models.Repositories
         Task<Send> FindFirstPendingSendByHostAsync(string hostId);
         Task<int> UpdateSendAsync(Send send);
 
-        Task<TwilioUser> FindUserByPhoneNumberAsync(string number);
+        Task<IdentityUser> FindUserByPhoneNumberAsync(string number);
         Task FindSendFirstOrDefaultAsync(int? id);
         Task FindFirstSendByHostAsync(string id);
     }
@@ -95,9 +95,9 @@ namespace HouseholdManager.Models.Repositories
         }
 
 
-        public async Task<TwilioUser> FindUserByPhoneNumberAsync(string number)
+        public async Task<IdentityUser> FindUserByPhoneNumberAsync(string number)
         {
-            return await _context.TwilioUser.FirstAsync(u => u.PhoneNumber == number);
+            return await _context.IdentityUser.FirstAsync(u => u.PhoneNumber == number);
         }
 
         public Task<MessageProperty> FindVacationPropertyFirstOrDefaultAsync(int? id)

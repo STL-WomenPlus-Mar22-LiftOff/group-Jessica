@@ -5,19 +5,19 @@ namespace HouseholdManager.Models.Repositories
 {
     public interface IUserRepository
     {
-        Task<TwilioUser> GetUserAsync(ClaimsPrincipal user);
+        Task<IdentityUser> GetUserAsync(ClaimsPrincipal user);
     }
 
     public class UserRepository : IUserRepository
     {
-        private readonly UserManager<TwilioUser> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public UserRepository(UserManager<TwilioUser> userManager)
+        public UserRepository(UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
         }
 
-        public async Task<TwilioUser> GetUserAsync(ClaimsPrincipal user)
+        public async Task<IdentityUser> GetUserAsync(ClaimsPrincipal user)
         {
             return await _userManager.GetUserAsync(user);
         }
