@@ -1,14 +1,14 @@
-# Household Pro
+# Household Manager
 
 ## Description
 Household Manager Web Application using C# and ASP.NET Core 6 via MVC created with the intent for 5 entry-level programmers to practice building an application from scratch utilizing Agile development and version-control via branching in GitHub.
 
-Household Pro allows individuals that live in a multi-person unit to collect, organize, and assign all chores and assignments involved in keeping up with home organization and cleanliness efficiently and faily.
+Household Manager allows individuals that live in a multi-person unit to collect, organize, and assign all chores and assignments involved in keeping up with home organization and cleanliness efficiently and fairly.
 
 ## Contributors
 - [**Alli**](https://github.com/alliology934)
 - [**Erica**](Add your link here like I have above.)
-- [**Michele**](Add your link here like I have above.)
+- [**Michele**](https://github.com/mmrichmond6)
 - [**Roxanna**](Add your link here like I have above.)
 - [**Spencer**](Add your link here like I have above.)
 
@@ -37,6 +37,8 @@ Household Pro allows individuals that live in a multi-person unit to collect, or
 1. Fork this repository
 2. Clone your forked repository
 3. **TODO:** Stuff about downloading packages for the app to work
-4. **TODO:** Stuff about hooking up their local SQL Database
-5. Run the application to see if it builds and runs correctly
-6. Celebrate that you made it here and enjoy working with this block of code!
+4. Ensure Microsoft SQL Express is installed on your local machine.
+5. Through the Package Manager console type "update-database" to initialize and migrate the seeded database with its tables to SQL Express.
+6. Run the application to see if it builds and runs correctly
+7. Log-in with either the pre-seeded admin or user to visit their authorized pages.
+8. Celebrate that you made it here and enjoy working with this block of code!
