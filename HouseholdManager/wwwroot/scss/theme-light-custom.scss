@@ -1,0 +1,9 @@
+﻿
+//Light mode specific customizations
+
+//SyncFusion grid alt row colors
+[data-bs-theme="light"] {
+    .e-grid .e-row.e-altrow {
+        background-color: tint-color($primary-bg-subtle, 60%) !important;
+    }
+}

@@ -15180,6 +15180,14 @@ textarea.form-control-lg {
   background-color: #2b3035;
 }
 
+[data-bs-theme=dark] .e-grid .e-row.e-altrow {
+  background-color: #35455c !important;
+}
+
+[data-bs-theme=light] .e-grid .e-row.e-altrow {
+  background-color: #ecf3ff !important;
+}
+
 .bg-primary-theme {
   background-color: var(--bs-bg-primary-theme);
 }

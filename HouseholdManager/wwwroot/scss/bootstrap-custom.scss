@@ -56,6 +56,9 @@ $enable-theme-redshift: true !default;
 //Custom dark mode extension
 @import "../scss/theme-dark-custom.scss";
 
+//Light mode-specific custom styling
+@import "../scss/theme-light-custom.scss";
+
 //List for dynamic generation of new css classes
 $theme-colortypes: "primary", "secondary", "info", "success", "warning", "danger", "option", "accent";
 

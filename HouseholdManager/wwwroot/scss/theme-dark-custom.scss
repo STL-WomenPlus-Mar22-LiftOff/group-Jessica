@@ -37,3 +37,9 @@ $option-border-subtle-dark: shade-color($custom-option, 15%);
 .form-bg {
     background-color: #{$body-tertiary-bg-dark};
 }
+
+[data-bs-theme="dark"] {
+    .e-grid .e-row.e-altrow {
+        background-color: tint-color($primary-bg-subtle-dark, 20%) !important;
+    }
+}
