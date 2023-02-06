@@ -1,48 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Welcome Page";
 }
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>W3.CSS Template</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-    <style>
-        body, h1, h2, h3, h4, h5 {
-            font-family: "Poppins", sans-serif
-        }
-
-        body {
-            font-size: 16px;
-        }
-
-        .w3-half img {
-            margin-bottom: -6px;
-            margin-top: 16px;
-            opacity: 0.8;
-            cursor: pointer
-        }
-
-            .w3-half img:hover {
-                opacity: 1
-            }
-    </style>
-</head>
-<body>
-
-    <!-- !PAGE CONTENT! -->
-    <div class="w3-main">
-
+<div class="homepage-main">
         <!-- Header -->
-        <div class="w3-container" @*style="margin-top:80px" *@id="showcase">
-            <h1 class="w3-jumbo"><b>Household</b></h1>
-            <h1 class="w3-jumbo w3-text-red"><b>Manager</b></h1>
-            <hr style="width:50px;border:5px solid red" class="w3-round">
+        <div class="container-xxl">
+            <h1 class="text-ultra-xl"><b>Household</b></h1>
+            <h1 class="text-ultra-xl text-danger"><b>Manager</b></h1>
+            <hr class="homepage-break">
             <p>The best household managing application for your group.</p>
 
             <p>
@@ -51,24 +15,23 @@
                 Everyone can create, edit and delete the rooms and missions.
             </p>
             <p>
-                Finished a jobb?  Edit the mission to mark it as "complete" so that everyone knows the job is done!
+                Finished a job?  Edit the mission to mark it as "complete" so that everyone knows the job is done!
             </p>
             <p>
                 Feel like you are doing it all?  View the "Dashboard" to see all missions and a graph of points earned per user.
             </p>
 
-        </div>
+    </div>
+    <br />
 
         <!-- Households -->
 
-        <div class="w3-container" id="designers" style="margin-top:20px">
-            <h1 class="w3-xxxlarge w3-text-red"><b>Households.</b></h1>
-            <div class="w3-half">
-                <div class="widget h-100 d-flex justify-content-center align-items-center" style="width:100%" alt="Household">
-                    <i class="fa-solid fa-people-roof fa-2xl"></i>
-                </div>
+        <div class="container-xxl">
+            <div class="homepage-header">
+                <i class="fa-solid fa-people-roof fa-2xl"></i>
+                <h2 class="text-ultra-xl text-danger"><b>Households.</b></h2>
             </div>
-            <hr style="width:50px;border:5px solid red" class="w3-round">
+            <hr class="homepage-break">
             <p>The best team in the world.</p>
 
             <p>
@@ -76,23 +39,21 @@
             </p>
             <p>
                 <b>
-                    “we must take care of our families wherever we find them.”
+                    “We must take care of our families wherever we find them.”
 
                     ― Elizabeth Gilbert
                 </b>
             </p>
-        </div>
+    </div>
+    <br />
 
         <!-- Members -->
-        <div class="w3-container" id="designers" style="margin-top:20px">
-
-            <h1 class="w3-xxxlarge w3-text-red"><b>Members.</b></h1>
-            <div class="w3-half">
-                <div class="widget h-100 d-flex justify-content-center align-items-center" style="width:100%" onclick="onClick(this)" alt="Household">
-                    <i class="fa-solid fa-users fa-2xl"></i>
-                </div>
+        <div class="container-xxl">
+            <div class="homepage-header">
+                <i class="fa-solid fa-users fa-2xl"></i>
+                <h2 class="text-ultra-xl text-danger"><b>Members.</b></h2>
             </div>
-            <hr style="width:50px;border:5px solid red" class="w3-round">
+            <hr class="homepage-break">
             <p>Remember there is no "I" in teamwork.</p>
             
             <p>
@@ -105,17 +66,16 @@
                     – Stephen Covey.
                 </b>
             </p>
-        </div>
+    </div>
+    <br />
 
         <!-- Rooms -->
-        <div class="w3-container" id="designers" style="margin-top:20px">
-            <h1 class="w3-xxxlarge w3-text-red"><b>Rooms.</b></h1>
-            <div class="w3-half">
-                <div class="widget h-100 d-flex justify-content-center align-items-center" style="width:100%" onclick="onClick(this)" alt="Household">
-                    <i class="fa-solid fa-door-closed fa-2xl"></i>
-                </div>
+        <div class="container-xxl" id="designers">
+            <div class="homepage-header">
+                <i class="fa-solid fa-door-closed fa-2xl"></i>
+                <h2 class="text-ultra-xl text-danger"><b>Rooms.</b></h2>
             </div>
-            <hr style="width:50px;border:5px solid red" class="w3-round">
+            <hr class="homepage-break">
             <p>The places work is done.</p>
             
             <p>
@@ -128,17 +88,16 @@
                     -Ralph Waldo Emerson
                 </b>
             </p>
-        </div>
+    </div>
+    <br />
 
         <!-- Missions -->
-        <div class="w3-container" id="designers" style="margin-top:20px">
-            <h1 class="w3-xxxlarge w3-text-red"><b>Missions.</b></h1>
-            <div class="w3-half">
-                <div class="widget h-100 d-flex justify-content-center align-items-center" style="width:100%" onclick="onClick(this)" alt="Household">
-                    <i class="fa-solid fa-person-circle-check fa-2xl"></i>
-                </div>
+        <div class="container-xxl" id="designers">
+            <div class="homepage-header">
+                <i class="fa-solid fa-person-circle-check fa-2xl"></i>
+                <h2 class="text-ultra-xl text-danger"><b>Missions.</b></h2>
             </div>
-            <hr style="width:50px;border:5px solid red" class="w3-round">
+            <hr class="homepage-break">
             <p>Taking care of yourself also means taking care of your environment.</p>
          
             <p>
@@ -152,12 +111,6 @@
                     – Lailah Gifty Akita
                 </b>
             </p>
-        </div>
-
-
-
-        <!-- End page content -->
     </div>
-
-</body>
-</html>
+    <br />
+</div>
