@@ -6,7 +6,7 @@ using HouseholdManager.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-
+using System.Security.Claims;
 
 namespace HouseholdManager.Models.Repositories
 {
@@ -26,6 +26,8 @@ namespace HouseholdManager.Models.Repositories
         Task<IdentityUser> FindUserByPhoneNumberAsync(string number);
         Task FindSendFirstOrDefaultAsync(int? id);
         Task FindFirstSendByHostAsync(string id);
+
+        Task<IdentityUser> GetUserAsync(ClaimsPrincipal user);
     }
 
     public class ApplicationDbRepository : IApplicationDbRepository
@@ -115,6 +117,18 @@ namespace HouseholdManager.Models.Repositories
         public Task FindSendFirstOrDefaultAsync(int? id)
         {
             throw new NotImplementedException();
+        }
+
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public ApplicationDbRepository(UserManager<IdentityUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
+        public async Task<IdentityUser> GetUserAsync(ClaimsPrincipal user)
+        {
+            return await _userManager.GetUserAsync(user);
         }
     }
 }

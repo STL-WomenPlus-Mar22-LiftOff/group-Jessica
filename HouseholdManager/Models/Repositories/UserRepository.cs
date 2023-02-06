@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿/*using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
 namespace HouseholdManager.Models.Repositories
@@ -22,4 +22,4 @@ namespace HouseholdManager.Models.Repositories
             return await _userManager.GetUserAsync(user);
         }
     }
-}
+}*/

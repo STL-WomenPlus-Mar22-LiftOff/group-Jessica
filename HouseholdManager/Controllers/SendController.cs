@@ -15,16 +15,16 @@ namespace HouseholdManager.Controllers
     
         {
            private readonly IApplicationDbRepository _repository;
-        private readonly IUserRepository _userRepository;
+        //private readonly IUserRepository _userRepository;
         private readonly INotifier _notifier;
 
         public SendController(
             IApplicationDbRepository applicationDbRepository,
-            IUserRepository userRepository,
+            //IUserRepository userRepository,
             INotifier notifier)
         {
             _repository = applicationDbRepository;
-            _userRepository = userRepository;
+            //_userRepository = userRepository;
             _notifier = notifier;
         }
 
@@ -60,7 +60,7 @@ namespace HouseholdManager.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = await _userRepository.GetUserAsync(HttpContext.User);
+                var user = await _repository.GetUserAsync(HttpContext.User);
                 send.Status = MessageStatus.Pending;
                 send.Name = user.UserName;
                 send.PhoneNumber = user.PhoneNumber;

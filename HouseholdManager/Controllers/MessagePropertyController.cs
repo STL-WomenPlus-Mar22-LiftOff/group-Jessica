@@ -19,17 +19,17 @@ namespace HouseholdManager.Controllers
     {
         
             private readonly IApplicationDbRepository _repository;
-        private readonly IApplicationDbContext _context;
+        //private readonly IApplicationDbContext _context;
 
             //private readonly IUserRepository _userRepository;
 
             public MessagePropertyController(
                 //IUserRepository userRepository,
-                IApplicationDbContext context,
+                //IApplicationDbContext context,
                 IApplicationDbRepository repository)
             {
                 //_userRepository = userRepository;
-               _context = context;
+               //_context = context;
                 _repository = repository;
             }
 
@@ -54,7 +54,7 @@ namespace HouseholdManager.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var user = await _userRepository.GetUserAsync(HttpContext.User);
+                    var user = await _repository.GetUserAsync(HttpContext.User);
                     messageProperty.UserId = user.Id;
                     messageProperty.CreatedAt = DateTime.Now;
 
