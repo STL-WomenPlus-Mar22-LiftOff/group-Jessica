@@ -21,7 +21,7 @@ public class TwilioMessageSender : ITwilioMessageSender
     {
         _configuration = configuration;
 
-        TwilioClient.Init(_configuration.AccountSid,_configuration.AuthToken);
+        TwilioClient.Init(_configuration.AccountSid,_configuration.AuthToken,_configuration.PhoneNumber);
     }
 
     public async Task SendMessageAsync(string to, string body)
