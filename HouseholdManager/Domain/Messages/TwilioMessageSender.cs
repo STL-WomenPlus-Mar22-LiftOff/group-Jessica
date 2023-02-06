@@ -5,6 +5,7 @@ using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 
+
 namespace HouseholdManager.Domain.Messages;
 
 public interface ITwilioMessageSender
@@ -21,6 +22,7 @@ public class TwilioMessageSender : ITwilioMessageSender
     {
         _configuration = configuration;
 
+        
         TwilioClient.Init(_configuration.AccountSid,_configuration.AuthToken,_configuration.PhoneNumber);
     }
 

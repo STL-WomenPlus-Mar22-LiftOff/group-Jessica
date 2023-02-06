@@ -19,8 +19,8 @@ namespace HouseholdManager.Domain.Messages
     {
         private readonly ITwilioMessageSender _client;
 
-        public Notifier(TwilioConfiguration configuration) : this(
-            new TwilioMessageSender(configuration)
+        public Notifier(TwilioConfiguration _configuration) : this(
+            new TwilioMessageSender(_configuration)
         )
         { }
 
