@@ -9,7 +9,7 @@ Household Manager allows individuals that live in a multi-person unit to collect
 - [**Alli**](https://github.com/alliology934)
 - [**Erica**](Add your link here like I have above.)
 - [**Michele**](https://github.com/mmrichmond6)
-- [**Roxanna**](Add your link here like I have above.)
+- [**Roxanna**](https://github.com/narhiril)
 - [**Spencer**](https://github.com/wilsons6561)
 
 ## Features
