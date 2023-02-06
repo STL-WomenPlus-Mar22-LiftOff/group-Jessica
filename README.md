@@ -10,7 +10,7 @@ Household Manager allows individuals that live in a multi-person unit to collect
 - [**Erica**](Add your link here like I have above.)
 - [**Michele**](https://github.com/mmrichmond6)
 - [**Roxanna**](Add your link here like I have above.)
-- [**Spencer**](Add your link here like I have above.)
+- [**Spencer**](https://github.com/wilsons6561)
 
 ## Features
 - Manipulation of database content through CRUD operations.
