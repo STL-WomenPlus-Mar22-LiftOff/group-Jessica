@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseholdManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230201034523_IconCharacterFix")]
-    partial class IconCharacterFix
+    [Migration("20230206202321_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,7 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("HouseholdName")
                         .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Icon")
@@ -127,6 +128,7 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("MissionName")
                         .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Point")
@@ -148,7 +150,7 @@ namespace HouseholdManager.Migrations
                         {
                             MissionId = 1,
                             Completed = false,
-                            DueDate = new DateTime(2023, 1, 31, 21, 45, 23, 545, DateTimeKind.Local).AddTicks(9822),
+                            DueDate = new DateTime(2023, 2, 6, 14, 23, 21, 410, DateTimeKind.Local).AddTicks(9663),
                             MemberId = 2,
                             MissionName = "Wash dishes",
                             Point = 2,
@@ -158,7 +160,7 @@ namespace HouseholdManager.Migrations
                         {
                             MissionId = 2,
                             Completed = false,
-                            DueDate = new DateTime(2023, 1, 31, 21, 45, 23, 545, DateTimeKind.Local).AddTicks(9860),
+                            DueDate = new DateTime(2023, 2, 6, 14, 23, 21, 410, DateTimeKind.Local).AddTicks(9709),
                             MemberId = 1,
                             MissionName = "Make bed",
                             Point = 1,
@@ -168,7 +170,7 @@ namespace HouseholdManager.Migrations
                         {
                             MissionId = 3,
                             Completed = false,
-                            DueDate = new DateTime(2023, 1, 31, 21, 45, 23, 545, DateTimeKind.Local).AddTicks(9870),
+                            DueDate = new DateTime(2023, 2, 6, 14, 23, 21, 410, DateTimeKind.Local).AddTicks(9718),
                             MemberId = 2,
                             MissionName = "Make bed",
                             Point = 1,
@@ -178,7 +180,7 @@ namespace HouseholdManager.Migrations
                         {
                             MissionId = 4,
                             Completed = false,
-                            DueDate = new DateTime(2023, 1, 31, 21, 45, 23, 545, DateTimeKind.Local).AddTicks(9879),
+                            DueDate = new DateTime(2023, 2, 6, 14, 23, 21, 410, DateTimeKind.Local).AddTicks(9726),
                             MemberId = 1,
                             MissionName = "Mow lawn",
                             Point = 5,
@@ -188,7 +190,7 @@ namespace HouseholdManager.Migrations
                         {
                             MissionId = 5,
                             Completed = false,
-                            DueDate = new DateTime(2023, 1, 31, 21, 45, 23, 545, DateTimeKind.Local).AddTicks(9889),
+                            DueDate = new DateTime(2023, 2, 6, 14, 23, 21, 410, DateTimeKind.Local).AddTicks(9735),
                             MemberId = 1,
                             MissionName = "Make dinner",
                             Point = 4,
@@ -211,6 +213,7 @@ namespace HouseholdManager.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("RoomId");
@@ -411,16 +414,16 @@ namespace HouseholdManager.Migrations
                         {
                             Id = "a1addd14-6340-4840-95c2-db12554843e5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ab3eeed0-defd-41e9-b1bd-36661b62829d",
+                            ConcurrencyStamp = "ae6a631d-eeb9-4579-b06a-1016948639f6",
                             Email = "defaultAdmin@yahoo.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "DEFAULTADMIN@YAHOO.COM",
                             NormalizedUserName = "DEFAULTADMIN@YAHOO.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENFo9vgxEGXoObDLtNeg1E4EAhglostSfvFOkO49dwmG408JAN2qbOfAk4yM/8pG+A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIjJ4wgC/yILo/Y2+9hoXu1gvS3XdiLm10R1YR1QX+1pt1foNO7fv0a7bSYEPVaIEA==",
                             PhoneNumber = "111-222-3333",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8bbd6713-9a6a-4572-a0a2-7f159540fba0",
+                            SecurityStamp = "a1da4ef2-c0c5-48be-90e6-f02f1e053647",
                             TwoFactorEnabled = false,
                             UserName = "defaultAdmin@yahoo.com"
                         },
@@ -428,16 +431,16 @@ namespace HouseholdManager.Migrations
                         {
                             Id = "u1ua87c6-b718-4f48-90a2-458e0a2443e6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "87e350eb-1d91-4711-96d9-f9c46cf314fe",
+                            ConcurrencyStamp = "7460eb60-687c-451e-a76f-21e4b58d3ffb",
                             Email = "defaultUser@yahoo.com",
                             EmailConfirmed = false,
                             LockoutEnabled = true,
                             NormalizedEmail = "DEFAULTUSER@YAHOO.COM",
                             NormalizedUserName = "DEFAULTUSER@YAHOO.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEK5S9m0kGIvt8YgHuLX9cGIRE8T2ZlaAZJL8V3rcHEh+EHGunYODzGG/LClIuugq6w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELWbHhEDdgLf5Yd4HOVLRQcgGpSr5kgL/Tm3R+zW3tOTj3eOG+PDAaDKr/K52C7ZrA==",
                             PhoneNumber = "111-222-3333",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "33ca19e6-a47d-4a14-b372-519aa161a80d",
+                            SecurityStamp = "34eaf0cf-01ea-4c7f-8b48-378ea22c27c2",
                             TwoFactorEnabled = false,
                             UserName = "defaultUser@yahoo.com"
                         });

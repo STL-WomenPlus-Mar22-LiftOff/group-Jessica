@@ -1,0 +1,37 @@
+﻿@model IEnumerable<HouseholdManager.Data.SendSms.TransferredData>
+
+@{
+    ViewData["Title"] = "Reminder";
+}
+
+<h1>All Rooms</h1>
+
+@await Html.PartialAsync("_CreationButtonsPartial")
+
+<div class="row">
+    <div class="col-md-15">
+        <ejs-grid id="rooms" dataSource="@Model" gridLines="None"
+                  allowSorting="true" allowPaging="true">
+            <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+            <e-grid-columns>
+                <e-grid-column headerText="Reminder" template="#reminderTemplate" width="75%"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="25%"></e-grid-column>
+            </e-grid-columns>
+        </ejs-grid>
+
+    </div>
+</div>
+
+<script id="remubderTemplate" type="text/x-template">
+    <text class="icon-font">${Icon}</text> <text>${Name}</text>
+</script>
+
+<script id="actionColumnTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+        <a class="btn btn-sm btn-primary mx-1" href="/Reminder/Create/${ReminderId}">
+            <i class="fa-solid fa-pen fa-lg"></i>
+        </a>
+        
+        
+    </div>
+</script>
