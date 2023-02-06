@@ -16,8 +16,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
 
 builder.Services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
-builder.Services.AddSingleton<INotifier>(new Notifier(
-                    builder.Configuration.GetSection("Twilio").Get<TwilioConfiguration>()));
+//builder.Services.AddSingleton<INotifier>(new Notifier(
+                    //builder.Configuration.GetSection("Twilio").Get<TwilioConfiguration>()));
 
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)

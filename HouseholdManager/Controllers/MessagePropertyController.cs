@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using HouseholdManager.Models;
+using HouseholdManager.Areas.Identity.Data;
 
 
 namespace HouseholdManager.Controllers
@@ -18,17 +19,17 @@ namespace HouseholdManager.Controllers
     {
         
             private readonly IApplicationDbRepository _repository;
-        //private readonly IApplicationDbContext _context;
+        private readonly IApplicationDbContext _context;
 
-            private readonly IUserRepository _userRepository;
+            //private readonly IUserRepository _userRepository;
 
             public MessagePropertyController(
-                IUserRepository userRepository,
-               //ApplicationDbContext context,
+                //IUserRepository userRepository,
+                IApplicationDbContext context,
                 IApplicationDbRepository repository)
             {
-                _userRepository = userRepository;
-               //_context = context;
+                //_userRepository = userRepository;
+               _context = context;
                 _repository = repository;
             }
 
