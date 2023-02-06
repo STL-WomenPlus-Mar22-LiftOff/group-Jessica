@@ -2,8 +2,9 @@
 using HouseholdManager.Mission_Reminders;
 using HouseholdManager.Areas.Identity.Data;
 using Syncfusion.EJ2.Linq;
+using Microsoft.EntityFrameworkCore;
 
-namespace HouseholdManager.Mission_Reminders.MissionReminderModel
+namespace HouseholdManager.Mission_Reminders.MissionReminderModels
 
 {
     public class MissionReminderSendReminder
@@ -22,9 +23,9 @@ namespace HouseholdManager.Mission_Reminders.MissionReminderModel
             string.Format(MessageTemplate, missionReminder.Name, missionReminder.Time.ToString("t"))));
     }
 
-        private static IEnumerable<MissionReminder> AvailableMissionReminder()
+        private static IEnumerable<MissionReminderModel> AvailableMissionReminder()
         {
-            return new MissionReminderFinder(new MissionReminderDbContext(), new TimeConverter())
+            return (IEnumerable<MissionReminderModel>)new MissionReminderFinder(new MissionReminderRepository(), new TimeConverter())
             .FindAvailableAppointments(DateTime.Now);
     }
 }

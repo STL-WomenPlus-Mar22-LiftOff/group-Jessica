@@ -12,6 +12,6 @@ namespace HouseholdManager.Mission_Reminders
         }
 
 
-        public DbSet<MissionReminder> MissionReminder { get; set; }
+        public DbSet<MissionReminderModel> MissionReminderModel { get; set; }
     }
 }

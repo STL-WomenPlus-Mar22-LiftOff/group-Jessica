@@ -12,6 +12,7 @@ namespace HouseholdManager.Mission_Reminders
         {
             Hangfire.ConfigureHangfire(app);
             Hangfire.InitializeJobs();
+            app.MapSignalR();
         }
     }
 }

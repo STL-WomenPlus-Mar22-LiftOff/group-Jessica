@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace HouseholdManager.Mission_Reminders
 {
-    public class MissionReminder
+    public class MissionReminderModel
     {
         
             public static int ReminderTime = 30;

@@ -1,25 +1,26 @@
 ﻿using HouseholdManager.Areas.Identity.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace HouseholdManager.Mission_Reminders
 {
-    public class MissionReminderDbContext: ApplicationDbContext 
+    public class MissionReminderRepository: IMissionReminderDatabase 
     {
         private readonly MissionReminderDb _context = new MissionReminderDb();
 
-        public MissionReminderDbContext(DbContextOptions options) : base(options)
-        {
-        }
-
        
 
-        public void Create(MissionReminder missionReminder)
+        
+
+        public void Create(MissionReminderModel missionReminder)
         {
-            _context.MissionReminder.Add(missionReminder);
+            _context.MissionReminderModel.Add(missionReminder);
             _context.SaveChanges();
         }
 
-        public void Update(MissionReminder missionReminder)
+        public void Update(MissionReminderModel missionReminder)
         {
             _context.Entry(missionReminder).State = EntityState.Modified;
             _context.Entry(missionReminder).Property(model => model.CreatedAt).IsModified = false;
@@ -29,18 +30,18 @@ namespace HouseholdManager.Mission_Reminders
         public void Delete(int id)
         {
             var missionReminder = FindById(id);
-            _context.MissionReminder.Remove(missionReminder);
+            _context.MissionReminderModel.Remove(missionReminder);
             _context.SaveChanges();
         }
 
-        public MissionReminder FindById(int id)
+        public MissionReminderModel FindById(int id)
         {
-            return _context.MissionReminder.Find(id);
+            return _context.MissionReminderModel.Find(id);
         }
 
-        public IEnumerable<MissionReminder> FindAll()
+        public IEnumerable<MissionReminderModel> FindAll()
         {
-            return _context.MissionReminder.ToList();
+            return _context.MissionReminderModel.ToList();
         }
 
         

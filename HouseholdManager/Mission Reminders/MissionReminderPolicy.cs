@@ -3,19 +3,23 @@
     public class MissionReminderPolicy
     {
     
-    private readonly MissionReminder _missionReminder;
+    private readonly MissionReminderModel _missionReminder;
     private readonly ITimeConverter _timeConverter;
+        private MissionReminderModel missionReminder;
+        private ITimeConverter timeConverter;
 
-    public MissionReminderPolicy(MissionReminder missionReminder, ITimeConverter timeConverter)
+        public MissionReminderPolicy(MissionReminderModel missionReminder, ITimeConverter timeConverter)
     {
         _missionReminder = missionReminder;
         _timeConverter = timeConverter;
     }
 
-    public bool NeedsToBeSent(DateTime currentTime)
+       
+
+        public bool NeedsToBeSent(DateTime currentTime)
     {
         var reminderLocalTime = GetAppointmentLocalTime()
-            .AddMinutes(-MissionReminder.ReminderTime); // Notify our appointment attendee
+            .AddMinutes(-MissionReminderModel.ReminderTime); // Notify our appointment attendee
                                                     // X minutes before the appointment time
 
         string formattedCurrentTime = currentTime.ToString("MM/dd/yyyy HH:mm");

@@ -9,12 +9,12 @@ namespace HouseholdManager.Mission_Reminders
 {
     public class MissionReminderController : Controller
     {
-        private readonly MissionReminderDbContext _context
+        private readonly MissionReminderRepository _context
             ;
 
         //public MissionReminderController() : this(new MissionReminderDb()) { }
 
-        public MissionReminderController(MissionReminderDbContext context)
+        public MissionReminderController(MissionReminderRepository context)
         {
             _context = context;
         }
@@ -62,7 +62,7 @@ namespace HouseholdManager.Mission_Reminders
             ViewBag.Timezones = Timezones;
             // Use an empty appointment to setup the default
             // values.
-            var missionReminder = new MissionReminder
+            var missionReminder = new MissionReminderModel
             {
                 Timezone = "Pacific Standard Time",
                 Time = DateTime.Now
@@ -72,7 +72,7 @@ namespace HouseholdManager.Mission_Reminders
         }
 
         [HttpPost]
-        public ActionResult Create([Bind("ID,Name,PhoneNumber,Time,Timezone")]MissionReminder missionReminder)
+        public ActionResult Create([Bind("ID,Name,PhoneNumber,Time,Timezone")]MissionReminderModel missionReminder)
         {
             missionReminder.CreatedAt = DateTime.Now;
 
@@ -107,7 +107,7 @@ namespace HouseholdManager.Mission_Reminders
 
         // POST: /Appointments/Edit/5
         [HttpPost]
-        public ActionResult Edit([Bind("ID,Name,PhoneNumber,Time,Timezone")] MissionReminder missionReminder)
+        public ActionResult Edit([Bind("ID,Name,PhoneNumber,Time,Timezone")] MissionReminderModel missionReminder)
         {
             if (ModelState.IsValid)
             {

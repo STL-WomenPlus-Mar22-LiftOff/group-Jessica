@@ -9,7 +9,7 @@ namespace HouseholdManager.Mission_Reminders
     private readonly IMissionReminderDatabase _context
             ;
     private readonly ITimeConverter _timeConverter;
-        private MissionReminder missionReminder;
+        private MissionReminderModel missionReminder;
 
         public MissionReminderFinder(IMissionReminderDatabase context, ITimeConverter timeConverter)
     {
@@ -17,11 +17,11 @@ namespace HouseholdManager.Mission_Reminders
         _timeConverter = timeConverter;
     }
 
-        public MissionReminderFinder(MissionReminderDbContext missionReminderDbContext, TimeConverter timeConverter)
+        public MissionReminderFinder(MissionReminderRepository missionReminderDbContext, TimeConverter timeConverter)
         {
         }
 
-        public IList<MissionReminder> FindAvailableMissionReminder(DateTime currentTime)
+        public IList<MissionReminderModel> FindAvailableMissionReminder(DateTime currentTime)
     {
         var appts = _context.FindAll();
         var availablMissionReminder = _context.FindAll()
@@ -34,7 +34,7 @@ namespace HouseholdManager.Mission_Reminders
         return availableMissionReminder.ToList();
     }
 
-        internal IEnumerable<MissionReminder> FindAvailableAppointments(DateTime now)
+        internal IEnumerable<MissionReminderModel> FindAvailableAppointments(DateTime now)
         {
             throw new NotImplementedException();
         }
@@ -42,7 +42,7 @@ namespace HouseholdManager.Mission_Reminders
 
     internal class availableMissionReminder
     {
-        internal static IList<MissionReminder> ToList()
+        internal static IList<MissionReminderModel> ToList()
         {
             throw new NotImplementedException();
         }

@@ -23,7 +23,7 @@ namespace HouseholdManager.Mission_Reminders
 
         public static void InitializeJobs()
         {
-            RecurringJob.AddOrUpdate<Mission_Reminders.MissionReminderSendReminder>(job => job.Execute(), Cron.Minutely);
+            RecurringJob.AddOrUpdate<MissionReminderSendReminder>(job => job.Execute(), Cron.Minutely);
         }
     }
 

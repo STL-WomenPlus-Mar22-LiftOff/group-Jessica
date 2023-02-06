@@ -4,6 +4,10 @@ using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.Owin;
+using Twilio.Clients;
+using HouseholdManager.Mission_Reminders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +20,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddHttpClient<ITwilioRestClient>();
 
 //Register Syncfusion license
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBMAY9C3t2VVhkQlFadVdJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxQdkRjWH5ZcHBRRmRbVE0=");
@@ -40,8 +46,10 @@ app.UseAuthentication(); ;
 app.UseAuthorization();
 
 app.UseHangfireDashboard();
-app.UseHangfireServer();
+IServiceCollection.UseHangfireServer();
 builder.Services.AddSignalR();
+//app.MapSignalR();
+
 
 
 app.MapControllerRoute(
