@@ -28,7 +28,7 @@ $redshift-gray-300: tint-color($redshift-infrared, 40%);
 $redshift-gray-200: tint-color($redshift-infrared, 60%);
 $redshift-gray-100: tint-color($redshift-infrared, 80%);
 $redshift-primary: $redshift-antares;
-$redshift-secondary: $redshift-barren;
+$redshift-secondary: mix($redshift-barren, $redshift-blueshift, 75%);
 $redshift-success: $redshift-blueshift;
 $redshift-info: $redshift-bellatrix;
 $redshift-warning: mix($redshift-magma, $redshift-nova, 75%);

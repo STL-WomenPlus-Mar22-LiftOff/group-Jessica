@@ -14869,7 +14869,7 @@ textarea.form-control-lg {
   --bs-light-bg-subtle: #c1a199;
   --bs-dark-bg-subtle: #391d3e;
   --bs-primary-border-subtle: #8f3249;
-  --bs-secondary-border-subtle: #6d5c5b;
+  --bs-secondary-border-subtle: #5c5c6f;
   --bs-success-border-subtle: #275cac;
   --bs-info-border-subtle: #6180be;
   --bs-warning-border-subtle: #ae6142;
@@ -14877,15 +14877,15 @@ textarea.form-control-lg {
   --bs-light-border-subtle: #a27367;
   --bs-dark-border-subtle: #280800;
   --bs-heading-color: #e8dec5;
-  --bs-link-color: #7b483d;
+  --bs-link-color: #6f484b;
   --bs-link-hover-color: #be6fb4;
-  --bs-link-color-rgb: 123, 72, 61;
+  --bs-link-color-rgb: 111, 72, 75;
   --bs-link-hover-color-rgb: 190, 111, 180;
   --bs-code-color: #f54151;
   --bs-border-color: #3c0d01;
   --bs-border-color-translucent: rgba(40, 8, 0, 0.15);
   --bs-bg-primary-theme: #bf4261;
-  --bs-bg-secondary-theme: #917a79;
+  --bs-bg-secondary-theme: #7a7a94;
   --bs-bg-info-theme: #81abfd;
   --bs-bg-success-theme: #347ae5;
   --bs-bg-warning-theme: #e88158;
@@ -14926,19 +14926,19 @@ textarea.form-control-lg {
 
 [data-bs-theme=redshift] .btn-secondary {
   --bs-btn-color: #e8dec5;
-  --bs-btn-bg: #665555;
-  --bs-btn-border-color: #7b6867;
+  --bs-btn-bg: #555568;
+  --bs-btn-border-color: #68687e;
   --bs-btn-hover-color: #a29b8a;
-  --bs-btn-hover-bg: #5e4f4f;
-  --bs-btn-hover-border-color: #917a79;
-  --bs-btn-focus-shadow-rgb: 139, 122, 117;
+  --bs-btn-hover-bg: #4f4f60;
+  --bs-btn-hover-border-color: #7a7a94;
+  --bs-btn-focus-shadow-rgb: 123, 122, 137;
   --bs-btn-active-color: #5d594f;
-  --bs-btn-active-bg: #332b2a;
-  --bs-btn-active-border-color: #665555;
+  --bs-btn-active-bg: #2b2b34;
+  --bs-btn-active-border-color: #555568;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #c9bea9;
-  --bs-btn-disabled-bg: #7f6968;
-  --bs-btn-disabled-border-color: #7f6968;
+  --bs-btn-disabled-bg: #6c697f;
+  --bs-btn-disabled-border-color: #6c697f;
 }
 
 [data-bs-theme=redshift] .btn-success {
