@@ -1,5 +1,52 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<HouseholdManager.SMSReminders>
+
 @{
+    ViewData["Title"] = "Reminder";
 }
+
+<h1>All Missions</h1>
+
+@await Html.PartialAsync("_CreationButtonsPartial")
+
+<div class="containter">
+    <div class="row">
+        <div class="col-md-15">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Reminder
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Program)
+                            </th>
+                          
+                            <th>
+                                Member
+                            </th>
+                            <th class="text-center">
+                                 Cancel
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Program)
+                                </td>
+                                
+                                <td class="text-center">
+                                   
+                                    <a asp-action="Delete" asp-route-id="@item.Program" class="btn btn-sm btn-warning mx-1"> <i class="fa-solid fa-trash-can"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
