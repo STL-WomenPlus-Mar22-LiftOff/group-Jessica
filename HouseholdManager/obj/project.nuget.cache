@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Jk2tac3f1nGmCOCe2qVUg7FlFCsMs/EtUcVaQvfoeGPu9xThE+sQ9jpjBJ7da2mmxcvQNLsz5EedLDi+zLtvsw==",
+  "dgSpecHash": "/Kv7bkSpBpitknBHkjR3frgjF/1TpsqCkb9hAcFChFz1epXYjBH13NVjQ73VoNvXIqamN30U6dvThS1RiNDU2g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Erica\\Source\\Repos\\group-Jessica1\\HouseholdManager\\HouseholdManager.csproj",
   "expectedPackageFiles": [
@@ -43,6 +43,7 @@
     "C:\\Users\\Erica\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.12\\microsoft.entityframeworkcore.relational.6.0.12.nupkg.sha512",
     "C:\\Users\\Erica\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.12\\microsoft.entityframeworkcore.sqlserver.6.0.12.nupkg.sha512",
     "C:\\Users\\Erica\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\6.0.12\\microsoft.entityframeworkcore.tools.6.0.12.nupkg.sha512",
+    "C:\\Users\\Erica\\.nuget\\packages\\microsoft.extensions.apidescription.server\\7.0.2\\microsoft.extensions.apidescription.server.7.0.2.nupkg.sha512",
     "C:\\Users\\Erica\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Erica\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
     "C:\\Users\\Erica\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",

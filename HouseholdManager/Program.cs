@@ -4,7 +4,9 @@ using HouseholdManager.Domain.Twilio;
 using HouseholdManager.Models.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
+using Microsoft.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,13 +18,16 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
 
 builder.Services.AddScoped<IApplicationDbRepository, ApplicationDbRepository>();
-//builder.Services.AddSingleton<INotifier>(new Notifier(
+//builder.Services.AddTransient<INotifier>(new Notifier(
                     //builder.Configuration.GetSection("Twilio").Get<TwilioConfiguration>()));
-
+//builder.Services.AddTransient<IApplicationDbRepository, ApplicationDbRepository>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddMemoryCache();
+
 
 //Register Syncfusion license
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBMAY9C3t2VVhkQlFadVdJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxQdkRjWH5ZcHBRRmRbVE0=");
