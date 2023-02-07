@@ -5,6 +5,15 @@
 }
 
 
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous">
+    </script>
+
+@*    <script src="~/js/checkMark.js">  </script> *@
+</head>
+
 <h1>All Missions</h1>
 
 @await Html.PartialAsync("_CreationButtonsPartial")
@@ -58,9 +67,11 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Member.MemberUserNameWithIcon)
                                 </td>
-                                <td id="Completed" type="checkbox" value="model.Completed">
-                                    <input asp-for=@item.Completed type="checkbox" id="Completed" value="true" />
+                                <td type="checkbox" value="model.Completed" class="Completed">
+                                    <input id="Completed" asp-for=@item.Completed type="checkbox" value=@item.Completed />
                                     <input name="Completed" type="hidden" value="false" />
+                                    
+                                    
                                     @*@Html.DisplayFor(modelItem => item.Completed)*@
                                 </td>
                                 <td class="text-center">
@@ -76,16 +87,34 @@
         </div>
     </div>
 </div>
-<script id="Completed" type="checkbox">
-        ${ "#actionYesNoTemplate" }.click{
-        function() {
-            alert("clicked");
-        }
-    };
 
+<script>
+    //$("#Completed").on("click", function () {
+    $(".Completed").on('click', function () {
+        //alert("Clicked");
+        (".Completed").val(false);
+    });
 </script>
 
 <script>
+
+        
+        
+        
+        $("#btn").click(function(){
+            $("#test").load("data.txt", {
+                Name: "Daniel", 
+                Lastname: "Nielsen"
+            }, function(){
+                alert("Hi there");
+            });
+        });
+        
+    });
+
+
+    </script>
+@*<script>
         $('input[type=checkbox][name=Checked]').click(function() {
         if (this.checked) {
             $(Mission.Completed = true);
@@ -97,7 +126,7 @@ alert(
     `${this.value} is unchecked`);
         }
     });
-</script>
+</script>*@
 @*<div class="row">
     <div class="col-md-15">
         <ejs-grid id="missions" dataSource="@Model" gridLines="None"
@@ -117,19 +146,10 @@ alert(
     </div>
 </div>*@
 
-<script id="actionYesNoTemplate" @*type="checkbox"*@>
-    ${"#actionYesNoTemplate"}.click{function(){
-        alert("clicked");
-    }};
-
-</script>
 
 
-@*
-<script id="actionYesNoTemplate" type="text/x-template">
-     ${if(Completed==1)}
-     <span type="checkbox"></span>
-</script>*@
+
+
 
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">

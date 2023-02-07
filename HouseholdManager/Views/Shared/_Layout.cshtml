@@ -96,7 +96,10 @@
     <!--Bootstrap scripts-->
     <script src="~/lib/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
     <!--CheckMark scripts-->
-    <script  src="~/js/checkMark.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+            crossorigin="anonymous"></script>
+  @*  <script  src="~/js/checkMark.js"></script>*@
     <!-- Syncfusion Script Manager -->
     <ejs-scripts></ejs-scripts>
     @await RenderSectionAsync("Scripts", required: false)

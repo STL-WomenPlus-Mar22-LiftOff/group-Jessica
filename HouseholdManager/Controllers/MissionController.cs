@@ -135,7 +135,7 @@ namespace HouseholdManager.Controllers
             }
             PopulateMembers();
             ViewData["RoomId"] = new SelectList(_context.Rooms, "RoomId", "Name", mission.RoomId);
-            ModelState.Clear();
+            
             return View(mission);
         }
 
