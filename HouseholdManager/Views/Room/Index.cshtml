@@ -14,8 +14,11 @@
                   allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Room" template="#roomNameTemplate" width="75%"></e-grid-column>
-                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="25%"></e-grid-column>
+                <e-grid-column headerText="Room" template="#roomNameTemplate" width="40%"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="40%"></e-grid-column>
+                <e-grid-column headerText="Dirtometer" template="#sliderColumnTemplate" width="20%"></e-grid-column>
+
+                
             </e-grid-columns>
         </ejs-grid>
 
@@ -41,6 +44,13 @@
                 <i class="fa-solid fa-trash-can"></i>
             </button>
         </form>
+        
     </div>
 </script>
+<script id="sliderColumnTemplate" type="text/javascript">
+    <form class="multi-range-field my-1 pb-1" >
+        <input id="multi" class="multi-range" type = "range" />
+            </form>
+</script>
 
+            
