@@ -7,7 +7,7 @@ Household Manager allows individuals that live in a multi-person unit to collect
 
 ## Contributors
 - [**Alli**](https://github.com/alliology934)
-- [**Erica**](Add your link here like I have above.)
+- [**Erica**](https://github.com/ejohnson1124)
 - [**Michele**](https://github.com/mmrichmond6)
 - [**Roxanna**](https://github.com/narhiril)
 - [**Spencer**](https://github.com/wilsons6561)
@@ -36,9 +36,8 @@ Household Manager allows individuals that live in a multi-person unit to collect
 ## Instructions
 1. Fork this repository
 2. Clone your forked repository
-3. **TODO:** Stuff about downloading packages for the app to work
-4. Ensure Microsoft SQL Express is installed on your local machine.
-5. Through the Package Manager console type "update-database" to initialize and migrate the seeded database with its tables to SQL Express.
-6. Run the application to see if it builds and runs correctly
-7. Log-in with either the pre-seeded admin or user to visit their authorized pages.
-8. Celebrate that you made it here and enjoy working with this block of code!
+3. Ensure Microsoft SQL Express is installed on your local machine.
+4. Through the Package Manager console type "update-database" to initialize and migrate the seeded database with its tables to SQL Express.
+5. Run the application to see if it builds and runs correctly
+6. Log-in with either the pre-seeded admin or user to visit their authorized pages.
+7. Celebrate that you made it here and enjoy working with this block of code!
