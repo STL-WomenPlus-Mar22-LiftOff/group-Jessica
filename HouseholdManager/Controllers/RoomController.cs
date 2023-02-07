@@ -50,8 +50,16 @@ namespace HouseholdManager.Controllers
             List<Room> roomsToUpdate = new List<Room>();
             foreach (Room rm in allRooms)
             {
+                if (data.ContainsKey(rm.RoomId))
+                {
+                    if (rm.DirtLevel != data[rm.RoomId])
+                    {
+                        rm.DirtLevel = data[rm.RoomId];
+                        roomsToUpdate.Add(rm);
+                    }
+                }
             }
-            if (rooms.Count == 0) return Json("No room dirt updates required.");
+            if (roomsToUpdate.Count == 0) return Json("No room dirt updates required.");
             //Update database
             _context.UpdateRange(roomsToUpdate);
             _context.SaveChanges();

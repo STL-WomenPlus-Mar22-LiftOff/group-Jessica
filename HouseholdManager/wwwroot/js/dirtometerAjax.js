@@ -1,17 +1,15 @@
 ﻿
+
+const dirtSliders = document.getElementsByClassName("dirtometer-input");
+
 function dirtometer() { 
-    const dirtSliders = document.getElementsByClassName("dirtometer-input");
     if (!dirtSliders) {
         return;
     } else {
         const kvpData = {};
-        const arr = [];
         for (const slider of dirtSliders) {
-            kvpData[slider.attributes["data-index"].value] = slider.value;
-        }
-        for (const prop in kvpData) {
-            if (kvpData.hasOwnProperty(prop)) {
-                arr.push({ Key: prop, Value: kvpData[prop] });
+            if (slider.attributes["data-updated"].value === "true") {
+                kvpData[slider.attributes["data-index"].value] = slider.value;
             }
         }
         $.ajax({
@@ -31,3 +29,9 @@ function dirtometer() {
 
     }
 };
+
+function flagForUpdate(elem) {
+    if (elem.hasAttribute("data-updated") && elem.attributes["data-updated"].value !== "true") {
+        elem.attributes["data-updated"].value = "true";
+    }
+}

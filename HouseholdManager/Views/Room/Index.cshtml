@@ -47,7 +47,9 @@
 </script>
 <script id="sliderColumnTemplate" type="text/x-template">
     <form class="multi-range-field my-1 pb-1">
-        <input class="multi-range dirtometer-input" type="range" max="10" value=${DirtLevel} data-index=${RoomId} name="dirtometer"/>
+        <input class="multi-range dirtometer-input" type="range" max="10" 
+               value=${DirtLevel} data-index=${RoomId} data-updated="false" 
+               name="dirtometer" onchange="flagForUpdate(this)"/>
    </form>
 </script>
 <script asp-src-include="~/js/dirtometerAjax.js" defer></script>
