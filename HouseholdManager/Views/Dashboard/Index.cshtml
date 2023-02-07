@@ -36,6 +36,8 @@
     </div>
 </div>
 
+
+
 <script id="actionYesNoTemplate" type="text/x-template">
     ${if(Completed==1)}
         <span class="badge bg-success">Yes</span>
@@ -83,4 +85,30 @@
             </ejs-accumulationchart>
         </div>
     </div>   
+
+@*list by room with due date*@
+@{
+    ViewData["Title"] = "List by Rooms";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="p-4">
+            <h5 class="fw-bold">Rooms with due dates:</h5>
+
+    <div class="control-section">
+        <ejs-grid id="Grid" dataSource="ViewBag.AllMissions" allowsorting="true" allowPaging="true">
+
+                <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>            <e-grid-columns>
+                <e-grid-column headerText="Room" field="RoomNameWithIcon" width="15%"></e-grid-column>
+                        <e-grid-column headerText="Mission" field="MissionName" width="23%"></e-grid-column>
+
+                <e-grid-column headerText="Due Date" field="DueDate" format="MMM-dd-yyyy" width="12%"></e-grid-column>
+                <e-grid-column headerText="Completed" template="#actionYesNoTemplate" width="12%" textAlign="Center"></e-grid-column>
+            </e-grid-columns>
+
+        </ejs-grid>
+    </div>
+        </div>
+    </div>
+</div>
 
