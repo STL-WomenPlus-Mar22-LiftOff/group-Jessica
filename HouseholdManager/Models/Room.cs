@@ -16,5 +16,8 @@ namespace HouseholdManager.Models
         
         [Column(TypeName = "nvarchar(20)")]
         public string Icon { get; set; } = "";
+
+        [Range(0, 10, ErrorMessage = "Dirt level must be between 0 and 10.")]
+        public int DirtLevel { get; set; } = 0;
     }
 }

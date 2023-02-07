@@ -15,13 +15,11 @@
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
                 <e-grid-column headerText="Room" template="#roomNameTemplate" width="40%"></e-grid-column>
-                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="40%"></e-grid-column>
-                <e-grid-column headerText="Dirtometer" template="#sliderColumnTemplate" width="20%"></e-grid-column>
-
-                
+                <e-grid-column headerText="Dirtometer" template="#sliderColumnTemplate" width="40%"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="20%"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
-
+        <button type="button" onclick="dirtometer()" class="btn btn-primary form-button"> <i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
     </div>
 </div>
 
@@ -47,10 +45,9 @@
         
     </div>
 </script>
-<script id="sliderColumnTemplate" type="text/javascript">
-    <form class="multi-range-field my-1 pb-1" >
-        <input id="multi" class="multi-range" type = "range" />
-            </form>
+<script id="sliderColumnTemplate" type="text/x-template">
+    <form class="multi-range-field my-1 pb-1">
+        <input class="multi-range dirtometer-input" type="range" max="10" value=${DirtLevel} data-index=${RoomId} name="dirtometer"/>
+   </form>
 </script>
-
-            
+<script asp-src-include="~/js/dirtometerAjax.js" defer></script>
