@@ -14796,6 +14796,20 @@ textarea.form-control-lg {
   background-color: #22698a;
 }
 
+[data-bs-theme=deepblue] .control-section .e-grid .e-row.e-altrow .e-rowcell {
+  background-color: #072a3b !important;
+}
+[data-bs-theme=deepblue] .control-section .e-grid .e-groupcaption {
+  background-color: #041721 !important;
+  color: #c4e2fd !important;
+  border-color: #1375a4 !important;
+  font-weight: 600;
+}
+[data-bs-theme=deepblue] .control-section [class^=e-]:not(.e-altrow, .e-groupcaption) {
+  background-color: #041721 !important;
+  color: #c4e2fd !important;
+  border-color: #1375a4 !important;
+}
 [data-bs-theme=deepblue] .e-grid {
   background-color: #041721 !important;
   color: #c4e2fd !important;
@@ -15119,6 +15133,21 @@ textarea.form-control-lg {
   background-color: #99354e;
 }
 
+[data-bs-theme=redshift] .control-section .e-grid .e-row.e-altrow .e-rowcell {
+  background-color: #3c0d01 !important;
+}
+[data-bs-theme=redshift] .control-section .e-grid .e-groupcaption {
+  background-color: #140400 !important;
+  color: #f8dabf !important;
+  border-color: #8f3249 !important;
+  color: #e8dec5 !important;
+  font-weight: 600;
+}
+[data-bs-theme=redshift] .control-section [class^=e-]:not(.e-altrow, .e-groupcaption) {
+  background-color: #140400 !important;
+  color: #f8dabf !important;
+  border-color: #8f3249 !important;
+}
 [data-bs-theme=redshift] .e-grid {
   background-color: #140400 !important;
   color: #f8dabf !important;
@@ -15183,9 +15212,23 @@ textarea.form-control-lg {
 [data-bs-theme=dark] .e-grid .e-row.e-altrow {
   background-color: #35455c !important;
 }
+[data-bs-theme=dark] .control-section .e-grid .e-row.e-altrow .e-rowcell {
+  background-color: #35455c !important;
+}
+[data-bs-theme=dark] .control-section .e-grid .e-groupcaption {
+  color: #fff !important;
+  font-weight: 600;
+}
 
 [data-bs-theme=light] .e-grid .e-row.e-altrow {
   background-color: #ecf3ff !important;
+}
+[data-bs-theme=light] .control-section .e-grid .e-row.e-altrow .e-rowcell {
+  background-color: #ecf3ff !important;
+}
+[data-bs-theme=light] .control-section .e-grid .e-groupcaption {
+  color: !important;
+  font-weight: 600;
 }
 
 .bg-primary-theme {

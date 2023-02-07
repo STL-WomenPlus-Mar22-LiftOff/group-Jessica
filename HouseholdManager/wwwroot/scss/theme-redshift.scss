@@ -163,7 +163,26 @@
     border-color: $primary-border-subtle-redshift !important;
 }
 
+@mixin redshift-altrow {
+    background-color: $primary-bg-subtle-redshift !important;
+}
+
 [data-bs-theme="redshift"] {
+
+    .control-section .e-grid .e-row.e-altrow .e-rowcell {
+        @include redshift-altrow;
+    }
+
+    .control-section .e-grid .e-groupcaption {
+        @include redshift-e-grid;
+        color: $headings-color-redshift !important;
+        font-weight: 600;
+    }
+
+    .control-section [class^="e-"]:not(.e-altrow, .e-groupcaption) {
+        @include redshift-e-grid;
+    }
+
     .e-grid {
         @include redshift-e-grid;
     }
@@ -194,7 +213,7 @@
     }
 
     .e-grid .e-row.e-altrow {
-        background-color: $primary-bg-subtle-redshift !important;
+        @include redshift-altrow;
     }
 
     .e-grid .e-row {

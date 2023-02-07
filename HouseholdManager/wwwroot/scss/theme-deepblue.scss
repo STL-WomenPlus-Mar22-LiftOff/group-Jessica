@@ -168,7 +168,25 @@
     border-color: $primary-border-subtle-deepblue !important;
 }
 
+@mixin deepblue-altrow {
+    background-color: shade-color($primary-bg-subtle-deepblue, 40%) !important;
+}
+
 [data-bs-theme="deepblue"] {
+
+    .control-section .e-grid .e-row.e-altrow .e-rowcell {
+        @include deepblue-altrow;
+    }
+
+    .control-section .e-grid .e-groupcaption {
+        @include deepblue-e-grid;
+        font-weight: 600;
+    }
+
+    .control-section [class^="e-"]:not(.e-altrow, .e-groupcaption) {
+        @include deepblue-e-grid;
+    }
+
     .e-grid {
         @include deepblue-e-grid;
     }
@@ -199,7 +217,7 @@
     }
 
     .e-grid .e-row.e-altrow {
-        background-color: shade-color($primary-bg-subtle-deepblue, 40%) !important;
+        @include deepblue-altrow;
     }
 
     .e-grid .e-row {
