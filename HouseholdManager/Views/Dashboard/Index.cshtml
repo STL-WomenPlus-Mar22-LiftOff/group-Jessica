@@ -103,3 +103,33 @@
         </div>
     </div>   
 
+@*list by room with due date*@
+@{
+    ViewData["Title"] = "List by Rooms";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="p-4">
+            <h5 class="fw-bold">Rooms with due dates:</h5>
+
+
+    <div class="control-section">      
+
+            <ejs-grid id="mission" dataSource="ViewBag.AllMissions" allowGrouping="true" allowSorting="true" allowFiltering="true" allowPaging="true" showColumnMenu="true">
+               <e-grid-filterSettings type="CheckBox"></e-grid-filterSettings>
+                <e-grid-groupsettings showGroupedColumn="true"></e-grid-groupsettings>
+                <e-grid-columns>
+                <e-grid-column headerText="Room" field="RoomNameWithIcon" width="15%"></e-grid-column>
+                <e-grid-column field="MissionName" headerText="MissionName"></e-grid-column>
+                <e-grid-column field="DueDate" headerText="Due Date" format="MMM-dd-yyyy" width="20%"></e-grid-column>
+                <e-grid-column headerText="Completed" template="#actionYesNoTemplate" width="20%" textAlign="Center"></e-grid-column>
+            </e-grid-columns>
+
+
+            </ejs-grid>
+        
+    </div>
+    </div>
+    </div>
+    </div>
+
