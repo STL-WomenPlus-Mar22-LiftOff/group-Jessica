@@ -34,14 +34,8 @@
             }
     </table>
 </div>
+<div class="form-group">
+    <a asp-action="Edit" asp-route-id="@Model?.RoomId" class="btn btn-success form-button"> <i class="fa-solid fa-pen-to-square"></i> Edit</a>
+    <a asp-action="Index" class="btn btn-secondary form-button"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
+</div>
 
-
-<p>
-    <a asp-controller="Room" asp-action="Edit" asp-route-id="@Model.RoomId" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Edit</a> |
-    <a asp-controller="Mission" asp-action="Create" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Mission</a>
-    <a asp-controller="Member" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Member</a>
-    <a asp-controller="Household" asp-action="AddOrEdit" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Create a Household</a>
-</p>
-<p>
-    <a asp-action="Index" class="btn btn-sm btn-success mx-2"> <i class="fa-solid fa-plus"></i> Back to List</a>
-</p>
