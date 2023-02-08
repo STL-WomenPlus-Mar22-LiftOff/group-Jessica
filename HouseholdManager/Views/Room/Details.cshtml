@@ -2,7 +2,7 @@
 @using HouseholdManager.Data.API
 
 @{
-    ViewData["Title"] =  @Model.RoomName + " Details";
+    ViewData["Title"] = Model.RoomName + " Details";
     var req = new IconRequestor();
     //Below is no longer needed with the ViewModel in place
     //string iconMouseOverText = await req.GetMouseoverTextForIcon(ViewData.Model.Icon,
