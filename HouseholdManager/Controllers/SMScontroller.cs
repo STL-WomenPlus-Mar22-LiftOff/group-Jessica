@@ -31,7 +31,7 @@ namespace HouseholdManager.Controllers
 
         }
 
-        public TwiMLResult Index(SmsRequest incomingMessage)
+        public TwiMLResult ReceiveSms (SmsRequest incomingMessage)
         {
             var messagingResponse = new MessagingResponse();
             messagingResponse.Message("The copy cat says: " +
@@ -40,4 +40,5 @@ namespace HouseholdManager.Controllers
             return TwiML(messagingResponse);
 
         }
+    }
 }
