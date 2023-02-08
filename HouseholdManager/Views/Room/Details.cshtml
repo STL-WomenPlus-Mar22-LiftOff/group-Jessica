@@ -12,6 +12,15 @@
 
 
 <div> 
+    <hr class="homepage-break">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DirtLevel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DirtLevel) / 10
+        </dd>
+    </dl>
     <table class="table-bordered table-responsive table-hover">
         <tr>
             <th>Missions In @Model.RoomName</th>

@@ -29,6 +29,44 @@ namespace HouseholdManager.Controllers
               return View(await _context.Rooms.ToListAsync());
         }
 
+        // POST: Room/DirtHandler
+        /// <summary>
+        /// Processes AJAX request from dirtometerAjax.js
+        /// </summary>
+        /// <param name="data"></param>
+        public async Task<IActionResult> DirtHandler([FromBody]Dictionary<int, int> data)
+        {
+            //Validation
+            if (data.Count == 0) return Json("No data to update.");
+            
+            foreach(KeyValuePair<int, int> kvp in data)
+            {
+                if (kvp.Key < 0 || kvp.Value > 10 || kvp.Value < 0)
+                {
+                    data.Remove(kvp.Key);
+                }
+            }
+            //Get matching rooms and stage update
+            var allRooms = await _context.Rooms.ToListAsync();
+            List<Room> roomsToUpdate = new List<Room>();
+            foreach (Room rm in allRooms)
+            {
+                if (data.ContainsKey(rm.RoomId))
+                {
+                    if (rm.DirtLevel != data[rm.RoomId])
+                    {
+                        rm.DirtLevel = data[rm.RoomId];
+                        roomsToUpdate.Add(rm);
+                    }
+                }
+            }
+            if (roomsToUpdate.Count == 0) return Json("No room dirt updates required.");
+            //Update database
+            _context.UpdateRange(roomsToUpdate);
+            _context.SaveChanges();
+            return Json("Room dirt values updated.");
+        }
+
         // GET: Room/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -47,13 +85,13 @@ namespace HouseholdManager.Controllers
 
             var roomData = (from room in _context.Rooms
                             where room.RoomId == id
-                            select room).FirstOrDefault();
+                            select room).FirstOrDefault() ?? new Room();
 
             var missionData = (from mission in _context.Missions
                                where mission.RoomId == roomData.RoomId
                                select mission).ToList();
 
-            var viewModel = new RoomDetailViewModel(roomData.RoomId, roomData.Name, roomData.Icon, missionData);
+            var viewModel = new RoomDetailViewModel(roomData, missionData);
 
 
             return View(viewModel);
@@ -195,6 +233,14 @@ namespace HouseholdManager.Controllers
             IconRequestor req = new IconRequestor();
             List<Icon> icons = await req.GetIconsFromApi();
             ViewBag.Icons = icons;
+        }
+
+        [NonAction]
+        private Room UpdateDirt(Room room, int value)
+        {
+            if (room.DirtLevel == value) return room;
+            room.DirtLevel = value;
+            return room;
         }
 
     }

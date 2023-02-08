@@ -113,6 +113,15 @@ body {
     width: 40%;
 }
 
+.w-95 {
+    width: 95%;
+}
+
+.centered {
+    margin: auto;
+    display: block;
+}
+
 .clearfix::after {
     content: "";
     clear: both;

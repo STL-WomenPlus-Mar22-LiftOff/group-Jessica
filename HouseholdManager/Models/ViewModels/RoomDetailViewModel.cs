@@ -1,4 +1,6 @@
-﻿namespace HouseholdManager.Models.ViewModels
+﻿using System.ComponentModel;
+
+namespace HouseholdManager.Models.ViewModels
 {
     public class RoomDetailViewModel
     {
@@ -7,6 +9,9 @@
         public string RoomIcon { get; set; }
         public List<Mission> Missions { get; set; }
 
+        [DisplayName("Dirt-O-Meter")]
+        public int DirtLevel { get; set; }
+
 
         public RoomDetailViewModel()
         {
@@ -14,14 +19,16 @@
             RoomName = "";
             RoomIcon = "";
             Missions = new List<Mission>();
+            DirtLevel = 0;
         }
 
-        public RoomDetailViewModel(int roomId, string roomName, string roomIcon, List<Mission> missions)
+        public RoomDetailViewModel(Room room, List<Mission> missions)
         {
-            RoomId = roomId;
-            RoomName = roomName;
-            RoomIcon = roomIcon;
+            RoomId = room.RoomId;
+            RoomName = room.Name;
+            RoomIcon = room.Icon;
             Missions = missions;
+            DirtLevel = room.DirtLevel;
         }
     }
 }
