@@ -4,9 +4,7 @@
 @{
     ViewData["Title"] = Model.RoomName + " Details";
     var req = new IconRequestor();
-    //Below is no longer needed with the ViewModel in place
-    //string iconMouseOverText = await req.GetMouseoverTextForIcon(ViewData.Model.Icon,
-    //                                                             (IEnumerable<Icon>)ViewBag.Icons);
+    string iconMouseOverText = await req.GetMouseoverTextForIcon(Model.RoomIcon,(IEnumerable<Icon>)ViewBag.Icons);
 }
 
 <h1><span class="icon-font" title=@iconMouseOverText>@Model.RoomIcon</span> @Model.RoomName</h1>
