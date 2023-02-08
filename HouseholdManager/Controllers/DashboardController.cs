@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
@@ -18,11 +19,13 @@ namespace HouseholdManager.Controllers
         public async Task<ActionResult> Index()
         {
             //Mission table
-            List<Models.Mission> allMissions = await _context.Missions
-                .Include(t => t.Room).Include(u => u.Member)
-                .ToListAsync();
+            var allMissions = _context.Missions.Include(t => t.Room)
+                                               .Include(u => u.Member);
+            List<MissionViewModel> model = await (from mission in allMissions
+                                                  select new MissionViewModel(mission))
+                                                  .ToListAsync();
             int CountAll = allMissions.Count();
-            ViewBag.AllMissions = allMissions;
+            ViewBag.AllMissions = model;
 
             //Doughnut Chart-Missions done by Contributor
             ViewBag.DoughnutChartData = allMissions

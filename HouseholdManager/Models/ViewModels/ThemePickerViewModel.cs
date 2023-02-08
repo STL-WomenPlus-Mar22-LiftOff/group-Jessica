@@ -11,6 +11,7 @@
             themeList.Add(new ThemePickerViewModel { Id = "light", Text = "Light Theme" });
             themeList.Add(new ThemePickerViewModel { Id = "dark", Text = "Dark Theme" });
             themeList.Add(new ThemePickerViewModel { Id = "deepblue", Text = "Deep Blue Theme" });
+            themeList.Add(new ThemePickerViewModel { Id = "redshift", Text = "Redshift Theme" });
             return themeList;
         }
     }

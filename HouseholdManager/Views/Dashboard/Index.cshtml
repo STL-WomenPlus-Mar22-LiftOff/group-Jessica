@@ -1,4 +1,4 @@
-﻿@model HouseholdManager.Models.Mission
+﻿@model HouseholdManager.Models.ViewModels.MissionViewModel;
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -23,20 +23,26 @@
                       allowSorting="true" allowPaging="true">
                 <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Mission" field="MissionName" width="23%"></e-grid-column>
-                <e-grid-column headerText="Room" field="RoomNameWithIcon" width="15%"></e-grid-column>
-                <e-grid-column headerText="Points" field="Point" width="8%" textAlign="Center"></e-grid-column>
+                <e-grid-column headerText="Mission" field="MissionName" width="15%"></e-grid-column>
+                <e-grid-column headerText="Room" template="#roomNameTemplate" width="15%"></e-grid-column>
+                <e-grid-column headerText="Points" field="Point" width="10%" textAlign="Center"></e-grid-column>
                 <e-grid-column headerText="Due Date" field="DueDate" format="MMM-dd-yyyy" width="12%"></e-grid-column>
-                <e-grid-column headerText="Completed" template="#actionYesNoTemplate" width="12%" textAlign="Center"></e-grid-column>
-                <e-grid-column headerText="Member" field="MemberUserNameWithIcon" width="15%"></e-grid-column>
-                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="15%"></e-grid-column>
+                <e-grid-column headerText="Completed" template="#actionYesNoTemplate" width="15%" textAlign="Center"></e-grid-column>
+                <e-grid-column headerText="Member" template="#memberNameTemplate" width="15%"></e-grid-column>
+                <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="18%"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
 
     </div>
 </div>
 
+<script id="roomNameTemplate" type="text/x-template">
+    <text class="icon-font">${RoomIcon}</text> <text>${RoomName}</text>
+</script>
 
+<script id="memberNameTemplate" type="text/x-template">
+    <text class="icon-font">${MemberIcon}</text> <text>${MemberUserName}</text>
+</script>
 
 <script id="actionYesNoTemplate" type="text/x-template">
     ${if(Completed==1)}
@@ -66,30 +72,37 @@
 
 @*Doughnut Chart*@
 
+@{
+    string[] colorPalette = {"var(--bs-primary-border-subtle)",
+                             "var(--bs-secondary-border-subtle)",
+                             "var(--bs-warning-border-subtle)",
+                             "var(--bs-danger-border-subtle)",
+                             "var(--bs-option-border-subtle)",
+                             "var(--bs-accent-border-subtle)",
+                             "var(--bs-info-border-subtle)",
+                             "var(--bs-success-border-subtle)"};
+}
+
     <div class="col-md-12">
         <div class="widget chart">
             <div class="p-4">
                 <h5 class="fw-bold">Points by Member:</h5>
             </div>
-            <ejs-accumulationchart id="doughnutchart" enableSmartLabels background="#1a222b">
+            <ejs-accumulationchart id="doughnutchart" background="var(--bs-body-bg)" enableSmartLabels>
                 <e-accumulation-series-collection>
-                    <e-accumulation-series dataSource="@ViewBag.DoughnutChartData"
+                <e-accumulation-series palettes="@colorPalette" dataSource="@ViewBag.DoughnutChartData"
                             xName="memberNameWithIcon" yName="amount" innerRadius="40%" legendShape="Circle">
                         <e-accumulationseries-datalabel name="formattedAmount" visible></e-accumulationseries-datalabel>
                     </e-accumulation-series>
                 </e-accumulation-series-collection>
                 <e-accumulationchart-legendsettings position="Top">
-                    <e-legendsettings-textstyle  color="#fff" size="1rem"></e-legendsettings-textstyle>
+                    <e-legendsettings-textstyle color="var(--bs-emphasis-color)" size="1rem"></e-legendsettings-textstyle>
                 </e-accumulationchart-legendsettings>
                 <e-accumulationchart-tooltipsettings enable></e-accumulationchart-tooltipsettings>
             </ejs-accumulationchart>
         </div>
     </div>   
 
-@*list by room with due date*@
-@{
-    ViewData["Title"] = "List by Rooms";
-}
 <div class="row">
     <div class="col-md-12">
         <div class="p-4">
@@ -103,7 +116,7 @@
                 <e-grid-groupsettings showGroupedColumn="true"></e-grid-groupsettings>
                 <e-grid-columns>
                 <e-grid-column headerText="Room" field="RoomNameWithIcon" width="15%"></e-grid-column>
-                <e-grid-column field="MissionName" headerText="MissionName"></e-grid-column>
+                <e-grid-column field="MissionName" headerText="Mission"></e-grid-column>
                 <e-grid-column field="DueDate" headerText="Due Date" format="MMM-dd-yyyy" width="20%"></e-grid-column>
                 <e-grid-column headerText="Completed" template="#actionYesNoTemplate" width="20%" textAlign="Center"></e-grid-column>
             </e-grid-columns>

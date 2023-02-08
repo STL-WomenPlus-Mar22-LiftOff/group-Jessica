@@ -8,12 +8,11 @@
                                                                  (IEnumerable<Icon>)ViewBag.Icons);
 }
 
-<h1>Details</h1>
+<h1>Household Details</h1>
 @await Html.PartialAsync("_CreationButtonsPartial")
 
 <div>
-    <h4>Household</h4>
-    <hr />
+    <hr class="homepage-break">
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.HouseholdName)

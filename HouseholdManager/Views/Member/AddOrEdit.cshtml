@@ -36,7 +36,7 @@
                 <div class="mb-3">
                     <label asp-for="Icon" class="control-label"></label>
                     <input asp-for="Icon" id="iconInput" class="form-control" hidden />
-                    @await Html.PartialAsync("_IconMenuPartial")
+                    @await Html.PartialAsync("_IconMenuPartial", new ViewDataDictionary(ViewData){{"Icon", Model.Icon}})
                     <span asp-validation-for="Icon" class="text-danger" fs-6></span>
                 </div>
                 <div class="mb-3">
