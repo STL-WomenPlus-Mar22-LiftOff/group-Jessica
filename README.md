@@ -18,6 +18,7 @@ Household Manager allows individuals that live in a multi-person unit to collect
 - Clear and efficient method for choosing icons by jQuery implementation and icon API utilization.
 - Modern UI through intentional usage of Bootstrap 5, Sass, and theme selection feature.
 - Informative and useful display of data through sortable and pageable tables powered by Syncfusion UI components.
+- Basic ability to send SMS message utilizing Twilio.
 
 ## Technology Stack
 - **Language:** C#
@@ -32,6 +33,8 @@ Household Manager allows individuals that live in a multi-person unit to collect
   - Identity
   - Icon API
   - Font Awesome
+  - Twilio API
+  - ngrok
 
 ## Instructions
 1. Fork this repository
@@ -41,3 +44,8 @@ Household Manager allows individuals that live in a multi-person unit to collect
 5. Run the application to see if it builds and runs correctly
 6. Log-in with either the pre-seeded admin or user to visit their authorized pages.
 7. Celebrate that you made it here and enjoy working with this block of code!
+
+## Bonus!
+- Should you wish to learn more about SMS messaging, head to [**Twilio**](https://www.twilio.com/docs/sms/quickstart/csharp-dotnet-core) to learn more about how to set up basic SMS messages. This will walk you through the steps to set up an account and allow Twilio to access your web application.
+- You will then need to open the Package Manager console and type "install-package twilio" to add access to the Twilio API and helper libraries.
+- Additionally, should you want the capability of sending and receiving messages, you will need a tunneling API like [**ngrok**](https://ngrok.com/).
