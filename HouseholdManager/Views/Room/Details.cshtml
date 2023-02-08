@@ -9,7 +9,8 @@
     //                                                             (IEnumerable<Icon>)ViewBag.Icons);
 }
 
-<h1>@Model.RoomIcon @Model.RoomName Details</h1>
+<h1><span class="icon-font" title=@iconMouseOverText>@Model.RoomIcon</span> @Model.RoomName</h1>
+@await Html.PartialAsync("_CreationButtonsPartial")
 
 
 <div> 
