@@ -22,7 +22,7 @@ function dirtometer() {
                 console.log(response);
             },
             error: (response) => {
-                console.error('Error with dirtometer POST request.');
+                console.error('Error with dirt-o-meter POST request.');
                 console.error(response);
             }
         });
