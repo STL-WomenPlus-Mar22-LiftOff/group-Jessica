@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using HouseholdManager.Data.Validation;
 
 namespace HouseholdManager.Models
 {
@@ -18,6 +19,7 @@ namespace HouseholdManager.Models
         public string Icon { get; set; } = "";
 
         //HouseholdId-Foreign Key
+        [NotAlreadyInHousehold]
         [Range(1, int.MaxValue, ErrorMessage = "Please select household")]
         public int HouseholdId { get; set; }
 

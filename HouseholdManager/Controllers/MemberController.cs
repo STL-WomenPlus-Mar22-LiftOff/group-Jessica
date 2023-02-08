@@ -60,6 +60,24 @@ namespace HouseholdManager.Controllers
         {
             if (ModelState.IsValid)
             {
+                //setting up IdentityUser relationship
+                try
+                {
+                    IdentityUser? user = await (from u in _context.Users
+                                                where u.UserName == member.UserName
+                                                select u).FirstOrDefaultAsync();
+                    if (user is null)
+                    {
+                        throw new ArgumentException("Attempted to link Member to invalid IdentityUser.");
+                    }
+                    member.User = user;
+                }
+                catch (ArgumentException e)
+                {
+                    return Problem(detail: e.Message, 
+                                   statusCode: StatusCodes.Status400BadRequest);
+                }
+
                 if (member.MemberId == 0)
                     _context.Add(member);
                 else
