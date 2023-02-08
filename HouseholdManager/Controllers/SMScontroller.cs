@@ -16,7 +16,7 @@ namespace HouseholdManager.Controllers
         public IActionResult SendSms()
         {
             var accountSID = "ACe21179afce61fd2dbbb88d3088095d85";
-            var authtoken = "8b1ec11baeebac35ec5506db4df79bea";
+            var authtoken = "bd0b393ad4c7b70b6f6b3854b5767fc7";
             TwilioClient.Init(accountSID, authtoken);
 
             var to = new PhoneNumber("+16362883683");
