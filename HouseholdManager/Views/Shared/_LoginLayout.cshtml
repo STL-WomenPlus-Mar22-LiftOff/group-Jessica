@@ -29,8 +29,8 @@
             opacity: 0;
         }
     </style>
-    <script id="stopWhiteFlashScript" src="~/js/stopWhiteFlash.js"></script>
-    <script id="themePickerScript" src="~/js/themePicker.js"></script>
+    <script id="stopWhiteFlashScript" asp-src-include="~/js/stopWhiteFlash.js"></script>
+    <script id="themePickerScript" asp-src-include="~/js/themePicker.js"></script>
 
     <!--Safeguard in case JavaScript is disabled-->
     <noscript>
@@ -96,9 +96,9 @@
 
 
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script asp-src-include="~/lib/jquery/dist/jquery.min.js"></script>
+    <script asp-src-include="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script asp-src-include="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <!-- Syncfusion Script Manager -->
     <ejs-scripts></ejs-scripts>

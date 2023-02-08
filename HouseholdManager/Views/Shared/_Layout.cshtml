@@ -16,9 +16,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
     <!--FONTS-->
+    <!--Homepage font-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <!--Icon font-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Color+Emoji">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">-->
     <!-- Reference to fontawesome.com to be able to use icons throughout the application -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -32,8 +34,8 @@
             opacity: 0;
         }
     </style>
-    <script id="stopWhiteFlashScript" src="~/js/stopWhiteFlash.js"></script>
-    <script id="themePickerScript" src="~/js/themePicker.js"></script>
+    <script id="stopWhiteFlashScript" asp-src-include="~/js/stopWhiteFlash.js"></script>
+    <script id="themePickerScript" asp-src-include="~/js/themePicker.js"></script>
 
     <!--Safeguard in case JavaScript is disabled-->
     <noscript>
@@ -90,11 +92,11 @@
         </div>
     </footer>
     <!--jQuery, used for form validation-->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script asp-src-include="~/lib/jquery/dist/jquery.min.js"></script>
     <!--Sitewide scripts-->
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script asp-src-include="~/js/site.js"></script>
     <!--Bootstrap scripts-->
-    <script src="~/lib/bootstrap/js/bootstrap.min.js" asp-append-version="true"></script>
+    <script asp-src-include="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <!-- Syncfusion Script Manager -->
     <ejs-scripts></ejs-scripts>
     @await RenderSectionAsync("Scripts", required: false)

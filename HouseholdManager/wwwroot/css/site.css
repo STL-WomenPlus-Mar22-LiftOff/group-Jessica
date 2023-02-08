@@ -3,18 +3,46 @@ html {
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.homepage-main {
+    font-family: "Poppins", sans-serif;
+    font-size: 1em;
+}
+
+.homepage-main h1 {
+    margin: 20px;
+}
+
+.homepage-break {
+    margin: 20px;
+    width: 100%;
+    height: 10px;
+    border: 2px solid var(--bs-bg-danger-theme);
+    border-radius: 5px;
+    background-color: var(--bs-bg-danger-theme);
+}
+
+.homepage-header h2, .homepage-header i {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+.text-ultra-xl {
+    font-size: 3em;
 }
 
 .icon-picker-menu {
@@ -92,6 +120,12 @@ body {
 .centered {
     margin: auto;
     display: block;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 /*WIP wobble back-and-forth effect
