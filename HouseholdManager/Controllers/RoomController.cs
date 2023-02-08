@@ -46,7 +46,7 @@ namespace HouseholdManager.Controllers
                     data.Remove(kvp.Key);
                 }
             }
-            //TODO: Get matching rooms and stage update
+            //Get matching rooms and stage update
             var allRooms = await _context.Rooms.ToListAsync();
             List<Room> roomsToUpdate = new List<Room>();
             foreach (Room rm in allRooms)
