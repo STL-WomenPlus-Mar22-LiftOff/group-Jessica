@@ -85,13 +85,13 @@ namespace HouseholdManager.Controllers
 
             var roomData = (from room in _context.Rooms
                             where room.RoomId == id
-                            select room).FirstOrDefault();
+                            select room).FirstOrDefault() ?? new Room();
 
             var missionData = (from mission in _context.Missions
                                where mission.RoomId == roomData.RoomId
                                select mission).ToList();
 
-            var viewModel = new RoomDetailViewModel(roomData.RoomId, roomData.Name, roomData.Icon, missionData);
+            var viewModel = new RoomDetailViewModel(roomData, missionData);
 
 
             return View(viewModel);

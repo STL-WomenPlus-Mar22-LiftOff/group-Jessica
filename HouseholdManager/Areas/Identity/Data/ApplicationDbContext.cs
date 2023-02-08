@@ -68,6 +68,7 @@ namespace HouseholdManager.Areas.Identity.Data
             {
                 HouseholdId = 1,
                 HouseholdName = "DefaultHousehold",
+                Icon = "🏠"
             };
 
             builder.Entity<Household>().HasData(households);
