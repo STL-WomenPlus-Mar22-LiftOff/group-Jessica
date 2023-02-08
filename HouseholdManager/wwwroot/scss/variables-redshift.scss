@@ -34,7 +34,7 @@ $redshift-info: $redshift-bellatrix;
 $redshift-warning: mix($redshift-magma, $redshift-nova, 75%);
 $redshift-danger: $redshift-inferno;
 $redshift-option: $redshift-nebula;
-$redshift-accent: mix($redshift-inferno, $redshift-nebula);
+$redshift-accent: tint-color(mix($redshift-plum, $redshift-nebula, 40%), 25%);
 
 
 //
