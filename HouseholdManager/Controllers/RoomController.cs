@@ -9,6 +9,7 @@ using HouseholdManager.Data.API;
 using HouseholdManager.Areas.Identity.Data;
 using Microsoft.AspNetCore.Authorization;
 using HouseholdManager.Data.Interfaces;
+using HouseholdManager.Models.ViewModels;
 
 namespace HouseholdManager.Controllers
 {
@@ -36,18 +37,31 @@ namespace HouseholdManager.Controllers
                 return NotFound();
             }
 
-            var room = await _context.Rooms
-                .FirstOrDefaultAsync(m => m.RoomId == id);
-            if (room == null)
-            {
-                return NotFound();
-            }
+            /*Old Data Grabbing Query*/
+            /*            var room = await _context.Rooms
+                            .FirstOrDefaultAsync(m => m.RoomId == id);
+                        if (room == null)
+                        {
+                            return NotFound();
+                        }*/
 
-            return View(room);
+            var roomData = (from room in _context.Rooms
+                            where room.RoomId == id
+                            select room).FirstOrDefault();
+
+            var missionData = (from mission in _context.Missions
+                               where mission.RoomId == roomData.RoomId
+                               select mission).ToList();
+
+            var viewModel = new RoomDetailViewModel(roomData.RoomId, roomData.Name, roomData.Icon, missionData);
+
+
+            return View(viewModel);
+
         }
 
-        // GET: Room/Create
-        [Authorize(Roles = "Administrator,User")]
+            // GET: Room/Create
+            [Authorize(Roles = "Administrator,User")]
         public async Task<IActionResult> Create()
         {
             await PopulateIcons();
@@ -184,4 +198,6 @@ namespace HouseholdManager.Controllers
         }
 
     }
+
+
 }
