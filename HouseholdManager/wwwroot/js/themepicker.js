@@ -34,8 +34,7 @@ function setDefaultTheme() {
     const pref = getPreferredTheme();
     switch (pref) {
         case 'dark':
-            setTheme(pref, "bootstrap5-dark");
-            break;
+        case "redshift":
         case "deepblue":
             setTheme(pref, "bootstrap5-dark");
             break;
@@ -56,6 +55,10 @@ function onThemeChange(choice) {
         case 'deepblue':
             setTheme('deepblue', 'bootstrap5-dark');
             window.localStorage.setItem('user-theme', 'deepblue');
+            break;
+        case 'redshift':
+            setTheme('redshift', 'bootstrap5-dark');
+            window.localStorage.setItem('user-theme', 'redshift');
             break;
         default:
             setTheme('light', 'bootstrap5');

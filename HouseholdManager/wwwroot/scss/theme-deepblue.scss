@@ -51,6 +51,15 @@
         --#{$prefix}border-color: #{$border-color-deepblue};
         --#{$prefix}border-color-translucent: #{$border-color-translucent-deepblue};
 
+        --#{$prefix}bg-primary-theme: #{$deepblue-primary};
+        --#{$prefix}bg-secondary-theme: #{$deepblue-secondary};
+        --#{$prefix}bg-info-theme: #{$deepblue-info};
+        --#{$prefix}bg-success-theme: #{$deepblue-success};
+        --#{$prefix}bg-warning-theme: #{$deepblue-warning};
+        --#{$prefix}bg-danger-theme: #{$deepblue-danger};
+        --#{$prefix}bg-accent-theme: #{$deepblue-accent};
+        --#{$prefix}bg-option-theme: #{$deepblue-option};
+
         //These names must match the ones in the map from additional-colors.scss
         --#{$prefix}accent-text: #{$accent-text-deepblue};
         --#{$prefix}option-text: #{$option-text-deepblue};
@@ -150,5 +159,68 @@
     .e-dropdownbase .e-list-item{
         color: $navbar-deepblue-color;
         background-color: shade-color($deepblue-primary, 20%);
+    }
+}
+
+@mixin deepblue-e-grid {
+    background-color: $body-bg-deepblue !important;
+    color: $emphasis-color-deepblue !important;
+    border-color: $primary-border-subtle-deepblue !important;
+}
+
+@mixin deepblue-altrow {
+    background-color: shade-color($primary-bg-subtle-deepblue, 40%) !important;
+}
+
+[data-bs-theme="deepblue"] {
+
+    .control-section .e-grid .e-row.e-altrow .e-rowcell {
+        @include deepblue-altrow;
+    }
+
+    .control-section .e-grid .e-groupcaption {
+        @include deepblue-e-grid;
+        font-weight: 600;
+    }
+
+    .control-section [class^="e-"]:not(.e-altrow, .e-groupcaption) {
+        @include deepblue-e-grid;
+    }
+
+    .e-grid {
+        @include deepblue-e-grid;
+    }
+
+    div.e-grid.e-hover.e-control {
+        @include deepblue-e-grid;
+    }
+
+    .e-grid .e-pagercontainer,
+    .e-grid .e-numericcontainer .e-numericitem,
+    .e-grid .e-gridheader,
+    .e-grid .e-headercell,
+    .e-pagercontainer .e-icons {
+        @include deepblue-e-grid;
+    }
+
+    .e-grid .e-gridpager {
+        @include deepblue-e-grid;
+        color: $emphasis-color-deepblue !important;
+    }
+
+    .e-grid .e-row:hover .e-rowcell {
+        background-color: tint-color($body-bg-deepblue, 20%) !important;
+    }
+
+    .e-grid .e-rowcell.e-selectionbackground {
+        background-color: tint-color($body-bg-deepblue, 20%) !important;
+    }
+
+    .e-grid .e-row.e-altrow {
+        @include deepblue-altrow;
+    }
+
+    .e-grid .e-row {
+        @include deepblue-e-grid;
     }
 }
