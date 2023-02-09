@@ -15,29 +15,28 @@ namespace HouseholdManager.Controllers
         //get sms
         public IActionResult SendSms()
         {
-            var accountSID = "ACe21179afce61fd2dbbb88d3088095d85";
-            var authtoken = "bd0b393ad4c7b70b6f6b3854b5767fc7";
+            var accountSID = "accountSID";
+            var authtoken = "authtoken";
             TwilioClient.Init(accountSID, authtoken);
 
-            var to = new PhoneNumber("+16362883683");
-            var from = new PhoneNumber("+19288822706");
+            var to = new PhoneNumber("+18888888888");
+            var from = new PhoneNumber("Twilio phone number");
 
             var message = MessageResource.Create(
                 to: to,
                 from: from,
-                body: "Don't forget to complete your mission"!);
+                body: "Don't forget to complete your mission!");
 
             return (IActionResult)Content(message.Sid);
 
         }
 
-        public TwiMLResult ReceiveSms (SmsRequest incomingMessage)
+        public TwiMLResult ReceiveSms ()
         {
-            var messagingResponse = new MessagingResponse();
-            messagingResponse.Message("The copy cat says: " +
-                                      incomingMessage.Body);
+            var response = new MessagingResponse();
+            response.Message("Get to work!");
 
-            return TwiML(messagingResponse);
+            return TwiML(response);
 
         }
     }
