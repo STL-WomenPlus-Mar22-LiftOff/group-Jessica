@@ -37,6 +37,32 @@
         </dd>
     </dl>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="p-4">
+            <h5 class="fw-bold">@Model.MemberUserNameWithIcon's Missions</h5>
+
+
+            <div class="control-section">
+
+                    <ejs-grid id="mission" dataSource="@ViewBag.AllMissions" gridLines="None"
+                      allowSorting="true" allowPaging="true">
+                <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
+                    <e-grid-columns>
+                        <e-grid-column headerText="Room" field="RoomNameWithIcon" width="15%"></e-grid-column>
+                        <e-grid-column field="@ViewBag.missionName" headerText="Mission Name"></e-grid-column>
+                        <e-grid-column field="DueDate" headerText="Due Date" format="MMM-dd-yyyy" width="20%"></e-grid-column>
+                        <e-grid-column headerText="Completed" template="#actionYesNoTemplate" width="20%" textAlign="Center"></e-grid-column>
+                    </e-grid-columns>
+
+
+                </ejs-grid>
+
+            </div>
+        </div>
+    </div>
+</div>
 <div class="form-group">
     <a asp-action="AddOrEdit" asp-route-id="@Model?.MemberId" class="btn btn-success form-button"> <i class="fa-solid fa-pen-to-square"></i> Edit</a>
     <a asp-action="Index" class="btn btn-secondary form-button"> <i class="fa-solid fa-arrow-left"></i> Back to List</a>
